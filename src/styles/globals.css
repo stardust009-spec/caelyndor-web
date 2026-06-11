@@ -4705,7 +4705,7 @@ h3 {
 
 .story-cover {
   position: relative;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 9 / 16;
   display: grid;
   padding: var(--space-4);
   background:
@@ -4718,6 +4718,14 @@ h3 {
 
 .story-card:hover .story-cover {
   filter: brightness(1.12);
+}
+
+.story-cover--art {
+  padding: 0;
+}
+
+.story-cover--art img {
+  object-fit: cover;
 }
 
 .story-cover__frame {

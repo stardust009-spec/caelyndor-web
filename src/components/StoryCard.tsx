@@ -1,19 +1,13 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { StoryCover } from "@/components/StoryCover";
 import type { Story } from "@/data/stories";
 
 export function StoryCard({ story }: { story: Story }) {
   return (
     <article className="story-card" style={{ "--story-accent": story.accent } as CSSProperties}>
       <Link className="story-card__cover-link" href={`/relatos/${story.slug}`}>
-        <div className="story-cover" aria-hidden="true">
-          <div className="story-cover__frame">
-            <p className="story-cover__eyebrow">Crónicas de Caelyndor</p>
-            <p className="story-cover__ornament">✦</p>
-            <p className="story-cover__title">{story.title}</p>
-            <p className="story-cover__kind">Mini relato</p>
-          </div>
-        </div>
+        <StoryCover slug={story.slug} title={story.title} />
       </Link>
       <div className="story-card__body">
         <p className="eyebrow">Mini relato</p>
