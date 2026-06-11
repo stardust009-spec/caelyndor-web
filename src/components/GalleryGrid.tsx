@@ -10,6 +10,8 @@ export function GalleryGrid({ items, onSelect }: GalleryGridProps) {
   return (
     <div className="gallery-grid">
       {items.map((item) => {
+        const ratioClass =
+          item.category === "Bestiario" ? "gallery-card--standard" : "gallery-card--portrait";
         const media = (
           <Image
             src={item.image}
@@ -22,7 +24,7 @@ export function GalleryGrid({ items, onSelect }: GalleryGridProps) {
         );
 
         return (
-          <article className="gallery-card" key={item.id}>
+          <article className={`gallery-card ${ratioClass}`} key={item.id}>
             {onSelect ? (
               <button
                 type="button"

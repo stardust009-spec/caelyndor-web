@@ -4525,3 +4525,52 @@ h3 {
     margin-left: 0;
   }
 }
+
+.gallery-card--portrait img,
+.gallery-card--standard img {
+  width: 100%;
+  height: auto;
+}
+
+.gallery-card--portrait img {
+  aspect-ratio: 9 / 16;
+}
+
+.gallery-card--standard img {
+  aspect-ratio: 4 / 5;
+}
+
+.gallery-card h3 {
+  overflow-wrap: break-word;
+}
+
+.glossary-card__links {
+  align-items: baseline;
+}
+
+.glossary-card__links .text-link {
+  min-height: 0;
+  justify-content: flex-start;
+}
+
+.timeline__era h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+  line-height: 1.15;
+  overflow-wrap: break-word;
+}
+
+.timeline__era .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+@media (max-width: 700px) {
+  .timeline::before {
+    display: none;
+  }
+
+  .timeline__group {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
