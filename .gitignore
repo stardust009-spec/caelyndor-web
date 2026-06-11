@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+dist
+.env*
+*.log
+.npm-cache
+coverage
+music-source/
