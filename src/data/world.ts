@@ -53,8 +53,9 @@ export const worldRegions: WorldRegion[] = [
     kind: "Reino",
     epithet: "El trono sobre el hielo",
     description:
-      "Tundras, cordilleras heladas y mares donde los pescadores cantan sobre Uru-Uru. Lo gobierna Nayara, Regina Glaciei, con Halrik como mariscal de frontera y Valthor como memoria del Alto Consejo. En Glaciem la lealtad se mide en silencio sostenido.",
+      "Tundras, cordilleras heladas y mares donde los pescadores cantan sobre Uru-Uru. Su corona pasó de Nayara, la Regina Glaciei, a su hija Yuki Arhess; Halrik sostiene la frontera como mariscal y Valthor guarda la memoria del Alto Consejo. En Glaciem la lealtad se mide en silencio sostenido.",
     seeAlso: [
+      { label: "Yuki", href: "/personajes/yuki" },
       { label: "Nayara", href: "/personajes/nayara" },
       { label: "Halrik", href: "/personajes/halrik" },
       { label: "Uru-Uru", href: "/archivo/bestiario/uru-uru" }
@@ -66,10 +67,10 @@ export const worldRegions: WorldRegion[] = [
     kind: "Reino",
     epithet: "La tierra del fuego dormido",
     description:
-      "Campos volcánicos, muros cálidos y ruinas soleadas, levantados sobre un secreto incómodo: bajo su subsuelo duerme Rhazeth, la bestia tectónica. Arriba, Aelrhyssa enseña etiqueta con rigor de fuego y los lagartos braseros calientan las murallas.",
+      "Campos volcánicos, muros cálidos y ruinas soleadas, levantados sobre un secreto incómodo: bajo su subsuelo duerme Rhazeth, la bestia tectónica. Arriba, los lagartos braseros calientan las murallas y la vida aprendió a prosperar a fuego lento.",
     seeAlso: [
-      { label: "Aelrhyssa", href: "/personajes/aelrhyssa" },
-      { label: "Rhazeth", href: "/archivo/bestiario/rhazeth" }
+      { label: "Rhazeth", href: "/archivo/bestiario/rhazeth" },
+      { label: "Lagartos braseros", href: "/archivo/bestiario/lagartos-braseros" }
     ]
   },
   {
@@ -144,6 +145,18 @@ export const worldRegions: WorldRegion[] = [
     description:
       "Reino menor de pantanos y aguas pacientes. Sus criaturas figuran en el Bestiario y sus señales en más de un presagio: los reinos pequeños suelen leer el cielo antes que los grandes, aunque no siempre a tiempo.",
     seeAlso: [{ label: "Bestiario", href: "/archivo/bestiario" }]
+  },
+  {
+    slug: "lirethar",
+    name: "Lirethar",
+    kind: "Reino caído",
+    epithet: "El eco de la corona",
+    description:
+      "Reino élfico que dejó de existir antes del incidente del Velo. Los registros lo describen atrapado en una intención eterna —el Efecto Estática— y su última reina, Aelrhyssa, sobrevive como vigía de lo que su corona no pudo impedir.",
+    seeAlso: [
+      { label: "Aelrhyssa", href: "/personajes/aelrhyssa" },
+      { label: "Música", href: "/musica" }
+    ]
   },
   {
     slug: "torre-negra-del-norte",

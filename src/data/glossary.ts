@@ -88,8 +88,9 @@ export const glossaryEntries: GlossaryEntry[] = [
     categorySlug: "regiones-y-territorios",
     category: "Regiones y territorios",
     definition:
-      "Reino del hielo: tundras, cordilleras heladas, mares donde los pescadores cantan sobre Uru-Uru. Lo gobierna Nayara, Regina Glaciei, con Halrik como mariscal de frontera y Valthor como memoria del trono. En Glaciem la lealtad se mide en silencio sostenido.",
+      "Reino del hielo: tundras, cordilleras heladas, mares donde los pescadores cantan sobre Uru-Uru. Su corona pasó de Nayara, la Regina Glaciei, a su hija Yuki Arhess; Halrik sostiene la frontera como mariscal y Valthor guarda la memoria del Alto Consejo. En Glaciem la lealtad se mide en silencio sostenido.",
     seeAlso: [
+      { label: "Yuki", href: "/personajes/yuki" },
       { label: "Nayara", href: "/personajes/nayara" },
       { label: "Halrik", href: "/personajes/halrik" },
       { label: "Valthor", href: "/personajes/valthor" }
@@ -100,11 +101,8 @@ export const glossaryEntries: GlossaryEntry[] = [
     categorySlug: "regiones-y-territorios",
     category: "Regiones y territorios",
     definition:
-      "Territorio volcánico de campos ardientes, muros cálidos y ruinas soleadas. Bajo su subsuelo duerme Rhazeth, la bestia tectónica, y sobre él se enseña etiqueta con rigor de fuego: Aelrhyssa, la Institutriz de la Llama, es su figura formativa.",
-    seeAlso: [
-      { label: "Aelrhyssa", href: "/personajes/aelrhyssa" },
-      { label: "Bestiario", href: "/archivo/bestiario" }
-    ]
+      "Territorio volcánico de campos ardientes, muros cálidos y ruinas soleadas. Bajo su subsuelo duerme Rhazeth, la bestia tectónica; sobre él, los lagartos braseros calientan las murallas y la vida aprendió a prosperar a fuego lento.",
+    seeAlso: [{ label: "Bestiario", href: "/archivo/bestiario" }]
   },
   {
     term: "Sylvalis",
@@ -167,6 +165,17 @@ export const glossaryEntries: GlossaryEntry[] = [
     definition:
       "Enclave septentrional que el Archivo asocia con Tenebrys y con registros que prefieren no ser leídos dos veces. Su nombre aparece en los márgenes de más documentos de los que admite oficialmente.",
     seeAlso: [{ label: "Bestiario", href: "/archivo/bestiario" }]
+  },
+  {
+    term: "Lirethar",
+    categorySlug: "regiones-y-territorios",
+    category: "Regiones y territorios",
+    definition:
+      "Reino élfico que dejó de existir antes del incidente del Velo. Los registros lo describen atrapado en una intención eterna —el Efecto Estática— y su última reina, Aelrhyssa, sobrevive como vigía de lo que su corona no pudo impedir. Su música aún circula: el eco de la corona no terminó de apagarse.",
+    seeAlso: [
+      { label: "Aelrhyssa", href: "/personajes/aelrhyssa" },
+      { label: "Música", href: "/musica" }
+    ]
   },
   {
     term: "Sol Negro",
@@ -242,7 +251,7 @@ export const glossaryEntries: GlossaryEntry[] = [
     categorySlug: "cosmologia-y-el-velo",
     category: "Cosmología y el Velo",
     definition:
-      "Dragones que el Archivo no clasifica por amenaza sino por jurisdicción: Fulgor, Selyra y Glasyra, entre los conocidos. Los registros más antiguos añaden la leyenda del Dragón de Luz, el único capaz de cruzar el Velo, asociado al prisma y a los siete colores.",
+      "Dragones que el Archivo no clasifica por amenaza sino por jurisdicción: Fulgor, el primordial del fuego; Selyra, la del viento; y Glasyra, la del hielo. Los registros más antiguos añaden la leyenda del Dragón de Luz, el único capaz de cruzar el Velo, asociado al prisma y a los siete colores.",
     seeAlso: [{ label: "Sistema mágico", href: "/archivo/sistema-magico" }]
   },
   {

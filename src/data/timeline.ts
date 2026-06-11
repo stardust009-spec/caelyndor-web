@@ -32,7 +32,7 @@ export const timelineGroups: TimelineGroup[] = [
       {
         title: "La caída de Voltrak",
         description:
-          "Korvess, el lobo que solo entiende jerarquía, mata a Voltrak, el dragón del trueno y amigo de Fulgor. La pérdida todavía resuena en los cielos de tormenta y en la memoria dracónica del continente.",
+          "Korvess, el lobo que solo entiende jerarquía, mata a Voltrak, el dragón del trueno, hermano de Selyra y mejor amigo de Fulgor. La pérdida todavía resuena en los cielos de tormenta y en la memoria dracónica del continente.",
         scope: "Relato lateral"
       },
       {
@@ -64,6 +64,12 @@ export const timelineGroups: TimelineGroup[] = [
         title: "El nacimiento de Yuki",
         description:
           "Nace la nieve bajo el umbral. Años después, Valthor la guiará en los protocolos posteriores al Ritual y le informará —con dolor visible— del destino de Lielle.",
+        scope: "Saga troncal"
+      },
+      {
+        title: "La corona pasa a Yuki",
+        description:
+          "Nayara cede el trono y Yuki Arhess asume como Reina de Glaciem, con el Alto Consejo como testigo. La nieve bajo el umbral pasa a sostener el umbral entero.",
         scope: "Saga troncal"
       },
       {

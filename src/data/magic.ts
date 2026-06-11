@@ -97,7 +97,7 @@ export const magicSections: MagicSection[] = [
         eyebrow: "Jurisdicciones",
         title: "Los soberanos conocidos",
         text:
-          "Fulgor, excesivo y de apetito legendario, cuyo nombre llevan reliquias enteras y cuya elección distingue campeones. Selyra, soberana del viento. Glasyra, soberana del hielo. Tratar con un soberano no es domar ni cazar: es diplomacia con alguien que ya gobernaba antes de que existieran los mapas.",
+          "Fulgor, primordial del fuego, gourmet de apetito legendario y devoto de la etiqueta, cuya elección distingue campeones. Selyra, soberana del viento y hermana de Voltrak, el dragón del trueno caído. Glasyra, soberana del hielo. Tratar con un soberano no es domar ni cazar: es diplomacia con alguien que ya gobernaba antes de que existieran los mapas.",
         seeAlso: [
           { label: "Fulgor", href: "/personajes/fulgor" },
           { label: "Rubí", href: "/personajes/rubi" }
