@@ -1,38 +1,56 @@
+import { bestiaryEntries } from "@/data/bestiary";
+import { characters } from "@/data/characters";
+import { musicTracks } from "@/data/music";
+
+export type GalleryCategory = "Personajes" | "Bestiario" | "Portadas musicales";
+
 export type GalleryItem = {
   id: string;
   title: string;
-  category: "Portadas" | "Personajes" | "Interiores" | "Arte conceptual";
+  category: GalleryCategory;
   image: string;
   alt: string;
 };
 
-export const galleryItems: GalleryItem[] = [
-  {
-    id: "cover-study",
-    title: "Estudio de portada",
-    category: "Portadas",
-    image: "/images/gallery/cover-study.svg",
-    alt: "Placeholder de estudio de portada de Caelyndor"
-  },
-  {
-    id: "rubi-study",
-    title: "Rubí, prueba de silueta",
-    category: "Personajes",
-    image: "/images/gallery/character-study.svg",
-    alt: "Placeholder de arte de personaje"
-  },
-  {
-    id: "interior-gate",
-    title: "Puerta interior",
-    category: "Interiores",
-    image: "/images/gallery/interior-gate.svg",
-    alt: "Placeholder de ilustración interior"
-  },
-  {
-    id: "veil-concept",
-    title: "Concepto del Velo",
-    category: "Arte conceptual",
-    image: "/images/gallery/veil-concept.svg",
-    alt: "Placeholder de arte conceptual del Velo"
-  }
+export const galleryCategories: GalleryCategory[] = [
+  "Personajes",
+  "Bestiario",
+  "Portadas musicales"
 ];
+
+const characterArt: GalleryItem[] = characters.map((character) => ({
+  id: `personaje-${character.slug}`,
+  title: character.name,
+  category: "Personajes",
+  image: character.image,
+  alt: `Retrato canónico de ${character.name}`
+}));
+
+const bestiaryArt: GalleryItem[] = bestiaryEntries
+  .filter((entry) => entry.image)
+  .map((entry) => ({
+    id: `bestiario-${entry.slug}`,
+    title: `${entry.name} — ${entry.epithet}`,
+    category: "Bestiario",
+    image: entry.image!.src,
+    alt: entry.image!.alt
+  }));
+
+const seenCovers = new Set<string>();
+const coverArt: GalleryItem[] = musicTracks
+  .filter((track) => {
+    if (!track.coverImage || seenCovers.has(track.coverImage)) {
+      return false;
+    }
+    seenCovers.add(track.coverImage);
+    return true;
+  })
+  .map((track) => ({
+    id: `portada-${track.id}`,
+    title: track.title,
+    category: "Portadas musicales",
+    image: track.coverImage!,
+    alt: `Portada de ${track.title}`
+  }));
+
+export const galleryItems: GalleryItem[] = [...characterArt, ...bestiaryArt, ...coverArt];

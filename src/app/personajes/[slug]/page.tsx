@@ -59,13 +59,13 @@ export default async function CharacterDetailPage({ params }: CharacterPageProps
           </div>
         </div>
         <section className="detail-section" aria-labelledby="galeria-personaje">
-          <h2 id="galeria-personaje">Galería placeholder</h2>
+          <h2 id="galeria-personaje">Galería</h2>
           <div className="mini-gallery">
             {character.gallery.map((image, index) => (
               <Image
                 key={`${image}-${index}`}
                 src={image}
-                alt={`Galería placeholder ${index + 1} de ${character.name}`}
+                alt={`Imagen ${index + 1} de la galería de ${character.name}`}
                 width={520}
                 height={360}
                 loading="lazy"

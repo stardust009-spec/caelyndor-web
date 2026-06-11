@@ -5,23 +5,19 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 const sections: Record<string, { title: string; text: string }> = {
   mundo: {
     title: "Mundo",
-    text: "Ruta preparada para cosmología, mapas, regiones y reglas de mundo."
+    text: "Cosmología, mapas, regiones y reglas de mundo de Caelyndor."
   },
   reinos: {
     title: "Reinos",
-    text: "Ruta preparada para casas, territorios, jerarquías y conflictos políticos."
+    text: "Casas, territorios, jerarquías y conflictos políticos del continente."
   },
   "sistema-magico": {
     title: "Sistema mágico",
-    text: "Ruta preparada para afinidades, costes, límites y excepciones."
-  },
-  glosario: {
-    title: "Glosario",
-    text: "Ruta preparada para términos, nombres propios y lenguaje canónico."
+    text: "Afinidades, costes, límites y excepciones del poder en Caelyndor."
   },
   "documentos-internos": {
     title: "Documentos internos",
-    text: "Ruta preparada para cartas, fragmentos, informes y documentos diegéticos."
+    text: "Cartas, fragmentos, informes y documentos diegéticos del Archivo."
   }
 };
 
@@ -57,11 +53,15 @@ export default async function ArchiveSectionPage({ params }: ArchiveSectionPageP
             { href: `/archivo/${section}`, label: content.title }
           ]}
         />
-        <p className="eyebrow">Ruta preparada</p>
+        <p className="eyebrow">Sección del Archivo</p>
         <h1>{content.title}</h1>
         <p className="lead">{content.text}</p>
         <div className="placeholder-panel">
-          <p>Contenido pendiente. Este espacio queda listo para fichas, listas, galerías o documentos cuando el canon esté definido.</p>
+          <p>
+            Los archivistas siguen reuniendo material para esta sección. Mientras el canon
+            termina de asentarse, el <Link href="/archivo/bestiario">Bestiario</Link> y el{" "}
+            <Link href="/archivo/glosario">Glosario</Link> ya están abiertos a consulta.
+          </p>
         </div>
         <Link className="button" href="/archivo">
           Volver al archivo

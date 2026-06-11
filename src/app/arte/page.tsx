@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { GalleryGrid } from "@/components/GalleryGrid";
+import { GalleryBrowser } from "@/components/GalleryBrowser";
 import { SectionIntro } from "@/components/SectionIntro";
-import { galleryItems } from "@/data/gallery";
+import { galleryCategories, galleryItems } from "@/data/gallery";
 
 export const metadata: Metadata = {
   title: "Arte"
@@ -14,9 +14,9 @@ export default function ArtPage() {
         <SectionIntro
           eyebrow="Galería"
           title="Arte"
-          text="Portadas, personajes, interiores y arte conceptual. TODO: sumar lightbox simple cuando haya arte final y necesidades de navegación por imagen."
+          text="El archivo visual de Caelyndor: retratos canónicos, criaturas del Bestiario y portadas musicales reunidos en una sola galería. Filtra por categoría o amplía cada obra."
         />
-        <GalleryGrid items={galleryItems} />
+        <GalleryBrowser items={galleryItems} categories={galleryCategories} />
       </div>
     </section>
   );

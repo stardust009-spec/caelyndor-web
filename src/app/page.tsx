@@ -48,7 +48,7 @@ export default function HomePage() {
             <SectionIntro
               eyebrow="Producción"
               title="Ahora en la Forja"
-              text="Estado editorial placeholder del libro actual, listo para actualizarse desde un único archivo de datos."
+              text="Estado editorial del libro en curso, actualizado a medida que la escritura avanza dentro de la Forja."
             />
             <Link className="text-link" href="/nuevo-libro">
               Ver avance completo

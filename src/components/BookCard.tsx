@@ -6,7 +6,7 @@ export function BookCard({ book }: { book: Book }) {
     <article className="book-card">
       <Image
         src={book.cover}
-        alt={`Portada placeholder de ${book.title}`}
+        alt={`Portada de ${book.title}`}
         width={520}
         height={720}
         loading="lazy"

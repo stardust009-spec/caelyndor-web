@@ -35,7 +35,7 @@ export const books: Book[] = [
     title: "Noctalypse",
     subtitle: "Crónica de eclipse",
     status: "Archivo de ideas",
-    synopsis: "Spin-off placeholder para explorar mitos, antagonismos y documentos prohibidos del abismo.",
+    synopsis: "Crónica de eclipse contada desde la sombra: mitos, antagonismos y documentos prohibidos del abismo que el Archivo aún no se atreve a catalogar.",
     cover: "/images/books/book-eclipse.svg",
     readingOrder: "Por definir",
     seriesType: "Spin-off"
