@@ -1680,37 +1680,37 @@ h3 {
 }
 
 .music-player--yuki {
-  --player-theme-border: rgba(190, 230, 245, 0.28);
-  --player-theme-glow-a: rgba(165, 220, 245, 0.12);
-  --player-theme-glow-b: rgba(220, 232, 242, 0.08);
-  --player-theme-sweep: rgba(190, 230, 245, 0.13);
-  --player-theme-fill: linear-gradient(90deg, rgba(214, 240, 255, 0.88), rgba(128, 190, 235, 0.7));
-  --player-theme-fill-vertical: linear-gradient(0deg, rgba(214, 240, 255, 0.88), rgba(128, 190, 235, 0.7));
-  --player-theme-thumb: #e5f6ff;
-  --player-theme-thumb-border: rgba(220, 242, 255, 0.5);
-  --player-theme-button: #d8f1ff;
-  --player-theme-warm-a: rgba(180, 228, 248, 0.13);
-  --player-theme-warm-b: rgba(225, 235, 245, 0.06);
-  --player-theme-mote: rgba(218, 242, 255, 0.72);
-  --player-theme-mote-glow: rgba(165, 220, 245, 0.22);
-  --player-theme-firefly: rgba(198, 230, 240, 0.62);
+  --player-theme-border: rgba(70, 106, 205, 0.32);
+  --player-theme-glow-a: rgba(44, 78, 170, 0.15);
+  --player-theme-glow-b: rgba(92, 130, 215, 0.09);
+  --player-theme-sweep: rgba(70, 106, 205, 0.14);
+  --player-theme-fill: linear-gradient(90deg, rgba(100, 136, 224, 0.86), rgba(38, 66, 154, 0.76));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(100, 136, 224, 0.86), rgba(38, 66, 154, 0.76));
+  --player-theme-thumb: #9db8f0;
+  --player-theme-thumb-border: rgba(157, 184, 240, 0.5);
+  --player-theme-button: #a8c0f4;
+  --player-theme-warm-a: rgba(54, 88, 182, 0.15);
+  --player-theme-warm-b: rgba(92, 130, 215, 0.06);
+  --player-theme-mote: rgba(150, 180, 240, 0.7);
+  --player-theme-mote-glow: rgba(70, 106, 205, 0.24);
+  --player-theme-firefly: rgba(110, 150, 230, 0.6);
 }
 
 .music-player--rubi {
-  --player-theme-border: rgba(230, 92, 64, 0.28);
-  --player-theme-glow-a: rgba(220, 70, 45, 0.11);
-  --player-theme-glow-b: rgba(236, 140, 74, 0.08);
-  --player-theme-sweep: rgba(230, 92, 64, 0.12);
-  --player-theme-fill: linear-gradient(90deg, rgba(245, 116, 82, 0.84), rgba(222, 155, 74, 0.68));
-  --player-theme-fill-vertical: linear-gradient(0deg, rgba(245, 116, 82, 0.84), rgba(222, 155, 74, 0.68));
-  --player-theme-thumb: #ffb69b;
-  --player-theme-thumb-border: rgba(255, 188, 150, 0.45);
-  --player-theme-button: #ffc0a0;
-  --player-theme-warm-a: rgba(230, 92, 64, 0.13);
-  --player-theme-warm-b: rgba(236, 140, 74, 0.06);
-  --player-theme-mote: rgba(245, 142, 104, 0.68);
-  --player-theme-mote-glow: rgba(230, 92, 64, 0.2);
-  --player-theme-firefly: rgba(236, 172, 92, 0.58);
+  --player-theme-border: rgba(226, 58, 48, 0.3);
+  --player-theme-glow-a: rgba(214, 44, 38, 0.13);
+  --player-theme-glow-b: rgba(238, 96, 80, 0.08);
+  --player-theme-sweep: rgba(226, 58, 48, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(240, 84, 70, 0.86), rgba(198, 32, 40, 0.74));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(240, 84, 70, 0.86), rgba(198, 32, 40, 0.74));
+  --player-theme-thumb: #ff9a8a;
+  --player-theme-thumb-border: rgba(255, 160, 144, 0.46);
+  --player-theme-button: #ffab9a;
+  --player-theme-warm-a: rgba(226, 58, 48, 0.13);
+  --player-theme-warm-b: rgba(238, 96, 80, 0.06);
+  --player-theme-mote: rgba(244, 116, 100, 0.68);
+  --player-theme-mote-glow: rgba(226, 58, 48, 0.22);
+  --player-theme-firefly: rgba(236, 130, 96, 0.56);
 }
 
 .music-player--lyzi {
@@ -4874,4 +4874,119 @@ h3 {
   color: var(--color-ash);
   font-family: var(--font-display);
   font-style: italic;
+}
+
+body.has-music-player {
+  padding-bottom: 4.8rem;
+}
+
+.music-player--ventoleve {
+  --player-theme-border: rgba(244, 158, 198, 0.28);
+  --player-theme-glow-a: rgba(244, 158, 198, 0.13);
+  --player-theme-glow-b: rgba(140, 206, 244, 0.12);
+  --player-theme-sweep: rgba(214, 178, 226, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(248, 168, 204, 0.86), rgba(140, 206, 244, 0.78));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(248, 168, 204, 0.86), rgba(140, 206, 244, 0.78));
+  --player-theme-thumb: #f6c2da;
+  --player-theme-thumb-border: rgba(248, 196, 220, 0.5);
+  --player-theme-button: #f2c0dc;
+  --player-theme-warm-a: rgba(244, 158, 198, 0.13);
+  --player-theme-warm-b: rgba(140, 206, 244, 0.07);
+  --player-theme-mote: rgba(248, 184, 214, 0.7);
+  --player-theme-mote-glow: rgba(244, 158, 198, 0.22);
+  --player-theme-firefly: rgba(150, 212, 246, 0.66);
+}
+
+.music-player--rubiyuki {
+  --player-theme-border: rgba(228, 86, 64, 0.28);
+  --player-theme-glow-a: rgba(222, 64, 48, 0.13);
+  --player-theme-glow-b: rgba(46, 84, 168, 0.13);
+  --player-theme-sweep: rgba(150, 86, 120, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(238, 92, 70, 0.86), rgba(64, 104, 196, 0.8));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(238, 92, 70, 0.86), rgba(64, 104, 196, 0.8));
+  --player-theme-thumb: #f0a08e;
+  --player-theme-thumb-border: rgba(240, 168, 146, 0.48);
+  --player-theme-button: #eeb0a2;
+  --player-theme-warm-a: rgba(222, 64, 48, 0.12);
+  --player-theme-warm-b: rgba(46, 84, 168, 0.08);
+  --player-theme-mote: rgba(244, 132, 108, 0.68);
+  --player-theme-mote-glow: rgba(222, 64, 48, 0.2);
+  --player-theme-firefly: rgba(108, 146, 230, 0.66);
+}
+
+.music-player--themed {
+  border-top-color: var(--player-theme-border);
+  background:
+    radial-gradient(circle at 18% 0%, var(--player-theme-glow-a), transparent 25rem),
+    radial-gradient(circle at 76% 0%, var(--player-theme-glow-b), transparent 22rem),
+    linear-gradient(180deg, rgba(18, 15, 20, 0.92), rgba(6, 6, 10, 0.98)),
+    rgba(8, 7, 12, 0.96);
+  box-shadow:
+    0 -20px 58px rgba(0, 0, 0, 0.46),
+    0 -1px 26px color-mix(in srgb, var(--player-theme-border) 44%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.music-player--themed::before {
+  background: linear-gradient(90deg, transparent, var(--player-theme-sweep) 50%, transparent);
+  opacity: 0.5;
+}
+
+.music-player--themed .music-player__motes span {
+  background: var(--player-theme-mote);
+  box-shadow: 0 0 10px var(--player-theme-mote-glow);
+}
+
+.music-player--themed .music-player__motes span:nth-child(5),
+.music-player--themed .music-player__motes span:nth-child(9),
+.music-player--themed .music-player__motes span:nth-child(14) {
+  background: var(--player-theme-firefly);
+  box-shadow: 0 0 10px var(--player-theme-mote-glow), 0 0 18px color-mix(in srgb, var(--player-theme-firefly) 22%, transparent);
+}
+
+.music-player--ventoleve .music-player__motes span:nth-child(even),
+.music-player--rubiyuki .music-player__motes span:nth-child(even) {
+  background: var(--player-theme-firefly);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
+}
+
+.music-player--themed .music-player__button--active,
+.music-player--themed .music-player__button--active-soft {
+  border-color: color-mix(in srgb, var(--player-theme-button) 46%, transparent);
+  color: var(--player-theme-button);
+  background:
+    linear-gradient(180deg, var(--player-theme-warm-a), var(--player-theme-warm-b)),
+    rgba(12, 9, 13, 0.66);
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--player-theme-button) 14%, transparent),
+    0 0 26px color-mix(in srgb, var(--player-theme-border) 26%, transparent),
+    inset 0 0 14px color-mix(in srgb, var(--player-theme-button) 8%, transparent);
+}
+
+.music-player--themed .music-player__primary {
+  border-color: color-mix(in srgb, var(--player-theme-button) 34%, transparent);
+  color: color-mix(in srgb, var(--player-theme-button) 84%, white);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--player-theme-button) 18%, transparent), var(--player-theme-warm-b)),
+    rgba(14, 10, 14, 0.78) !important;
+  box-shadow:
+    0 0 24px color-mix(in srgb, var(--player-theme-button) 12%, transparent),
+    inset 0 0 18px color-mix(in srgb, var(--player-theme-button) 5%, transparent);
+}
+
+.music-player--themed .music-player__progress-fill {
+  background: var(--player-theme-fill);
+}
+
+.music-player--themed .music-player__progress-rail::after,
+.music-player--themed .music-player__volume-rail::after {
+  border-color: var(--player-theme-thumb-border);
+  background: var(--player-theme-thumb);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--player-theme-thumb) 10%, transparent),
+    0 0 14px color-mix(in srgb, var(--player-theme-thumb) 15%, transparent);
+}
+
+.music-player--themed .music-player__volume-fill {
+  background: var(--player-theme-fill-vertical);
 }
