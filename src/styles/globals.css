@@ -4602,6 +4602,12 @@ h3 {
   font-size: clamp(1.7rem, 2.6vw, 2.5rem);
 }
 
+.world-section__intro {
+  max-width: 760px;
+  color: var(--color-silver);
+  line-height: 1.7;
+}
+
 .world-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

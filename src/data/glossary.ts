@@ -224,7 +224,34 @@ export const glossaryEntries: GlossaryEntry[] = [
     category: "Conceptos del Archivo",
     definition:
       "Firma elemental y temática con la que el Archivo resume a una figura: Hielo / Memoria / Quietud para Yuki, Fuego / Sangre / Juramento para Rubí. No es una clasificación de poder sino de tendencia: describe hacia dónde se inclina alguien cuando el mundo lo empuja.",
-    seeAlso: [{ label: "Personajes", href: "/personajes" }]
+    seeAlso: [
+      { label: "Personajes", href: "/personajes" },
+      { label: "Sistema mágico", href: "/archivo/sistema-magico" }
+    ]
+  },
+  {
+    term: "Constelaciones Aúricas",
+    categorySlug: "conceptos-del-archivo",
+    category: "Conceptos del Archivo",
+    definition:
+      "Disciplina que lee el aura como un mapa de nodos de luz. No mide poder bruto: mide complejidad, rareza, estabilidad, superposición y distancia respecto a Caelyndor. Los animales muestran entre tres y cinco nodos; los humanos, entre seis y ocho. Una constelación superpuesta nunca es buena noticia.",
+    seeAlso: [{ label: "Sistema mágico", href: "/archivo/sistema-magico" }]
+  },
+  {
+    term: "Dragones Soberanos",
+    categorySlug: "cosmologia-y-el-velo",
+    category: "Cosmología y el Velo",
+    definition:
+      "Dragones que el Archivo no clasifica por amenaza sino por jurisdicción: Fulgor, Selyra y Glasyra, entre los conocidos. Los registros más antiguos añaden la leyenda del Dragón de Luz, el único capaz de cruzar el Velo, asociado al prisma y a los siete colores.",
+    seeAlso: [{ label: "Sistema mágico", href: "/archivo/sistema-magico" }]
+  },
+  {
+    term: "Ley del coste",
+    categorySlug: "conceptos-del-archivo",
+    category: "Conceptos del Archivo",
+    definition:
+      "La regla que ningún practicante ha conseguido evitar: el poder en Caelyndor casi nunca es gratis, y todo milagro deja deuda. Cuando algo imposible ocurre sin precio aparente, el Archivo recomienda asumir que el precio solo está viajando.",
+    seeAlso: [{ label: "Sistema mágico", href: "/archivo/sistema-magico" }]
   },
   {
     term: "Nivel de amenaza",

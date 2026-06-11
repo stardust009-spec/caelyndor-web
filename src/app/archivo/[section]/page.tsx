@@ -7,10 +7,6 @@ const sections: Record<string, { title: string; text: string }> = {
     title: "Reinos",
     text: "Casas, territorios, jerarquías y conflictos políticos del continente."
   },
-  "sistema-magico": {
-    title: "Sistema mágico",
-    text: "Afinidades, costes, límites y excepciones del poder en Caelyndor."
-  },
   "documentos-internos": {
     title: "Documentos internos",
     text: "Cartas, fragmentos, informes y documentos diegéticos del Archivo."
@@ -55,9 +51,11 @@ export default async function ArchiveSectionPage({ params }: ArchiveSectionPageP
         <div className="placeholder-panel">
           <p>
             Los archivistas siguen reuniendo material para esta sección. Mientras el canon
-            termina de asentarse, el <Link href="/archivo/bestiario">Bestiario</Link>, el{" "}
-            <Link href="/archivo/glosario">Glosario</Link> y el{" "}
-            <Link href="/archivo/mundo">Mundo</Link> ya están abiertos a consulta.
+            termina de asentarse, ya están abiertas a consulta las salas de{" "}
+            <Link href="/archivo/bestiario">Bestiario</Link>,{" "}
+            <Link href="/archivo/glosario">Glosario</Link>,{" "}
+            <Link href="/archivo/mundo">Mundo</Link> y{" "}
+            <Link href="/archivo/sistema-magico">Sistema mágico</Link>.
           </p>
         </div>
         <Link className="button" href="/archivo">
