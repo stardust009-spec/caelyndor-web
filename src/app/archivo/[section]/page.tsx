@@ -3,10 +3,6 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
 const sections: Record<string, { title: string; text: string }> = {
-  mundo: {
-    title: "Mundo",
-    text: "Cosmología, mapas, regiones y reglas de mundo de Caelyndor."
-  },
   reinos: {
     title: "Reinos",
     text: "Casas, territorios, jerarquías y conflictos políticos del continente."
@@ -59,8 +55,9 @@ export default async function ArchiveSectionPage({ params }: ArchiveSectionPageP
         <div className="placeholder-panel">
           <p>
             Los archivistas siguen reuniendo material para esta sección. Mientras el canon
-            termina de asentarse, el <Link href="/archivo/bestiario">Bestiario</Link> y el{" "}
-            <Link href="/archivo/glosario">Glosario</Link> ya están abiertos a consulta.
+            termina de asentarse, el <Link href="/archivo/bestiario">Bestiario</Link>, el{" "}
+            <Link href="/archivo/glosario">Glosario</Link> y el{" "}
+            <Link href="/archivo/mundo">Mundo</Link> ya están abiertos a consulta.
           </p>
         </div>
         <Link className="button" href="/archivo">
