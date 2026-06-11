@@ -1,4 +1,12 @@
 export const musicCovers: Record<string, string> = {
+  "rubi-mi-placer-culpable": "/images/music-covers/rubi-mi-placer-culpable.jpg",
+  "lyzi-lirios-para-una-sombra": "/images/music-covers/lyzi-lirios-para-una-sombra.jpg",
+  "lyzi-corre-al-primer-perfume": "/images/music-covers/lyzi-corre-al-primer-perfume.jpg",
+  "aria-ventoleve-tac-el-compas-que-perdi": "/images/music-covers/aria-ventoleve-tac-el-compas-que-perdi.jpg",
+  "aria-ventoleve-no-mucho": "/images/music-covers/aria-ventoleve-no-mucho.jpg",
+  "aria-ventoleve-corazon-de-titeres": "/images/music-covers/aria-ventoleve-corazon-de-titeres.jpg",
+  "adagio-ventoleve-bendito-y-maldito": "/images/music-covers/adagio-ventoleve-bendito-y-maldito.jpg",
+  "adagio-ventoleve-letra-chica-con-disrupcion": "/images/music-covers/adagio-ventoleve-letra-chica-con-disrupcion.jpg",
   "carolina-varthalion-no-hagas-mi-pose": "/images/music-covers/carolina-varthalion-no-hagas-mi-pose.jpg",
   "carolina-varthalion-gigante-de-buen-corazon": "/images/music-covers/carolina-varthalion-gigante-de-buen-corazon.jpg",
   "carolina-varthalion-luna-escarcha-no-duerme": "/images/music-covers/carolina-varthalion-luna-escarcha-no-duerme.jpg",
@@ -21,17 +29,16 @@ export const musicCovers: Record<string, string> = {
   "lyzi-lyzi-sentai-llamado-astral": "/images/music-covers/lyzi-lyzi-sentai-llamado-astral.png",
   "rubi-yuki-ignis-et-glacies-ruina-auri-fase-2": "/images/music-covers/rubi-yuki-ignis-et-glacies-ruina-auri-fase-2.png",
   "caelyndor-the-corrupted-sanctuary": "/images/music-covers/caelyndor-the-corrupted-sanctuary.png",
-  "lyzi-noctalypse-lago-sin-luna": "/images/music-covers/lyzi-noctalypse-lago-sin-luna.png",
   "seralynn-faelan-el-vals-de-los-vareth": "/images/music-covers/seralynn-faelan-el-vals-de-los-vareth.png",
   "jurakthalon-predador-lyrzal": "/images/music-covers/jurakthalon-predador-lyrzal.png",
   "carolina-varthalion-el-guion-de-la-arana": "/images/music-covers/carolina-varthalion-el-guion-de-la-arana.jpg",
   "aelrhyssa-liraethar-el-eco-de-la-corona": "/images/music-covers/aelrhyssa-liraethar-el-eco-de-la-corona.png",
   "eryndhel-retentio-mali": "/images/music-covers/eryndhel-retentio-mali.png",
   "kaen-varthalion-banquete-de-ceniza": "/images/music-covers/kaen-varthalion-banquete-de-ceniza.png",
-  "adagio-ventoleve-el-poema-de-bragi": "/images/music-covers/adagio-ventoleve-el-poema-de-bragi.png",
+  "adagio-ventoleve-el-poema-de-bragi": "/images/music-covers/adagio-ventoleve-el-poema-de-bragi.jpg",
   "noctalypse-eclipse": "/images/music-covers/noctalypse-eclipse.png",
   "lyzi-ecos-de-sylvalis": "/images/music-covers/lyzi-ecos-de-sylvalis.png",
   "yuki-arhess-mirame-en-silencio": "/images/music-covers/yuki-arhess-mirame-en-silencio.png",
   "rubi-atrapame-si-puedes": "/images/music-covers/rubi-atrapame-si-puedes.png",
-  "aria-ventoleve-ballet-sin-vida": "/images/music-covers/aria-ventoleve-ballet-sin-vida.png"
+  "aria-ventoleve-ballet-sin-vida": "/images/music-covers/aria-ventoleve-ballet-sin-vida.jpg"
 };

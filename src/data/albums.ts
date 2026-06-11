@@ -1,4 +1,4 @@
-import { assetImage } from "@/data/assets";
+import { assetImage, videoAsset } from "@/data/assets";
 
 export type AlbumTrack = {
   number: number;
@@ -16,6 +16,8 @@ export type MusicAlbum = {
   status?: string;
   description?: string;
   heroImage?: string;
+  heroVideoMp4?: string;
+  heroVideoWebm?: string;
   tracklist: AlbumTrack[];
 };
 
@@ -26,6 +28,8 @@ export const musicAlbums: MusicAlbum[] = [
     artist: "Carolina Varthalion",
     status: "Disponible",
     heroImage: assetImage("carolinav_portada_album_hero.png"),
+    heroVideoWebm: videoAsset("carolinav_portada_album_hero.webm"),
+    heroVideoMp4: videoAsset("carolinav_portada_album_hero.mp4"),
     description:
       "Diva noir, jazz venenoso, diamante, teatro, juicio, espejo y red. El primer álbum escénico de Carolina Varthalion dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
@@ -1301,6 +1305,60 @@ TEJO MENTIRAS, GUARDO TESOROS.
 Y recuerden...
 si lo vieron en el cristal...
 ¡es porque yo hice que fuera REAL!`
+      }
+    ]
+  },
+  {
+    slug: "aria-adagio-ventoleve-jaula-y-rosas",
+    title: "Aria & Adagio Ventoleve — Jaula y Rosas",
+    artist: "Aria & Adagio Ventoleve",
+    status: "Disponible",
+    heroImage: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero.png"),
+    heroVideoMp4: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero.mp4"),
+    description:
+      "Una vitrina de cámara, jaula, rosa, compás y herida para Aria y Adagio Ventoleve dentro del Archivo Sonoro de Caelyndor.",
+    tracklist: [
+      {
+        number: 1,
+        title: "Aria Ventoleve — Tac (El Compás Que Perdí)",
+        description: "Compás roto, pulso perdido y escena mecánica.",
+        linkedTrackId: "aria-ventoleve-tac-el-compas-que-perdi"
+      },
+      {
+        number: 2,
+        title: "Aria Ventoleve — Ballet sin vida",
+        description: "Ballet final de Aria, quietud y vida suspendida.",
+        linkedTrackId: "aria-ventoleve-ballet-sin-vida"
+      },
+      {
+        number: 3,
+        title: "Aria Ventoleve — No Mucho",
+        description: "Número íntimo de Aria, contenido y filo bajo la voz.",
+        linkedTrackId: "aria-ventoleve-no-mucho"
+      },
+      {
+        number: 4,
+        title: "Aria Ventoleve — Corazón de Títeres",
+        description: "Títeres, corazón y cuerda emocional.",
+        linkedTrackId: "aria-ventoleve-corazon-de-titeres"
+      },
+      {
+        number: 5,
+        title: "Adagio Ventoleve — El poema de Bragi",
+        description: "Apertura poética de Adagio, viento y memoria.",
+        linkedTrackId: "adagio-ventoleve-el-poema-de-bragi"
+      },
+      {
+        number: 6,
+        title: "Adagio Ventoleve — Bendito y Maldito",
+        description: "Bendición y condena en una misma pieza.",
+        linkedTrackId: "adagio-ventoleve-bendito-y-maldito"
+      },
+      {
+        number: 7,
+        title: "Adagio Ventoleve — Letra Chica con disrupción",
+        description: "Contrato, letra pequeña y disrupción.",
+        linkedTrackId: "adagio-ventoleve-letra-chica-con-disrupcion"
       }
     ]
   },

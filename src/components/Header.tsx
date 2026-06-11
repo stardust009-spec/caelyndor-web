@@ -8,6 +8,7 @@ const navItems = [
   { href: "/", label: "Inicio" },
   { href: "/personajes", label: "Personajes" },
   { href: "/libros", label: "Libros" },
+  { href: "/relatos", label: "Relatos" },
   { href: "/cronologia", label: "Cronología" },
   { href: "/musica", label: "Música" },
   { href: "/arte", label: "Arte" },

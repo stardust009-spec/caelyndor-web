@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "raw.githubusercontent.com",
         pathname: "/stardust009-spec/Caelyndor-Assets/main/**"
+      },
+      {
+        protocol: "https",
+        hostname: "stardust009-spec.github.io",
+        pathname: "/Caelyndor-Assets/**"
       }
     ]
   }

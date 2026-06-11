@@ -18,7 +18,6 @@ import {
   XIcon
 } from "@/components/MusicIcons";
 import { MusicTrackCard } from "@/components/MusicTrackCard";
-import { videoAsset } from "@/data/assets";
 import { musicAlbums, type AlbumTrack } from "@/data/albums";
 import type { MusicCategory, MusicTrack } from "@/data/music";
 
@@ -49,9 +48,6 @@ const queueStorageKey = "caelyndor_music_queue";
 const shuffleStorageKey = "caelyndor_music_shuffle";
 const repeatStorageKey = "caelyndor_music_repeat_mode";
 const volumeStorageKey = "caelyndor_music_volume";
-const carolinaAlbumHeroPoster = videoAsset("carolinav_portada_album_hero.png");
-const carolinaAlbumHeroWebm = videoAsset("carolinav_portada_album_hero.webm");
-const carolinaAlbumHeroMp4 = videoAsset("carolinav_portada_album_hero.mp4");
 
 function formatTime(value: number) {
   if (!Number.isFinite(value)) {
@@ -680,19 +676,20 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
                     } as CSSProperties
                   }
                 >
-                  {selectedAlbum.slug === "carolina-telarana-de-cristal" ? (
+                  {selectedAlbum.heroVideoMp4 || selectedAlbum.heroVideoWebm ? (
                     <video
+                      key={selectedAlbum.slug}
                       className="music-album__header-video"
                       autoPlay
                       muted
                       loop
                       playsInline
                       preload="metadata"
-                      poster={carolinaAlbumHeroPoster}
+                      poster={selectedAlbum.heroImage}
                       aria-hidden="true"
                     >
-                      <source src={carolinaAlbumHeroWebm} type="video/webm" />
-                      <source src={carolinaAlbumHeroMp4} type="video/mp4" />
+                      {selectedAlbum.heroVideoWebm ? <source src={selectedAlbum.heroVideoWebm} type="video/webm" /> : null}
+                      {selectedAlbum.heroVideoMp4 ? <source src={selectedAlbum.heroVideoMp4} type="video/mp4" /> : null}
                     </video>
                   ) : (
                     <Image className="music-album__header-image" src={selectedAlbum.heroImage} alt="" fill sizes="(max-width: 760px) 100vw, 1120px" />

@@ -26,6 +26,86 @@ function track(trackData: Omit<MusicTrack, "src" | "coverImage">): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "rubi-mi-placer-culpable",
+    title: "Rubí — Mi Placer Culpable",
+    subtitle: "Tema de personaje",
+    fileName: "Rubí — Mi Placer Culpable.mp3",
+    category: "personaje",
+    related: ["Rubí"],
+    mood: "Brasa / deseo",
+    accent: "rgba(200, 75, 75, 0.34)"
+  }),
+  track({
+    id: "lyzi-lirios-para-una-sombra",
+    title: "Lyzi — Lirios para una Sombra",
+    subtitle: "Tema de personaje",
+    fileName: "Lyzi — Lirios para una Sombra.mp3",
+    category: "personaje",
+    related: ["Lyzi"],
+    mood: "Lirios / sombra",
+    accent: "rgba(167, 122, 255, 0.34)"
+  }),
+  track({
+    id: "lyzi-corre-al-primer-perfume",
+    title: "Lyzi — Corre al Primer Perfume",
+    subtitle: "Tema de personaje",
+    fileName: "Lyzi — Corre al Primer Perfume.mp3",
+    category: "personaje",
+    related: ["Lyzi"],
+    mood: "Perfume / huida",
+    accent: "rgba(167, 122, 255, 0.34)"
+  }),
+  track({
+    id: "aria-ventoleve-tac-el-compas-que-perdi",
+    title: "Aria Ventoleve — Tac (El Compás Que Perdí)",
+    subtitle: "Tema de personaje",
+    fileName: "Aria Ventoleve — Tac (El Compás Que Perdí).mp3",
+    category: "personaje",
+    related: ["Aria Ventoleve"],
+    mood: "Compás / fractura",
+    accent: "rgba(205, 185, 140, 0.34)"
+  }),
+  track({
+    id: "aria-ventoleve-no-mucho",
+    title: "Aria Ventoleve — No Mucho",
+    subtitle: "Tema de personaje",
+    fileName: "Aria Ventoleve — No Mucho.mp3",
+    category: "personaje",
+    related: ["Aria Ventoleve"],
+    mood: "Vals oscuro / teatro",
+    accent: "rgba(205, 185, 140, 0.34)"
+  }),
+  track({
+    id: "aria-ventoleve-corazon-de-titeres",
+    title: "Aria Ventoleve — Corazón de Títeres",
+    subtitle: "Tema de personaje",
+    fileName: "Aria Ventoleve — Corazón de Títeres.mp3",
+    category: "personaje",
+    related: ["Aria Ventoleve"],
+    mood: "Títeres / tragedia",
+    accent: "rgba(205, 185, 140, 0.34)"
+  }),
+  track({
+    id: "adagio-ventoleve-bendito-y-maldito",
+    title: "Adagio Ventoleve — Bendito y Maldito",
+    subtitle: "Tema de personaje",
+    fileName: "Adagio Ventoleve — Bendito y Maldito.mp3",
+    category: "personaje",
+    related: ["Adagio Ventoleve"],
+    mood: "Bendición / condena",
+    accent: "rgba(170, 190, 210, 0.34)"
+  }),
+  track({
+    id: "adagio-ventoleve-letra-chica-con-disrupcion",
+    title: "Adagio Ventoleve — Letra Chica con disrupción",
+    subtitle: "Tema de personaje",
+    fileName: "Adagio Ventoleve — Letra Chica con disrupción.mp3",
+    category: "personaje",
+    related: ["Adagio Ventoleve"],
+    mood: "Contrato / disrupción",
+    accent: "rgba(170, 190, 210, 0.34)"
+  }),
+  track({
     id: "carolina-varthalion-no-hagas-mi-pose",
     title: "Carolina Varthalion — No Hagas Mi Pose",
     subtitle: "Tema de personaje",
