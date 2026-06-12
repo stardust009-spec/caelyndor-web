@@ -74,6 +74,9 @@ export function GlobalMusicPlayer() {
     handleLike,
     removeFromQueue,
     clearQueue,
+    queuePromptVisible,
+    acceptQueueRefill,
+    dismissQueueRefill,
     setVolume,
     toggleShuffle,
     cycleRepeatMode
@@ -135,6 +138,29 @@ export function GlobalMusicPlayer() {
       className={`music-player${currentPlayerTheme !== "default" ? ` music-player--${currentPlayerTheme} music-player--themed` : ""}`}
       aria-label="Reproductor de música"
     >
+      {queuePromptVisible ? (
+        <div className="music-player__refill" role="alertdialog" aria-label="La cola de reproducción terminó">
+          <p>La cola llegó a su fin. ¿Seguimos con más?</p>
+          <div className="music-player__refill-actions">
+            <button
+              className="music-player__refill-yes"
+              type="button"
+              onClick={acceptQueueRefill}
+              aria-label="Sí, agregar 10 temas aleatorios a la cola"
+            >
+              O
+            </button>
+            <button
+              className="music-player__refill-no"
+              type="button"
+              onClick={dismissQueueRefill}
+              aria-label="No agregar más temas"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      ) : null}
       <span className="music-player__motes" aria-hidden="true">
         <span />
         <span />

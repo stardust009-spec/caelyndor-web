@@ -131,6 +131,9 @@ type MusicPlayerContextValue = {
   handleQueue: (trackId: string) => void;
   removeFromQueue: (trackId: string) => void;
   clearQueue: () => void;
+  queuePromptVisible: boolean;
+  acceptQueueRefill: () => void;
+  dismissQueueRefill: () => void;
   setVolume: (value: number) => void;
   toggleShuffle: () => void;
   cycleRepeatMode: () => void;
@@ -166,6 +169,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   const [erroredTracks, setErroredTracks] = useState<Record<string, boolean>>({});
   const [storageReady, setStorageReady] = useState(false);
   const [playbackPool, setPlaybackPoolState] = useState<string[]>([]);
+  const [queuePromptVisible, setQueuePromptVisible] = useState(false);
 
   const trackById = useMemo(() => new Map(tracks.map((track) => [track.id, track])), [tracks]);
 
@@ -363,6 +367,11 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     if (queuedTrack) {
       setQueue(restQueue);
       setTrack(queuedTrack, { countPlay: options.countPlay, pushHistory: true });
+
+      if (restQueue.length === 0) {
+        setQueuePromptVisible(true);
+      }
+
       return;
     }
 
@@ -416,7 +425,23 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   }
 
   function handleQueue(trackId: string) {
-    setQueue((current) => (current.includes(trackId) ? current.filter((id) => id !== trackId) : [...current, trackId]));
+    setQueue((current) => {
+      if (current.includes(trackId)) {
+        return current.filter((id) => id !== trackId);
+      }
+
+      setQueuePromptVisible(false);
+      return [...current, trackId];
+    });
+  }
+
+  function acceptQueueRefill() {
+    setQueue(createRandomQueue(tracks, 10, currentTrack?.id));
+    setQueuePromptVisible(false);
+  }
+
+  function dismissQueueRefill() {
+    setQueuePromptVisible(false);
   }
 
   function removeFromQueue(trackId: string) {
@@ -480,6 +505,9 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     handleQueue,
     removeFromQueue,
     clearQueue,
+    queuePromptVisible,
+    acceptQueueRefill,
+    dismissQueueRefill,
     setVolume,
     toggleShuffle,
     cycleRepeatMode,

@@ -4990,3 +4990,92 @@ body.has-music-player {
 .music-player--themed .music-player__volume-fill {
   background: var(--player-theme-fill-vertical);
 }
+
+.music-player .music-player__refill {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: calc(100% + 0.7rem);
+  left: auto;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  border: 1px solid rgba(201, 206, 216, 0.18);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 0.9rem;
+  background:
+    radial-gradient(circle at 22% 0%, rgba(154, 125, 255, 0.1), transparent 12rem),
+    linear-gradient(180deg, rgba(16, 20, 32, 0.97), rgba(7, 9, 14, 0.99));
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  animation: musicRefillRise 220ms ease;
+}
+
+@keyframes musicRefillRise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.music-player__refill p {
+  margin: 0;
+  color: var(--color-ash-bright);
+  font-size: 0.88rem;
+}
+
+.music-player__refill-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.music-player__refill-yes,
+.music-player__refill-no {
+  display: grid;
+  width: 2.1rem;
+  height: 2.1rem;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.music-player__refill-yes {
+  border: 1px solid rgba(94, 200, 130, 0.55);
+  color: #aef0c4;
+  background: linear-gradient(180deg, rgba(56, 150, 90, 0.4), rgba(28, 90, 52, 0.5));
+  box-shadow: 0 0 16px rgba(94, 200, 130, 0.18);
+}
+
+.music-player__refill-yes:hover {
+  background: linear-gradient(180deg, rgba(66, 175, 105, 0.55), rgba(34, 110, 64, 0.6));
+  box-shadow: 0 0 22px rgba(94, 200, 130, 0.3);
+  transform: scale(1.06);
+}
+
+.music-player__refill-no {
+  border: 1px solid rgba(226, 92, 84, 0.55);
+  color: #f6b3ac;
+  background: linear-gradient(180deg, rgba(170, 56, 50, 0.4), rgba(105, 32, 30, 0.5));
+  box-shadow: 0 0 16px rgba(226, 92, 84, 0.16);
+}
+
+.music-player__refill-no:hover {
+  background: linear-gradient(180deg, rgba(196, 66, 58, 0.55), rgba(126, 40, 36, 0.6));
+  box-shadow: 0 0 22px rgba(226, 92, 84, 0.28);
+  transform: scale(1.06);
+}
+
+@media (max-width: 640px) {
+  .music-player .music-player__refill {
+    right: 0.6rem;
+    left: 0.6rem;
+    justify-content: space-between;
+  }
+}

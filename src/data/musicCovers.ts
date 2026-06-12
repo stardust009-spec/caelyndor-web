@@ -29,6 +29,7 @@ export const musicCovers: Record<string, string> = {
   "lyzi-lyzi-sentai-llamado-astral": "/images/music-covers/lyzi-lyzi-sentai-llamado-astral.png",
   "rubi-yuki-ignis-et-glacies-ruina-auri-fase-2": "/images/music-covers/rubi-yuki-ignis-et-glacies-ruina-auri-fase-2.png",
   "caelyndor-the-corrupted-sanctuary": "/images/music-covers/caelyndor-the-corrupted-sanctuary.png",
+  "lyzi-noctalypse-lago-sin-luna": "/images/music-covers/lyzi-noctalypse-lago-sin-luna.png",
   "seralynn-faelan-el-vals-de-los-vareth": "/images/music-covers/seralynn-faelan-el-vals-de-los-vareth.png",
   "jurakthalon-predador-lyrzal": "/images/music-covers/jurakthalon-predador-lyrzal.png",
   "carolina-varthalion-el-guion-de-la-arana": "/images/music-covers/carolina-varthalion-el-guion-de-la-arana.jpg",
