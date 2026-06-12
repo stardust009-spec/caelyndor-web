@@ -2,6 +2,8 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { ReadingProgress } from "@/components/ReadingProgress";
+import { StoryStats } from "@/components/StoryStats";
 import { getStoryBySlug, stories } from "@/data/stories";
 
 type StoryPageProps = {
@@ -33,6 +35,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       className="page-section story-page"
       style={{ "--story-accent": story.accent } as CSSProperties}
     >
+      <ReadingProgress />
       <div className="container">
         <Breadcrumbs
           items={[
@@ -48,6 +51,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
             <span aria-hidden="true">✦</span>
             <span>~{story.readingMinutes} min de lectura</span>
           </p>
+          <StoryStats slug={story.slug} title={story.title} registerView />
         </header>
 
         <div className="story-reader">

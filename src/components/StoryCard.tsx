@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { StoryCover } from "@/components/StoryCover";
+import { StoryStats } from "@/components/StoryStats";
 import type { Story } from "@/data/stories";
 
 export function StoryCard({ story }: { story: Story }) {
@@ -19,9 +20,12 @@ export function StoryCard({ story }: { story: Story }) {
           <span>{story.characters.join(" · ")}</span>
           <span>~{story.readingMinutes} min de lectura</span>
         </p>
-        <Link className="text-link" href={`/relatos/${story.slug}`}>
-          Leer relato
-        </Link>
+        <div className="story-card__footer">
+          <Link className="text-link" href={`/relatos/${story.slug}`}>
+            Leer relato
+          </Link>
+          <StoryStats slug={story.slug} title={story.title} />
+        </div>
       </div>
     </article>
   );

@@ -5589,3 +5589,84 @@ body.has-music-player {
     justify-content: space-between;
   }
 }
+
+/* Relatos: contadores de lecturas y me gusta */
+.story-stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--color-ash);
+  font-size: 0.78rem;
+}
+
+.story-stats__views,
+.story-stats__like {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.26rem;
+  border: 0;
+  padding: 0;
+  color: var(--color-ash);
+  background: transparent;
+  font: inherit;
+  line-height: 1;
+}
+
+.story-stats__views svg,
+.story-stats__like svg {
+  display: block;
+}
+
+.story-stats__like {
+  cursor: pointer;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.story-stats__like:hover,
+.story-stats__like:focus-visible {
+  color: var(--color-ice);
+  transform: translateY(-1px);
+}
+
+.story-stats__like--active {
+  color: #e2698a;
+  text-shadow: 0 0 14px rgba(226, 105, 138, 0.28);
+}
+
+.story-stats__like--active svg path {
+  fill: currentColor;
+}
+
+.story-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.story-header .story-stats {
+  margin-top: 0.9rem;
+  font-size: 0.84rem;
+}
+
+/* Relatos: barra de progreso de lectura */
+.story-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 40;
+  height: 3px;
+  pointer-events: none;
+}
+
+.story-progress__fill {
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(
+    90deg,
+    var(--story-accent, var(--color-ice)),
+    color-mix(in srgb, var(--story-accent, var(--color-ice)) 40%, white)
+  );
+  box-shadow: 0 0 12px color-mix(in srgb, var(--story-accent, var(--color-ice)) 55%, transparent);
+  transition: transform 80ms linear;
+}
