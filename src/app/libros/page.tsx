@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { BookCard } from "@/components/BookCard";
+import { BookShowcase } from "@/components/BookShowcase";
 import { SectionIntro } from "@/components/SectionIntro";
-import { books } from "@/data/books";
 
 export const metadata: Metadata = {
   title: "Libros"
@@ -9,18 +8,14 @@ export const metadata: Metadata = {
 
 export default function BooksPage() {
   return (
-    <section className="page-section">
+    <section className="page-section books-page">
       <div className="container">
         <SectionIntro
           eyebrow="Biblioteca"
-          title="Libros"
-          text="Una estructura preparada para saga troncal, spin-offs y relatos laterales, con estados editoriales y orden de lectura."
+          title="Biblioteca de Caelyndor"
+          text="Saga, spin-offs e historias paralelas reunidas como un archivo vivo del mundo. Cada libro abre una puerta distinta: algunas conducen al corazón de la saga; otras, a rincones donde la magia respira con voz propia."
         />
-        <div className="book-grid">
-          {books.map((book) => (
-            <BookCard key={book.id} book={book} />
-          ))}
-        </div>
+        <BookShowcase />
       </div>
     </section>
   );
