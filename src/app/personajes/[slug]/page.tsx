@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CharacterPager } from "@/components/CharacterPager";
+import { CharacterPortrait } from "@/components/CharacterPortrait";
 import { characters, getAdjacentCharacters, getCharacterBySlug } from "@/data/characters";
 
 type CharacterPageProps = {
@@ -42,13 +43,12 @@ export default async function CharacterDetailPage({ params }: CharacterPageProps
         />
         <CharacterPager previous={previous} next={next} />
         <div className="detail-hero">
-          <Image
+          <CharacterPortrait
             src={character.image}
-            alt={`Retrato de ${character.name}`}
+            name={character.name}
             width={760}
             height={900}
             priority
-            unoptimized
           />
           <div>
             <p className="eyebrow">{character.affinity}</p>

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { CharacterPortrait } from "@/components/CharacterPortrait";
 import type { Character } from "@/data/characters";
 
 export function CharacterCard({ character }: { character: Character }) {
@@ -13,14 +13,13 @@ export function CharacterCard({ character }: { character: Character }) {
   return (
     <article className="entity-card" style={style}>
       <div className="character-card__media">
-        <Image
+        <CharacterPortrait
           className="character-card__image"
           src={character.image}
-          alt={`Retrato de ${character.name}`}
+          name={character.name}
           width={640}
           height={760}
           loading="lazy"
-          unoptimized
         />
       </div>
       <div className="entity-card__body">

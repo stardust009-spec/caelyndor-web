@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { useEffect } from "react";
+import { CharacterPortrait } from "@/components/CharacterPortrait";
 import type { Character } from "@/data/characters";
 
 type CharacterPagerItem = Pick<Character, "slug" | "name" | "title" | "image" | "accent">;
@@ -72,13 +72,13 @@ function PagerLink({
         {isPrevious ? "‹" : "›"}
       </span>
       <span className="character-pager__preview" aria-hidden="true">
-        <Image
+        <CharacterPortrait
           src={character.image}
-          alt=""
+          name={character.name}
           width={220}
           height={280}
           loading="lazy"
-          unoptimized
+          decorative
         />
       </span>
       <span className="character-pager__copy">
