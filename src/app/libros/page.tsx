@@ -3,7 +3,25 @@ import { BookShowcase } from "@/components/BookShowcase";
 import { SectionIntro } from "@/components/SectionIntro";
 
 export const metadata: Metadata = {
-  title: "Libros"
+  title: "Biblioteca de Caelyndor",
+  description:
+    "Saga, spin-offs e historias paralelas reunidas como un archivo vivo del mundo de Caelyndor.",
+  openGraph: {
+    title: "Biblioteca de Caelyndor",
+    description:
+      "Saga, spin-offs e historias paralelas reunidas como un archivo vivo del mundo de Caelyndor.",
+    url: "https://www.caelyndor.cl/libros",
+    siteName: "CAELYNDOR",
+    locale: "es_CL",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Biblioteca de Caelyndor",
+    description:
+      "Saga, spin-offs e historias paralelas reunidas como un archivo vivo del mundo de Caelyndor.",
+    images: ["/libros/opengraph-image.jpg"]
+  }
 };
 
 export default function BooksPage() {
