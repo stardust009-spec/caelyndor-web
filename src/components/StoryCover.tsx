@@ -14,7 +14,9 @@ export function StoryCover({ slug, title }: StoryCoverProps) {
     assetImage(`relato-${slug}.png`),
     assetImage(`relato-${slug}.jpg`)
   ];
-  const [candidateIndex, setCandidateIndex] = useState(0);
+  // El avance de candidatos se liga al slug: si el relato cambia, se reintenta desde el .png.
+  const [failedFor, setFailedFor] = useState({ slug, count: 0 });
+  const candidateIndex = failedFor.slug === slug ? failedFor.count : 0;
 
   if (candidateIndex >= candidates.length) {
     return (
@@ -37,7 +39,7 @@ export function StoryCover({ slug, title }: StoryCoverProps) {
         fill
         sizes="(max-width: 760px) 100vw, 420px"
         unoptimized
-        onError={() => setCandidateIndex((value) => value + 1)}
+        onError={() => setFailedFor({ slug, count: candidateIndex + 1 })}
       />
     </div>
   );

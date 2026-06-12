@@ -13,7 +13,10 @@ type BookCover3DProps = {
 
 export function BookCover3D({ book, size = "large", priority = false }: BookCover3DProps) {
   const frameRef = useRef<HTMLDivElement>(null);
-  const [coverFailed, setCoverFailed] = useState(false);
+  // El error se liga al src que falló: si el libro cambia, el estado deja de aplicar solo.
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+  const coverSrc = bookCoverSrc(book);
+  const coverFailed = failedSrc === coverSrc;
   const interactive = size === "large";
 
   function handlePointerMove(event: PointerEvent<HTMLDivElement>) {
@@ -78,13 +81,13 @@ export function BookCover3D({ book, size = "large", priority = false }: BookCove
         ) : (
           <Image
             className="book-cover3d__image"
-            src={bookCoverSrc(book)}
+            src={coverSrc}
             alt={`Portada de ${book.title}`}
             fill
             sizes={size === "large" ? "(max-width: 760px) 78vw, 380px" : "96px"}
             priority={priority}
             unoptimized
-            onError={() => setCoverFailed(true)}
+            onError={() => setFailedSrc(coverSrc)}
           />
         )}
         <span className="book-cover3d__gloss" aria-hidden="true" />
