@@ -51,9 +51,36 @@ export default async function StoryPage({ params }: StoryPageProps) {
         </header>
 
         <div className="story-reader">
-          {story.paragraphs.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+          {(() => {
+            const ornamentPattern = /^[✦☼✧✶*·.\s—–-]+$/;
+            const firstProseIndex = story.paragraphs.findIndex(
+              (paragraph) => !paragraph.startsWith("### ") && !ornamentPattern.test(paragraph)
+            );
+
+            return story.paragraphs.map((paragraph, index) => {
+              if (paragraph.startsWith("### ")) {
+                return (
+                  <h2 className="story-reader__heading" key={index}>
+                    {paragraph.slice(4)}
+                  </h2>
+                );
+              }
+
+              if (ornamentPattern.test(paragraph)) {
+                return (
+                  <p className="story-reader__ornament" key={index} aria-hidden="true">
+                    ✦ ✦ ✦
+                  </p>
+                );
+              }
+
+              return (
+                <p className={index === firstProseIndex ? "story-reader__opening" : undefined} key={index}>
+                  {paragraph}
+                </p>
+              );
+            });
+          })()}
         </div>
 
         <footer className="story-footer">

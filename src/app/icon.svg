@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="blade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8edf8"/>
+      <stop offset="0.5" stop-color="#aebcd9"/>
+      <stop offset="1" stop-color="#7d8fb8"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#9ec4ff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#9ec4ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="1.6"/>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="13" fill="#0a1124"/>
+  <circle cx="32" cy="32" r="15" fill="url(#halo)"/>
+  <path d="M32 6 C 22.5 14.5, 16.5 23, 16.5 32 C 16.5 41, 22.5 49.5, 32 58 C 25.5 48.5, 21.5 40.5, 21.5 32 C 21.5 23.5, 25.5 15.5, 32 6 Z" fill="url(#blade)"/>
+  <path d="M32 6 C 41.5 14.5, 47.5 23, 47.5 32 C 47.5 41, 41.5 49.5, 32 58 C 38.5 48.5, 42.5 40.5, 42.5 32 C 42.5 23.5, 38.5 15.5, 32 6 Z" fill="url(#blade)"/>
+  <path d="M27 24 L32 19 L30 26 Z" fill="url(#blade)"/>
+  <path d="M37 24 L32 19 L34 26 Z" fill="url(#blade)"/>
+  <path d="M27 40 L32 45 L30 38 Z" fill="url(#blade)"/>
+  <path d="M37 40 L32 45 L34 38 Z" fill="url(#blade)"/>
+  <path d="M32 22 L34 30 L42 32 L34 34 L32 42 L30 34 L22 32 L30 30 Z" fill="#7fb0ff" filter="url(#glow)"/>
+  <path d="M32 22 L34 30 L42 32 L34 34 L32 42 L30 34 L22 32 L30 30 Z" fill="#eef6ff"/>
+  <circle cx="32" cy="17" r="1.1" fill="#cfe2ff"/>
+  <circle cx="32" cy="47" r="1.1" fill="#cfe2ff"/>
+  <circle cx="37.5" cy="25.5" r="0.8" fill="#cfe2ff"/>
+  <circle cx="26.5" cy="38.5" r="0.8" fill="#cfe2ff"/>
+</svg>
