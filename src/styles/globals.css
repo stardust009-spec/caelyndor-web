@@ -5018,6 +5018,50 @@ body.has-music-player {
   background: var(--player-theme-fill-vertical);
 }
 
+.music-album__play-all {
+  position: absolute;
+  right: clamp(0.9rem, 2.4vw, 1.6rem);
+  bottom: clamp(0.9rem, 2.2vw, 1.4rem);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(236, 222, 198, 0.4);
+  border-radius: 999px;
+  padding: 0.62rem 1.2rem;
+  color: #f5eedf;
+  background: rgba(9, 8, 13, 0.56);
+  backdrop-filter: blur(12px);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.45),
+    inset 0 0 18px rgba(255, 255, 255, 0.05);
+  transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.music-album__play-all:hover,
+.music-album__play-all:focus-visible {
+  border-color: rgba(243, 232, 206, 0.75);
+  background: rgba(22, 16, 20, 0.72);
+  box-shadow:
+    0 14px 38px rgba(0, 0, 0, 0.55),
+    0 0 26px rgba(236, 222, 198, 0.22),
+    inset 0 0 18px rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.music-album__play-all svg {
+  flex-shrink: 0;
+}
+
+.music-album__play-all--inline {
+  position: static;
+}
+
 .music-player .music-player__refill {
   position: absolute;
   right: clamp(1rem, 3vw, 2rem);

@@ -47,6 +47,7 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
     queue,
     erroredTracks,
     setTrack,
+    playCollection,
     handleToggle,
     handleLike,
     handleQueue,
@@ -126,6 +127,14 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
     }
 
     return trackByNormalizedTitle.get(normalizeTrackTitle(albumTrack.title));
+  }
+
+  function playAlbum() {
+    const albumTracks = selectedAlbum.tracklist
+      .map((albumTrack) => resolveAlbumTrack(albumTrack))
+      .filter((track): track is MusicTrack => Boolean(track));
+
+    playCollection(albumTracks);
   }
 
   function updateAlbumScrollState() {
@@ -311,6 +320,15 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
                   ) : (
                     <Image className="music-album__header-image" src={selectedAlbum.heroImage} alt="" fill sizes="(max-width: 760px) 100vw, 1120px" />
                   )}
+                  <button
+                    className="music-album__play-all"
+                    type="button"
+                    onClick={playAlbum}
+                    aria-label={`Reproducir el álbum ${selectedAlbum.title} completo`}
+                  >
+                    <PlayIcon size={15} />
+                    <span>Reproducir álbum</span>
+                  </button>
                 </div>
               ) : null}
 
@@ -322,6 +340,17 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
                       <h3>{selectedAlbum.title}</h3>
                       {selectedAlbum.description ? <p>{selectedAlbum.description}</p> : null}
                     </div>
+                    {!selectedAlbum.heroImage ? (
+                      <button
+                        className="music-album__play-all music-album__play-all--inline"
+                        type="button"
+                        onClick={playAlbum}
+                        aria-label={`Reproducir el álbum ${selectedAlbum.title} completo`}
+                      >
+                        <PlayIcon size={15} />
+                        <span>Reproducir álbum</span>
+                      </button>
+                    ) : null}
                     <div className="music-album__slider-controls" aria-label="Navegar canciones del álbum">
                       <button type="button" onClick={() => scrollAlbumSlider("left")} disabled={!canScrollAlbumLeft} aria-label="Ver canciones anteriores">
                         ‹

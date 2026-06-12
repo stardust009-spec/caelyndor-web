@@ -122,6 +122,7 @@ type MusicPlayerContextValue = {
   hasPrevious: boolean;
   hasNext: boolean;
   setTrack: (track: MusicTrack, options?: SetTrackOptions) => void;
+  playCollection: (collection: MusicTrack[]) => void;
   handleToggle: (track: MusicTrack) => void;
   togglePlay: () => void;
   playNext: (options?: { countPlay?: boolean; fromEnded?: boolean }) => void;
@@ -302,6 +303,18 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     if (options.countPlay) {
       incrementPlays(track.id);
     }
+  }
+
+  function playCollection(collection: MusicTrack[]) {
+    const [first, ...rest] = collection;
+
+    if (!first) {
+      return;
+    }
+
+    setQueue(rest.map((track) => track.id));
+    setQueuePromptVisible(false);
+    setTrack(first, { countPlay: true, pushHistory: true });
   }
 
   function handleToggle(track: MusicTrack) {
@@ -496,6 +509,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     hasPrevious,
     hasNext,
     setTrack,
+    playCollection,
     handleToggle,
     togglePlay,
     playNext,
