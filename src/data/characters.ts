@@ -1,4 +1,47 @@
-import { assetImage, localImage } from "@/data/assets";
+import { assetImage } from "@/data/assets";
+
+export type CharacterNarrativeAccess = {
+  label: string;
+  href: string;
+};
+
+export type CharacterNarrativeSection = {
+  title: string;
+  lead?: string;
+  paragraphs: string[];
+};
+
+export type CharacterDetailNote = {
+  title: string;
+  text: string;
+  type?: string;
+};
+
+export type CharacterBond = {
+  name: string;
+  description: string;
+  href?: string;
+};
+
+export type CharacterRelatedStory = {
+  title: string;
+  type: string;
+  description: string;
+  href?: string;
+};
+
+export type CharacterArchive = {
+  fullName?: string;
+  commonName?: string;
+  apparentAge?: string;
+  gender?: string;
+  race?: string;
+  originRegion?: string;
+  elementPath?: string;
+  professionRole?: string;
+  masteryLevel?: string;
+  identitySummary?: string;
+};
 
 export type Character = {
   slug: string;
@@ -18,14 +61,30 @@ export type Character = {
   story?: string;
   personality?: string;
   description: string;
+  /** Frase breve de identidad para el hero; si falta, se usa description. */
+  identityPhrase?: string;
+  /** Accesos narrativos del hero; si la lista no existe, no se muestran botones. */
+  narrativeAccess?: CharacterNarrativeAccess[];
+  /** Sección narrativa principal (título editorial, lead y párrafos entregados por el autor). */
+  narrativeSection?: CharacterNarrativeSection;
+  /** Tarjetas de datos íntimos, emocionales o memorables. */
+  details?: CharacterDetailNote[];
+  /** Vínculos con personajes, reinos, facciones o entidades. */
+  bonds?: CharacterBond[];
+  /** Relatos, arcos, libros, canciones o momentos clave asociados. */
+  relatedStories?: CharacterRelatedStory[];
+  /** Ficha técnica del Archivo del Cronista. */
+  archive?: CharacterArchive;
   visualCanon: string[];
-  gallery: string[];
 };
 
-const defaultGallery = [
-  localImage("placeholders/gallery-portrait.svg"),
-  localImage("placeholders/gallery-detail.svg")
-];
+// Galería de la ficha (carrusel): NO se declara en esta data. Se resuelve por
+// convención de nombres en el repo Caelyndor-Assets, máximo 7 imágenes por
+// personaje, en orden del 1 al 7:
+//   [slug]-galeria-carrusel-imagen-[1-7].webp
+// Ejemplo: yuki-galeria-carrusel-imagen-1.webp ... yuki-galeria-carrusel-imagen-7.webp
+// Basta subir los archivos al repo de assets para que aparezcan en la ficha.
+// Para personajes futuros se usa la misma regla con su slug.
 
 export const characters: Character[] = [
   {
@@ -39,9 +98,7 @@ export const characters: Character[] = [
     description: "Guarda una calma peligrosa, como si cada palabra suya tuviera que cruzar una tormenta antes de existir.",
     story:
       "Hija de Nayara, la Regina Glaciei, y de Kaelión, cuyo exilio la corte todavía escribe en voz baja. Creció entre los protocolos y silencios del Alto Consejo hasta heredar el trono de Glaciem, y reina desde entonces con precisión, distancia elegante y un humor tan seco como el invierno que administra.",
-    visualCanon: ["Paleta de azul hielo y plata", "Silueta limpia", "Texturas frias sin caer en pureza simple"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Paleta de azul hielo y plata", "Silueta limpia", "Texturas frias sin caer en pureza simple"]  },
   {
     slug: "noctalypse",
     name: "Noctalypse",
@@ -53,9 +110,7 @@ export const characters: Character[] = [
     portraitPosition: "50% 18%",
     portraitScale: 1.12,
     description: "Mas que enemigo, una presion sobre la realidad: el nombre que el mundo evita pronunciar entero.",
-    visualCanon: ["Contraluz extremo", "Formas ceremoniales", "Ausencia como elemento visual"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Contraluz extremo", "Formas ceremoniales", "Ausencia como elemento visual"]  },
   {
     slug: "rubi",
     name: "Rubí",
@@ -65,9 +120,7 @@ export const characters: Character[] = [
     accent: "#c84b4b",
     image: assetImage("rubi_canon_portrait_v02.png"),
     description: "Una presencia marcada por perdidas antiguas y una obstinacion capaz de encender reinos dormidos.",
-    visualCanon: ["Mirada de brasa contenida", "Prendas oscuras con acentos rojos", "Cicatrices tratadas como simbolos narrativos"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Mirada de brasa contenida", "Prendas oscuras con acentos rojos", "Cicatrices tratadas como simbolos narrativos"]  },
   {
     slug: "lyzi",
     name: "Lyzi",
@@ -77,9 +130,7 @@ export const characters: Character[] = [
     accent: "#a77aff",
     image: assetImage("lyzi_canon_portrait_v02.png"),
     description: "Camina donde los mapas fallan y oye lo que las ruinas todavia no se atreven a decir.",
-    visualCanon: ["Violetas profundos", "Detalles astrales minimos", "Expresion entre ternura y amenaza"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Violetas profundos", "Detalles astrales minimos", "Expresion entre ternura y amenaza"]  },
   {
     slug: "halrik",
     name: "Halrik",
@@ -91,9 +142,7 @@ export const characters: Character[] = [
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "Ancla militar de Glaciem, preciso en la crisis y leal hasta el peso silencioso de las órdenes imposibles.",
-    visualCanon: ["Autoridad militar glacial", "Lealtad sobria y presencia de frontera", "Presencia de muralla en crisis"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Autoridad militar glacial", "Lealtad sobria y presencia de frontera", "Presencia de muralla en crisis"]  },
   {
     slug: "alistair-valerius",
     name: "Alistair Valerius",
@@ -105,9 +154,7 @@ export const characters: Character[] = [
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "Preceptor de Aethel Cineris, formado por la necesidad y la ley absoluta; una llama disciplinada que empieza a descubrir el peso de proteger.",
-    visualCanon: ["Disciplina de la llama", "Dogma ceremonial", "Fractura moral bajo control"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Disciplina de la llama", "Dogma ceremonial", "Fractura moral bajo control"]  },
   {
     slug: "faelan",
     name: "Faelan",
@@ -119,9 +166,7 @@ export const characters: Character[] = [
     portraitPosition: "50% 20%",
     portraitScale: 1.1,
     description: "Se mueve como si el mundo natural todavia le debiera respuestas, y como si pudiera cobrarlas en silencio.",
-    visualCanon: ["Verdes apagados", "Texturas organicas", "Presencia alerta sin rigidez"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Verdes apagados", "Texturas organicas", "Presencia alerta sin rigidez"]  },
   {
     slug: "fulgor",
     name: "Fulgor",
@@ -131,9 +176,7 @@ export const characters: Character[] = [
     accent: "#f0c75e",
     image: assetImage("fulgor_canon_portrait.png"),
     description: "Dragón primordial del fuego, gourmet y devoto de la etiqueta: capaz de incinerar un campo de batalla y aun así juzgar los modales de la mesa donde se celebró la victoria.",
-    visualCanon: ["Escala primordial", "Acentos dorados y braseros", "Elegancia gourmet incluso en el exceso"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Escala primordial", "Acentos dorados y braseros", "Elegancia gourmet incluso en el exceso"]  },
   {
     slug: "aelwyn-solrenhal",
     name: "Aelwyn Solrenhal",
@@ -143,9 +186,7 @@ export const characters: Character[] = [
     accent: "#d8c88f",
     image: assetImage("aelwyn_canon_portrait.png"),
     description: "Carga una luz que no siempre salva, pero que insiste en revelar lo que otros prefieren dejar cubierto.",
-    visualCanon: ["Marfil y oro viejo", "Simbolos solares sobrios", "Expresion noble sin triunfalismo"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Marfil y oro viejo", "Simbolos solares sobrios", "Expresion noble sin triunfalismo"]  },
   {
     slug: "temari-calabruna",
     name: "Temari Calabruña",
@@ -155,9 +196,7 @@ export const characters: Character[] = [
     accent: "#d0834f",
     image: assetImage("temariC_canon_portrait.png"),
     description: "Su encanto parece inocente hasta que el mundo recuerda que algunas bromas tambien son maldiciones.",
-    visualCanon: ["Naranjas apagados", "Silueta juguetona pero oscura", "Detalles lunares y de brujeria"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Naranjas apagados", "Silueta juguetona pero oscura", "Detalles lunares y de brujeria"]  },
   {
     slug: "odrim-vaelkoren",
     name: "Odrim Vaelkoren",
@@ -171,9 +210,7 @@ export const characters: Character[] = [
       extended: "Posee 12 dedos funcionales de nacimiento —seis en cada mano—, una singularidad anatómica que alimenta su precisión en la digitación arcana compleja."
     },
     description: "Una voluntad tallada por derrotas viejas, mas cercana a una muralla que a una promesa facil.",
-    visualCanon: ["Grises calidos", "Materialidad pesada", "Rasgos de resistencia contenida"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Grises calidos", "Materialidad pesada", "Rasgos de resistencia contenida"]  },
   {
     slug: "lira-eserine-valendia",
     name: "Lira Eserine Valendia",
@@ -183,9 +220,7 @@ export const characters: Character[] = [
     accent: "#c7a7ff",
     image: assetImage("lira_canon_portrait.png"),
     description: "Una figura de salon y sentencia, entrenada para convertir la delicadeza en una forma precisa de poder.",
-    visualCanon: ["Elegancia palida", "Detalles de nobleza arcana", "Mirada contenida y ceremonial"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Elegancia palida", "Detalles de nobleza arcana", "Mirada contenida y ceremonial"]  },
   {
     slug: "aria-ventoleve",
     name: "Aria Ventoleve",
@@ -195,9 +230,7 @@ export const characters: Character[] = [
     accent: "#9ccce8",
     image: assetImage("aria_canon_portrait.png"),
     description: "Su presencia parece ligera hasta que el aire alrededor decide obedecerla.",
-    visualCanon: ["Lineas livianas", "Azules aereos", "Gestualidad fina y distante"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Lineas livianas", "Azules aereos", "Gestualidad fina y distante"]  },
   {
     slug: "adagio-ventoleve",
     name: "Adagio Ventoleve",
@@ -207,9 +240,7 @@ export const characters: Character[] = [
     accent: "#7fb4c8",
     image: assetImage("adagio_canon_portrait.png"),
     description: "Donde otros se precipitan, Adagio mide el pulso exacto antes de dejar caer la respuesta.",
-    visualCanon: ["Postura serena", "Acentos frios", "Diseño sobrio con ritmo visual"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Postura serena", "Acentos frios", "Diseño sobrio con ritmo visual"]  },
   {
     slug: "khaal-zar-omunyek",
     name: "Khaal'Zar Omunyek",
@@ -219,9 +250,7 @@ export const characters: Character[] = [
     accent: "#b47a55",
     image: assetImage("kaal_canon_portrait.png"),
     description: "Trae consigo una ley antigua, seca y feroz, como si cada palabra hubiese cruzado un desierto de huesos.",
-    visualCanon: ["Tonos arena oscura", "Ornamentos rituales", "Presencia imponente y ceremonial"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Tonos arena oscura", "Ornamentos rituales", "Presencia imponente y ceremonial"]  },
   {
     slug: "xirian",
     name: "Xirian",
@@ -233,9 +262,7 @@ export const characters: Character[] = [
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "Una presencia apenas visible entre cenizas y señales, como una luz violeta que insiste en no apagarse del todo.",
-    visualCanon: ["Luz violeta persistente", "Presagio entre cenizas", "Misterio apenas visible"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Luz violeta persistente", "Presagio entre cenizas", "Misterio apenas visible"]  },
   {
     slug: "nayara",
     name: "Nayara",
@@ -247,9 +274,7 @@ export const characters: Character[] = [
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "La Regina Glaciei que sostuvo el deber con cálculo sereno hasta ceder el trono a su hija Yuki; madre y reina, con una ternura que rara vez se permite mostrarse.",
-    visualCanon: ["Autoridad glacial", "Corona y deber", "Ternura contenida bajo compostura regia"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Autoridad glacial", "Corona y deber", "Ternura contenida bajo compostura regia"]  },
   {
     slug: "valthor",
     name: "Valthor",
@@ -263,9 +288,7 @@ export const characters: Character[] = [
     description: "Testigo del ascenso de Nayara, del exilio de Kaelion y del nacimiento de Yuki; un sabio antiguo que sostiene el reino con silencio y estructura.",
     story: "Valthor fue testigo del ascenso de Nayara, del exilio de Kaelion y del nacimiento de Yuki. Como miembro fundador del Alto Consejo, su deber ha sido mantener la estructura del trono, aunque su corazón haya deseado romperla en más de una ocasión. Fue él quien guió a Yuki en los protocolos post-Ritual, y quien le informó —con dolor visible— del destino de Lielle. Nadie ha llorado por más personas en silencio que él. Y, sin embargo, sigue firme.",
     personality: "Serio, aunque no siempre; sabio, paciente como el hielo que no se rompe. Observa más de lo que habla. Su compasión es estructurada, su dolor antiguo y reprimido.",
-    visualCanon: ["Sabiduría glacial", "Memoria del trono", "Silencio como forma de autoridad"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Sabiduría glacial", "Memoria del trono", "Silencio como forma de autoridad"]  },
   {
     slug: "aelrhyssa",
     name: "Aelrhyssa",
@@ -277,9 +300,7 @@ export const characters: Character[] = [
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "Última reina de Lirethar, el reino élfico destruido antes del incidente del Velo. Su corona sobrevive como vigilia: fue su mirada la primera en advertir lo que empujaba desde el otro lado.",
-    visualCanon: ["Realeza élfica antigua", "Corona como memoria, no como adorno", "Vigilia serena frente al Velo"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Realeza élfica antigua", "Corona como memoria, no como adorno", "Vigilia serena frente al Velo"]  },
   {
     slug: "zarthus",
     name: "Zarthus",
@@ -291,9 +312,7 @@ export const characters: Character[] = [
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "Entidad demoníaca de fuego consumidor, una amenaza cuya presencia vuelve evidente que no toda llama busca iluminar.",
-    visualCanon: ["Fuego consumidor", "Amenaza superior", "Hambre y ruptura"],
-    gallery: defaultGallery
-  },
+    visualCanon: ["Fuego consumidor", "Amenaza superior", "Hambre y ruptura"]  },
   {
     slug: "kaen-varthalion",
     name: "Kaen Varthalion",
@@ -309,9 +328,7 @@ export const characters: Character[] = [
     visualCanon: [
       "Integrante del Sol Negro.",
       "Eje soberano del Sol Negro; cabeza politica, emocional y militar del proyecto."
-    ],
-    gallery: defaultGallery
-  },
+    ]  },
   {
     slug: "carolina-varthalion",
     name: "Carolina Varthalion",
@@ -327,9 +344,7 @@ export const characters: Character[] = [
     visualCanon: [
       "Integrante del Sol Negro.",
       "Diamante del Sol Negro; rostro publico, glamour estrategico y control de percepcion."
-    ],
-    gallery: defaultGallery
-  },
+    ]  },
   {
     slug: "ashaal-runeveil",
     name: "Asha’al Runeveil",
@@ -345,9 +360,7 @@ export const characters: Character[] = [
     visualCanon: [
       "Integrante del Sol Negro.",
       "Obsidiana Umbral; mano derecha operativa, asesina e infiltradora de Kaen."
-    ],
-    gallery: defaultGallery
-  },
+    ]  },
   {
     slug: "valther-kaelorn",
     name: "Valther Kael’Orn",
@@ -363,9 +376,7 @@ export const characters: Character[] = [
     visualCanon: [
       "Integrante del Sol Negro.",
       "Esmeralda del Sol Negro; fuerza de conquista, mando militar y autoridad territorial."
-    ],
-    gallery: defaultGallery
-  },
+    ]  },
   {
     slug: "arvenn-lythralei",
     name: "Arvenn Lythralei",
@@ -381,9 +392,7 @@ export const characters: Character[] = [
     visualCanon: [
       "Integrante del Sol Negro.",
       "Zafiro del Sol Negro; red de inteligencia, rumores, contratos y bajos fondos."
-    ],
-    gallery: defaultGallery
-  }
+    ]  }
 ];
 
 export function getCharacterBySlug(slug: string) {

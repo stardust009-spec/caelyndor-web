@@ -679,6 +679,302 @@ h3 {
   letter-spacing: 0.02em;
 }
 
+/* Ficha de personaje: estructura homologada */
+.chronicler-note {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  max-width: 760px;
+  color: var(--color-ash);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.chronicler-note__ornament {
+  color: color-mix(in srgb, var(--character-accent, var(--color-astral)) 75%, white);
+  font-style: normal;
+  font-size: 0.85rem;
+  text-shadow: 0 0 14px color-mix(in srgb, var(--character-accent, var(--color-astral)) 45%, transparent);
+}
+
+.detail-hero__identity {
+  color: var(--color-silver);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.detail-hero__access {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.character-carousel {
+  position: relative;
+}
+
+.character-carousel__track {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  padding-bottom: 0.6rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--character-accent, var(--color-astral)) 40%, transparent) transparent;
+}
+
+.character-carousel__slide {
+  flex: 0 0 auto;
+  margin: 0;
+  scroll-snap-align: center;
+}
+
+.character-carousel__slide img {
+  display: block;
+  height: clamp(280px, 42vw, 460px);
+  width: auto;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: var(--color-night-soft);
+}
+
+.character-carousel__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  color: var(--color-ash-bright);
+  background: rgba(5, 6, 10, 0.78);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  backdrop-filter: blur(8px);
+  transition: border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.character-carousel__nav:hover,
+.character-carousel__nav:focus-visible {
+  border-color: color-mix(in srgb, var(--character-accent, var(--color-astral)) 55%, var(--color-line));
+  color: var(--color-ice);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--character-accent, var(--color-astral)) 20%, transparent);
+}
+
+.character-carousel__nav--previous {
+  left: 0.4rem;
+}
+
+.character-carousel__nav--next {
+  right: 0.4rem;
+}
+
+.detail-section--narrative h2 {
+  margin-bottom: var(--space-3);
+}
+
+.narrative-lead {
+  max-width: 760px;
+  margin-bottom: var(--space-4);
+  color: var(--color-ash-bright);
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.narrative-body {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 760px;
+  color: var(--color-ash);
+  line-height: 1.8;
+}
+
+.detail-cards {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 980px;
+}
+
+.detail-card {
+  border: 1px solid var(--color-line);
+  border-left: 2px solid color-mix(in srgb, var(--character-accent, var(--color-astral)) 55%, transparent);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  background: linear-gradient(180deg, rgba(231, 225, 235, 0.04), rgba(231, 225, 235, 0.015));
+}
+
+.detail-card .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.detail-card h3 {
+  margin: 0 0 var(--space-2);
+  color: var(--color-ash-bright);
+  font-size: 1.12rem;
+  line-height: 1.3;
+}
+
+.detail-card h3 a {
+  color: inherit;
+}
+
+.detail-card h3 a:hover,
+.detail-card h3 a:focus-visible {
+  color: var(--color-ice);
+}
+
+.detail-card p:not(.eyebrow) {
+  color: var(--color-ash);
+  line-height: 1.7;
+}
+
+.chronicler-archive {
+  max-width: 860px;
+  margin-top: var(--space-7);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  background: rgba(231, 225, 235, 0.025);
+}
+
+.chronicler-archive summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: var(--space-4) var(--space-5);
+  color: var(--color-silver);
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+  transition: color 180ms ease;
+}
+
+.chronicler-archive summary::-webkit-details-marker {
+  display: none;
+}
+
+.chronicler-archive summary::after {
+  margin-left: auto;
+  color: var(--color-ash);
+  content: "+";
+  font-size: 1.2rem;
+}
+
+.chronicler-archive[open] summary::after {
+  content: "–";
+}
+
+.chronicler-archive summary:hover,
+.chronicler-archive summary:focus-visible {
+  color: var(--color-ash-bright);
+}
+
+.chronicler-archive__ornament {
+  color: color-mix(in srgb, var(--character-accent, var(--color-astral)) 75%, white);
+  font-size: 0.8rem;
+}
+
+.chronicler-archive__body {
+  display: grid;
+  gap: var(--space-5);
+  padding: 0 var(--space-5) var(--space-5);
+}
+
+.chronicler-archive__rows {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.chronicler-archive__rows > div {
+  display: grid;
+  gap: 0.2rem 1rem;
+  grid-template-columns: minmax(150px, 220px) 1fr;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(231, 225, 235, 0.07);
+  padding-bottom: var(--space-2);
+}
+
+.chronicler-archive__rows dt {
+  color: var(--color-silver);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.chronicler-archive__rows dd {
+  margin: 0;
+  color: var(--color-ash);
+  line-height: 1.6;
+}
+
+.chronicler-archive__entry .eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.chronicler-archive__entry p:not(.eyebrow) {
+  max-width: 720px;
+  color: var(--color-ash);
+  line-height: 1.75;
+}
+
+.character-detail__return {
+  margin-top: var(--space-6);
+}
+
+@media (max-width: 640px) {
+  .character-carousel__slide img {
+    height: clamp(240px, 64vw, 340px);
+  }
+
+  .chronicler-archive__rows > div {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Pager de huellas: en escritorio se repliega a un riel lateral con la flecha
+   visible y se despliega al pasar el cursor o enfocar con teclado. */
+@media (min-width: 921px) {
+  .character-pager .character-pager__link--previous {
+    transform: translateY(-50%) translateX(calc(-100% + 4rem));
+  }
+
+  .character-pager .character-pager__link--next {
+    transform: translateY(-50%) translateX(calc(100% - 4rem));
+  }
+
+  .character-pager .character-pager__link--previous .character-pager__arrow {
+    order: 2;
+  }
+
+  .character-pager .character-pager__link--next .character-pager__arrow {
+    order: 0;
+  }
+
+  .character-pager .character-pager__link--previous:hover,
+  .character-pager .character-pager__link--previous:focus-visible,
+  .character-pager .character-pager__link--next:hover,
+  .character-pager .character-pager__link--next:focus-visible {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
 .book-card img,
 .gallery-card img,
 .detail-hero img,

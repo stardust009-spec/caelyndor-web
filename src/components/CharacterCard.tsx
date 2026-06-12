@@ -36,7 +36,7 @@ export function CharacterCard({ character }: { character: Character }) {
           ) : null}
         </div>
         <Link className="text-link entity-card__link" href={`/personajes/${character.slug}`}>
-          Abrir ficha
+          Seguir su huella
         </Link>
       </div>
     </article>

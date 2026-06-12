@@ -82,7 +82,7 @@ function PagerLink({
         />
       </span>
       <span className="character-pager__copy">
-        <span>{isPrevious ? "Anterior" : "Siguiente"}</span>
+        <span>{isPrevious ? "Huella anterior" : "Siguiente huella"}</span>
         <strong>{character.name}</strong>
         <em>{character.title}</em>
       </span>
