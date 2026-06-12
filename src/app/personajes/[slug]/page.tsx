@@ -214,7 +214,12 @@ export default async function CharacterDetailPage({ params }: CharacterPageProps
                 <p>{character.anatomyNote.extended}</p>
               </div>
             ) : null}
-            {character.visualCanon.length > 0 ? (
+            {archive?.designCanon ? (
+              <div className="chronicler-archive__entry">
+                <p className="eyebrow">Diseño / canon visual</p>
+                <p>{archive.designCanon}</p>
+              </div>
+            ) : character.visualCanon.length > 0 ? (
               <div className="chronicler-archive__entry">
                 <p className="eyebrow">Diseño / canon visual</p>
                 <ul className="note-list">

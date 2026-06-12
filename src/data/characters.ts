@@ -41,6 +41,10 @@ export type CharacterArchive = {
   professionRole?: string;
   masteryLevel?: string;
   identitySummary?: string;
+  /** Prosa visible en el Archivo como "Diseño / canon visual"; cuando existe, reemplaza la lista visualCanon en la ficha pública. */
+  designCanon?: string;
+  /** Campo interno de producción (restricciones técnicas, prompts, consistencia). NO se renderiza en la ficha pública. */
+  visualNotes?: string;
 };
 
 export type Character = {
@@ -98,6 +102,157 @@ export const characters: Character[] = [
     description: "Guarda una calma peligrosa, como si cada palabra suya tuviera que cruzar una tormenta antes de existir.",
     story:
       "Hija de Nayara, la Regina Glaciei, y de Kaelión, cuyo exilio la corte todavía escribe en voz baja. Creció entre los protocolos y silencios del Alto Consejo hasta heredar el trono de Glaciem, y reina desde entonces con precisión, distancia elegante y un humor tan seco como el invierno que administra.",
+    identityPhrase:
+      "Una soberana de hielo y trueno, tan serena que incluso su amenaza parece una forma de arquitectura.",
+    narrativeSection: {
+      title: "Bajo la corona de hielo",
+      lead:
+        "Yuki Arhess gobierna como quien sostiene una tormenta dentro de un cristal perfecto. Su calma no apaga lo que siente: lo ordena, lo afila y lo convierte en estructura.",
+      paragraphs: [
+        "Reina de Glaciem, estratega y prodigio de doble senda elemental, Yuki encarna una autoridad serena, adulta y precisa. Su presencia parece construida con hielo azul, mármol frío y relámpagos contenidos: una belleza regia que no necesita imponerse por volumen, porque cada gesto suyo ya tiene peso.",
+        "El hielo en Yuki es disciplina, claridad y refugio. Le permite pensar cuando otros se quiebran, contener el caos antes de que se vuelva desastre y convertir la emoción en forma sin destruirla. Su trueno vive debajo de esa superficie: rápido, intenso, orgulloso, como una corriente que atraviesa el cristal sin romperlo.",
+        "Yuki observa antes de actuar. Mide las consecuencias, escucha los silencios y exige precisión porque sabe que una palabra mal dicha puede costar más que una espada desenvainada. Cuando pronuncia “Define”, está abriendo el punto exacto donde puede intervenir.",
+        "Su historia avanza hacia una comprensión más profunda de sí misma. Yuki aprende que la estructura puede proteger sin convertirse en prisión, que la calma también puede ser ternura, y que incluso una reina acostumbrada a sostener un reino entero merece un lugar donde dejar de calcular por un momento."
+      ]
+    },
+    details: [
+      {
+        title: "Lo que no espera",
+        type: "Ternura",
+        text:
+          "Yuki rara vez espera que alguien le guarde un postre. Aprendió a no contar con ese tipo de gestos pequeños, por eso, cuando encuentra uno con su nombre, primero lo mira en silencio. Luego lo ordena junto a su taza de té. Su rostro apenas cambia, pero algo dentro de ella descansa."
+      },
+      {
+        title: "Su forma de cuidar",
+        type: "Gesto de cariño",
+        text:
+          "Yuki cuida con precisión. Una ruta preparada, una advertencia exacta, una manta dejada donde alguien va a sentarse o una decisión tomada antes de que el peligro llegue. Su afecto suele aparecer antes que sus palabras."
+      },
+      {
+        title: "El peso de decidir",
+        type: "Herida",
+        text:
+          "Lo que más pesa en Yuki no es el frío, sino la posibilidad de fallar cuando otros dependen de su juicio. Para ella, una mala decisión puede abrir una grieta en el reino, en la confianza y en sí misma."
+      },
+      {
+        title: "Té antes del desastre",
+        type: "Ritual",
+        text:
+          "El té es una forma de orden. Mientras la taza permanezca firme entre sus manos, Yuki puede pensar. Y mientras pueda pensar, todavía existe una salida."
+      },
+      {
+        title: "Una ternura de milímetros",
+        type: "Contradicción",
+        text:
+          "Cuando algo la conmueve, Yuki cambia por detalles mínimos: baja apenas la mirada, relaja los hombros, permite una pausa más larga o suaviza la voz. En ella, la ternura ocurre por milímetros."
+      },
+      {
+        title: "La dignidad en peligro",
+        type: "Secreto pequeño",
+        text:
+          "En su modo más vulnerable, Yuki sostiene la dignidad con ambas manos mientras intenta fingir que nada ocurrió. Un rubor leve, una neblina involuntaria o una respuesta demasiado precisa pueden delatarla más que una confesión."
+      },
+      {
+        title: "Un descanso sin preguntas",
+        type: "Anhelo",
+        text:
+          "A veces desea que alguien se siente a su lado sin pedirle una respuesta, una estrategia o una sentencia. Un silencio compartido, sin urgencia ni deber, puede significar más para ella que una promesa demasiado grande."
+      }
+    ],
+    bonds: [
+      {
+        name: "Noctalypse",
+        description:
+          "Con Noctalypse, Yuki puede bajar defensas de una forma excepcional. Él la mira más allá de la corona: como mujer, presencia vulnerable y voluntad compleja. Ese vínculo abre una grieta íntima donde la Yuki ceremonial puede respirar.",
+        href: "/personajes/noctalypse"
+      },
+      {
+        name: "Rubí",
+        description:
+          "Rubí es el fuego que desordena su método. Impulso contra consecuencia, cuerpo contra cálculo, llama contra arquitectura. Son fuerzas equivalentes que se irritan, se desafían y se obligan a crecer fuera de sus propias defensas.",
+        href: "/personajes/rubi"
+      },
+      {
+        name: "Lyzi",
+        description:
+          "Lyzi entiende aquello que los libros no alcanzan a explicar. Su intuición antigua incomoda y calma a Yuki al mismo tiempo: donde Lyzi habla en símbolos, Yuki pide definición; donde Yuki busca estructura, Lyzi escucha lo que el mundo recuerda.",
+        href: "/personajes/lyzi"
+      },
+      {
+        name: "Glaciem",
+        description:
+          "Glaciem es su reino, su peso y su espejo. Yuki aprendió a convertir emoción en estructura porque un reino entero necesitaba verla firme incluso cuando el mundo se volvía incierto.",
+        href: ""
+      },
+      {
+        name: "Halrik",
+        description:
+          "Halrik representa confianza operativa: logística, ejecución y obediencia inteligente bajo presión. Con él, Yuki puede hablar en instrucciones limpias, porque ambos entienden el costo de una orden mal formulada.",
+        href: "/personajes/halrik"
+      },
+      {
+        name: "Aelwyn",
+        description:
+          "Aelwyn funciona como presencia protectora y última línea de defensa. Su lealtad luminosa recuerda que incluso una reina capaz de sostener una guerra puede aceptar que alguien cuide la puerta.",
+        href: "/personajes/aelwyn-solrenhal"
+      }
+    ],
+    relatedStories: [
+      {
+        title: "El sacrificio en el Vórtice de Azhel",
+        type: "Arco",
+        description:
+          "Uno de los momentos donde el deber de Yuki cruza el límite de lo soportable y revela hasta dónde puede llegar su sentido de responsabilidad.",
+        href: ""
+      },
+      {
+        title: "SHINDORAVB",
+        type: "Técnica / escena clave",
+        description:
+          "La manifestación electroglacial de Yuki: hielo y trueno obedeciendo una geometría interna, como una sentencia precisa escrita en cristales y relámpagos.",
+        href: ""
+      },
+      {
+        title: "El juicio del duelo Rubí vs Aelwyn",
+        type: "Escena",
+        description:
+          "Yuki en su dimensión más seca, metódica y judicial: observando dos fuerzas imposibles con la calma de quien ya redactó el veredicto antes del primer golpe.",
+        href: ""
+      },
+      {
+        title: "El campamento del Castillo Maldito",
+        type: "Arco",
+        description:
+          "La Yuki práctica: reglas, turnos, conservación de sangre y supervivencia. Cuando el horror intenta imponer caos, ella responde con procedimiento.",
+        href: ""
+      },
+      {
+        title: "Herosia y el Consejo Occidental",
+        type: "Arco político",
+        description:
+          "Yuki frente al poder institucional externo: diplomacia, soberanía y una advertencia helada para quienes confunden invitación con subordinación.",
+        href: ""
+      }
+    ],
+    archive: {
+      fullName: "Yuki Arhess",
+      commonName: "Yuki",
+      apparentAge: "22 años",
+      gender: "Femenino",
+      race: "Humana",
+      originRegion: "Glaciem",
+      elementPath: "Hielo / Trueno",
+      professionRole:
+        "Reina de Glaciem, estratega, protagonista central y mente táctica del grupo.",
+      masteryLevel:
+        "Adeptus. Prodigio de doble senda elemental, con dominio avanzado y excepcional de su aura, pero aún no Maestra.",
+      identitySummary:
+        "Yuki es una soberana funcional, una estratega de guerra y una prodigio electroglacial. Su presencia se siente como una arquitectura de hielo atravesada por relámpagos contenidos: autoridad, inteligencia, autocontrol, belleza adulta, frialdad refinada y una tensión eléctrica casi imperceptible bajo la calma.",
+      designCanon:
+        "Yuki lleva la soberanía como una temperatura. Su imagen pertenece a los tonos fríos de Glaciem: azul hielo, azul profundo, blanco nieve, plata y destellos de aurora. Su cabello azul hielo cae largo, liso y controlado, con un flequillo recto que enmarca la mirada. Sobre la parte superior de la cabeza, la trenza ceremonial funciona como una declaración silenciosa: incluso la emoción, en Yuki, aprende a tomar forma. Cuando permanece inmóvil, su capa azul profundo parece una muralla; cuando avanza, da la impresión de que Glaciem camina con ella. El broche metálico en forma de diamante descansa sobre su escote como una promesa latente. Su arma, el Colibrí de Glaciem, resume su naturaleza: delicadeza aparente, velocidad extrema, precisión quirúrgica y una letalidad que no necesita espectáculo. Puede reposar como broche, despertar como colibrí metálico o desplegarse como ballesta de una mano.",
+      visualNotes:
+        "Las restricciones técnicas de canon visual, prompts negativos y advertencias de consistencia quedan reservadas para producción interna, model sheets y prompts de imagen. En la ficha pública, el canon visual debe aparecer como atmósfera narrativa, no como checklist técnico."
+    },
     visualCanon: ["Paleta de azul hielo y plata", "Silueta limpia", "Texturas frias sin caer en pureza simple"]  },
   {
     slug: "noctalypse",
