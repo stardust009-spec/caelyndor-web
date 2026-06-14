@@ -447,6 +447,170 @@ export const characters: Character[] = [
     accent: "#a77aff",
     image: assetImage("lyzi_canon_portrait_v02.png"),
     description: "Camina donde los mapas fallan y oye lo que las ruinas todavia no se atreven a decir.",
+    story:
+      "Lyzi nació del corazón espiritual de Sylvalis y está ligada a la memoria antigua del bosque. Fue una de las primeras presencias que recibió a Noctalypse cuando apareció sin nombre ni identidad en tierras antiguas, enseñándole lenguaje, costumbres humanas y contención emocional. Su arco está marcado por el deseo de acompañar, proteger y ser plenamente vista en el mismo plano de aquellos a quienes ama.",
+    personality:
+      "Lyzi es cálida, poética, intuitiva y profundamente empática. Habla de forma oblicua porque para ella el mundo no se entiende solo nombrándolo, sino escuchando cómo respira alrededor de cada cosa. Puede ser juguetona, ceremonial, mística y traviesa, pero su dulzura no cancela su criterio: sabe mirar el dolor sin despreciarlo y quedarse cerca cuando todo duele.",
+    identityPhrase:
+      "Una guardiana de Sylvalis hecha de bosque, estrella y recuerdo; cálida como un refugio, antigua como una puerta que aún sabe responder.",
+    narrativeSection: {
+      title: "Donde el bosque recuerda",
+      lead:
+        "Lyzantha, llamada Lyzi por quienes pueden acercarse a su ternura, camina entre bosque, sueño y estrella como si cada sendero guardara una voz antigua esperando ser escuchada.",
+      paragraphs: [
+        "Lyzi es la guardiana espiritual de Sylvalis: una presencia cálida, poética e intuitiva, ligada al corazón vivo del bosque y a las memorias que todavía respiran entre sus raíces. Su belleza no busca imponerse; aparece como una luz violeta entre hojas oscuras, como una sonrisa que entiende antes de preguntar.",
+        "En ella, la ternura tiene antigüedad. Lyzi acompaña sin invadir, interpreta sin reducirlo todo a explicación y transforma el dolor en símbolo cuando las palabras directas todavía pesan demasiado. Su manera de cuidar rara vez empuja: se sienta cerca, escucha el temblor del mundo y deja que la verdad llegue como una semilla.",
+        "Su existencia vive en el umbral. Parte mujer, parte zorro, parte eco espiritual de Sylvalis, Lyzi pertenece a lo humano y a lo imposible al mismo tiempo. Sus orejas, sus nueve colas estelares, sus ojos violetas y sus marcas glitch no son ornamento: son señales de una presencia que aprendió a habitar portales, vínculos y recuerdos.",
+        "Su historia está marcada por una promesa sencilla y enorme: responder cuando alguien la llama. Lyzi no existe para resolverlo todo con magia, sino para recordar que algunas presencias salvan porque permanecen, porque escuchan y porque iluminan el borde del camino cuando los demás creen que ya no hay salida."
+      ]
+    },
+    details: [
+      {
+        title: "Si tú me llamas",
+        type: "Promesa",
+        text:
+          "Lyzi no entiende el vínculo como posesión, sino como respuesta. Cuando alguien amado la llama de verdad, algo en ella se orienta hacia esa voz. No llega como mandato ni como deber: llega como eco antiguo, faro suave y compañía que decide permanecer."
+      },
+      {
+        title: "Ternura sin invasión",
+        type: "Gesto de cariño",
+        text:
+          "Lyzi acompaña sin ocupar el centro del dolor ajeno. Puede sentarse al lado de una herida durante horas, hablarle con metáforas, ofrecer una fruta, una flor o una sonrisa pequeña, y esperar hasta que el silencio aprenda a respirar."
+      },
+      {
+        title: "El deseo de tocar",
+        type: "Anhelo",
+        text:
+          "Su condición espiritual vuelve algunos gestos más difíciles de lo que parecen. Lyzi puede estar cerca y, aun así, sentir la distancia de los planos. Su deseo de tangibilidad no es simple capricho físico: es anhelo de pertenecer plenamente al mismo mundo de quienes ama."
+      },
+      {
+        title: "Nueve colas de memoria",
+        type: "Símbolo",
+        text:
+          "Sus nueve colas no son adorno ni exceso fantástico. Se mueven como una corona viva de memoria espiritual: a veces refugio, a veces halo oscuro, a veces señal de que Sylvalis está escuchando a través de ella."
+      },
+      {
+        title: "La verdad en semillas",
+        type: "Contradicción",
+        text:
+          "Lyzi percibe mucho más de lo que dice. A veces rodea una verdad con belleza para no herir a quien todavía no puede recibirla de frente. Eso puede volverla enigmática, pero también le permite cuidar sin quebrar."
+      },
+      {
+        title: "Abre Caminos",
+        type: "Voluntad",
+        text:
+          "Su arma actual nació de una fractura. Cazadora de Sueños vio demasiado y se trizó; después, la reparación con Princikalum no la devolvió igual, sino transformada. Ahora la pequeña ramita despierta en manos de Lyzi como Abre Caminos: un arco de madera viva para decidir rutas, no solo contemplarlas."
+      },
+      {
+        title: "Alegría luminosa",
+        type: "Secreto pequeño",
+        text:
+          "Aunque carga memoria antigua, Lyzi todavía se asombra ante gestos nobles y pequeñas alegrías humanas. Una risa sincera, un acto de cuidado torpe o una promesa cumplida pueden iluminarle la mirada como luciérnaga entre árboles oscuros."
+      }
+    ],
+    bonds: [
+      {
+        name: "Noctalypse",
+        description:
+          "Noctalypse fue una anomalía sin nombre, y Lyzi fue una presencia que le ofreció lenguaje, cuidado y reconocimiento. Entre ambos existe un vínculo espiritual, profundo y ancestral: ella es faro y memoria; él la mira como alguien real incluso cuando el mundo podría confundirla con un eco.",
+        href: "/personajes/noctalypse"
+      },
+      {
+        name: "Rubí",
+        description:
+          "Lyzi entiende el dolor que vive detrás de la rabia de Rubí. No intenta apagar su fuego: lo rodea con ternura, metáfora y pequeños gestos hasta que la llama recuerda que también puede ser hogar. Rubí se burla de su poesía, pero confía en ella más de lo que admite.",
+        href: "/personajes/rubi"
+      },
+      {
+        name: "Yuki",
+        description:
+          "Yuki busca definición; Lyzi escucha los bordes. Una convierte el caos en estructura, la otra lo traduce en símbolo. Cuando trabajan juntas, la precisión glacial y la sabiduría espiritual pueden abrir caminos que ninguna resolvería sola.",
+        href: "/personajes/yuki"
+      },
+      {
+        name: "Sylvalis",
+        description:
+          "Sylvalis no es solo su origen: es su raíz, su memoria y su forma de respirar el mundo. Lyzi lleva el bosque en la mirada, en las colas, en los silencios y en esa manera de saber cuándo una puerta no quiere fuerza, sino recuerdo.",
+        href: ""
+      },
+      {
+        name: "Lüm",
+        description:
+          "Lüm es eje espiritual, resonancia y raíz simbólica en el lenguaje de Lyzi. Sus cadenas doradas, runas, señales y vínculos no son decoración: sugieren una conexión antigua con aquello que sostiene la memoria viva de Sylvalis.",
+        href: ""
+      },
+      {
+        name: "Rollito",
+        description:
+          "Rollito es una presencia extraña, dócil con Lyzi y peligrosamente discutible con casi todos los demás. En él aparece una parte muy propia de su mundo: ternura, rareza, instinto antiguo y esa calma inquietante de las criaturas que solo obedecen al bosque cuando el bosque habla con su voz.",
+        href: ""
+      }
+    ],
+    relatedStories: [
+      {
+        title: "Abre Caminos",
+        type: "Arma / símbolo",
+        description:
+          "El arma actual de Lyzi: una ramita aparentemente inofensiva que despierta como gran arco de madera viva. Representa el paso desde mirar caminos posibles hacia abrirlos con voluntad propia.",
+        href: ""
+      },
+      {
+        title: "Cazadora de Sueños",
+        type: "Artefacto antiguo",
+        description:
+          "El antiguo artefacto de Lyzi, trizado por ver demasiado en el futuro. Su fractura marca una pérdida y una transformación: aquello que fue visión se convirtió en ruta.",
+        href: ""
+      },
+      {
+        title: "Sagitta Stellaris",
+        type: "Técnica / escena clave",
+        description:
+          "La flecha estelar de Lyzi: una trayectoria precisa, limpia e inevitable, guiada por intuición perfecta, polvo cósmico y lectura espiritual del camino correcto.",
+        href: ""
+      },
+      {
+        title: "Sylvalis",
+        type: "Región",
+        description:
+          "El bosque antiguo que respira en Lyzi: luciérnagas, raíces, memoria viva, caminos espirituales y presencias que escuchan incluso cuando nadie habla.",
+        href: ""
+      },
+      {
+        title: "El vínculo con Noctalypse",
+        type: "Vínculo ancestral",
+        description:
+          "Una de las raíces emocionales más profundas de Lyzi: cuidado, lenguaje, reconocimiento y una forma de amor espiritual que no depende del contacto pleno.",
+        href: ""
+      },
+      {
+        title: "El corazón espiritual de Sylvalis",
+        type: "Origen",
+        description:
+          "La naturaleza antigua de Lyzi no nace de una biografía común, sino de emoción, símbolo, bosque y vínculo. Su existencia misma es una puerta entre mundos.",
+        href: ""
+      }
+    ],
+    archive: {
+      fullName: "Lyzantha",
+      commonName: "Lyzi",
+      apparentAge: "30 años",
+      gender: "Femenino",
+      race:
+        "Semi-humana, mitad humana y mitad zorro; entidad espiritual de Sylvalis con manifestación mayormente humana.",
+      originRegion: "Sylvalis",
+      elementPath:
+        "Por confirmar en la escala elemental oficial. Su afinidad visual y simbólica se expresa mediante energía espiritual, astral, glitch, estelar y vínculos con Lüm.",
+      professionRole:
+        "Guardiana espiritual de Sylvalis, compañera ancestral, mediadora emocional y presencia mística del grupo protagonista.",
+      masteryLevel:
+        "En desarrollo dentro de la escala práctica de aura. Lyzi posee antigüedad espiritual, intuición profunda y sensibilidad mágica excepcional, pero su dominio no debe leerse como fuerza física convencional ni maestría de combate absoluta.",
+      identitySummary:
+        "Lyzi es una presencia antigua, cálida, poética y profundamente intuitiva. Se siente como una mujer adulta de belleza serena, espiritual y ligeramente imposible: una entidad de umbral entre bosque, sueño, estrella y recuerdo. Su delicadeza no implica fragilidad; su ternura posee juicio, memoria y permanencia.",
+      designCanon:
+        "Lyzi debe sentirse como una mujer antigua y cálida que camina entre bosque, estrella y recuerdo. Su cabello negro puro cae largo, liso y suelto, con dos mechones gruesos que nacen desde la coronilla y enmarcan el rostro como si fueran parte de una puerta. Sus ojos violetas de pupila rasgada miran con una sabiduría serena, emocionalmente legible. Las orejas largas de zorro, negras con reflejos violetas y puntas plateadas, permanecen visibles y expresivas. Sus nueve colas negras con brillos estelares forman una corona viva de memoria espiritual detrás de ella. Viste como una viajera mística de Sylvalis: top negro cruzado con detalles dorados y fractales, mangas anchas con constelaciones doradas, pantalón negro con estampado estelar y glitch violeta, cinturón decorado, hebillas, bolsillos, medias galaxia, zapatillas negras reforzadas y cadenas doradas conectadas a Lüm. Su arma actual es Abre Caminos: una ramita latente que despierta como gran arco de madera viva, espiritual y antiguo. Cazadora de Sueños queda como artefacto anterior, parte de su historia y de su fractura. Todo en ella debe decir espíritu de Sylvalis, mujer adulta, elegancia etérea, nueve colas estelares, portalidad dimensional, ternura antigua y magia cósmica contenida.",
+      visualNotes:
+        "Las restricciones técnicas de canon visual, prompts negativos y advertencias de consistencia quedan reservadas para producción interna, model sheets y prompts de imagen. En la ficha pública, el canon visual debe aparecer como atmósfera narrativa, no como checklist técnico."
+    },
     visualCanon: ["Violetas profundos", "Detalles astrales minimos", "Expresion entre ternura y amenaza"]  },
   {
     slug: "halrik",
