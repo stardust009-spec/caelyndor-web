@@ -1,3 +1,14 @@
+export type StoryPlaylist = {
+  /** Encabezado del módulo (sin el ornamento, que lo pone el componente). */
+  heading: string;
+  /** Línea descriptiva bajo el encabezado. */
+  note: string;
+  /** Texto del botón que llena la cola del reproductor. */
+  buttonLabel: string;
+  /** IDs de temas de `musicTracks`, en el orden de reproducción deseado. */
+  trackIds: string[];
+};
+
 export type Story = {
   slug: string;
   title: string;
@@ -7,6 +18,8 @@ export type Story = {
   wordCount: number;
   readingMinutes: number;
   paragraphs: string[];
+  /** Banda sonora opcional: si existe, aparece un módulo de playlist antes del relato. */
+  playlist?: StoryPlaylist;
 };
 
 export const stories: Story[] = [
@@ -2738,6 +2751,19 @@ export const stories: Story[] = [
     "accent": "#9a7dff",
     "wordCount": 5384,
     "readingMinutes": 24,
+    "playlist": {
+      "heading": "Lyzi preparó una bruma sonora para este relato",
+      "note": "6 temas instrumentales para acompañar tu lectura entre batalla, feria, caos y familia encontrada.",
+      "buttonLabel": "Escuchar playlist de lectura",
+      "trackIds": [
+        "caelyndor-el-ultimo-baculo-del-lich-lord",
+        "caelyndor-el-folleto-bajo-la-ceniza",
+        "caelyndor-gran-feria-gran",
+        "caelyndor-ovejas-pop-corn-y-polvos-sospechosos",
+        "caelyndor-fomo-geologico",
+        "caelyndor-un-veinte-para-volver-a-reir"
+      ]
+    },
     "paragraphs": [
       "✦ ✦ ✦",
       "Cuatro lanzas de hielo se clavaron en la tierra alrededor del Lich Lord, una en cada punto cardinal, y de sus puntas saltaron relámpagos que tejieron una jaula chisporroteante. El no-muerto giró el cráneo buscando una salida y no la encontró: las descargas lo mordían cada vez que intentaba cruzarlas.",

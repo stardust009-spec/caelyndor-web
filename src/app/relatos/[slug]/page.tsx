@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ReadingProgress } from "@/components/ReadingProgress";
+import { StoryPlaylist } from "@/components/StoryPlaylist";
 import { StoryStats } from "@/components/StoryStats";
 import { getStoryBySlug, stories } from "@/data/stories";
 
@@ -53,6 +54,8 @@ export default async function StoryPage({ params }: StoryPageProps) {
           </p>
           <StoryStats slug={story.slug} title={story.title} registerView />
         </header>
+
+        {story.playlist ? <StoryPlaylist playlist={story.playlist} /> : null}
 
         <div className="story-reader">
           {(() => {
