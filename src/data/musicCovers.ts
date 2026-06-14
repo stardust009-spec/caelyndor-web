@@ -41,5 +41,12 @@ export const musicCovers: Record<string, string> = {
   "lyzi-ecos-de-sylvalis": "/images/music-covers/lyzi-ecos-de-sylvalis.png",
   "yuki-arhess-mirame-en-silencio": "/images/music-covers/yuki-arhess-mirame-en-silencio.png",
   "rubi-atrapame-si-puedes": "/images/music-covers/rubi-atrapame-si-puedes.png",
-  "aria-ventoleve-ballet-sin-vida": "/images/music-covers/aria-ventoleve-ballet-sin-vida.jpg"
+  "aria-ventoleve-ballet-sin-vida": "/images/music-covers/aria-ventoleve-ballet-sin-vida.jpg",
+  "caelyndor-fomo-geologico": "/images/music-covers/caelyndor-fomo-geologico.jpg",
+  "caelyndor-un-veinte-para-volver-a-reir": "/images/music-covers/caelyndor-un-veinte-para-volver-a-reir.jpg",
+  "caelyndor-ovejas-pop-corn-y-polvos-sospechosos": "/images/music-covers/caelyndor-ovejas-pop-corn-y-polvos-sospechosos.jpg",
+  "caelyndor-gran-feria-gran": "/images/music-covers/caelyndor-gran-feria-gran.jpg",
+  "caelyndor-el-folleto-bajo-la-ceniza": "/images/music-covers/caelyndor-el-folleto-bajo-la-ceniza.jpg",
+  "caelyndor-el-ultimo-baculo-del-lich-lord": "/images/music-covers/caelyndor-el-ultimo-baculo-del-lich-lord.jpg",
+  "adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi": "/images/music-covers/adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi.jpg"
 };

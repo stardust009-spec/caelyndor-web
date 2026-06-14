@@ -74,15 +74,21 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
   const selectedAlbum = musicAlbums.find((album) => album.slug === selectedAlbumSlug) ?? musicAlbums[0];
 
   const orderedTracks = useMemo(() => {
-    if (activeTab !== "top") {
-      return tracks;
+    if (activeTab === "top") {
+      return [...tracks].sort((first, second) => {
+        const firstPlays = stats[first.id]?.plays ?? 0;
+        const secondPlays = stats[second.id]?.plays ?? 0;
+        return secondPlays - firstPlays;
+      });
     }
 
-    return [...tracks].sort((first, second) => {
-      const firstPlays = stats[first.id]?.plays ?? 0;
-      const secondPlays = stats[second.id]?.plays ?? 0;
-      return secondPlays - firstPlays;
-    });
+    if (activeTab === "recent") {
+      // Lo más reciente primero: los temas se agregan al final de musicTracks,
+      // así que invertimos para que las novedades queden arriba.
+      return [...tracks].reverse();
+    }
+
+    return tracks;
   }, [activeTab, stats, tracks]);
 
   const filteredTracks = useMemo(() => {
