@@ -275,6 +275,168 @@ export const characters: Character[] = [
     accent: "#c84b4b",
     image: assetImage("rubi_canon_portrait_v02.png"),
     description: "Una presencia marcada por perdidas antiguas y una obstinacion capaz de encender reinos dormidos.",
+    story:
+      "Rubí proviene de Cindralith, una región donde el fuego, el desierto, la supervivencia y el orgullo territorial moldean el carácter. Su identidad se construyó alrededor de la acción, la resistencia y la protección de aquello que considera suyo. Fulgor cumple para ella una función paterna y de tutor, mientras que Aelrhyssa actúa como figura materna e institutriz. Rubí pelea porque su cuerpo aprendió que proteger también es ponerse delante.",
+    personality:
+      "Rubí es intensa, directa, pasional y protectora. No suaviza demasiado sus palabras porque su manera de amar suele ser actuar, defender, gritar, empujar hacia adelante o ponerse entre alguien y el peligro. Su carácter tsundere aparece cuando se siente vulnerable: puede responder con irritación, pero sus acciones revelan afecto antes que sus palabras.",
+    identityPhrase:
+      "Una llama viva de Cindralith: cálida, peligrosa, protectora y demasiado orgullosa para admitir cuánto le importa.",
+    narrativeSection: {
+      title: "Donde arde la voluntad",
+      lead:
+        "Rubí Kaelynn Vaer'Solyn no entra a una escena para decorarla: entra como una brasa que decide volverse incendio. Su fuego no solo destruye; protege, empuja, desafía y se queda ardiendo donde otros habrían huido.",
+      paragraphs: [
+        "Guerrera de fuego, protagonista central y fuerza de choque emocional del grupo, Rubí vive con el cuerpo entero. Habla con la mirada, con los puños, con la risa, con el hambre, con la rabia y con esa forma suya de ponerse delante del peligro antes de terminar de explicar por qué.",
+        "En ella, el fuego es identidad, defensa y ternura mal disimulada. Arde porque siente demasiado, porque no aprendió a mirar una injusticia desde lejos y porque su lealtad llega antes que su prudencia. Rubí puede parecer explosiva, pero su impulso nace de una verdad simple: si alguien suyo va a caer, cae detrás de ella.",
+        "Su orgullo no es adorno. Es armadura. Cuando se siente vulnerable, Rubí protesta, se irrita o convierte la vergüenza en amenaza verbal, pero sus acciones suelen delatarla antes que sus palabras. Puede gruñir que no le importa mientras ya está cruzando el fuego por ti.",
+        "Su camino no consiste en apagarse. Rubí debe aprender a dirigir su intensidad sin traicionar aquello que la vuelve Rubí: el corazón protector, la voluntad indomable y esa llama capaz de quemarse por amor para que otro vuelva a respirar."
+      ]
+    },
+    details: [
+      {
+        title: "Si vas a caer",
+        type: "Protección",
+        text:
+          "Rubí no protege desde la distancia. Su cuerpo reacciona antes que su discurso: se adelanta, bloquea el golpe, empuja a alguien detrás de ella y luego se enoja si le agradecen demasiado. Para ella, cuidar es ocupar el lugar donde iba a caer el daño."
+      },
+      {
+        title: "Vergüenza en llamas",
+        type: "Contradicción",
+        text:
+          "Cuando algo la toca de verdad, Rubí rara vez se vuelve suave de inmediato. Primero aparta la mirada, frunce el ceño o responde con una amenaza torpe. Su ternura suele llegar disfrazada de enojo, como si admitir cariño fuera más peligroso que entrar a combate."
+      },
+      {
+        title: "Hambre, cansancio y humanidad",
+        type: "Dato íntimo",
+        text:
+          "Rubí no es etérea. Tiene hambre, se cansa, se irrita, necesita comer algo y a veces arregla el mundo con una mezcla de pan, rabia y movimiento. Esa humanidad visible la vuelve cercana: su fuego también vive en cosas simples."
+      },
+      {
+        title: "La trenza táctica",
+        type: "Símbolo",
+        text:
+          "Su única trenza lateral no es coquetería. Es disciplina sobreviviendo dentro del incendio. Un ancla práctica, casi testaruda, que recuerda que incluso la llama más salvaje aprendió a sujetarse para seguir peleando."
+      },
+      {
+        title: "El bolsito Fenek",
+        type: "Ternura",
+        text:
+          "El bolsito Fenek suaviza su silueta sin quitarle fiereza. Es un pequeño contraste colgando del cinturón: una pista de que bajo la amenaza verbal, el fuego y la espada, Rubí también guarda afectos pequeños que defendería con los dientes."
+      },
+      {
+        title: "Pequeño Sol",
+        type: "Vulnerabilidad",
+        text:
+          "Su fuego más raro no es el que arrasa, sino el que cura. Pequeño Sol nace desde el corazón y puede sanar lo que toca, pero deja a Rubí una semana entera sin aura. Por eso, cuando aparece, no es recurso fácil: es amor convertido en costo."
+      },
+      {
+        title: "No soy delicada",
+        type: "Orgullo",
+        text:
+          "Rubí no quiere ser tratada como algo que debe acomodarse en una vitrina. Quiere ser vista completa: fuerte, deseante, torpe, hermosa, furiosa, protectora y capaz de romper una puerta si la puerta insiste en estar en el camino."
+      }
+    ],
+    bonds: [
+      {
+        name: "Noctalypse",
+        description:
+          "Noctalypse mira en Rubí algo más que brutalidad o caos: ve un corazón que grita porque todavía está vivo. Ese vínculo importa porque Rubí necesita ser amada sin ser domesticada, reconocida en su incendio sin que intenten convertirla en ceniza dócil.",
+        href: "/personajes/noctalypse"
+      },
+      {
+        name: "Yuki",
+        description:
+          "Yuki es el hielo que no se deja impresionar por sus llamaradas. Estructura contra impulso, cálculo contra cuerpo, silencio contra fuego verbal. La tensión entre ambas funciona porque ninguna es menos que la otra: son dos formas distintas de sostener el mundo.",
+        href: "/personajes/yuki"
+      },
+      {
+        name: "Lyzi",
+        description:
+          "Lyzi lee el dolor detrás de la rabia de Rubí sin forzarla a confesarlo. Su ternura simbólica puede irritarla y calmarla al mismo tiempo. Rubí se burla de su tono poético, pero confía en ella más de lo que admite.",
+        href: "/personajes/lyzi"
+      },
+      {
+        name: "Fulgor",
+        description:
+          "Fulgor es figura formativa, tutor de fuego y presencia paterna en su historia. En Rubí dejó orgullo, potencia, una relación intensa con la voluntad y esa sensación de que el fuego también puede educar a golpes de calor y cariño torpe.",
+        href: "/personajes/fulgor"
+      },
+      {
+        name: "Aelrhyssa",
+        description:
+          "Aelrhyssa actúa como figura materna e institutriz. Su influencia aparece en los restos de educación, modales enterrados y resistencia de Rubí a parecer demasiado domesticada. Hay disciplina bajo la llama, aunque Rubí reniegue de ella.",
+        href: "/personajes/aelrhyssa"
+      },
+      {
+        name: "Cindralith",
+        description:
+          "Cindralith arde en su manera de moverse: desierto, orgullo territorial, supervivencia, piedra caliente y viento con polvo. Rubí no solo viene de allí; lleva su temperatura en la sangre.",
+        href: ""
+      }
+    ],
+    relatedStories: [
+      {
+        title: "Vulcania Ignis",
+        type: "Arma / símbolo",
+        description:
+          "La espada de Rubí, asociada al fuego, la voluntad y la resurrección simbólica. Su silueta de fénix convierte cada golpe en una declaración: caer no es lo mismo que terminar.",
+        href: ""
+      },
+      {
+        title: "Ruby Kick",
+        type: "Técnica / escena clave",
+        description:
+          "La técnica más física y directa de Rubí: una patada ígnea canalizada con brutal precisión emocional. No es elegancia distante; es impacto, rabia protectora y cometa descendente.",
+        href: ""
+      },
+      {
+        title: "Pequeño Sol",
+        type: "Técnica / momento íntimo",
+        description:
+          "La llama dorada que nace desde el corazón de Rubí y puede sanar lo que toca. Su costo severo revela que su fuego más poderoso no es el que destruye, sino el que ama lo suficiente para agotarla por completo.",
+        href: ""
+      },
+      {
+        title: "Cindralith",
+        type: "Región",
+        description:
+          "El origen ardiente de Rubí: fuego, desierto, supervivencia y orgullo territorial. Un lugar que explica por qué su voluntad parece hecha de piedra caliente y brasa viva.",
+        href: ""
+      },
+      {
+        title: "El vínculo con Fulgor",
+        type: "Formación",
+        description:
+          "La relación que ayuda a entender su potencia, su orgullo y la disciplina incompleta que intenta sobrevivir dentro de su incendio.",
+        href: ""
+      },
+      {
+        title: "El núcleo con Noctalypse, Yuki y Lyzi",
+        type: "Vínculo central",
+        description:
+          "Rubí pertenece al corazón emocional de Caelyndor: una llama que choca, protege, discute, ama y se queda incluso cuando sería más fácil huir.",
+        href: ""
+      }
+    ],
+    archive: {
+      fullName: "Rubí Kaelynn Vaer'Solyn",
+      commonName: "Rubí",
+      apparentAge: "25 años",
+      gender: "Femenino",
+      race: "Humana",
+      originRegion: "Cindralith",
+      elementPath: "Fuego",
+      professionRole:
+        "Guerrera de fuego, protagonista central y fuerza de choque emocional del grupo.",
+      masteryLevel:
+        "En desarrollo. Rubí posee gran potencia natural, instinto de combate y una conexión emocional muy fuerte con su aura, pero aún no se considera Maestra. Su avance depende de aprender a controlar la intensidad de su fuego sin apagarlo.",
+      identitySummary:
+        "Rubí es una guerrera de fuego de temperamento intenso, emocionalmente transparente, protectora hasta el exceso y profundamente leal. Su presencia se siente como una llama viva: cálida, peligrosa, hermosa y difícil de ignorar. Es corporal, expresiva, terrenal, combativa y apasionada.",
+      designCanon:
+        "Rubí lleva el fuego como una presencia física. Su cabello rojo volcánico cae largo, abundante y salvaje, con ondas vivas que parecen moverse incluso antes de que ella ataque. La única trenza lateral funciona como disciplina dentro del incendio: memoria, ancla y pragmatismo aprendido en combate. Su mirada ámbar arde con desafío, ternura escondida o determinación feroz. Viste como una aventurera de Cindralith: chaqueta negra con cuello de pelaje estilo Fenek, top blanco firme con ribetes rojos, pantalón oscuro con cintas rojas en X, cinturones superpuestos, bolsito Fenek y zapatos Mary Jane de cuero marrón oscuro. Vulcania Ignis, su espada con forma conceptual de fénix, aparece cuando la escena exige combate, voluntad o declaración heroica. Todo en ella debe sentirse como fuego vivo, cuerpo presente, corazón protector, rebeldía indomable y disciplina imperfecta.",
+      visualNotes:
+        "Las restricciones técnicas de canon visual, prompts negativos y advertencias de consistencia quedan reservadas para producción interna, model sheets y prompts de imagen. En la ficha pública, el canon visual debe aparecer como atmósfera narrativa, no como checklist técnico."
+    },
     visualCanon: ["Mirada de brasa contenida", "Prendas oscuras con acentos rojos", "Cicatrices tratadas como simbolos narrativos"]  },
   {
     slug: "lyzi",
