@@ -26,6 +26,76 @@ function track(trackData: Omit<MusicTrack, "src" | "coverImage">): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "caelyndor-fomo-geologico",
+    title: "Caelyndor — FOMO Geológico",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — FOMO Geológico.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Feria / vértigo",
+    accent: "rgba(225, 175, 105, 0.34)"
+  }),
+  track({
+    id: "caelyndor-un-veinte-para-volver-a-reir",
+    title: "Caelyndor — Un Veinte para Volver a Reír",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — Un Veinte para Volver a Reír.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Feria / risa",
+    accent: "rgba(225, 175, 105, 0.34)"
+  }),
+  track({
+    id: "caelyndor-ovejas-pop-corn-y-polvos-sospechosos",
+    title: "Caelyndor — Ovejas Pop-Corn y Polvos Sospechosos",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — Ovejas Pop-Corn y Polvos Sospechosos.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Feria / travesura",
+    accent: "rgba(225, 175, 105, 0.34)"
+  }),
+  track({
+    id: "caelyndor-gran-feria-gran",
+    title: "Caelyndor — Gran Feria Gran",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — Gran Feria Gran.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Feria / pregón",
+    accent: "rgba(225, 175, 105, 0.34)"
+  }),
+  track({
+    id: "caelyndor-el-folleto-bajo-la-ceniza",
+    title: "Caelyndor — El Folleto Bajo la Ceniza",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — El Folleto Bajo la Ceniza.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Feria / ceniza",
+    accent: "rgba(225, 175, 105, 0.34)"
+  }),
+  track({
+    id: "caelyndor-el-ultimo-baculo-del-lich-lord",
+    title: "Caelyndor — El Último Báculo del Lich Lord",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — El Último Báculo del Lich Lord.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Feria / conjuro",
+    accent: "rgba(225, 175, 105, 0.34)"
+  }),
+  track({
+    id: "adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi",
+    title: "Adagio Ventoleve — Marcha Nupcial; La hermana que perdí",
+    subtitle: "Tema de personaje",
+    fileName: "Adagio Ventoleve — Marcha Nupcial; La hermana que perdí.mp3",
+    category: "personaje",
+    related: ["Adagio Ventoleve"],
+    mood: "Nupcial / duelo",
+    accent: "rgba(170, 190, 210, 0.34)"
+  }),
+  track({
     id: "rubi-mi-placer-culpable",
     title: "Rubí — Mi Placer Culpable",
     subtitle: "Tema de personaje",
@@ -494,75 +564,5 @@ export const musicTracks: MusicTrack[] = [
     related: ["Aria Ventoleve"],
     mood: "Ballet / presagio",
     accent: "rgba(205, 185, 140, 0.34)"
-  }),
-  track({
-    id: "caelyndor-fomo-geologico",
-    title: "Caelyndor — FOMO Geológico",
-    subtitle: "Tema de arco",
-    fileName: "Caelyndor — FOMO Geológico.mp3",
-    category: "arco",
-    related: ["Caelyndor"],
-    mood: "Feria / vértigo",
-    accent: "rgba(225, 175, 105, 0.34)"
-  }),
-  track({
-    id: "caelyndor-un-veinte-para-volver-a-reir",
-    title: "Caelyndor — Un Veinte para Volver a Reír",
-    subtitle: "Tema de arco",
-    fileName: "Caelyndor — Un Veinte para Volver a Reír.mp3",
-    category: "arco",
-    related: ["Caelyndor"],
-    mood: "Feria / risa",
-    accent: "rgba(225, 175, 105, 0.34)"
-  }),
-  track({
-    id: "caelyndor-ovejas-pop-corn-y-polvos-sospechosos",
-    title: "Caelyndor — Ovejas Pop-Corn y Polvos Sospechosos",
-    subtitle: "Tema de arco",
-    fileName: "Caelyndor — Ovejas Pop-Corn y Polvos Sospechosos.mp3",
-    category: "arco",
-    related: ["Caelyndor"],
-    mood: "Feria / travesura",
-    accent: "rgba(225, 175, 105, 0.34)"
-  }),
-  track({
-    id: "caelyndor-gran-feria-gran",
-    title: "Caelyndor — Gran Feria Gran",
-    subtitle: "Tema de arco",
-    fileName: "Caelyndor — Gran Feria Gran.mp3",
-    category: "arco",
-    related: ["Caelyndor"],
-    mood: "Feria / pregón",
-    accent: "rgba(225, 175, 105, 0.34)"
-  }),
-  track({
-    id: "caelyndor-el-folleto-bajo-la-ceniza",
-    title: "Caelyndor — El Folleto Bajo la Ceniza",
-    subtitle: "Tema de arco",
-    fileName: "Caelyndor — El Folleto Bajo la Ceniza.mp3",
-    category: "arco",
-    related: ["Caelyndor"],
-    mood: "Feria / ceniza",
-    accent: "rgba(225, 175, 105, 0.34)"
-  }),
-  track({
-    id: "caelyndor-el-ultimo-baculo-del-lich-lord",
-    title: "Caelyndor — El Último Báculo del Lich Lord",
-    subtitle: "Tema de arco",
-    fileName: "Caelyndor — El Último Báculo del Lich Lord.mp3",
-    category: "arco",
-    related: ["Caelyndor"],
-    mood: "Feria / conjuro",
-    accent: "rgba(225, 175, 105, 0.34)"
-  }),
-  track({
-    id: "adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi",
-    title: "Adagio Ventoleve — Marcha Nupcial; La hermana que perdí",
-    subtitle: "Tema de personaje",
-    fileName: "Adagio Ventoleve — Marcha Nupcial; La hermana que perdí.mp3",
-    category: "personaje",
-    related: ["Adagio Ventoleve"],
-    mood: "Nupcial / duelo",
-    accent: "rgba(170, 190, 210, 0.34)"
   })
 ];
