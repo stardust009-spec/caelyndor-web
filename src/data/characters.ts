@@ -828,6 +828,200 @@ export const characters: Character[] = [
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "Preceptor de Aethel Cineris, formado por la necesidad y la ley absoluta; una llama disciplinada que empieza a descubrir el peso de proteger.",
+    story:
+      "Alistair fue formado por Aethel Cineris para dividir el mundo entre lo necesario y lo innecesario, entre pureza y corrupción, entre orden y amenaza. Su talento y disciplina lo llevaron al rango de Sexto Preceptor de la Llama Inextinguible. Fue enviado para ejecutar al cuarteto tras la Ruptura del Velo, pero su camino atraviesa derrota, revelación, vergüenza y una dignificación difícil: no la absolución inmediata, sino la posibilidad de elegir otra forma de necesidad.",
+    personality:
+      "Alistair es hipercompetente, estoico, severo y profundamente contenido. Habla poco porque fue educado para considerar la emoción como fuga de disciplina. No grita para imponerse; cuando se enfurece, habla más despacio. Su tragedia está en que posee conciencia suficiente para sentir la grieta, pero disciplina suficiente para intentar aplastarla.",
+    identityPhrase:
+      "Una sentencia de ceniza y fuego plateado, entrenada para purificar hasta que la compasión empezó a parecerle más necesaria que la obediencia.",
+    narrativeSection: {
+      title: "La ley bajo la ceniza",
+      lead:
+        "Alistair Valerius fue formado para ejecutar sin temblar. Pero incluso la llama más disciplinada puede recordar, demasiado tarde, que no todo lo que arde debe convertirse en sentencia.",
+      paragraphs: [
+        "Sexto Preceptor de la Llama Inextinguible y máximo ejecutor doctrinal de Aethel Cineris, Alistair camina como si cada gesto hubiera sido corregido por años de ley, ceniza y represión. No necesita levantar la voz para imponer presencia: el aire parece ordenarse a su alrededor antes de que pronuncie una sola palabra.",
+        "Su fuego no es una llamarada libre. Es una tormenta plateada entrenada para obedecer, purificar y cortar lo innecesario. Durante años creyó que la compasión era una falla del Velo, que la duda debía ser castigada y que sentir demasiado podía volver inútil a un hombre destinado a sostener el orden.",
+        "Pero Alistair no es una espada sin alma. Es una herida que aprendió a obedecer antes de aprender a sanar. Su severidad es real, su peligro también, pero bajo la Gabardina de la Ley permanece una humanidad comprimida: una pausa que dura un segundo más de lo permitido, una mano que aprieta Cinderheart hasta marcarse, una cinta roja conservada por razones que la doctrina no sabría nombrar.",
+        "Su arco no consiste en cambiar de bando por una revelación simple. Primero se quiebra. Luego se avergüenza de haberse quebrado. Después intenta llamarlo error. Solo mucho más tarde comprende que aquello que interrumpió el procedimiento no era debilidad: era su humanidad regresando bajo las cenizas."
+      ]
+    },
+    details: [
+      {
+        title: "Innecesario",
+        type: "Frase núcleo",
+        text:
+          "Al inicio, Alistair usa esa palabra como una hoja. Innecesario es emoción, pausa, piedad, explicación, ternura o duda. Todo lo que no entra en el procedimiento debe ser cortado antes de contaminar la orden."
+      },
+      {
+        title: "Es necesario",
+        type: "Evolución",
+        text:
+          "Al final de su arco, la palabra cambia de dueño. Lo necesario ya no es solo obedecer, ejecutar o purificar. Proteger también puede ser necesario. Reparar también. Desobedecer una ley injusta, cuando la verdad sigue respirando, también."
+      },
+      {
+        title: "El guante derecho",
+        type: "Gesto involuntario",
+        text:
+          "Cuando la conciencia interrumpe la doctrina, Alistair ajusta el guante derecho con precisión casi compulsiva. No es elegancia. Es una frontera intentando cerrarse antes de que alguien vea la grieta."
+      },
+      {
+        title: "La cinta roja",
+        type: "Símbolo",
+        text:
+          "La cinta roja que ata su media coleta viene de una medalla de Aethel Cineris. El metal se lo entregó a su madre como ofrenda filial; la cinta quedó con él. Ese resto mínimo demuestra que incluso en su fase más rígida conservaba una forma de amor que la doctrina no pudo borrar."
+      },
+      {
+        title: "Cinderheart",
+        type: "Arma / sentencia",
+        text:
+          "Corazón de Ceniza no brilla como espada heroica. Es un mandoble austero, pesado, casi mineral, como piedra volcánica fría. Cuando Alistair lo sostiene, no parece presumir fuerza: parece cargar una sentencia."
+      },
+      {
+        title: "La cicatriz de la palma",
+        type: "Herida íntima",
+        text:
+          "La cicatriz fina en su palma derecha no nació de una batalla gloriosa. Nació de apretar Cinderheart durante un momento de duda. Su quiebre moral tuvo cuerpo, presión, dolor y marca."
+      },
+      {
+        title: "Fuego plateado",
+        type: "Poder",
+        text:
+          "Su aura se manifiesta como una tormenta de fuego plateado, casi albino, atravesada por chispas frías y vetas de un rojo pálido que tarda en aceptar. No es fuego salvaje: es una llama obligada a obedecer hasta que empieza a recordar otra función."
+      },
+      {
+        title: "La cinta azul",
+        type: "Elección",
+        text:
+          "Cuando reemplaza la cinta roja manchada por una cinta azul austera, no está cambiando de adorno. Está dejando visible la primera lealtad que no nació de una orden."
+      }
+    ],
+    bonds: [
+      {
+        name: "Lyzi",
+        description:
+          "Lyzi es la primera en notar el silencio verdadero de Alistair: no la pausa militar ni el cálculo estratégico, sino ese segundo adicional en que algo lo conmueve y él no sabe todavía cómo sobrevivir a esa conmoción. Ella no lo arregla. Lo ve. Y para Alistair, ser visto sin ser reducido a arma puede ser más desestabilizador que una derrota.",
+        href: "/personajes/lyzi"
+      },
+      {
+        name: "Rubí",
+        description:
+          "Rubí representa una forma de fuego que contradice toda su doctrina. Arde sin pedir permiso, protege desde el cuerpo y se equivoca con vida visible. Alistair puede juzgarla como desorden, pero Rubí detecta la segunda pausa: ese momento exacto en que él ya no ejecuta como antes.",
+        href: "/personajes/rubi"
+      },
+      {
+        name: "Yuki",
+        description:
+          "Yuki encarna estructura, precisión y autoridad sin fanatismo. Frente a ella, Alistair encuentra una forma de orden que no necesita amputar la humanidad para sostenerse. Su choque con Glaciem no es solo estratégico: es doctrinal.",
+        href: "/personajes/yuki"
+      },
+      {
+        name: "Noctalypse",
+        description:
+          "Noctalypse representa aquello que Aethel Cineris le enseñó a temer: anomalía, sombra, vacío y verdad fuera del procedimiento. Pero Noct también expone una pregunta imposible para Alistair: si algo no encaja en la ley, ¿debe destruirse o entenderse?",
+        href: "/personajes/noctalypse"
+      },
+      {
+        name: "Aethel Cineris",
+        description:
+          "Aethel Cineris lo convirtió en símbolo, arma y sentencia. Allí aprendió que obedecer era virtud y que la compasión podía contaminar el orden. Su relación con el reino es raíz, prisión, orgullo y herida al mismo tiempo.",
+        href: ""
+      },
+      {
+        name: "El Cinerión",
+        description:
+          "El Cinerión no lo envía como amenaza ciega, sino como corrección legítima. Para Aethel Cineris, Alistair no es una espada suelta: es procedimiento con rostro humano. Esa confianza institucional pesa tanto como una cadena.",
+        href: ""
+      },
+      {
+        name: "Casa Valerius",
+        description:
+          "Su familia conserva la medalla como reliquia doméstica y lo mira como símbolo nacional antes que como hijo cansado. En esa tensión vive una parte esencial de Alistair: la distancia entre el hombre que vuelve a casa y la leyenda que todos creen entender.",
+        href: ""
+      },
+      {
+        name: "Halrik",
+        description:
+          "Halrik lo enfrenta como quien reconoce a otro hombre de disciplina real. Su choque revela algo importante: Alistair no improvisa rango, acero ni procedimiento. Incluso sus enemigos entienden rápido que no están peleando contra furia, sino contra método.",
+        href: "/personajes/halrik"
+      }
+    ],
+    relatedStories: [
+      {
+        title: "La Llama Inextinguible",
+        type: "Libro / arco",
+        description:
+          "El arco donde Alistair atraviesa cacería, procedimiento, derrota, vergüenza y una dignificación difícil: no absolución inmediata, sino la posibilidad de elegir otra necesidad.",
+        href: ""
+      },
+      {
+        title: "La Mesa de las Siete Coronas",
+        type: "Escena de presentación",
+        description:
+          "El momento donde Aethel Cineris lo designa como respuesta a la Ruptura del Velo. No aparece como castigo ejemplar, sino como una sentencia ambulante capaz de distinguir deber y carnicería.",
+        href: ""
+      },
+      {
+        title: "Cinderheart / Corazón de Ceniza",
+        type: "Arma / símbolo",
+        description:
+          "El mandoble minimalista de Alistair, forjado como peso moral más que como gloria. Su presencia convierte el combate en procedimiento y la duda en presión física.",
+        href: ""
+      },
+      {
+        title: "La cinta roja",
+        type: "Símbolo familiar",
+        description:
+          "El resto de una medalla convertida en vínculo privado. La cinta roja sostiene una memoria que Alistair conserva incluso cuando todo en él intenta reducir la vida a deber.",
+        href: ""
+      },
+      {
+        title: "La verdad y el barro",
+        type: "Quiebre moral",
+        description:
+          "El punto donde la doctrina deja de verse limpia. Alistair no se salva de golpe: primero se ensucia, se fractura y descubre que el dolor de la culpa no puede archivarse como procedimiento.",
+        href: ""
+      },
+      {
+        title: "La cinta azul",
+        type: "Elección posterior",
+        description:
+          "El reemplazo de la cinta roja por una cinta azul austera. No significa pureza ni absolución: significa una lealtad elegida por voluntad propia.",
+        href: ""
+      },
+      {
+        title: "La llama que puede sanar",
+        type: "Revelación de poder",
+        description:
+          "El descubrimiento de que su fuego no solo puede ejecutar o cauterizar, sino también restaurar. Una grieta luminosa en la doctrina de la purificación.",
+        href: ""
+      },
+      {
+        title: "El cruce con el cuarteto",
+        type: "Conflicto central",
+        description:
+          "Alistair llega como cazador del cuarteto, pero cada encuentro erosiona la certeza de que la ley pueda entenderlo todo sin escuchar aquello que todavía respira.",
+        href: ""
+      }
+    ],
+    archive: {
+      fullName: "Alistair Valerius",
+      commonName: "Alistair",
+      apparentAge: "28-30 años",
+      gender: "Masculino",
+      race: "Humano",
+      originRegion: "Aethel Cineris, el Reino de la Ortodoxia Gris y la Ley Absoluta",
+      elementPath: "Fuego / Llama plateada doctrinal",
+      professionRole:
+        "Antagonista en transición, cazador del cuarteto, ejecutor de la Ley Absoluta y protector futuro del grupo protagonista.",
+      masteryLevel:
+        "Alto ejecutor doctrinal. Alistair posee dominio avanzado de combate, disciplina militar, aura de fuego plateado y resistencia mental entrenada bajo dogma extremo. Su poder nace de años de obediencia, represión, precisión y desgaste.",
+      identitySummary:
+        "Alistair Valerius es una figura de belleza peligrosa, melancólica y severa. Debe sentirse como un hombre convertido en arma por una nación que llama virtud a la obediencia y pureza a la amputación emocional. Su presencia combina aristocracia militar, fuego reprimido, cansancio moral y una elegancia que nunca parece cómoda.",
+      designCanon:
+        "Alistair debe sentirse como un preceptor de guerra que atraviesa una tormenta sin permitir que el rostro la confiese. Es alto, aristocrático, severo y melancólico, con piel pálida, facciones afiladas, mandíbula marcada y una pequeña cicatriz vertical en la ceja izquierda. Sus ojos son plata mercurio, sin pupilas visibles como lectura base; cuando su aura se activa o la emoción lo atraviesa, se tiñen de azul eléctrico profundo. Su cabello es gris ceniza con puntas blanco plateado e iridiscencia sutil, recogido en una media coleta prolija. Un mechón rebelde cae siempre sobre el ojo derecho. Durante su fase doctrinal usa una cinta roja viva, resto de una medalla de Aethel Cineris; más adelante la reemplaza por una cinta azul austera. Viste la Gabardina de la Ley: abrigo militar largo azul medianoche casi negro, bordados de plata sagrada, hilo rojo oscuro como venas de fuego, estola de lobo gris sobre el hombro derecho, broche de oro viejo con emblema de Aethel Cineris, hombreras y brazales de metal negro mate, guantes negros ajustados y botas militares sobrias. Su arma, Cinderheart o Corazón de Ceniza, es un mandoble minimalista de piedra volcánica fría. Todo en él debe decir doctrina, control, herida, elegancia militar, fuego plateado, culpa contenida y humanidad insistiendo bajo las cenizas.",
+      visualNotes:
+        "Las restricciones técnicas de canon visual, prompts negativos y advertencias de consistencia quedan reservadas para producción interna, model sheets y prompts de imagen. En la ficha pública, el canon visual debe aparecer como atmósfera narrativa, no como checklist técnico."
+    },
     visualCanon: ["Disciplina de la llama", "Dogma ceremonial", "Fractura moral bajo control"]  },
   {
     slug: "faelan",
