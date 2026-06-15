@@ -4,13 +4,11 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { useEffect } from "react";
 import { CharacterPortrait } from "@/components/CharacterPortrait";
-import type { Character } from "@/data/characters";
-
-type CharacterPagerItem = Pick<Character, "slug" | "name" | "title" | "image" | "accent">;
+import type { CharacterNavItem } from "@/data/characters";
 
 type CharacterPagerProps = {
-  previous?: CharacterPagerItem;
-  next?: CharacterPagerItem;
+  previous?: CharacterNavItem;
+  next?: CharacterNavItem;
 };
 
 export function CharacterPager({ previous, next }: CharacterPagerProps) {
@@ -56,7 +54,7 @@ function PagerLink({
   character,
   direction
 }: {
-  character: CharacterPagerItem;
+  character: CharacterNavItem;
   direction: "previous" | "next";
 }) {
   const isPrevious = direction === "previous";

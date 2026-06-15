@@ -1267,15 +1267,36 @@ export function getCharacterBySlug(slug: string) {
   return characters.find((character) => character.slug === slug);
 }
 
-export function getAdjacentCharacters(slug: string) {
+// Subconjunto público y seguro para la navegación lateral. Mantiene fuera de
+// la capa client/RSC los campos internos (p. ej. archive.visualNotes): el pager
+// nunca recibe el objeto Character completo.
+export type CharacterNavItem = Pick<Character, "slug" | "name" | "title" | "image" | "accent">;
+
+function toCharacterNavItem(character: Character): CharacterNavItem {
+  return {
+    slug: character.slug,
+    name: character.name,
+    title: character.title,
+    image: character.image,
+    accent: character.accent
+  };
+}
+
+export function getAdjacentCharacters(slug: string): {
+  previous?: CharacterNavItem;
+  next?: CharacterNavItem;
+} {
   const currentIndex = characters.findIndex((character) => character.slug === slug);
 
   if (currentIndex === -1) {
     return { previous: undefined, next: undefined };
   }
 
+  const previous = currentIndex > 0 ? characters[currentIndex - 1] : undefined;
+  const next = currentIndex < characters.length - 1 ? characters[currentIndex + 1] : undefined;
+
   return {
-    previous: currentIndex > 0 ? characters[currentIndex - 1] : undefined,
-    next: currentIndex < characters.length - 1 ? characters[currentIndex + 1] : undefined
+    previous: previous ? toCharacterNavItem(previous) : undefined,
+    next: next ? toCharacterNavItem(next) : undefined
   };
 }
