@@ -816,6 +816,200 @@ export const characters: Character[] = [
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "Ancla militar de Glaciem, preciso en la crisis y leal hasta el peso silencioso de las órdenes imposibles.",
+    story:
+      "Halrik de Hyldran fue reconocido desde niño por una acción de lealtad nacida antes de todo juramento. Al entregar una verdad necesaria cuando el miedo habría justificado el silencio, recibió el título Leal sin Juramento. Con el tiempo ingresó al servicio de Glaciem como soldado. Su disciplina, temple y capacidad de permanecer bajo presión lo llevaron a ascender hasta convertirse en Capitán de la Guardia Real. Durante las grandes crisis de Glaciem, su frase “La Reina todavía está aquí. Glaciem todavía respira.” se convirtió en lema nacional. En su etapa actual ejerce como Canciller de Glaciem: ya no protege solo con espada o guardia, sino con documentos, decisiones, estructura, memoria institucional y presencia política.",
+    personality:
+      "Halrik es disciplinado, leal, contenido y profundamente responsable. Su autoridad nace de la confianza acumulada, no del volumen. Tiene una relación casi sagrada con el deber, pero no es un fanático vacío: sabe distinguir entre obedecer y sostener lo correcto. Cerca de Yuki aparece una faceta distinta, hecha de paciencia seca, dignidad herida, obediencia impecable y resignación afectuosa.",
+    identityPhrase:
+      "El hombre que permaneció antes de jurar: soldado, guardia, canciller y respiración institucional de Glaciem cuando la corona tiembla.",
+    narrativeSection: {
+      title: "Leal antes del juramento",
+      lead:
+        "Halrik de Hyldran no necesitó una ceremonia para entender el deber. Su lealtad nació antes del cargo, antes de la espada y antes de que Glaciem supiera cómo nombrarla.",
+      paragraphs: [
+        "Halrik es una de las figuras más sobrias y necesarias de Glaciem: soldado primero, Capitán de la Guardia Real después, Canciller en su etapa actual. Su vida no cambió de esencia al cambiar de cargo; solo amplió la escala de aquello que debía sostener.",
+        "Su título, Leal sin Juramento, no es un adorno ceremonial. Nació de una decisión temprana: actuar correctamente cuando nadie podía exigirle hacerlo. Desde entonces, Halrik carga una forma de deber que no depende de salario, rango ni mandato. Él reconoce dónde está la línea y permanece.",
+        "Como capitán, protegió desde la espada, la formación y la guardia. Como canciller, protege desde documentos, decretos, estructura política, memoria institucional y presencia. No es un burócrata que olvidó el combate, ni un guerrero incapaz de gobernar: es la continuidad de Glaciem aprendiendo distintos lenguajes.",
+        "Su frase más recordada, “La Reina todavía está aquí. Glaciem todavía respira.”, resume su función simbólica dentro del reino. Halrik no busca protagonismo ni gloria; su fuerza está en sostener la puerta cuando todos los demás necesitan respirar."
+      ]
+    },
+    details: [
+      {
+        title: "Leal sin Juramento",
+        type: "Título núcleo",
+        text:
+          "El título de Halrik nació antes de todo cargo formal. No fue fiel porque una ley lo obligara, sino porque entendió dónde estaba el deber y decidió responder. Esa lealtad temprana se convirtió en el centro moral de toda su vida."
+      },
+      {
+        title: "La Reina todavía está aquí",
+        type: "Frase nacional",
+        text:
+          "“La Reina todavía está aquí. Glaciem todavía respira.” no es una frase épica vacía. Es una declaración política, emocional y militar: mientras Yuki viva y Glaciem conserve voluntad, el reino no ha terminado."
+      },
+      {
+        title: "La Medalla de Hyldran",
+        type: "Símbolo",
+        text:
+          "La medalla no funciona como trofeo. Representa el momento en que Glaciem nombró una virtud que Halrik ya había demostrado antes de comprender por completo su peso. En su versión adulta, no la presume: la carga."
+      },
+      {
+        title: "Ternura rígida",
+        type: "Gesto de cariño",
+        text:
+          "Halrik no suele expresar afecto con facilidad. Su ternura aparece como una puerta sostenida, una orden bien dada, una ruta segura, una manta colocada sin comentario o una corrección respetuosa antes de que alguien se rompa."
+      },
+      {
+        title: "Paciencia con Yuki",
+        type: "Vínculo",
+        text:
+          "Yuki puede molestarlo, amenazarlo administrativamente o ponerlo frente a situaciones absurdas porque sabe que Halrik no se rompe con facilidad. Él responde con dignidad herida, obediencia impecable y una resignación afectuosa que solo aumenta la confianza entre ambos."
+      },
+      {
+        title: "Protocolo con alma",
+        type: "Virtud",
+        text:
+          "Para Halrik, el protocolo no existe para decorar el poder, sino para impedir que el miedo gobierne. La administración, en sus manos, no es frialdad: es una forma de proteger el reino cuando la espada ya no basta."
+      },
+      {
+        title: "El peso de permanecer",
+        type: "Herida",
+        text:
+          "Halrik tiende a cargar demasiado en silencio. Descanso, comodidad o deseo personal suelen quedar detrás del deber. Su fortaleza no consiste en no cansarse, sino en seguir de pie cuando el cansancio ya encontró nombre."
+      },
+      {
+        title: "Horror institucional contenido",
+        type: "Humor seco",
+        text:
+          "Ante desastres provocados por Yuki, Rubí o cualquier protocolo absurdo, Halrik puede parecer al borde de redactar su propia destitución preventiva. No pierde la compostura; solo la sostiene con ambas manos."
+      }
+    ],
+    bonds: [
+      {
+        name: "Yuki",
+        description:
+          "Yuki es el centro más complejo de la vida de Halrik: reina, responsabilidad, amiga antigua, persona vulnerable y símbolo de Glaciem. Él puede contradecirla con respeto, corregirla y sufrir por sus decisiones, pero jamás traicionarla ni tratarla como incapaz. Bajo las bromas existe una confianza de hierro.",
+        href: "/personajes/yuki"
+      },
+      {
+        name: "Glaciem",
+        description:
+          "Halrik no sirve solo a una persona. Sirve a la continuidad de Glaciem. El reino es responsabilidad viva: ciudadanos, memoria, instituciones, murallas, decretos y la voluntad de seguir respirando incluso cuando la corona tiembla.",
+        href: ""
+      },
+      {
+        name: "Nayara",
+        description:
+          "Nayara está vinculada al origen simbólico de Halrik como Leal sin Juramento. Su reconocimiento marca la entrada de Halrik en la memoria moral de Glaciem: el momento en que una virtud temprana recibió nombre.",
+        href: "/personajes/nayara"
+      },
+      {
+        name: "Valthor",
+        description:
+          "Valthor funciona como figura de autoridad antigua y testigo de las primeras dinámicas entre Yuki y Halrik. En su mirada puede leerse el crecimiento de ambos: la reina que aprende a sostener y el hombre que aprende a permanecer.",
+        href: "/personajes/valthor"
+      },
+      {
+        name: "Rubí",
+        description:
+          "Rubí representa el tipo de caos emocional y físico que pone a prueba la paciencia institucional de Halrik. Puede provocarle alarma administrativa, resignación o respeto incómodo, pero también le recuerda que no todo lo importante cabe en un protocolo.",
+        href: "/personajes/rubi"
+      },
+      {
+        name: "Noctalypse",
+        description:
+          "Noctalypse activa en Halrik una vigilancia protectora, especialmente por su vínculo con Yuki y el grupo. Halrik no lo reduce a amenaza, pero tampoco deja de medir los riesgos que una sombra tan profunda puede traer a la estabilidad de Glaciem.",
+        href: "/personajes/noctalypse"
+      },
+      {
+        name: "Lyzi",
+        description:
+          "Lyzi puede leer con facilidad el cansancio emocional de Halrik. Su calidez contrasta con la rigidez de él y puede revelar que bajo el canciller todavía existe el niño que sostuvo una medalla demasiado grande.",
+        href: "/personajes/lyzi"
+      },
+      {
+        name: "La Guardia Real de Glaciem",
+        description:
+          "Antes de ser Canciller, Halrik fue Capitán de la Guardia Real. Esa etapa no desaparece bajo el uniforme político: sigue en su postura, en su lectura de crisis y en su forma de proteger primero la línea antes que el orgullo.",
+        href: ""
+      }
+    ],
+    relatedStories: [
+      {
+        title: "Leal sin Juramento",
+        type: "Origen / título",
+        description:
+          "El momento que define a Halrik desde niño: una acción de lealtad nacida antes de cualquier juramento formal. Allí comienza el peso moral que lo acompañará toda la vida.",
+        href: ""
+      },
+      {
+        title: "Soldado de Glaciem",
+        type: "Etapa",
+        description:
+          "La primera escala de su deber adulto. Halrik aprende a obedecer, resistir y servir desde la disciplina cotidiana, antes de convertirse en símbolo.",
+        href: ""
+      },
+      {
+        title: "Capitán de la Guardia Real",
+        type: "Etapa",
+        description:
+          "La etapa donde Halrik protege a Yuki y al reino desde la espada, el mando defensivo y la presencia militar. Aquí su lealtad deja de ser promesa privada y se vuelve línea de defensa.",
+        href: ""
+      },
+      {
+        title: "Canciller de Glaciem",
+        type: "Etapa actual",
+        description:
+          "La forma más amplia de su deber: ya no solo resiste con guardias y acero, sino con estructura política, decisiones, documentos, continuidad institucional y memoria de Estado.",
+        href: ""
+      },
+      {
+        title: "La Reina todavía está aquí",
+        type: "Lema nacional",
+        description:
+          "La frase que convierte a Halrik en símbolo de continuidad. Mientras la reina siga viva y alguien recuerde cómo permanecer, Glaciem todavía respira.",
+        href: ""
+      },
+      {
+        title: "La Medalla de Hyldran",
+        type: "Símbolo",
+        description:
+          "El emblema íntimo de su título. No representa vanidad ni trofeo, sino el peso de haber sido nombrado por una virtud que nació antes de la obligación.",
+        href: ""
+      },
+      {
+        title: "El vínculo con Yuki",
+        type: "Relación central",
+        description:
+          "Una confianza de hierro entre reina y canciller: respeto, corrección, bromas peligrosamente administrativas, dignidad herida y la certeza de que ambos seguirán ahí.",
+        href: ""
+      },
+      {
+        title: "Glaciem todavía respira",
+        type: "Continuidad institucional",
+        description:
+          "La dimensión política y emocional de Halrik: un hombre que aprendió a sostener el reino incluso cuando la corona, los muros o el ánimo de su gente tiemblan.",
+        href: ""
+      }
+    ],
+    archive: {
+      fullName: "Halrik de Hyldran",
+      commonName: "Halrik",
+      apparentAge: "Adulto maduro en su etapa actual como Canciller de Glaciem",
+      gender: "Masculino",
+      race: "Humano",
+      originRegion: "Glaciem",
+      elementPath: "No definido como senda elemental principal",
+      professionRole:
+        "Canciller de Glaciem, ex Capitán de la Guardia Real, antiguo soldado y símbolo nacional de deber, continuidad institucional y lealtad sin obligación formal.",
+      masteryLevel:
+        "Competencia alta en mando defensivo, lectura de crisis, protocolo institucional y resistencia bajo presión. Su grandeza nace de la permanencia, no del espectáculo mágico.",
+      identitySummary:
+        "Halrik de Hyldran es la encarnación del deber puro en Glaciem. Su historia no nace de la nobleza heredada ni de un juramento ceremonial, sino de una decisión temprana: actuar correctamente cuando nadie podía exigirle hacerlo. Su evolución de soldado a Capitán de la Guardia Real y luego a Canciller amplía la escala de su lealtad sin cambiar su esencia.",
+      designCanon:
+        "Halrik debe sentirse como un hombre de autoridad invernal, nobleza sobria y disciplina acumulada. En su etapa actual como Canciller de Glaciem, se presenta como adulto maduro, alto, firme, ancho de hombros y de presencia semejante a una muralla humana. Su rostro es fuerte y refinado, con mandíbula marcada, cejas densas, ojos azul grisáceo y una expresión seria donde puede abrirse una microfisura de cansancio o afecto contenido. Su cabello es oscuro, entre castaño muy oscuro y negro, con canas visibles, peinado hacia atrás o hacia un lado con sobriedad. La barba completa y cuidada, también marcada por canas, es parte esencial de su canon adulto. Viste uniforme noble-militar de alto rango en azul profundo, plata y gris hielo: abrigo estructurado de cuello alto, piel gris clara o blanca en hombros o cuello, bordados plateados con motivos de hielo, castillo, copos de nieve o líneas geométricas de Glaciem, insignia de la corona y ecos de la Medalla de Hyldran. No debe parecer rey, villano frío ni burócrata cobarde. Todo en él debe decir deber, permanencia, autoridad institucional, protección sin teatralidad y lealtad antes del juramento.",
+      visualNotes:
+        "Las restricciones técnicas de canon visual, prompts negativos y advertencias de consistencia quedan reservadas para producción interna, model sheets y prompts de imagen. En la ficha pública, el canon visual debe aparecer como atmósfera narrativa, no como checklist técnico."
+    },
     visualCanon: ["Autoridad militar glacial", "Lealtad sobria y presencia de frontera", "Presencia de muralla en crisis"]  },
   {
     slug: "alistair-valerius",
