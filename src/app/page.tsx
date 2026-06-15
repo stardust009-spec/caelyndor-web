@@ -7,7 +7,7 @@ import { PortalCard } from "@/components/PortalCard";
 import { SectionIntro } from "@/components/SectionIntro";
 import { StatusPanel } from "@/components/StatusPanel";
 import { currentBook } from "@/data/currentBook";
-import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_AUTHOR, SITE_AUTHOR_ALIASES, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" }
@@ -26,6 +26,7 @@ const homeJsonLd = [
     "@context": "https://schema.org",
     "@type": "Person",
     name: SITE_AUTHOR,
+    alternateName: SITE_AUTHOR_ALIASES,
     url: SITE_URL,
     jobTitle: "Autor y director creativo de Caelyndor"
   }

@@ -9,7 +9,8 @@ import { CharacterPortrait } from "@/components/CharacterPortrait";
 import { ChroniclerNote } from "@/components/ChroniclerNote";
 import { JsonLd } from "@/components/JsonLd";
 import { characters, getAdjacentCharacters, getCharacterBySlug } from "@/data/characters";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { characterSeo } from "@/lib/characterSeo";
+import { SITE_AUTHOR, SITE_AUTHOR_ALIASES, SITE_NAME, SITE_URL } from "@/lib/site";
 
 type CharacterPageProps = {
   params: Promise<{ slug: string }>;
@@ -27,29 +28,32 @@ export async function generateMetadata({ params }: CharacterPageProps): Promise<
     return { title: "Personaje" };
   }
 
-  const description = character.archive?.identitySummary ?? character.description;
+  const seo = characterSeo[character.slug];
+  const headingName = seo?.fullName ?? character.archive?.fullName ?? character.name;
+  const baseDescription = character.archive?.identitySummary ?? character.description;
+  const description = seo ? `${seo.tagline}. ${baseDescription}` : baseDescription;
   const url = `${SITE_URL}/personajes/${character.slug}`;
 
   return {
-    title: character.name,
+    title: headingName,
     description,
     alternates: { canonical: `/personajes/${character.slug}` },
     openGraph: {
       type: "profile",
-      title: `${character.name} | ${SITE_NAME}`,
+      title: `${headingName} | ${SITE_NAME}`,
       description,
       url,
       siteName: SITE_NAME,
       images: [
         {
           url: character.image,
-          alt: `Retrato de ${character.name}, personaje de ${SITE_NAME}`
+          alt: `Retrato de ${headingName}, personaje de ${SITE_NAME}`
         }
       ]
     },
     twitter: {
       card: "summary_large_image",
-      title: `${character.name} | ${SITE_NAME}`,
+      title: `${headingName} | ${SITE_NAME}`,
       description,
       images: [character.image]
     }
@@ -67,7 +71,11 @@ export default async function CharacterDetailPage({ params }: CharacterPageProps
   const { previous, next } = getAdjacentCharacters(slug);
   const archive = character.archive;
 
-  const description = archive?.identitySummary ?? character.description;
+  const seo = characterSeo[character.slug];
+  const headingName = seo?.fullName ?? archive?.fullName ?? character.name;
+  const baseDescription = archive?.identitySummary ?? character.description;
+  const description = seo ? `${seo.tagline}. ${baseDescription}` : baseDescription;
+  const url = `${SITE_URL}/personajes/${character.slug}`;
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -75,8 +83,17 @@ export default async function CharacterDetailPage({ params }: CharacterPageProps
       mainEntity: {
         "@type": "Person",
         name: character.name,
+        ...(headingName !== character.name ? { alternateName: headingName } : {}),
         description,
-        image: character.image
+        url,
+        image: character.image,
+        isPartOf: { "@type": "CreativeWork", name: SITE_NAME, url: SITE_URL },
+        creator: {
+          "@type": "Person",
+          name: SITE_AUTHOR,
+          alternateName: SITE_AUTHOR_ALIASES,
+          url: SITE_URL
+        }
       }
     },
     {
@@ -88,7 +105,7 @@ export default async function CharacterDetailPage({ params }: CharacterPageProps
           "@type": "ListItem",
           position: 2,
           name: character.name,
-          item: `${SITE_URL}/personajes/${character.slug}`
+          item: url
         }
       ]
     }
@@ -142,7 +159,7 @@ export default async function CharacterDetailPage({ params }: CharacterPageProps
           />
           <div>
             <p className="eyebrow">{character.affinity}</p>
-            <h1>{character.name}</h1>
+            <h1>{headingName}</h1>
             <p className="detail-hero__title">{character.title}</p>
             <p className="status-pill">{character.role}</p>
             <p className="detail-hero__identity">
