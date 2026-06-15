@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -6,7 +7,9 @@ import { CharacterGalleryCarousel } from "@/components/CharacterGalleryCarousel"
 import { CharacterPager } from "@/components/CharacterPager";
 import { CharacterPortrait } from "@/components/CharacterPortrait";
 import { ChroniclerNote } from "@/components/ChroniclerNote";
+import { JsonLd } from "@/components/JsonLd";
 import { characters, getAdjacentCharacters, getCharacterBySlug } from "@/data/characters";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 type CharacterPageProps = {
   params: Promise<{ slug: string }>;
@@ -16,11 +19,40 @@ export function generateStaticParams() {
   return characters.map((character) => ({ slug: character.slug }));
 }
 
-export async function generateMetadata({ params }: CharacterPageProps) {
+export async function generateMetadata({ params }: CharacterPageProps): Promise<Metadata> {
   const { slug } = await params;
   const character = getCharacterBySlug(slug);
+
+  if (!character) {
+    return { title: "Personaje" };
+  }
+
+  const description = character.archive?.identitySummary ?? character.description;
+  const url = `${SITE_URL}/personajes/${character.slug}`;
+
   return {
-    title: character ? character.name : "Personaje"
+    title: character.name,
+    description,
+    alternates: { canonical: `/personajes/${character.slug}` },
+    openGraph: {
+      type: "profile",
+      title: `${character.name} | ${SITE_NAME}`,
+      description,
+      url,
+      siteName: SITE_NAME,
+      images: [
+        {
+          url: character.image,
+          alt: `Retrato de ${character.name}, personaje de ${SITE_NAME}`
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${character.name} | ${SITE_NAME}`,
+      description,
+      images: [character.image]
+    }
   };
 }
 
@@ -34,6 +66,33 @@ export default async function CharacterDetailPage({ params }: CharacterPageProps
 
   const { previous, next } = getAdjacentCharacters(slug);
   const archive = character.archive;
+
+  const description = archive?.identitySummary ?? character.description;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      mainEntity: {
+        "@type": "Person",
+        name: character.name,
+        description,
+        image: character.image
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Personajes", item: `${SITE_URL}/personajes` },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: character.name,
+          item: `${SITE_URL}/personajes/${character.slug}`
+        }
+      ]
+    }
+  ];
 
   const archiveRows: { label: string; value: string }[] = [];
 
@@ -63,6 +122,7 @@ export default async function CharacterDetailPage({ params }: CharacterPageProps
       className="page-section character-detail"
       style={{ "--character-accent": character.accent } as CSSProperties}
     >
+      <JsonLd data={jsonLd} />
       <div className="container">
         <Breadcrumbs
           items={[

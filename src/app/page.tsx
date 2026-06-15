@@ -1,10 +1,35 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { FloatingLyziPlayer } from "@/components/FloatingLyziPlayer";
 import { HeroVelo } from "@/components/HeroVelo";
+import { JsonLd } from "@/components/JsonLd";
 import { PortalCard } from "@/components/PortalCard";
 import { SectionIntro } from "@/components/SectionIntro";
 import { StatusPanel } from "@/components/StatusPanel";
 import { currentBook } from "@/data/currentBook";
+import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" }
+};
+
+const homeJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    inLanguage: "es-CL",
+    description: SITE_DESCRIPTION
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE_AUTHOR,
+    url: SITE_URL,
+    jobTitle: "Autor y director creativo de Caelyndor"
+  }
+];
 
 const featuredLinks = [
   {
@@ -27,6 +52,7 @@ const featuredLinks = [
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={homeJsonLd} />
       <HeroVelo />
       <section className="section section--raised" aria-labelledby="destacados">
         <div className="container">

@@ -2,9 +2,29 @@ import type { Metadata } from "next";
 import { CharacterCard } from "@/components/CharacterCard";
 import { SectionIntro } from "@/components/SectionIntro";
 import { characters } from "@/data/characters";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+
+const description =
+  "El elenco de Caelyndor: fichas con historia, vínculos, canon visual y crónicas relacionadas de Yuki, Rubí, Lyzi, Noctalypse y el resto del mundo.";
 
 export const metadata: Metadata = {
-  title: "Personajes"
+  title: "Personajes",
+  description,
+  alternates: { canonical: "/personajes" },
+  openGraph: {
+    type: "website",
+    title: "Personajes | Caelyndor",
+    description,
+    url: `${SITE_URL}/personajes`,
+    siteName: SITE_NAME,
+    images: ["/opengraph-image.jpg"]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Personajes | Caelyndor",
+    description,
+    images: ["/opengraph-image.jpg"]
+  }
 };
 
 export default function CharactersPage() {
