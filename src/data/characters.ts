@@ -265,6 +265,199 @@ export const characters: Character[] = [
     portraitPosition: "50% 18%",
     portraitScale: 1.12,
     description: "Mas que enemigo, una presion sobre la realidad: el nombre que el mundo evita pronunciar entero.",
+    story:
+      "Nadie sabe con certeza de dónde vino Noctalypse. En tiempos antiguos, Lyzi fue una de las primeras presencias que lo vio de verdad y le enseñó lenguaje, costumbres humanas y contención emocional. Después, Rubí fue su primer amor antes de revivirlo y antes de que él perdiera la memoria. Más tarde, amnésico en Glaciem, Noct se enamoró de Yuki y juró protegerla. Camina entre esas memorias intentando no agrandar su caos emocional, pero sin negar lo que cada vínculo dejó en él.",
+    personality:
+      "Noctalypse es sereno, introspectivo, melancólico y analítico. Observa más de lo que habla. Puede parecer distante porque organiza el peligro antes de reaccionar emocionalmente, pero su distancia suele ser una forma de control frente a fuerzas que podrían romper algo si se expresan sin filtro. Tiene humor seco, ternura práctica y una capacidad extraña para convertir el abismo en logística doméstica.",
+    identityPhrase:
+      "Una noche viva que lee patrones, guarda silencios y prepara salidas antes de que alguien sepa que va a necesitarlas.",
+    narrativeSection: {
+      title: "La sombra que no termina",
+      lead:
+        "Noctalypse camina con una noche viva detrás de él. No para devorar la luz, sino para recordar dónde estuvo, a quién debe proteger y qué verdades quedaron ocultas cuando el mundo decidió mirar hacia otro lado.",
+      paragraphs: [
+        "El Lector de Sombras es un hombre de vacío, memoria y análisis cansado. Observa el peligro como si leyera una estructura rota: señales, grietas, patrones y silencios donde otros solo ven amenaza. Su presencia altera la escena sin levantar la voz, como una puerta que aparece en un muro donde nadie recordaba haber dejado salida.",
+        "En Noct, la oscuridad no es espectáculo. Es lenguaje, defensa y memoria. Su capa de sombras líquidas reacciona como tinta viva; su sombra expresa emociones que su rostro prefiere callar; su Grimorio del Crepúsculo cuelga incompleto a su costado como una verdad que todavía no termina de abrirse.",
+        "Puede parecer distante porque organiza incluso lo imposible: técnicas numeradas, marcas de riesgo, rutas de escape, refugios, anclas, llaves y condiciones de regreso. Pero bajo esa arquitectura de control vive una ternura práctica. Noct cuida preparando comida, sosteniendo cabello ajeno, entregando una bufanda de retorno, prestando un anillo contra el mareo o comprando un cubo imposible para plantar papas y arroz.",
+        "Su historia no se reduce al origen desconocido ni al caos de sus vínculos. Noctalypse es la sombra que aprendió a quedarse. La noche que no pide ser salvada con discursos, pero sigue volviendo con una salida preparada, una técnica registrada, una cena caliente y la extraña esperanza de que todos puedan sentarse a la misma mesa."
+      ]
+    },
+    details: [
+      {
+        title: "La sombra delatora",
+        type: "Secreto pequeño",
+        text:
+          "Noct puede controlar el rostro, la voz y la postura. Su sombra, en cambio, tiene menos disciplina. Puede agitarse, inclinarse, proteger o incluso bailar cuando él permanece inmóvil, revelando una emoción que su boca todavía no decidió admitir."
+      },
+      {
+        title: "Ternura logística",
+        type: "Gesto de cariño",
+        text:
+          "Noctalypse rara vez cuida con declaraciones grandes. Cuida preparando rutas, anclas, comida, barreras y formas de volver. Su cariño suele aparecer como un objeto útil dejado en el momento exacto: una bufanda, un anillo, una sala imposible o una cena que nadie sabía que necesitaba."
+      },
+      {
+        title: "El número y el nombre",
+        type: "Contradicción",
+        text:
+          "Noct numera sus técnicas para contenerlas. El número le permite controlar el riesgo; el nombre le permite sentirlo. Cuando Rubí bautiza una técnica, su aura responde con más fuerza, como si la sombra entendiera mejor aquello que el vínculo se atreve a nombrar."
+      },
+      {
+        title: "Grimorio incompleto",
+        type: "Símbolo",
+        text:
+          "El Grimorio del Crepúsculo no es una verdad cerrada. Solo posee el Atardecer; faltan Amanecer y Anochecer. Por eso pesa como una promesa incompleta: algo que Noct carga, consulta y protege, pero que todavía no revela el ciclo entero."
+      },
+      {
+        title: "La combinación prohibida",
+        type: "Humanidad práctica",
+        text:
+          "Noct puede hablar de vacío, eclipses y técnicas catastróficas con seriedad absoluta, pero su primer sueño culinario para el Cubo Cronoestático fue papas fritas, arroz y huevo frito. La llama como si fuera un hallazgo religioso: la combinación prohibida."
+      },
+      {
+        title: "Peligro contenido",
+        type: "Herida",
+        text:
+          "La Técnica 7 no es un truco ni una amenaza teatral. Es una señal de pérdida de control y riesgo estructural. Noct vive sabiendo que algunas partes de sí mismo deben permanecer numeradas, contenidas y lejos de quienes ama."
+      },
+      {
+        title: "Sospechoso incluso cuidando",
+        type: "Ironía",
+        text:
+          "Noctalypse tiene el talento trágico de parecer culpable incluso cuando está haciendo algo tierno. Daegal llegó a amenazarlo con una cuchilla creyendo que ocultaba algo; Noct solo estaba cuidando a un cervatillo dormido junto al fuego."
+      },
+      {
+        title: "Dos vacas, por supuesto",
+        type: "Ternura absurda",
+        text:
+          "En el Cubo Cronoestático, Noct quiere dos vacas polisabor porque una sola estaría triste. Lo dice con la misma gravedad con la que hablaría de una grieta dimensional. Y precisamente por eso resulta imposible no creerle."
+      }
+    ],
+    bonds: [
+      {
+        name: "Rubí",
+        description:
+          "Rubí fue su primer amor antes de revivirlo y antes de que él perdiera la memoria. Ella representa la llama que le enseñó a arder sin pedirle que dejara de ser sombra. Cuando Rubí nombra sus técnicas, Noct no solo recibe una palabra: recibe vínculo, resonancia y una forma más humana de tocar su propio poder.",
+        href: "/personajes/rubi"
+      },
+      {
+        name: "Yuki",
+        description:
+          "Yuki es una calma que ordena sus pensamientos. Con ella, Noct encuentra estructura, precisión y una intimidad que no depende del caos. La bufanda de retorno que le entrega dice más que una promesa: si su corazón lo necesita, puede volver.",
+        href: "/personajes/yuki"
+      },
+      {
+        name: "Lyzi",
+        description:
+          "Lyzi fue una de las primeras presencias que lo vio cuando aún era anomalía sin nombre. Le ofreció lenguaje, cuidado y reconocimiento. Entre ambos existe una ternura antigua, suspendida, hecha de memoria, estrellas y cosas que nunca terminaron de decirse.",
+        href: "/personajes/lyzi"
+      },
+      {
+        name: "Tenebrys",
+        description:
+          "Tenebrys representa el borde peligroso de aquello que Noct contiene. Su presencia vuelve más densa la sombra, más delicado el control y más urgente la necesidad de que Noctalypse siga siendo algo más que un recipiente de oscuridad.",
+        href: ""
+      },
+      {
+        name: "Fulgor",
+        description:
+          "Fulgor reconoce a Noctalypse como un digno amigo. Esa validación pesa porque no cualquiera cercano a Rubí recibe el respeto de un dragón elemental de fuego. En Noct, Fulgor percibe sombra, sí, pero también cuidado.",
+        href: "/personajes/fulgor"
+      },
+      {
+        name: "Valthor",
+        description:
+          "Valthor encuentra entrañable a Noctalypse. Esa mirada permite ver a Noct desde un ángulo menos amenazante: extraño, sombrío y cargado de anomalías, pero también profundamente digno de afecto.",
+        href: "/personajes/valthor"
+      },
+      {
+        name: "Kaelión",
+        description:
+          "Kaelión no termina de aprobar a Noctalypse. La tensión tiene algo de protección, de choque generacional y de sospecha comprensible ante el tipo sombrío que camina demasiado cerca de su hija.",
+        href: ""
+      },
+      {
+        name: "Daegal",
+        description:
+          "Daegal lo encontró junto al fuego y lo amenazó creyendo que ocultaba algo. La escena terminó revelando una verdad muy Noct: a veces parece una amenaza porque la sombra lo acompaña, aunque en realidad esté cuidando algo pequeño.",
+        href: ""
+      }
+    ],
+    relatedStories: [
+      {
+        title: "Grimorio del Crepúsculo",
+        type: "Artefacto / símbolo",
+        description:
+          "El artefacto principal de Noctalypse: un grimorio incompleto, encadenado a su pierna y abierto solo con su llave. Contiene Atardecer; todavía faltan Amanecer y Anochecer.",
+        href: ""
+      },
+      {
+        title: "Técnica 7.1 — Llave Dimensional",
+        type: "Técnica / vínculo",
+        description:
+          "La versión beta y controlada de la Técnica 7. Rubí le dio su nombre, y al hacerlo aumentó su eficacia por resonancia emocional. El número contiene; el nombre vincula.",
+        href: ""
+      },
+      {
+        title: "Técnica 7",
+        type: "Riesgo mayor",
+        description:
+          "Una técnica prohibida o catastrófica que aparece cuando Noct pierde el control. Su recuerdo arrastra eclipse, pérdida de lenguaje y alteración profunda de la realidad.",
+        href: ""
+      },
+      {
+        title: "Anillo y Beso",
+        type: "Escena emocional",
+        description:
+          "La escena en que Noct presta a Lyzi el Anillo de Vitalidad de Blas para aliviar su mareo. El gesto parece una propuesta sin serlo y deja suspendida una ternura difícil de resolver.",
+        href: ""
+      },
+      {
+        title: "Sala Modular Crono-Estática",
+        type: "Artefacto / refugio",
+        description:
+          "El Cubo Cronoestático comprado por Noct para crear una huerta portátil: papas, arroz, ajíes, abejas quimera, vacas polisabor y una primera cena oficial con los cuatro.",
+        href: ""
+      },
+      {
+        title: "Ritual de Cuervo de Asalto",
+        type: "Invocación",
+        description:
+          "Un ritual extraño, solemne y teatral donde Noct invoca un cuervo de asalto mediante cabello propio, fuego y una pluma de cuervo. Oscuro, preciso y muy suyo.",
+        href: ""
+      },
+      {
+        title: "Patalicio",
+        type: "Invocación absurda",
+        description:
+          "Un ornitorrinco cojo conjurado con aura: anomalía menor, apoyo emocional absurdo y prueba de que incluso el vacío puede tener un sentido del humor cuestionable.",
+        href: ""
+      },
+      {
+        title: "El núcleo con Rubí, Yuki y Lyzi",
+        type: "Vínculo central",
+        description:
+          "La historia emocional de Noctalypse atraviesa fuego, hielo y estrella: Rubí lo nombra, Yuki lo ancla y Lyzi lo recuerda desde antes de que el mundo supiera cómo llamarlo.",
+        href: ""
+      }
+    ],
+    archive: {
+      fullName: "Noctalypse",
+      commonName: "Noct",
+      apparentAge: "Aparenta unos 34 años",
+      gender: "Masculino",
+      race: "Sin clasificar",
+      originRegion: "Desconocida",
+      elementPath: "Vacío",
+      professionRole:
+        "Erudito oscuro, lector de patrones, contenedor de anomalías, estratega de sombra y protector silencioso del grupo protagonista.",
+      masteryLevel: "Adeptus / Avanzado.",
+      identitySummary:
+        "Noctalypse es una figura de sombra viva, análisis cansado y ternura difícil de nombrar. Su presencia se siente como una noche que aprendió a caminar junto a otros. La oscuridad no lo acompaña para volverlo amenaza vacía, sino porque algo en él está conectado con el vacío, los umbrales y aquello que queda fuera del lenguaje común.",
+      designCanon:
+        "Noctalypse debe sentirse como un hombre adulto que camina con una noche viva detrás de él. Alto, delgado y elegante, de rostro limpio, mirada violeta profunda y cansancio analítico, su atractivo nace de presencia, silencio, sombra y humanidad persistente. Su cabello negro es corto, desordenado y ligeramente ondulado; en sueños prolongados puede crecer hasta los hombros y volverse más rizado y necio. Viste como aventurero oscuro: abrigo largo, ropa negra funcional, tres cinturones tipo asterisco, hebillas, pociones sospechosas y el Grimorio del Crepúsculo encadenado al costado de la pierna. Su capa de sombras líquidas tiene capucha y se mueve como tinta viva: elegante cerca del cuello, gastada hacia las pantorrillas, capaz de absorber proyectiles como piedras entrando al agua nocturna. Su sombra parece tener vida propia y expresa aquello que Noct no dice. Una cicatriz solar tribal en el hombro guarda una memoria dorada y dolorosa. Todo en él debe decir vacío elegante, sombra viva, análisis cansado, ternura práctica, grimorio incompleto y vínculo que lo vuelve más fuerte.",
+      visualNotes:
+        "Las restricciones técnicas de canon visual, prompts negativos y advertencias de consistencia quedan reservadas para producción interna, model sheets y prompts de imagen. En la ficha pública, el canon visual debe aparecer como atmósfera narrativa, no como checklist técnico."
+    },
     visualCanon: ["Contraluz extremo", "Formas ceremoniales", "Ausencia como elemento visual"]  },
   {
     slug: "rubi",
