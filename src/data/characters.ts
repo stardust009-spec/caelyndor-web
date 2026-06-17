@@ -1292,6 +1292,174 @@ export const characters: Character[] = [
     accent: "#9ccce8",
     image: assetImage("aria_canon_portrait.png"),
     description: "Su presencia parece ligera hasta que el aire alrededor decide obedecerla.",
+    story:
+      "Aria nació vinculada a las cortes de sombra del Continente Oscuro, entre nobleza vampírica y decadencia elegante. Ella y su hermano gemelo Adagio fueron abandonados tras la caída de sus padres y recogidos por Velamentum en una noche sin luna. No fueron salvados por amor: fueron elegidos por utilidad. La sociedad los convirtió en Máscaras. A Adagio le dieron canto, culpa y tiempo roto; a Aria, danza, deseo y control del pulso ajeno. Fue entrenada para seducir, distraer y eliminar, y su danza llegó a ser temida tanto en campos de batalla como en salones nobles. Aprendió a interpretar antes que sentir, que una emoción útil vale más que una verdadera, y que la belleza puede ser una jaula con perfume.",
+    personality:
+      "Aria es elegante, coqueta, perceptiva, teatral y calculadora. Cuando entra a una sala, no pregunta si puede ocupar el centro: lo vuelve inevitable. Su intensidad existe, pero está coreografiada; incluso sus arrebatos tienen forma estética. Tiene humor sensual, crueldad refinada y una capacidad peligrosa para fingir ligereza mientras examina a alguien por dentro. No debe leerse como criatura vacía: fue formada para convertir su existencia en máscara, y su arco más interesante nace cuando algo hace que esa máscara tiemble.",
+    identityPhrase:
+      "La Rosa del Viento: bailarina vampírica que aprendió a hacer latir corazones ajenos porque el suyo dejó de sonar, y que teme el único compás que no puede coreografiar.",
+    narrativeSection: {
+      title: "La máscara que sonríe para no desaparecer",
+      lead:
+        "Aria Ventoleve de Sangreal no baila para acompañar la música. Baila para que el mundo no olvide que existe. Cada giro es una pregunta disfrazada de seducción: ¿alguien latirá por mí esta noche?",
+      paragraphs: [
+        "Aria es la Máscara Cómica de un teatro partido en dos. Donde su hermano Adagio canta hacia el pasado, ella baila sobre el impulso del presente. Velamentum no la crió desde el amor, sino desde la utilidad: le enseñó a interpretar antes que sentir, a convertir cada emoción en herramienta y cada deseo ajeno en ruta de entrada.",
+        "Su don no nace de ser hermosa, sino de entender cómo se comporta un cuerpo cuando quiere algo, cuando teme perderlo o cuando cree haber hallado una musa. No rompe la voluntad de nadie por la fuerza; la inclina, la seduce, la convence de participar en su propia rendición. Esa diferencia es el centro de su arte y de su crueldad.",
+        "Bajo el carmesí, el perfume y la sonrisa de promesa peligrosa, hay una criatura sin pulso que aprendió a robar el de los demás solo para sentir, un rato, que sigue aquí. Cuando era humana escribía cartas de amor que nunca enviaba. La eternidad le quitó el latido y le dejó el escenario.",
+        "Su tragedia es exacta: domina la entrega ajena, pero teme la propia. Sabe hacer que cualquiera baje las armas, hasta el día en que alguien la haga sentir algo que no pueda clasificar como deseo inducido. Entonces la que baja las armas es ella, y la rosa que lo lee todo se queda, por una vez, sin saber qué decir."
+      ]
+    },
+    details: [
+      {
+        title: "La Rosa del Viento",
+        type: "Título núcleo",
+        text:
+          "Aria domina la Senda del Aire como extensión de su danza. El viento no la mueve: la obedece. Dispersa perfume, sostiene giros imposibles y convierte la atmósfera de una sala entera en campo de control emocional. Lo que parece calor, aroma o ambiente es, en realidad, coreografía."
+      },
+      {
+        title: "El Corazón de Títeres",
+        type: "Habilidad única",
+        text:
+          "Su técnica más temida. A partir de una herida elegida brota un látigo carmesí con una rosa viva en la punta, cargada de feromonas de su aura. No destruye el libre albedrío: seduce la voluntad hasta que la víctima cree entregarse por elección. Puede inducir deseo, empatía, rivalidad o devoción, pero se rompe ante un golpe emocional auténtico."
+      },
+      {
+        title: "La rosa que lee el destino",
+        type: "Símbolo",
+        text:
+          "La rosa en la punta de su látigo cambia de color según lo que percibe: carmesí de pasión, violeta de cautela, gris de indiferencia. Solo una vez por persona puede tornarse prismática, multicolor: la señal de alguien capaz de despertar amor real en ella. Si ocurre, las espinas se retraen y Aria queda en shock. No puede dañar a quien su propia rosa eligió."
+      },
+      {
+        title: "El corazón que no late",
+        type: "Herida",
+        text:
+          "Bajo su piel pálida no hay pulso. Aria perdió su latido al volverse eterna y aprendió que la gente no se enamora del silencio. Toda su seducción nace de esa ausencia: hace latir a otros porque ella ya no puede hacerlo por sí misma."
+      },
+      {
+        title: "El sello de Velamentum",
+        type: "Marca de origen",
+        text:
+          "Una espiral floral rúnica sobre su omóplato derecho. No es adorno: es la prueba de que Aria fue formada, no criada. Velamentum la convirtió en Máscara, y esa marca recuerda que su teatralidad nació como método de una secta antes que como expresión propia."
+      },
+      {
+        title: "Ternura burlona con Adagio",
+        type: "Vínculo",
+        text:
+          "Con su hermano gemelo, Aria baja apenas la máscara. Entre ambos existe complicidad, ironía cruel y una dependencia dramática que ninguno puede separar del todo de Velamentum. Él arrastra la memoria; ella borra el pasado con éxtasis. Son dos mitades de una misma educación ritual."
+      },
+      {
+        title: "El respeto como grieta",
+        type: "Humanidad",
+        text:
+          "Aria sabe invadir el espacio emocional ajeno, pero también sabe cuándo no hacerlo. Cuando reconoce que alguien no quiere ser forzado y decide no forzarlo, no está claro si es una forma más sofisticada de control o una grieta de empatía real. Esa ambigüedad es lo más humano que tiene."
+      },
+      {
+        title: "Quién es cuando nadie mira",
+        type: "Arco interno",
+        text:
+          "Su arco más potente no consiste en dejar de seducir, sino en descubrir qué queda de ella cuando el público se va, nadie está encantado y nadie baila por efecto de su técnica. En el teatro vacío, después de la función, vive su pregunta más peligrosa: quién es Aria cuando nadie late por ella."
+      }
+    ],
+    bonds: [
+      {
+        name: "Adagio",
+        description:
+          "Hermano gemelo y contraparte teatral. Aria es la Máscara Cómica; Adagio, la Trágica. Ella baila sobre el impulso; él canta hacia el pasado. Ella provoca deseo; él evoca arrepentimiento. No son solo familia: son dos rostros de una misma estructura dramática esculpida por Velamentum, unidos por una memoria compartida que ninguno puede soltar.",
+        href: "/personajes/adagio-ventoleve"
+      },
+      {
+        name: "Velamentum",
+        description:
+          "La sociedad secreta de vampiros que recogió a los gemelos tras la caída de sus padres y los convirtió en Máscaras rituales. No fue hogar, sino institución: les enseñó a interpretar antes que sentir. Es el origen de Aria, su herida formativa y la fuente de su teatralidad convertida en arma.",
+        href: ""
+      },
+      {
+        name: "Rubí",
+        description:
+          "Rivalidad exquisita. Rubí es fuego directo; Aria, deseo coreografiado. Rubí golpea antes de fingir; Aria finge antes de golpear. Rubí no confía en ella porque detecta el peligro tras su belleza, y a Aria le incomoda que Rubí sea demasiado auténtica para manipularla con facilidad.",
+        href: "/personajes/rubi"
+      },
+      {
+        name: "Noctalypse",
+        description:
+          "Un objetivo extraño para Aria: silencioso, incómodo con la exposición, con una sombra viva que reacciona donde él se contiene. En El Teatro del Orgullo, Aria reconoce que él no disfruta el juego de máscaras y decide no forzarlo. Tal vez sea una lectura más fina de control, o tal vez una rara muestra de respeto genuino.",
+        href: "/personajes/noctalypse"
+      },
+      {
+        name: "Lyzi",
+        description:
+          "Lyzi mira a Aria sin caer en su encanto y la lee como lo que es: una flor que sospecha de la primavera porque teme que esta vez no sea truco suyo. Su mirada espiritual reconoce la herida bajo la máscara sin juzgarla ni rendirse ante ella.",
+        href: "/personajes/lyzi"
+      },
+      {
+        name: "Yuki",
+        description:
+          "Donde Aria manipula el deseo, Yuki ofrece una vulnerabilidad que no puede clasificarse como estímulo inducido. Yuki entiende que el verdadero punto débil de Aria no es físico sino emocional: una respuesta auténtica que su técnica no logre catalogar como deseo provocado.",
+        href: "/personajes/yuki"
+      }
+    ],
+    relatedStories: [
+      {
+        title: "El Teatro del Orgullo",
+        type: "Obra principal",
+        description:
+          "La función donde Aria entra en escena junto a Adagio. Su monólogo de la Máscara Cómica —danza que el público confunde con arte sin saber que presencia dolor— fija su tragedia central: sonreír hasta que el alma se parte mientras esparce rosas para poder desangrarse.",
+        href: ""
+      },
+      {
+        title: "La Rosa y el Ruiseñor",
+        type: "Obra de origen",
+        description:
+          "La novela que profundiza el origen de los gemelos: dos niños abandonados tras la caída de sus padres, recogidos por Velamentum en una noche sin luna. No fueron salvados por amor, sino elegidos por utilidad.",
+        href: ""
+      },
+      {
+        title: "Las Máscaras de Teatro",
+        type: "Dualidad",
+        description:
+          "La estructura dramática que une y separa a Aria y Adagio. Comedia y tragedia, impulso y memoria, presente y pasado. Aria no existe del todo aislada de su hermano: aunque aparezca sola, su sombra dramática sigue ligada a él.",
+        href: ""
+      },
+      {
+        title: "La rosa prismática",
+        type: "Punto de quiebre",
+        description:
+          "El fenómeno que puede traicionar a Aria con una verdad. Su rosa lee a todos, excepto el momento exacto en que señala a alguien capaz de despertar en ella un amor que no puede coreografiar.",
+        href: ""
+      },
+      {
+        title: "La Danza Carmesí del Reposo Invertido",
+        type: "Ritual",
+        description:
+          "El mecanismo de recuperación tras agotar su don. Requiere un lazo de deseo y entrega mutuos, nunca forzado ni vacío. Cada conexión significativa deja una flor de sangre en su espalda: un archivo íntimo de vínculos, hambre y supervivencia.",
+        href: ""
+      },
+      {
+        title: "El nombre que el mundo teme",
+        type: "Mito popular",
+        description:
+          "Aria existe también como leyenda cantada e invocada. Algunos la recuerdan como diosa vestida de mujer; otros, como maldición con perfume de luna. Antes de verla, el mundo ya reacciona a su nombre.",
+        href: ""
+      }
+    ],
+    archive: {
+      fullName: "Aria Ventoleve de Sangreal",
+      commonName: "Aria",
+      apparentAge: "Adulta joven, entre 25 y 30 años visuales; edad real entre 150 y 220 años",
+      gender: "Femenino",
+      race: "Vampira",
+      originRegion: "Continente Oscuro, cortes de sombra vampíricas",
+      elementPath: "Aire",
+      professionRole:
+        "Bailarina ritual, artista letal, manipuladora emocional y figura de disrupción escénica. Máscara Cómica del teatro vampírico de Velamentum.",
+      masteryLevel:
+        "Nivel 5 — Maestra / Sabia. Dominio extremo del control corporal, la lectura emocional y la presencia escénica como arma. Su poder no nace de la fuerza bruta, sino de la capacidad de convertir la reacción ajena en recurso.",
+      identitySummary:
+        "Aria Ventoleve de Sangreal es una vampira bailarina formada por Velamentum para convertir el arte en dominio. No pelea como guerrera ni como hechicera convencional: pelea con presencia, ritmo, perfume, mirada y compás. Su danza no acompaña la batalla, la reescribe. Detrás de su sonrisa encantadora hay cálculo, disciplina cruel y una comprensión profunda de lo fácil que es confundir libertad con entrega cuando alguien sabe mover el corazón ajeno.",
+      designCanon:
+        "Aria debe sentirse como una amenaza envuelta en belleza: vampira adulta, elegante, peligrosa y escénica, donde bailarina ritual, cortesana vampírica y presencia teatral se funden en una sola figura. Cabello rubio dorado como miel bajo la luna, recogido en dos coletas elevadas que no buscan inocencia sino teatralidad calculada. Ojos rojo vino, profundos, como sangre vista a través de cristal. Piel pálida de subtono marfil-rosado, aterciopelada, capaz de exhalar un leve vapor escarlata al activar su don. Su vestuario es de escena: carmesí profundo y bordados dorados, telas que siguen el movimiento del cuerpo, pies a menudo descalzos marcando el compás directo contra el mundo. Todo en ella comunica movimiento incluso cuando está quieta, como si el siguiente paso ya estuviera escrito en el aire. No debe reducirse a vampira sensual genérica, súcubo ni femme fatale plana: es teatro convertido en arma, una rosa que sabe exactamente dónde clavar la espina.",
+      visualNotes:
+        "Las especificaciones técnicas de canon visual, prompts y restricciones de consistencia quedan reservadas para producción interna, model sheets y generación de imágenes. En la ficha pública, el canon visual aparece como atmósfera narrativa, no como checklist técnico."
+    },
     visualCanon: ["Lineas livianas", "Azules aereos", "Gestualidad fina y distante"]  },
   {
     slug: "adagio-ventoleve",
