@@ -1470,6 +1470,180 @@ export const characters: Character[] = [
     accent: "#7fb4c8",
     image: assetImage("adagio_canon_portrait.png"),
     description: "Donde otros se precipitan, Adagio mide el pulso exacto antes de dejar caer la respuesta.",
+    story:
+      "Adagio y su hermana gemela Aria nacieron en las cortes sombrías del Continente Oscuro y fueron abandonados tras la caída de sus padres. Velamentum los recogió en una noche sin luna y los convirtió en Máscaras rituales. A Aria le dio danza, deseo y control del pulso ajeno; a Adagio, canto, culpa y tiempo roto. Fue afinado para recordar el dolor de los demás antes de que el mundo lo olvide, y aprendió a embellecer verdades horribles hasta volverlas sospechosas. Su música se volvió capaz de arrastrar memorias, reabrir heridas y, en casos raros, redimir, siempre a un costo que cobra sobre su propia existencia.",
+    personality:
+      "Adagio es melancólico, teatral, irónico, sensible y calculador. Habla como si cada frase hubiera sido ensayada frente a un espejo roto, no por falsedad, sino porque la verdad desnuda lo deja demasiado expuesto. Ama provocar reacciones desde la incomodidad elegante. Tiene una ternura torcida: puede salvar, pero suele hacerlo como quien corrige una partitura ajena sin pedir permiso. No es cruel por placer, aunque puede causar daño real; su error nace de creer que una emoción insoportable debe editarse antes de destruir a quien la siente.",
+    identityPhrase:
+      "El Verso que Envenena: bardo vampírico que convierte el dolor en música para que el mundo no olvide, y que puede robar el tiempo a cambio de su propia existencia.",
+    narrativeSection: {
+      title: "Una segunda oportunidad que cobra con memoria",
+      lead:
+        "Adagio Ventoleve de Sangreal no es una canción triste. Es una herida afinada que aprendió a vestirse de estrategia. Su música no consuela: recuerda, desgarra, reabre y, en casos raros, redime.",
+      paragraphs: [
+        "Adagio es la Máscara Trágica de un teatro partido en dos. Donde su hermana Aria baila sobre el impulso del presente, él canta hacia el pasado. Velamentum no lo crió desde el amor, sino desde la utilidad: lo afinó para recordar el dolor ajeno, no para recibir ternura. Su elegancia tiene función, su poesía tiene precio, y su sonrisa precisa esconde una tristeza tan antigua que aprendió a parecer cálculo.",
+        "No entra en una escena con violencia: la inclina, la desacompasa, la vuelve vulnerable a una nota. Su combate no ocurre en el centro físico del campo, sino en el ritmo, la memoria y la percepción. Cambia quién llega primero, quién recuerda tarde, quién actúa antes de pensar. Es soporte de altísimo nivel, pero nunca pasivo: su música decide el orden del mundo mientras suena.",
+        "Su defecto más bello y más grave es creer que sabe cuándo salvar a alguien de su propio dolor. Adagio puede amar desde la intervención, pero no siempre desde el consentimiento. Su pregunta central atraviesa todo lo que toca: cuánto vale evitar una herida si para hacerlo debes robarle a alguien el derecho a sentirla.",
+        "Bajo las capas de estilo, ironía y voz de terciopelo hay culpa, nostalgia y un miedo profundo a ser amado, porque fue afinado para recordar dolor y no para recibir afecto. Su mejor versión aparece cuando hace algo objetivamente problemático por una razón emocionalmente comprensible. Ahí, entre la blasfemia y la ternura, Adagio respira."
+      ]
+    },
+    details: [
+      {
+        title: "El Verso que Envenena",
+        type: "Título núcleo",
+        text:
+          "Adagio hiere con la palabra antes que con cualquier arma. Una frase dicha con la entonación exacta puede obligar a alguien a mirar una verdad que estaba evitando. Su poesía puede ser caricia, excusa o cuchillo, y muchas veces las tres a la vez."
+      },
+      {
+        title: "El Verso Inverso",
+        type: "Técnica prohibida",
+        text:
+          "El canto que duerme al tiempo. Recitando una invocación al revés, ligada al cuadrado SATOR tatuado en su espalda, Adagio puede retroceder el flujo temporal unos segundos en un radio reducido. No restaura energía: revierte posiciones y acciones. Su costo no es cansancio, sino fractura: desancla su alma del presente y erosiona su existencia real."
+      },
+      {
+        title: "El Poem of Bragi",
+        type: "Técnica de soporte",
+        text:
+          "Ejecutado con violín y partitura emocional, distorsiona el orden causa-efecto para sus aliados: el atacante sincronizado, casi siempre Aria, actúa antes de que el enemigo perciba el movimiento. Mientras dura la melodía, Adagio queda completamente vulnerable, incapaz de defenderse o moverse. Si lo interrumpen, todo el edificio musical se derrumba sobre él."
+      },
+      {
+        title: "Los ojos que cantan al revés",
+        type: "Señal visual",
+        text:
+          "Adagio tiene heterocromía vampírica inestable: ojo izquierdo verde esmeralda, derecho rojo sangre antigua. Tras usar el Verso Inverso, los colores se invierten. El verde aparece en el lado derecho como huella delatora de que manipuló el tiempo recientemente. No es adorno: es evidencia."
+      },
+      {
+        title: "La Canción al Silencio",
+        type: "Restauración trágica",
+        text:
+          "Su forma más dolorosa de sanar. Adagio compone y canta completamente solo, donde nadie pueda oírlo. El mundo absorbe la canción y restaura parte de su alma, pero el recuerdo que la inspiró desaparece para siempre. Sanar, para él, siempre cuesta una memoria."
+      },
+      {
+        title: "El anillo que brilla por ella",
+        type: "Vínculo",
+        text:
+          "Adagio porta anillos lunares con nombres grabados. Uno se llama Rubí y brilla cuando piensa en ella. Para un ser afinado para recordar el pasado, ese resplandor señala algo raro y peligroso: la posibilidad de un presente que aún no ha perdido."
+      },
+      {
+        title: "La máscara que nace de la utilidad",
+        type: "Herida formativa",
+        text:
+          "Velamentum no le enseñó a sentir, sino a interpretar. Su teatralidad, su sarcasmo elegante y su distancia medida nacieron como método de una secta, no como cuidado. Habla como si cada frase hubiera sido ensayada frente a un espejo roto, porque la verdad desnuda lo deja demasiado expuesto."
+      },
+      {
+        title: "El espejo ético",
+        type: "Función narrativa",
+        text:
+          "Adagio no es solo seductor ni obstáculo romántico. Plantea al corazón de Caelyndor una pregunta incómoda: ¿salvar a alguien justifica tocar su memoria sin permiso? Su tragedia no es perder, sino olvidar por qué algo dolió."
+      }
+    ],
+    bonds: [
+      {
+        name: "Aria",
+        description:
+          "Hermana gemela, reflejo y contraparte. Ella es la Máscara Cómica; él, la Trágica. Aria baila sobre impulsos; Adagio canta al pasado. Ella domina a través del placer y la exaltación; él hiere con memoria y posibilidad de redención. No fueron criados, fueron esculpidos por Velamentum, y su vínculo mezcla ternura burlona, dependencia ritual e ironía cruel que sobrevive bajo cualquier máscara.",
+        href: "/personajes/aria-ventoleve"
+      },
+      {
+        name: "Velamentum",
+        description:
+          "La sociedad secreta vampírica que lo moldeó. Para Adagio no fue hogar amoroso, sino una institución que enseña a interpretar antes que sentir y a convertir la sensibilidad en arma. Su máscara nace de utilidad, no de cuidado.",
+        href: ""
+      },
+      {
+        name: "Rubí",
+        description:
+          "Fascinación y conflicto ético. Adagio pone su música sobre Rubí no como objetivo bélico, sino emocional: ella representa algo raro para él, el presente. Cuando Rubí calienta con su fuego un fragmento de su aura rota, una parte del alma de Adagio deja de reflejar solo el pasado. Ella no cura lo que él perdió, pero puede entibiar su futuro.",
+        href: "/personajes/rubi"
+      },
+      {
+        name: "Noctalypse",
+        description:
+          "Rival emocional indirecto. Adagio tensiona el vínculo entre Rubí y Noctalypse no solo por coqueteo, sino porque obliga a todos a mirar lo que sienten, lo que callan y lo que podrían perder. Funciona como catalizador de orgullo, deseo y verdad más que como simple tercero romántico.",
+        href: "/personajes/noctalypse"
+      },
+      {
+        name: "Yuki",
+        description:
+          "Yuki comprendería de inmediato el verdadero peligro del Verso Inverso: no que retroceda el tiempo, sino que desancle el alma del presente. No lo juzgaría en voz alta; observaría, calcularía el daño y guardaría silencio hasta que hablar fuera indispensable.",
+        href: "/personajes/yuki"
+      },
+      {
+        name: "Lyzi",
+        description:
+          "Lyzi percibiría en él el eco de alguien que quiere acompañar, pero no sabe hacerlo sin intervenir. Para ella, Adagio es una melodía con miedo a quedarse quieta. Entendería su tristeza, pero jamás justificaría el robo del recuerdo ajeno.",
+        href: "/personajes/lyzi"
+      },
+      {
+        name: "Elarion",
+        description:
+          "Conoce el costo real del Verso Inverso y puede restaurar parcialmente los hilos temporales desgarrados mediante un ritual de sueño. Es una figura clave para cualquier arco de desgaste, límite o cura del don más peligroso de Adagio.",
+        href: ""
+      }
+    ],
+    relatedStories: [
+      {
+        title: "El Teatro del Orgullo",
+        type: "Obra principal",
+        description:
+          "La función donde Adagio aparece junto a Aria. Allí define su propia técnica como una blasfemia temporal: un canto que arrastra el mundo unos segundos al pasado. También decide cantar la Canción al Silencio y pedirle a Aria que sea la única que recuerde por qué lo hizo.",
+        href: ""
+      },
+      {
+        title: "La Rosa y el Ruiseñor",
+        type: "Obra de origen",
+        description:
+          "La novela que profundiza el origen de los gemelos: dos niños abandonados tras la caída de sus padres, recogidos por Velamentum en una noche sin luna. A Adagio le dieron canto, culpa y tiempo roto.",
+        href: ""
+      },
+      {
+        title: "Las Máscaras de Teatro",
+        type: "Dualidad",
+        description:
+          "La estructura dramática que une y separa a los gemelos. Tragedia y comedia, memoria e impulso, pasado y presente. Donde Aria borra el pasado con éxtasis, Adagio lo arrastra con cada nota.",
+        href: ""
+      },
+      {
+        title: "El precio del tiempo robado",
+        type: "Costo del don",
+        description:
+          "La dimensión más peligrosa de Adagio: cada uso del Verso Inverso fractura su aura, produce vértigo existencial y acorta su existencia. Aunque es vampiro, abusar de su propio don puede matarlo lentamente.",
+        href: ""
+      },
+      {
+        title: "La Canción al Silencio",
+        type: "Sacrificio",
+        description:
+          "El ritual donde Adagio sana parte de su alma a cambio de perder para siempre el recuerdo que inspiró la canción. La restauración nunca llega sin pérdida.",
+        href: ""
+      },
+      {
+        title: "El nombre cantado en la noche",
+        type: "Mito popular",
+        description:
+          "Adagio existe también como leyenda: el Eco de Medianoche, el Músico Enmascarado, el Ruiseñor. Su presencia genera un leve eco incluso antes de que hable, como si el mundo esperara su frase.",
+        href: ""
+      }
+    ],
+    archive: {
+      fullName: "Adagio Ventoleve de Sangreal",
+      commonName: "Adagio",
+      apparentAge: "Aproximadamente 25 años visuales; edad real entre 150 y 220 años",
+      gender: "Masculino",
+      race: "Vampiro",
+      originRegion: "Continente Oscuro, asociado a Umbra Nox y las cortes sombrías",
+      elementPath: "Tierra (entendida como estabilidad, memoria, resonancia y anclaje temporal)",
+      professionRole:
+        "Bardo, músico ritual y consejero de cortes sombrías. Soporte y disruptor emocional. Máscara Trágica del teatro vampírico de Velamentum.",
+      masteryLevel:
+        "Nivel 5 — Maestro / Sabio. Domina la persuasión emocional, la manipulación del ritmo de batalla y la distorsión temporal limitada. Su fuerza nace de la vulnerabilidad ritual: si lo protegen, vuelve imposible a su aliado; si lo alcanzan, todo el edificio musical se derrumba.",
+      identitySummary:
+        "Adagio Ventoleve de Sangreal es un vampiro bardo del Continente Oscuro, moldeado por Velamentum para convertir la música, el dolor y la memoria en herramientas de poder. No es un seductor vampírico común ni un villano elegante de superficie: es una herida afinada. Su música no solo encanta, recuerda y desgarra. Su elegancia tiene función, su poesía tiene precio y su sensibilidad no es adorno, sino núcleo.",
+      designCanon:
+        "Adagio debe sentirse como un ruiseñor vampírico vestido de noche, tocando la memoria como si fuera una herida con cuerdas. Hombre joven adulto de belleza refinada, casi andrógina en ciertos ángulos, con silueta alta y fina de bailarín o violinista. Cabello rubio pálido, casi blanco dorado, largo y suelto, con una mecha rebelde que cubre parte de su ojo derecho como símbolo de su máscara trágica. Heterocromía inestable: verde esmeralda y rojo sangre antigua, capaz de invertirse tras manipular el tiempo. Piel pálida con leve brillo lunar. Traje de terciopelo negro azulado, entallado con precisión, con símbolos lunares, notas musicales invertidas, guante de canalización en la mano derecha y la insignia de una máscara trágica en la solapa. Debe comunicar belleza peligrosa, melancolía ritual y control del ritmo, nunca un vampiro monstruoso ni un galán de catálogo.",
+      visualNotes:
+        "Las especificaciones técnicas de canon visual, prompts y reglas de consistencia quedan reservadas para producción interna, model sheets y generación de imágenes. En la ficha pública, el canon visual aparece como atmósfera narrativa, no como checklist técnico. La inversión de ojos se menciona como señal narrativa, no como instrucción de render."
+    },
     visualCanon: ["Postura serena", "Acentos frios", "Diseño sobrio con ritmo visual"]  },
   {
     slug: "khaal-zar-omunyek",
