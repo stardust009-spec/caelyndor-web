@@ -1242,12 +1242,180 @@ export const characters: Character[] = [
   {
     slug: "aelwyn-solrenhal",
     name: "Aelwyn Solrenhal",
-    title: "El heredero de la luz cansada",
+    title: "La Última Lumenari",
     role: "Legado, duda y resplandor fracturado",
     affinity: "Solar / Plata / Herencia",
     accent: "#d8c88f",
     image: assetImage("aelwyn_canon_portrait.png"),
     description: "Carga una luz que no siempre salva, pero que insiste en revelar lo que otros prefieren dejar cubierto.",
+    story:
+      "Aelwyn nació en Artanis, hija de Ser Davoren Solrenhal, caballero desaparecido en la Cruzada del Abismo, y de Elyria, última lumenari conocida, fallecida al sellar una fisura solar. La ausencia paterna, la muerte materna y la rigidez de Artanis forjaron en ella una fe incómoda, sostenida en votos porque casi no quedaba nadie que la sostuviera. Tras enterarse de que su hermana de armas Tysha cayó en una escaramuza ligada a Glaciem, Aelwyn partió con su corcel Eclissio, llevando el broche de su madre, la tablilla de su voto y una carta de Tysha que reveló que su hermana la había protegido por amor, no por deber. Entró a Glaciem con bandera blanca —no como rendición, sino como promesa de no cruzar la espada— y allí descubrió, contra todo lo que le habían enseñado, un reino de estructura, permanencia y hogar. Cuando Mythra atacó una aldea de semihumanos, Aelwyn defendió a los inocentes sin pedir permiso, y ese camino terminó conduciéndola hacia Khaal'Zar Omunyek, que convirtió su dolor en trampa y la reclamó como propiedad dentro de su colección de gladiadores.",
+    personality:
+      "Aelwyn es noble, determinada y profundamente devota, pero no ciega. Su fe es una disciplina corporal, no una postura de templo. Tiene una cortesía natural que no la vuelve dócil: puede desmontar ante un enemigo con respeto y minutos después lanzarse contra una carnicería sin esperar autorización de ningún reino. No le interesa verse heroica, le interesa impedir que el horror continúe. Su dolor es silencioso y contenido, pero esa contención no es frialdad: siente intensamente y su educación le enseñó a convertir el temblor en postura. Su gran tensión es entre el deber impuesto y la libertad moral.",
+    identityPhrase:
+      "La Espina Dorada, paladín sin estandarte: una herida luminosa que eligió seguir protegiendo, y que arde no para lucirse, sino porque si no arde, alguien queda solo.",
+    narrativeSection: {
+      title: "La fe que sigue ardiendo después de perder su altar",
+      lead:
+        "Aelwyn Solrenhal no es una espada santa. Es una mujer que todavía ama el mundo incluso cuando el mundo insiste en arrebatárselo. Su luz no es ingenua: ha visto cuerpos en la nieve, cartas abiertas demasiado tarde y promesas que no alcanzaron a salvar a nadie.",
+      paragraphs: [
+        "Aelwyn fue criada en Artanis, tierra de templos blancos y disciplina sagrada, donde la compasión no se entiende como blandura sino como deber encarnado. Hija de un caballero desaparecido y de la última lumenari conocida, creció sosteniéndose en votos porque casi no quedaba nadie que la sostuviera a ella. Su fe nunca fue cómoda: es una disciplina corporal, un modo de caminar, un modo de sostener la espada incluso cuando la espada no brilla.",
+        "Su arco no trata solo de cumplir una profecía ni de vengar a quienes perdió. Trata de una mujer que descubre que el voto verdadero no está en obedecer una orden sagrada, sino en decidir qué clase de luz quiere ser cuando ya no queda institución, familia ni certeza que la sostenga. No es fanática: fue entrenada para creer, pero conserva la capacidad de juzgar. Su alma solo responde ante aquello que reconoce como justo.",
+        "Su dolor es silencioso. No se rompe de forma teatral: ante una noticia devastadora ordena sus cosas, dobla una capa, camina hacia un santuario y toca el broche de su madre mientras el mundo se vuelve un poco más solo a su alrededor. Esa contención no es frialdad. Aelwyn siente intensamente, pero su educación le enseñó a convertir el temblor en postura.",
+        "Su tragedia no nace de odiar demasiado, sino de amar con una pureza que el mundo no sabe cómo recibir sin ensuciarla. Puede confundir su propia felicidad con una traición al voto o a los muertos. Y su gran pregunta arde bajo la armadura: qué queda de una paladín cuando su espada no brilla, su Orden no alcanza y su corazón quiere algo que no cabe dentro del voto."
+      ]
+    },
+    details: [
+      {
+        title: "La Espina Dorada",
+        type: "Título núcleo",
+        text:
+          "Paladín sin estandarte, portadora del Voto Ígneo. Aelwyn no arde para lucirse: arde porque si no lo hace, alguien queda solo. Su autoridad no nace del rango, sino de una coherencia moral que puede despertar conciencia, calma o temor según la oscuridad de quien la enfrenta."
+      },
+      {
+        title: "El voto como herida elegida",
+        type: "Filosofía",
+        text:
+          "Para Aelwyn, su voto no es una medalla que porta, sino una cicatriz activa que mantiene abierta a propósito: cerrarla significaría olvidar a quienes la formaron, la amaron o murieron antes de tiempo. No es martirio vacío, es memoria convertida en conducta. Su arco pregunta si una herida elegida sigue siendo libertad o puede volverse una prisión dorada."
+      },
+      {
+        title: "Juramento Lúcido",
+        type: "Arma relicaria",
+        text:
+          "Su espada no responde a la fuerza física, sino a la pureza emocional de quien la empuña. Brilla solo cuando Aelwyn combate con intención pura: no inocencia perfecta, sino alineación entre acto, voto y verdad interior. Si pelea movida por odio o deseo de castigo, la hoja se apaga, y entonces debe combatir con técnica y cuerpo, no con milagro."
+      },
+      {
+        title: "Eclissio",
+        type: "Vínculo místico",
+        text:
+          "Un corcel solar-espectral de presencia antigua que la eligió por voluntad, no por orden. No la sirve: la acompaña, la corrige, la protege y a veces se burla de ella con una quietud casi piadosa. Reconoce voluntad, no jerarquía, y puede negarse a moverse si percibe que una orden nace de la tensión y no de la claridad."
+      },
+      {
+        title: "Discernimiento de plegaria",
+        type: "Don solar",
+        text:
+          "Aelwyn percibe la intención real detrás de una súplica: la honestidad, el doblez, la manipulación espiritual. No lee la mente ni conoce todos los hechos, solo el peso interno de quien habla. Su sola presencia parece obligar a otros a escuchar su propia conciencia."
+      },
+      {
+        title: "La carta de Tysha",
+        type: "Motor emocional",
+        text:
+          "Una carta sin sello, atada con cinta roja deshilachada, de la hermana de armas que la crió en risa y cicatrices. Revela una verdad que cambió su rumbo: Tysha no actuó por la Orden, sino por Aelwyn, para que ella pudiera seguir siendo luz. Desde entonces Aelwyn no marcha por obediencia, sino por una promesa que nunca escuchó en voz alta."
+      },
+      {
+        title: "La trenza de votos pendientes",
+        type: "Símbolo",
+        text:
+          "Una sola trenza lateral, rematada con hilo rojo y una pequeña gema solar, que representa los votos que aún no ha cumplido. Es recordatorio visible de que su deber no está terminado y de que carga nombres que todavía no ha dejado descansar."
+      },
+      {
+        title: "El sol eclipsado",
+        type: "Marca de nacimiento / profecía",
+        text:
+          "Una marca natural en forma de sol eclipsado en su espalda, que se dice arde cuando su camino profético se altera. Encarna su destino no revelado: la profecía de una flor dorada que crecerá en la tumba de los dioses, y será espada, escudo y cicatriz."
+      }
+    ],
+    bonds: [
+      {
+        name: "Tysha Aerendel",
+        description:
+          "Hermana de armas y vínculo emocional central. No de sangre, pero hermandad real: la que le trenzaba el cabello, la cubría cuando se equivocaba y la conoció antes de que el voto terminara de endurecerla. Su pérdida es la herida que mueve a Aelwyn, y su carta reveló que Tysha la protegió no por deber, sino por amor, para que Aelwyn pudiera seguir siendo luz.",
+        href: ""
+      },
+      {
+        name: "Eclissio",
+        description:
+          "Montura, compañero místico y juez silencioso. La eligió por voluntad y la acompaña con criterio propio: la corrige, la protege, se burla de ella con humor seco y corre antes que nadie cuando el peligro real se acerca. No confirma su rango, confirma su voluntad.",
+        href: ""
+      },
+      {
+        name: "Halrik de Hyldran",
+        description:
+          "El soldado de Glaciem que la recibió con respeto, verdad y abrigo cuando entró con bandera blanca. Le ofreció sopa, establo y tregua en medio del infierno. Su calidez la sorprende porque no sabe si tiene derecho a sentirla: una posibilidad de hogar que no esperaba encontrar en el reino que le enseñaron a temer.",
+        href: "/personajes/halrik"
+      },
+      {
+        name: "Yuki",
+        description:
+          "La Reina de Glaciem, con quien Aelwyn comparte un reconocimiento sobrio: dos mujeres de deber, distintas en forma, similares en peso. En Glaciem, Aelwyn descubre que la frialdad no equivale a crueldad, y que Yuki ha hecho del orden una forma de amar. Una autoridad que no necesita calidez visible para proteger.",
+        href: "/personajes/yuki"
+      },
+      {
+        name: "Elyria",
+        description:
+          "Su madre, la última lumenari conocida, fallecida al sellar una fisura solar. Su legado vive en el broche que Aelwyn lleva sobre el pecho, en la sangre solar que corre por ella y en la tensión permanente entre su humanidad y la luz heredada que no es del todo humana.",
+        href: ""
+      },
+      {
+        name: "Khaal'Zar Omunyek",
+        description:
+          "El antagonista que convierte el dolor de Aelwyn en trampa política y la reclama como propiedad dentro de su colección de gladiadores. No es solo un enemigo físico: es la negación de todo lo que su voto intenta proteger, el poder que transforma a las personas en espectáculo.",
+        href: ""
+      }
+    ],
+    relatedStories: [
+      {
+        title: "La Guerra de los Mitos",
+        type: "Obra principal",
+        description:
+          "La obra donde Aelwyn abandona la senda del juramento heredado y marcha hacia Glaciem siguiendo la promesa ligada a Tysha. Allí defiende a inocentes semihumanos sin pedir permiso, descubre que Glaciem no era el reino sin alma de los rumores, y cae finalmente en la trampa de Mythra.",
+        href: ""
+      },
+      {
+        title: "Origen en Artanis",
+        type: "Trasfondo",
+        description:
+          "La tierra de templos blancos y disciplina sagrada donde Aelwyn creció como hija de un caballero desaparecido y de la última lumenari. Una fe que nunca fue cómoda, forjada en ausencia, pérdida y la rigidez de una orden que creía que la luz bastaba.",
+        href: ""
+      },
+      {
+        title: "La carta de Tysha",
+        type: "Punto de quiebre",
+        description:
+          "La carta que cambió el motor de Aelwyn: descubrir que su hermana de armas la protegió por amor y no por deber. Desde entonces no marcha por obediencia a la Orden, sino por una promesa que nunca escuchó pronunciar en voz alta.",
+        href: ""
+      },
+      {
+        title: "El reconocimiento de Eclissio",
+        type: "Vínculo",
+        description:
+          "El encuentro en un campo de sangre tras una cruzada contra las Sombras Rielantes, donde un corcel solar-espectral camina hacia ella no por obediencia, sino por reconocimiento. Eclissio no confirma su rango: confirma su voluntad.",
+        href: ""
+      },
+      {
+        title: "La masacre de los semihumanos",
+        type: "Acto definitorio",
+        description:
+          "El momento en que Aelwyn presencia la cacería de civiles semihumanos indefensos y actúa sin pedir permiso, sin trazar estrategia, sin consultar protocolo. Baja la visera y desenvaina, porque su voto no reconoce fronteras cuando hay una masacre ante sus ojos.",
+        href: ""
+      },
+      {
+        title: "La caída en la colección de Mythra",
+        type: "Tragedia del arco",
+        description:
+          "El punto donde Aelwyn pasa de paladín sin estandarte a prisionera de un sistema que convierte personas en espectáculo. Su fe será puesta a prueba no en un templo, sino en arena, cadenas y narrativa mitriana.",
+        href: ""
+      }
+    ],
+    archive: {
+      fullName: "Aelwyn Solrenhal",
+      commonName: "Aelwyn",
+      apparentAge: "29 años",
+      gender: "Femenino",
+      race: "Humana nacida de Sangre Solar, híbrida entre humana y lumenari",
+      originRegion: "Artanis",
+      elementPath: "Fe",
+      professionRole:
+        "Paladín Solar y guerrera élite. Portadora del Voto Ígneo, heroína trágica y figura luminosa de sacrificio profetizado.",
+      masteryLevel:
+        "Nivel 3 — Primera Especialización. Su poder se siente más luminoso que explosivo, más ético que destructivo, más ligado a la intención que a la fuerza bruta. Combate con precisión limpia y protectora: no busca espectáculo, busca detener el daño.",
+      identitySummary:
+        "Aelwyn Solrenhal es una paladín nacida entre templos, sol y soledad, criada bajo la disciplina sagrada de Artanis. No es una santa decorativa ni una guerrera luminosa genérica: es una mujer que todavía ama el mundo aunque el mundo insista en arrebatárselo. Su vida está atravesada por votos, pérdida y profecía, y por una pregunta que arde bajo la armadura: qué queda de una persona cuando todo lo que amaba ha sido convertido en misión. Comunica nobleza, fe, ternura contenida y una capacidad feroz de proteger incluso aquello que le enseñaron a destruir.",
+      designCanon:
+        "Aelwyn debe sentirse como una paladín joven entrenada desde la adolescencia, con disciplina real, cansancio sutil y una luz interior que no cancela el dolor: nunca una princesa solar ni una santa angelical sin conflicto. Mujer adulta de 29 años, atlética y elegante, de porte firme pero sereno, con piel clara de matiz cálido que parece reflejar una luz interna muy leve. Ojos azul profundo con un anillo dorado interno —vestigio lumenari— que se intensifica cuando invoca su fe. Cabello dorado claro, casi blanco bajo el sol directo, ondulado, recogido siempre en una sola trenza lateral rematada con hilo rojo y una pequeña gema solar, símbolo de sus votos pendientes. Viste una armadura solar ligera de acero templado, marfil y plata, con emblemas de sol y eclipse, capa marfil perlado que se abre como alas simbólicas sin convertirse en alas reales, y prendas oscuras de combate bajo el metal que evitan que parezca santa de vitral. Porta a Juramento Lúcido, una espada relicaria que solo brilla ante la pureza de intención. Su herencia lumenari se manifiesta como un brillo cálido y solemne, nunca como una divinidad explosiva. Tiene orejas humanas, nunca élficas.",
+      visualNotes:
+        "Las especificaciones técnicas de canon visual, prompts y reglas de consistencia quedan reservadas para producción interna, model sheets y generación de imágenes. En la ficha pública, el canon visual aparece como atmósfera narrativa, no como checklist técnico. El brillo de la sangre solar, la activación del anillo dorado en los ojos y el resplandor de la espada se mencionan como señales narrativas, no como instrucciones de render."
+    },
     visualCanon: ["Marfil y oro viejo", "Simbolos solares sobrios", "Expresion noble sin triunfalismo"]  },
   {
     slug: "temari-calabruna",
