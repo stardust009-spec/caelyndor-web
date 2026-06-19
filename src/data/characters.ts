@@ -1836,6 +1836,166 @@ export const characters: Character[] = [
     description: "Una presencia apenas visible entre cenizas y señales, como una luz violeta que insiste en no apagarse del todo.",
     visualCanon: ["Luz violeta persistente", "Presagio entre cenizas", "Misterio apenas visible"]  },
   {
+    slug: "levia-thanis",
+    name: "Levia Thanis",
+    title: "La Arquera del Hilo Cortado",
+    role: "Precisión, captura y equilibrio",
+    affinity: "VIDA / HILO / CAPTURA",
+    accent: "rgba(176, 58, 58, 0.30)",
+    image: assetImage("levia_canon_portrait.png"),
+    portraitPosition: "50% 18%",
+    portraitScale: 1.08,
+    description: "La mano que Velamentum envía cuando una orden no debe fallar: una ejecutora de precisión absoluta que lee la vida como cartografía de captura.",
+    story:
+      "Levia emerge como figura consolidada de Velamentum antes o durante la búsqueda de Aelwyn. En algún punto de su carrera organiza o toma control de La Casa de las Moiras, transformándola de red de asesinos en herramienta de captura fina para Velamentum. Cuando Xirian fracasa al intentar replicar el poder lumenari en recipientes sacrificables, la encarga traer lumenari vivos. Levia acepta por la causa, no por crueldad. Su cacería es metódica: primero fragmentos, luego rastros, después la fuente. Ese camino la conduce inevitablemente hacia Aelwyn Solrenhal, hija de la última lumenari conocida, estructura estable y objetivo de valor absoluto.",
+    personality:
+      "Calmada, calculadora y profundamente contenida. Su voz es baja, precisa y sin adornos. No amenaza: informa. No presume: enumera condiciones. No disfruta de quebrar a un enemigo: registra si el quiebre era necesario. Su cortesía nace de eficiencia social, no de bondad. Puede moverse en ambientes de poder blando con la misma fluidez con que desaparece en un corredor de servicio. Con aliados es impecable porque un engranaje roto reduce la precisión del mecanismo. Con enemigos no muestra sadismo, lo que puede ser más perturbador que la crueldad abierta.",
+    identityPhrase:
+      "La Arquera del Hilo Cortado: la mano que Velamentum envía cuando una orden no debe fallar, y que no persigue por odio sino por equilibrio — cortando hilos para que el tejido no se rompa.",
+    narrativeSection: {
+      title: "La eficiencia convertida en fe",
+      lead:
+        "Levia Thanis no es una asesina que disfruta del sufrimiento. Es algo más perturbador: una ejecutora de precisión absoluta que entiende cada misión como una operación matemática, donde el exceso es un fallo y la emoción es una debilidad.",
+      paragraphs: [
+        "Levia ocupa el Puesto N°4 de Velamentum no por política ni por ambición visible, sino porque hace el trabajo que otros ensucian con ego, deseo de ascenso o discurso. Su lugar en la jerarquía nació de exactitud, historial impecable y ausencia de necesidad de reconocimiento. Donde Xirian diseña y Davoren justifica, Levia ejecuta. Es el filo silencioso de una causa que no necesita espectáculo para ser cruel.",
+        "Su epíteto no es decorativo. La Arquera del Hilo Cortado se inspira en las Moiras: una vez que apunta, el destino del objetivo queda reducido a una línea tensa entre vida, libertad y captura. Levia no siempre mata. A veces cortar el hilo significa negar una huida, apagar una habilidad, arrebatar un nombre o entregar un cuerpo todavía vivo al laboratorio que lo necesita. La muerte es solo una de las formas del corte.",
+        "Su pertenencia a la Senda de la Vida no es paradoja sino revelación. No usa la vida para sanar: la lee como cartografía. Cada persona es una constelación de puntos vitales sostenidos por un hilo invisible. Quien sabe dónde la vida se sostiene también sabe dónde interrumpirla. Para Levia, la Senda de la Vida no es un don de preservación, sino una ciencia de captura.",
+        "Su mayor amenaza no es la fuerza bruta sino la coherencia. Levia no abandona a sus aliados porque un engranaje roto reduce la precisión del mecanismo. No tortura por placer porque el exceso invalida el resultado. No actúa por odio porque el odio produce error. Esa ausencia de crueldad emocional puede ser más perturbadora que la maldad abierta: para ella, un objetivo no es un objeto de resentimiento, es una ruta que debe ser reducida hasta quedar bajo control."
+      ]
+    },
+    details: [
+      {
+        title: "Percepción Vital",
+        type: "Habilidad central",
+        text:
+          "Levia puede ver los puntos de constelación de una persona: cada cuerpo se organiza ante ella como un mapa de estrellas internas. El punto más brillante no es el mismo en todos — puede estar en el cuello, la muñeca, una cicatriz o incluso una zona vinculada a memoria y aura. Para muerte súbita, ataca ese punto. Para captura, elige los de apagado o suspensión. Por eso sus disparos parecen imposibles de predecir: no sigue anatomía común, sino arquitectura vital individual."
+      },
+      {
+        title: "El ojo modificado por Xirian",
+        type: "Intervención arcana",
+        text:
+          "El parche no oculta una pérdida. Oculta una intervención. Xirian modificó ese ojo para visión nocturna, rastreo de aura, lectura de rastros de olor y seguimiento de huellas mágicas mínimas. Su uso moderado otorga precisión sobrehumana; su uso prolongado provoca migrañas severas, náusea arcana y alteración de su propio flujo mágico. Cuanto más ve, menos puede permitirse sentir."
+      },
+      {
+        title: "Síntesis de toxinas",
+        type: "Senda de la Vida",
+        text:
+          "Como extensión de su vínculo con la Vida, Levia puede sintetizar toxinas a partir de sus propios fluidos: el sudor genera neurotóxicos de contacto, las lágrimas producen efectos emocionales y perceptivos, la sangre genera toxinas sistémicas y letales. Cada toxina es única, difícil de detectar y adaptada al objetivo. Todas tienen costo biológico y mágico."
+      },
+      {
+        title: "La Casa de las Moiras",
+        type: "Afiliación operativa",
+        text:
+          "El gremio de asesinos, capturadores y rastreadores bajo su liderazgo. No funciona como banda caótica sino como una red de ejecución ritualizada especializada en cortar rutas, linajes, nombres y libertades. Bajo su mando dejó de perseguir recompensas comunes para convertirse en herramienta de captura fina de Velamentum: quien falla por negligencia desaparece del tejido."
+      },
+      {
+        title: "Lealtad a la causa, no a la persona",
+        type: "Principio moral",
+        text:
+          "Levia no sirve a Xirian por devoción personal. Sirve a la arquitectura histórica de Velamentum. Si Xirian da una orden coherente con la causa, ejecuta. Si Xirian se convierte en un error que amenaza la causa, no lo odiará: lo corregirá. Esa distinción es lo que la diferencia de una seguidora ciega y lo que la hace más peligrosa a largo plazo."
+      },
+      {
+        title: "Eficiencia absoluta",
+        type: "Rasgo psicológico central",
+        text:
+          "Su método se basa en preparación, precisión y ausencia de exceso. No improvisa si puede preparar. Si improvisa, parece haberlo previsto. Cuando algo falla, no se altera: actualiza el plan. Cuando está molesta, su precisión aumenta en vez de romperse. No necesita espectáculo para ser la amenaza más grave en cualquier sala."
+      },
+      {
+        title: "La falla de cálculo",
+        type: "Tensión interna",
+        text:
+          "Su conflicto no está entre bien y mal, sino entre causa y error lógico. Levia puede subestimar lo que una decisión emocional auténtica cambia en una batalla. Su pregunta interna: ¿qué ocurre cuando la causa a la que sirve empieza a depender de fallas humanas que no puede corregir sin traicionar la jerarquía?"
+      },
+      {
+        title: "El precio del ojo",
+        type: "Costo narrativo",
+        text:
+          "La sobreinformación que otorga el ojo modificado convierte el mundo en una red insoportable de rutas, olores y pulsos. Cuanto más lo usa, más difícil le resulta separar dato de experiencia. Esa tensión entre lo que ve y lo que puede sostener es la grieta más humana de una persona que prefiere no tener grietas."
+      }
+    ],
+    bonds: [
+      {
+        name: "Xirian",
+        description:
+          "Xirian formula objetivos científicos; Levia los traduce en rutas de captura. No lo idolatra: respeta su inteligencia y cumple sus encargos porque la causa los alinea. Si Xirian pide todos los lumenari vivos, Levia no pregunta si es cruel. Pregunta condiciones de conservación. Si Xirian se convierte en un error, Levia lo corregirá antes que abandonar la causa.",
+        href: ""
+      },
+      {
+        name: "Aelwyn Solrenhal",
+        description:
+          "El objetivo más valioso de la cacería de lumenari. Levia no la mira con odio ni con admiración: la ve como estructura estable, primera estabilidad verificable, captura viva obligatoria. Esa frialdad hiere a Aelwyn más que cualquier insulto, porque convierte el último acto de amor de Elyria en un expediente de caza.",
+        href: "/personajes/aelwyn-solrenhal"
+      },
+      {
+        name: "Davoren Solrenhal",
+        description:
+          "Si ocupa el Puesto N°3, Levia trabaja con él como ejecutora que reconoce utilidad y riesgo. Davoren habla de luz, oscuridad y vacío; Levia pregunta distancia, pulso y condición de entrega. Su tensión potencial: Davoren puede torcerse por la memoria de Aelwyn; Levia no debería torcerse por sentimentalidad ajena.",
+        href: ""
+      },
+      {
+        name: "Thalric",
+        description:
+          "Puesto N°6, inferior en rango y en pureza operativa. Thalric busca usar Velamentum para subir; Levia se deja usar por Velamentum porque considera que la causa importa más que su nombre. Su ambición produce ruido, y el ruido deja rastros. Levia no lo celebraría si cayera. Archivaría la consecuencia.",
+        href: ""
+      },
+      {
+        name: "La Casa de las Moiras",
+        description:
+          "El gremio que comanda. No necesita teatralidad para gobernar: su autoridad proviene de exactitud e historial perfecto. Quien falla por miedo recibe corrección. Quien falla por negligencia desaparece del tejido. La Casa es la extensión operativa de su voluntad, no de su ego.",
+        href: ""
+      }
+    ],
+    relatedStories: [
+      {
+        title: "El encargo de los lumenari",
+        type: "Misión central",
+        description:
+          "Xirian fracasa al intentar replicar el poder lumenari en recipientes sacrificables. Los cuerpos explotan porque no poseen estructura fina. Encarga a Levia traer lumenari vivos. Este encargo la introduce directamente en el arco de Aelwyn y convierte el sacrificio de Elyria en objetivo de caza tecnológica.",
+        href: ""
+      },
+      {
+        title: "La cacería escalonada",
+        type: "Desarrollo del arco",
+        description:
+          "Levia no va por Aelwyn de inmediato. Primero rastrea fragmentos: un anciano con brillo oculto, una descendiente que cambió de fe, un archivo viviente. Cada captura acerca a Xirian a la conclusión de que necesita a la hija de Elyria. El proceso muestra cómo opera — con paciencia, precisión y sin espectáculo.",
+        href: ""
+      },
+      {
+        title: "Ciudad de Nadie",
+        type: "Clímax operativo",
+        description:
+          "Cuando la sede de Velamentum es comprometida y Neruvain despierta, Levia actúa por protocolo de extracción prioritaria: no por piedad, no por traición, sino porque la amenaza territorial activa convierte la captura de Aelwyn en riesgo de pérdida total. Extrae a Davoren y se retira. Eficiencia antes que victoria.",
+        href: ""
+      },
+      {
+        title: "La falla de cálculo",
+        type: "Tensión narrativa",
+        description:
+          "En algún punto del arco, Levia encuentra una decisión emocional auténtica que no puede predecir mediante constelaciones vitales. Esa grieta no la convierte en aliada ni en redimida: revela que la causa también puede depender de variables que su método no está equipado para manejar.",
+        href: ""
+      }
+    ],
+    archive: {
+      fullName: "Levia Thanis",
+      commonName: "Levia",
+      apparentAge: "Adulta joven a adulta plena",
+      gender: "Femenino",
+      race: "Humana modificada por intervención alquímica, arcana y quirúrgica de Velamentum",
+      originRegion: "Por definir. Su identidad pública cambia según misión e infiltración.",
+      elementPath: "Senda de la Vida",
+      professionRole:
+        "Ejecutora de alto rango, francotiradora mágica, cazadora de linajes raros, recuperadora de especímenes vivos e infiltradora de élite. Líder de La Casa de las Moiras.",
+      masteryLevel:
+        "Claramente superior a ejecutores comunes y agentes de campo. Su nivel no se mide en espectáculo mágico sino en tasa de éxito, precisión de captura y ausencia de variables no controladas. Nunca falla por descuido; cuando falla, ya está actualizando el plan.",
+      identitySummary:
+        "Levia Thanis es la mano que Velamentum envía cuando una orden no debe fallar. No es una asesina teatral ni una cazadora que se complace en el sufrimiento: es una ejecutora de precisión absoluta que entiende cada misión como una operación matemática. Su lugar como Puesto N°4 no nació de política ni de ambición visible, sino de exactitud y ausencia de ego operativo. Donde otros fallan por deseo de ascenso o discurso, ella entrega resultados exactos sin adornos.",
+      designCanon:
+        "Levia debe verse como una amenaza refinada: alguien capaz de pasar por invitada en un palacio, desaparecer en un corredor de servicio y disparar desde una azotea antes de que la música del salón termine. Mujer adulta de silueta alta y estilizada, piel clara con posibles ojeras sutiles por costo mágico, cabello café oscuro muy largo y liso de movimiento elegante, un ojo visible verde frío y preciso, el otro cubierto por un parche negro que oculta un recurso peligroso y no una pérdida. Viste chaqueta roja ceñida de autoridad, blusa blanca de contraste, falda negra ajustada con corte lateral funcional, medias negras, zapatos de tacón fino y guantes negros. Su cinturón de herramientas corta la silueta como una línea de alquimia táctica. No viste armadura pesada ni exhibe arcos gigantescos: su amenaza es elegante, silenciosa y quirúrgica.",
+      visualNotes:
+        "Las especificaciones técnicas de canon visual, prompts y reglas de consistencia quedan reservadas para producción interna, model sheets y generación de imágenes. En la ficha pública el canon visual aparece como atmósfera narrativa, no como checklist técnico. El ojo modificado y sus costos se mencionan como señal narrativa. La síntesis de toxinas desde fluidos propios se trata con tono clínico en materiales públicos, sin detalle grotesco."
+    },
+    visualCanon: ["Amenaza elegante y quirúrgica", "Chaqueta roja y parche negro", "Precisión silenciosa sin espectáculo"]  },
+  {
     slug: "nayara",
     name: "Nayara",
     title: "REGINA GLACIEI",
