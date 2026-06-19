@@ -26,6 +26,16 @@ function track(trackData: Omit<MusicTrack, "src" | "coverImage">): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "levia-thanis-cero-margen",
+    title: "Levia Thanis — Cero Margen",
+    subtitle: "Tema de personaje",
+    fileName: "Levia Thanis — Cero Margen.mp3",
+    category: "personaje",
+    related: ["Levia Thanis"],
+    mood: "Precisión / filo",
+    accent: "rgba(176, 58, 58, 0.34)"
+  }),
+  track({
     id: "caelyndor-fomo-geologico",
     title: "Caelyndor — FOMO Geológico",
     subtitle: "Tema de arco",
