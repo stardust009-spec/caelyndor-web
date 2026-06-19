@@ -1857,8 +1857,8 @@ export const characters: Character[] = [
     image: assetImage("valthor_canon_portrait.png"),
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
-    description: "Testigo del ascenso de Nayara, del exilio de Kaelion y del nacimiento de Yuki; un sabio antiguo que sostiene el reino con silencio y estructura.",
-    story: "Valthor fue testigo del ascenso de Nayara, del exilio de Kaelion y del nacimiento de Yuki. Como miembro fundador del Alto Consejo, su deber ha sido mantener la estructura del trono, aunque su corazón haya deseado romperla en más de una ocasión. Fue él quien guió a Yuki en los protocolos post-Ritual, y quien le informó —con dolor visible— del destino de Lielle. Nadie ha llorado por más personas en silencio que él. Y, sin embargo, sigue firme.",
+    description: "Testigo del ascenso de Nayara, del exilio de Kaelión y del nacimiento de Yuki; un sabio antiguo que sostiene el reino con silencio y estructura.",
+    story: "Valthor fue testigo del ascenso de Nayara, del exilio de Kaelión y del nacimiento de Yuki. Como miembro fundador del Alto Consejo, su deber ha sido mantener la estructura del trono, aunque su corazón haya deseado romperla en más de una ocasión. Fue él quien guió a Yuki en los protocolos post-Ritual, y quien le informó —con dolor visible— del destino de Lielle. Nadie ha llorado por más personas en silencio que él. Y, sin embargo, sigue firme.",
     personality: "Serio, aunque no siempre; sabio, paciente como el hielo que no se rompe. Observa más de lo que habla. Su compasión es estructurada, su dolor antiguo y reprimido.",
     visualCanon: ["Sabiduría glacial", "Memoria del trono", "Silencio como forma de autoridad"]  },
   {

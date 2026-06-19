@@ -55,9 +55,9 @@ export const timelineGroups: TimelineGroup[] = [
         scope: "Saga troncal"
       },
       {
-        title: "El exilio de Kaelion",
+        title: "El exilio de Kaelión",
         description:
-          "Glaciem pierde un nombre que el Archivo todavía escribe en voz baja. El exilio de Kaelion deja una grieta en la corte que ningún protocolo ha conseguido cerrar del todo.",
+          "Glaciem pierde un nombre que el Archivo todavía escribe en voz baja. El exilio de Kaelión deja una grieta en la corte que ningún protocolo ha conseguido cerrar del todo.",
         scope: "Relato lateral"
       },
       {

@@ -213,7 +213,7 @@ export const glossaryEntries: GlossaryEntry[] = [
     categorySlug: "facciones-y-poderes",
     category: "Facciones y poderes",
     definition:
-      "Estructura que sostiene el trono helado. Valthor, miembro fundador, fue testigo del ascenso de Nayara, del exilio de Kaelion y del nacimiento de Yuki; su deber ha sido mantener la estructura aunque su corazón haya querido romperla.",
+      "Estructura que sostiene el trono helado. Valthor, miembro fundador, fue testigo del ascenso de Nayara, del exilio de Kaelión y del nacimiento de Yuki; su deber ha sido mantener la estructura aunque su corazón haya querido romperla.",
     seeAlso: [
       { label: "Valthor", href: "/personajes/valthor" },
       { label: "Nayara", href: "/personajes/nayara" }
