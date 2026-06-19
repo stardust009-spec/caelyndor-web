@@ -16,7 +16,8 @@ export type PlayerTheme =
   | "yuki"
   | "rubi"
   | "lyzi"
-  | "noct";
+  | "noct"
+  | "levia";
 
 const statsStorageKey = "caelyndor_music_stats";
 const queueStorageKey = "caelyndor_music_queue";
@@ -87,6 +88,10 @@ export function getPlayerTheme(track: MusicTrack | null): PlayerTheme {
 
   if (haystack.includes("Noctalypse")) {
     return "noct";
+  }
+
+  if (haystack.includes("Levia")) {
+    return "levia";
   }
 
   return "default";

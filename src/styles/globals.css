@@ -5316,6 +5316,28 @@ body.has-music-player {
   --player-theme-firefly: rgba(108, 146, 230, 0.66);
 }
 
+.music-player--levia {
+  --player-theme-border: rgba(96, 176, 96, 0.3);
+  --player-theme-glow-a: rgba(72, 176, 92, 0.14);
+  --player-theme-glow-b: rgba(190, 44, 44, 0.13);
+  --player-theme-sweep: rgba(150, 120, 80, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(74, 190, 104, 0.86), rgba(208, 54, 54, 0.84));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(74, 190, 104, 0.86), rgba(208, 54, 54, 0.84));
+  --player-theme-thumb: #6cce84;
+  --player-theme-thumb-border: rgba(120, 210, 140, 0.48);
+  --player-theme-button: #e0726a;
+  --player-theme-warm-a: rgba(72, 176, 92, 0.12);
+  --player-theme-warm-b: rgba(190, 44, 44, 0.08);
+  --player-theme-mote: rgba(110, 200, 130, 0.68);
+  --player-theme-mote-glow: rgba(200, 50, 50, 0.2);
+  --player-theme-firefly: rgba(220, 70, 70, 0.66);
+}
+
+.music-player--levia .music-player__motes span:nth-child(even) {
+  background: var(--player-theme-firefly);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
+}
+
 .music-player--themed {
   border-top-color: var(--player-theme-border);
   background:
