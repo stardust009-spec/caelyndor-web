@@ -576,7 +576,7 @@ export const characters: Character[] = [
         href: ""
       },
       {
-        title: "Ruby Kick",
+        title: "Rubikick",
         type: "Técnica / escena clave",
         description:
           "La técnica más física y directa de Rubí: una patada ígnea canalizada con brutal precisión emocional. No es elegancia distante; es impacto, rabia protectora y cometa descendente.",
@@ -635,7 +635,7 @@ export const characters: Character[] = [
     slug: "lyzi",
     name: "Lyzi",
     title: "La voz entre grietas",
-    role: "Vinculo, intuicion y transito",
+    role: "Vínculo, intuición y tránsito",
     affinity: "Astral / Eco / Velo",
     accent: "#a77aff",
     image: assetImage("lyzi_canon_portrait_v02.png"),
@@ -808,7 +808,7 @@ export const characters: Character[] = [
   {
     slug: "halrik",
     name: "Halrik",
-    title: "MARISCAL DE GLACIEM",
+    title: "CANCILLER DE GLACIEM",
     role: "Estrategia, frontera y deber",
     affinity: "HIELO / LEALTAD / MURALLA",
     accent: "rgba(130, 170, 190, 0.30)",
