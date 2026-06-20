@@ -6292,3 +6292,73 @@ body.has-music-player {
     justify-content: center;
   }
 }
+
+/* === Botón "Escuchar crónica" del hero de personaje ======================= */
+.detail-hero__chronicle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  margin: 0 0 var(--space-4);
+  padding: 0.48rem 1.05rem 0.48rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--character-accent, var(--color-astral)) 42%, var(--color-line));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--character-accent, var(--color-astral)) 16%, transparent),
+    color-mix(in srgb, var(--character-accent, var(--color-astral)) 5%, transparent)
+  );
+  color: var(--color-ash-bright);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--character-accent, var(--color-astral)) 12%, transparent),
+    0 8px 24px color-mix(in srgb, var(--character-accent, var(--color-astral)) 14%, transparent);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, background 180ms ease;
+}
+
+.detail-hero__chronicle:hover,
+.detail-hero__chronicle:focus-visible {
+  border-color: color-mix(in srgb, var(--character-accent, var(--color-astral)) 68%, var(--color-line));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--character-accent, var(--color-astral)) 24%, transparent),
+    color-mix(in srgb, var(--character-accent, var(--color-astral)) 9%, transparent)
+  );
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--character-accent, var(--color-astral)) 20%, transparent),
+    0 10px 30px color-mix(in srgb, var(--character-accent, var(--color-astral)) 24%, transparent);
+  transform: translateY(-1px);
+}
+
+.detail-hero__chronicle:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--character-accent, var(--color-astral)) 70%, white);
+  outline-offset: 2px;
+}
+
+.detail-hero__chronicle:active {
+  transform: translateY(0);
+}
+
+.detail-hero__chronicle-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  color: #fff;
+  background: color-mix(in srgb, var(--character-accent, var(--color-astral)) 34%, rgba(8, 10, 18, 0.62));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--character-accent, var(--color-astral)) 40%, transparent);
+}
+
+@media (max-width: 760px) {
+  .detail-hero__chronicle {
+    min-height: 44px;
+    font-size: 0.95rem;
+  }
+}

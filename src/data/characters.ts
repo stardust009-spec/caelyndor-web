@@ -30,6 +30,21 @@ export type CharacterRelatedStory = {
   href?: string;
 };
 
+export type CharacterProfileAudio = {
+  /** El botón "Escuchar crónica" solo se renderiza cuando enabled === true.
+   *  Se deja en false hasta que el MP3 esté subido al repo, para no mostrar
+   *  un botón roto ni intentar reproducir un archivo inexistente. */
+  enabled: boolean;
+  title: string;
+  subtitle?: string;
+  /** Ruta pública al MP3 (p. ej. /audio/character-summaries/yuki-profile-summary.mp3). */
+  src: string;
+  /** Portada del audio; si falta, se usa la imagen principal del personaje. */
+  cover?: string;
+  duration?: string;
+  kind?: "character-summary";
+};
+
 export type CharacterArchive = {
   fullName?: string;
   commonName?: string;
@@ -79,6 +94,8 @@ export type Character = {
   relatedStories?: CharacterRelatedStory[];
   /** Ficha técnica del Archivo del Cronista. */
   archive?: CharacterArchive;
+  /** Audio-resumen narrado del perfil (NotebookLM), subido manualmente. */
+  profileAudio?: CharacterProfileAudio;
   visualCanon: string[];
 };
 
@@ -99,6 +116,13 @@ export const characters: Character[] = [
     affinity: "Hielo / Memoria / Quietud",
     accent: "#8bc6df",
     image: assetImage("yuki_canon_portrait_v02.png"),
+    profileAudio: {
+      enabled: false,
+      title: "Yuki Arhess — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/yuki-profile-summary.mp3",
+      kind: "character-summary"
+    },
     description: "Guarda una calma peligrosa, como si cada palabra suya tuviera que cruzar una tormenta antes de existir.",
     story:
       "Hija de Nayara, la Regina Glaciei, y de Kaelión, cuyo exilio la corte todavía escribe en voz baja. Creció entre los protocolos y silencios del Alto Consejo hasta heredar el trono de Glaciem, y reina desde entonces con precisión, distancia elegante y un humor tan seco como el invierno que administra.",
@@ -262,6 +286,13 @@ export const characters: Character[] = [
     affinity: "Sombra / Eclipse / Abismo",
     accent: "#7b5ca8",
     image: assetImage("noct_canon_portrait_v3.png"),
+    profileAudio: {
+      enabled: false,
+      title: "Noctalypse — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/noctalypse-profile-summary.mp3",
+      kind: "character-summary"
+    },
     portraitPosition: "50% 18%",
     portraitScale: 1.12,
     description: "Mas que enemigo, una presion sobre la realidad: el nombre que el mundo evita pronunciar entero.",
@@ -467,6 +498,13 @@ export const characters: Character[] = [
     affinity: "Fuego / Sangre / Juramento",
     accent: "#c84b4b",
     image: assetImage("rubi_canon_portrait_v02.png"),
+    profileAudio: {
+      enabled: false,
+      title: "Rubí Kaelynn Vaer'Solyn — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/rubi-profile-summary.mp3",
+      kind: "character-summary"
+    },
     description: "Una presencia marcada por perdidas antiguas y una obstinacion capaz de encender reinos dormidos.",
     story:
       "Rubí proviene de Cindralith, una región donde el fuego, el desierto, la supervivencia y el orgullo territorial moldean el carácter. Su identidad se construyó alrededor de la acción, la resistencia y la protección de aquello que considera suyo. Fulgor cumple para ella una función paterna y de tutor, mientras que Aelrhyssa actúa como figura materna e institutriz. Rubí pelea porque su cuerpo aprendió que proteger también es ponerse delante.",
@@ -639,6 +677,13 @@ export const characters: Character[] = [
     affinity: "Astral / Eco / Velo",
     accent: "#a77aff",
     image: assetImage("lyzi_canon_portrait_v02.png"),
+    profileAudio: {
+      enabled: false,
+      title: "Lyzi — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/lyzi-profile-summary.mp3",
+      kind: "character-summary"
+    },
     description: "Camina donde los mapas fallan y oye lo que las ruinas todavia no se atreven a decir.",
     story:
       "Lyzi nació del corazón espiritual de Sylvalis y está ligada a la memoria antigua del bosque. Fue una de las primeras presencias que recibió a Noctalypse cuando apareció sin nombre ni identidad en tierras antiguas, enseñándole lenguaje, costumbres humanas y contención emocional. Su arco está marcado por el deseo de acompañar, proteger y ser plenamente vista en el mismo plano de aquellos a quienes ama.",
@@ -813,6 +858,13 @@ export const characters: Character[] = [
     affinity: "HIELO / LEALTAD / MURALLA",
     accent: "rgba(130, 170, 190, 0.30)",
     image: assetImage("halrik_canon_portrait.png"),
+    profileAudio: {
+      enabled: false,
+      title: "Halrik de Hyldran — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/halrik-profile-summary.mp3",
+      kind: "character-summary"
+    },
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "Ancla militar de Glaciem, preciso en la crisis y leal hasta el peso silencioso de las órdenes imposibles.",
@@ -2013,6 +2065,13 @@ export const characters: Character[] = [
     affinity: "VIDA / HILO / CAPTURA",
     accent: "rgba(176, 58, 58, 0.30)",
     image: assetImage("levia_canon_portrait.png"),
+    profileAudio: {
+      enabled: false,
+      title: "Levia Thanis — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/levia-thanis-profile-summary.mp3",
+      kind: "character-summary"
+    },
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "La mano que Velamentum envía cuando una orden no debe fallar: una ejecutora de precisión absoluta que lee la vida como cartografía de captura.",
