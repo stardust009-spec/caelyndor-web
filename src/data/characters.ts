@@ -1232,7 +1232,7 @@ export const characters: Character[] = [
   {
     slug: "fulgor",
     name: "Fulgor",
-    title: "El dragón primordial del fuego",
+    title: "El Dragón Primordial del Fuego",
     role: "Dragón Primordial del Fuego; maestro de aura, forjador y anfitrión ceremonial",
     affinity: "Fuego / Forja / Memoria",
     accent: "#f0c75e",
