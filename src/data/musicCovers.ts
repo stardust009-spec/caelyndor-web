@@ -49,5 +49,6 @@ export const musicCovers: Record<string, string> = {
   "caelyndor-el-folleto-bajo-la-ceniza": "/images/music-covers/caelyndor-el-folleto-bajo-la-ceniza.jpg",
   "caelyndor-el-ultimo-baculo-del-lich-lord": "/images/music-covers/caelyndor-el-ultimo-baculo-del-lich-lord.jpg",
   "adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi": "/images/music-covers/adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi.jpg",
-  "levia-thanis-cero-margen": "/images/music-covers/levia-thanis-cero-margen.jpg"
+  "levia-thanis-cero-margen": "/images/music-covers/levia-thanis-cero-margen.jpg",
+  "levia-thanis-constelacion-que-calla": "/images/music-covers/levia-thanis-constelacion-que-calla.jpg"
 };
