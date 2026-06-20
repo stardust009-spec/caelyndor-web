@@ -50,5 +50,8 @@ export const musicCovers: Record<string, string> = {
   "caelyndor-el-ultimo-baculo-del-lich-lord": "/images/music-covers/caelyndor-el-ultimo-baculo-del-lich-lord.jpg",
   "adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi": "/images/music-covers/adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi.jpg",
   "levia-thanis-cero-margen": "/images/music-covers/levia-thanis-cero-margen.jpg",
-  "levia-thanis-constelacion-que-calla": "/images/music-covers/levia-thanis-constelacion-que-calla.jpg"
+  "levia-thanis-constelacion-que-calla": "/images/music-covers/levia-thanis-constelacion-que-calla.jpg",
+  "cindralith-los-jardines-de-arapas": "/images/music-covers/cindralith-los-jardines-de-arapas.jpg",
+  "cindralith-el-patio-del-agua-suave": "/images/music-covers/cindralith-el-patio-del-agua-suave.jpg",
+  "cindralith-la-arena-aprende-a-morder": "/images/music-covers/cindralith-la-arena-aprende-a-morder.jpg"
 };

@@ -26,6 +26,36 @@ function track(trackData: Omit<MusicTrack, "src" | "coverImage">): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "cindralith-los-jardines-de-arapas",
+    title: "Cindralith — Los Jardines de Arapas",
+    subtitle: "Archivo regional",
+    fileName: "Cindralith — Los Jardines de Arapas.mp3",
+    category: "region",
+    related: ["Cindralith"],
+    mood: "Jardín / oasis",
+    accent: "rgba(210, 120, 90, 0.34)"
+  }),
+  track({
+    id: "cindralith-el-patio-del-agua-suave",
+    title: "Cindralith — El Patio del Agua Suave",
+    subtitle: "Archivo regional",
+    fileName: "Cindralith — El Patio del Agua Suave.mp3",
+    category: "region",
+    related: ["Cindralith"],
+    mood: "Agua / calma",
+    accent: "rgba(210, 120, 90, 0.34)"
+  }),
+  track({
+    id: "cindralith-la-arena-aprende-a-morder",
+    title: "Cindralith — La Arena Aprende a Morder",
+    subtitle: "Archivo regional",
+    fileName: "Cindralith — La Arena Aprende a Morder.mp3",
+    category: "region",
+    related: ["Cindralith"],
+    mood: "Arena / filo",
+    accent: "rgba(210, 120, 90, 0.34)"
+  }),
+  track({
     id: "levia-thanis-constelacion-que-calla",
     title: "Levia Thanis — Constelación que calla",
     subtitle: "Tema de personaje",
