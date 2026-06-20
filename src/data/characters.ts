@@ -117,10 +117,10 @@ export const characters: Character[] = [
     accent: "#8bc6df",
     image: assetImage("yuki_canon_portrait_v02.png"),
     profileAudio: {
-      enabled: false,
+      enabled: true,
       title: "Yuki Arhess — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/yuki-profile-summary.mp3",
+      src: "/audio/character-summaries/yuki-profile-summary.m4a",
       kind: "character-summary"
     },
     description: "Guarda una calma peligrosa, como si cada palabra suya tuviera que cruzar una tormenta antes de existir.",
@@ -499,10 +499,10 @@ export const characters: Character[] = [
     accent: "#c84b4b",
     image: assetImage("rubi_canon_portrait_v02.png"),
     profileAudio: {
-      enabled: false,
+      enabled: true,
       title: "Rubí Kaelynn Vaer'Solyn — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/rubi-profile-summary.mp3",
+      src: "/audio/character-summaries/rubi-profile-summary.m4a",
       kind: "character-summary"
     },
     description: "Una presencia marcada por perdidas antiguas y una obstinacion capaz de encender reinos dormidos.",
