@@ -39,6 +39,76 @@ function track({ cover, ...trackData }: TrackInput): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "cindralith-zarqath-despierta",
+    title: "Cindralith — Zarqath Despierta",
+    subtitle: "Archivo regional",
+    fileName: "Cindralith — Zarqath Despierta.mp3",
+    category: "region",
+    related: ["Cindralith"],
+    mood: "Despertar / coloso",
+    accent: "rgba(210, 120, 90, 0.34)"
+  }),
+  track({
+    id: "cindralith-aguijon-bajo-el-sol",
+    title: "Cindralith — Aguijón bajo el Sol",
+    subtitle: "Archivo regional",
+    fileName: "Cindralith — Aguijón bajo el Sol.mp3",
+    category: "region",
+    related: ["Cindralith"],
+    mood: "Aguijón / sol",
+    accent: "rgba(210, 120, 90, 0.34)"
+  }),
+  track({
+    id: "cindralith-qharvass-en-las-dunas",
+    title: "Cindralith — Qharvass en las Dunas",
+    subtitle: "Archivo regional",
+    fileName: "Cindralith — Qharvass en las Dunas.mp3",
+    category: "region",
+    related: ["Cindralith"],
+    mood: "Dunas / acecho",
+    accent: "rgba(210, 120, 90, 0.34)"
+  }),
+  track({
+    id: "cindralith-la-tumba-del-faraon-athem",
+    title: "Cindralith — La Tumba del Faraón Athem",
+    subtitle: "Archivo regional",
+    fileName: "Cindralith — La Tumba del Faraón Athem.mp3",
+    category: "region",
+    related: ["Cindralith"],
+    mood: "Tumba / faraón",
+    accent: "rgba(210, 120, 90, 0.34)"
+  }),
+  track({
+    id: "cindralith-el-templo-del-silencio",
+    title: "Cindralith — El Templo del Silencio",
+    subtitle: "Archivo regional",
+    fileName: "Cindralith — El Templo del Silencio.mp3",
+    category: "region",
+    related: ["Cindralith"],
+    mood: "Templo / silencio",
+    accent: "rgba(210, 120, 90, 0.34)"
+  }),
+  track({
+    id: "cindralith-el-bazar-de-las-hojas-amatistas",
+    title: "Cindralith — El Bazar de las Hojas Amatistas",
+    subtitle: "Archivo regional",
+    fileName: "Cindralith — El Bazar de las Hojas Amatistas.mp3",
+    category: "region",
+    related: ["Cindralith"],
+    mood: "Bazar / amatista",
+    accent: "rgba(210, 120, 90, 0.34)"
+  }),
+  track({
+    id: "cindralith-bajo-los-toldos-de-arapas",
+    title: "Cindralith — Bajo los Toldos de Arapas",
+    subtitle: "Archivo regional",
+    fileName: "Cindralith — Bajo los Toldos de Arapas.mp3",
+    category: "region",
+    related: ["Cindralith"],
+    mood: "Toldos / oasis",
+    accent: "rgba(210, 120, 90, 0.34)"
+  }),
+  track({
     id: "cindralith-los-jardines-de-arapas",
     title: "Cindralith — Los Jardines de Arapas",
     subtitle: "Archivo regional",

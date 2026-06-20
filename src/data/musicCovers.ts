@@ -53,5 +53,12 @@ export const musicCovers: Record<string, string> = {
   "levia-thanis-constelacion-que-calla": "/images/music-covers/levia-thanis-constelacion-que-calla.jpg",
   "cindralith-los-jardines-de-arapas": "/images/music-covers/cindralith-los-jardines-de-arapas.jpg",
   "cindralith-el-patio-del-agua-suave": "/images/music-covers/cindralith-el-patio-del-agua-suave.jpg",
-  "cindralith-la-arena-aprende-a-morder": "/images/music-covers/cindralith-la-arena-aprende-a-morder.jpg"
+  "cindralith-la-arena-aprende-a-morder": "/images/music-covers/cindralith-la-arena-aprende-a-morder.jpg",
+  "cindralith-zarqath-despierta": "/images/music-covers/cindralith-zarqath-despierta.jpg",
+  "cindralith-aguijon-bajo-el-sol": "/images/music-covers/cindralith-aguijon-bajo-el-sol.jpg",
+  "cindralith-qharvass-en-las-dunas": "/images/music-covers/cindralith-qharvass-en-las-dunas.jpg",
+  "cindralith-la-tumba-del-faraon-athem": "/images/music-covers/cindralith-la-tumba-del-faraon-athem.jpg",
+  "cindralith-el-templo-del-silencio": "/images/music-covers/cindralith-el-templo-del-silencio.jpg",
+  "cindralith-el-bazar-de-las-hojas-amatistas": "/images/music-covers/cindralith-el-bazar-de-las-hojas-amatistas.jpg",
+  "cindralith-bajo-los-toldos-de-arapas": "/images/music-covers/cindralith-bajo-los-toldos-de-arapas.jpg"
 };
