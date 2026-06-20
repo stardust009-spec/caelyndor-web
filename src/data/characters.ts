@@ -1233,12 +1233,182 @@ export const characters: Character[] = [
     slug: "fulgor",
     name: "Fulgor",
     title: "El dragón primordial del fuego",
-    role: "Soberano, gourmet y exceso con modales",
-    affinity: "Fuego / Etiqueta / Banquete",
+    role: "Dragón Primordial del Fuego; maestro de aura, forjador y anfitrión ceremonial",
+    affinity: "Fuego / Forja / Memoria",
     accent: "#f0c75e",
+    faction: "Dragones Soberanos",
     image: assetImage("fulgor_canon_portrait.png"),
     description: "Dragón primordial del fuego, gourmet y devoto de la etiqueta: capaz de incinerar un campo de batalla y aun así juzgar los modales de la mesa donde se celebró la victoria.",
-    visualCanon: ["Escala primordial", "Acentos dorados y braseros", "Elegancia gourmet incluso en el exceso"]  },
+    story:
+      "Fulgor pertenece a una edad en que los dragones todavía creían poder medir el mundo desde la altura. Vivió guerras, pactos, pérdidas y sellados que los reinos humanos apenas conservan como supersticiones o notas marginales. Con el tiempo no se encerró en el desprecio hacia los mortales: aprendió de ellos, probó sus vinos, observó sus heridas y reconoció su extraña capacidad de fundar vida junto a cicatrices imposibles. En la era actual, su vínculo central es Rubí, portadora de su anillo y Flor Carmesí. También actúa como puente entre el grupo protagonista y la escala antigua del mundo, capaz de pasar del confeti a la memoria de Voltrak sin perder verdad en ninguna de las dos escenas.",
+    personality:
+      "Orgulloso, cálido, teatral, refinado y profundamente antiguo. Fulgor ama la hospitalidad, el vino, la cocina, la etiqueta, las entradas memorables y las escenas bien preparadas. Su humor puede ser absurdo, pero nunca vacío. Su solemnidad puede ser inmensa, pero nunca rígida. Sabe observar grietas emocionales con precisión y actuar sin pedir reconocimiento. Cuando baja la voz, incluso sus bromas previas quedan atravesadas por una memoria de fuego antiguo.",
+    identityPhrase:
+      "El Dragón Primordial del Fuego: maestro de la Flor Carmesí, forjador legendario y memoria viva de una llama que aprendió a cocinar, guiar, celebrar, proteger y recordar.",
+    narrativeSection: {
+      title: "El fuego que aprendió a tener forma",
+      lead:
+        "Fulgor no es un dragón que guarda montañas de oro esperando que la historia venga a desafiarlo. Es una presencia antigua que aprendió que el fuego no solo destruye: también cocina, guía, ilumina, celebra, forja, consuela y recuerda.",
+      paragraphs: [
+        "Como Dragón Primordial del Fuego, su escala pertenece al mito. Como maestro de Rubí, su calor se vuelve disciplina. Fulgor no busca apagar la intensidad de la Flor Carmesí ni volverla dócil: le enseña que una llama sin forma solo hace humo, y que arder con intención puede ser más poderoso que incendiarlo todo.",
+        "Su teatralidad es parte de su lenguaje. Una entrada con fanfarrias, un carruaje tirado por quimeras, una copa volcánica, un maletín de confeti o una reverencia impecable no son adornos vacíos: son formas de ordenar el mundo, declarar presencia y recordar que incluso el caos merece ceremonia.",
+        "Fulgor también conserva memorias que los reinos humanos transformaron en cuentos, advertencias o mapas incompletos. La caída de Voltrak, la guerra contra Korvess, la Gran Falla, Neruvain y Uru-Uru no son para él simples nombres antiguos: son heridas de escala continental, verdades que exigen hablar con precisión y respeto.",
+        "Con los mortales, Fulgor ha aprendido algo que los dragones no siempre admiten: la vida puede fundar hogar incluso al borde de una cicatriz. Por eso su fuego no es solo soberanía. También es hospitalidad, vino, cocina, amistad, escena preparada y cuidado silencioso."
+      ]
+    },
+    details: [
+      {
+        title: "La llama que enseña",
+        type: "Maestro de aura",
+        text:
+          "Fulgor no enseña a Rubí a tener más fuego, sino a tener relación con su fuego. No quiere domesticarla ni apagarla: quiere que su incendio encuentre dirección. Para él, la llama sin forma es desperdicio; la llama con intención puede volverse arte, defensa, danza y voluntad."
+      },
+      {
+        title: "El protocolo del confeti",
+        type: "Teatralidad dracónica",
+        text:
+          "Fulgor entiende la presencia como lenguaje. Una llegada sin ceremonia es, para él, una oportunidad desperdiciada. Fanfarrias, carruajes de quimeras, confeti, reverencias y hospitalidad impecable son parte de su modo de ordenar el mundo y recordarle a todos que la escala también se anuncia."
+      },
+      {
+        title: "Dragon’s Kitchen",
+        type: "Gourmet de Maghnarok",
+        text:
+          "Su cocina no es doméstica: es prueba ritual, juicio de carácter y espectáculo dracónico. En Dragon’s Kitchen puede aparecer en forma humana impecable, con lentes y solemnidad de presentador, transmitiendo desde un cráter vivo ante dragones de distintas eras. Para Fulgor, cocinar también es una forma de forjar."
+      },
+      {
+        title: "El espejo de lava",
+        type: "Guarida volcánica",
+        text:
+          "En su caverna de Cindralith, Fulgor puede observar el mundo mediante un espejo de lava que refleja imagen y transporta sonido. Su guarida mezcla obsidiana, vetas de magma, barras pulidas, sillones de basalto, copas volcánicas, diablillos de fuego, especias, vino y herramientas de forja."
+      },
+      {
+        title: "Memoria de Voltrak",
+        type: "Herida dracónica",
+        text:
+          "Fulgor recuerda que Voltrak no cayó en un duelo aislado, sino dentro de una guerra larga contra Korvess. Esa memoria reduce su fuego social a una llama más íntima y grave. Para él, no todo lo sellado fue derrotado; algunas victorias antiguas solo fueron formas costosas de contener lo insoportable."
+      },
+      {
+        title: "Mito y mecanismo",
+        type: "Sabiduría antigua",
+        text:
+          "Fulgor no niega la ciencia: la completa. Para él, la ciencia ordena el mecanismo, pero el mito ordena el temblor que ese mecanismo deja en el alma. Por eso puede hablar de tectónica, archipiélagos y Bestias Primigenias sin reducir ninguna lectura a mentira simple."
+      },
+      {
+        title: "El padrino de las llamas difíciles",
+        type: "Mediador emocional",
+        text:
+          "Cuando Rubí y Noctalypse se apagan por separado, Fulgor no les impone una confesión. Prepara el escenario: carruaje, entradas, vestido, humor, Luzabrasa y una retirada oportuna. Su cuidado no siempre parece cuidado; a veces parece una trampa elegante para que el amor encuentre voz."
+      },
+      {
+        title: "Bestias Primigenias",
+        type: "Escala anterior a los mapas",
+        text:
+          "Fulgor conoce nombres que los reinos apenas sostienen como cuentos o advertencias: Uru-Uru bajo Glaciem, Korvess bajo la Gran Falla, Neruvain como posible heraldo abismal y Rhazeth como presencia que no debe despertarse. Para él, algunas entidades no cruzan territorios: los territorios existen sobre su paciencia."
+      }
+    ],
+    bonds: [
+      {
+        name: "Rubí Kaelynn Vaer'Solyn",
+        description:
+          "Rubí es su Flor Carmesí, portadora de su anillo, discípula, campeona y llama favorita. Fulgor no busca apagar su intensidad, sino darle forma. La conoce tan bien que sabe cuándo su silencio es más alarmante que sus gritos.",
+        href: "/personajes/rubi"
+      },
+      {
+        name: "Noctalypse",
+        description:
+          "Fulgor reconoce a Noctalypse como digno amigo. Ese reconocimiento importa porque no validaría con facilidad a cualquier figura sombría cercana a Rubí. En los momentos difíciles actúa como padrino elegante, protegiendo el orgullo de Noct mientras lo conduce hacia la escena que necesita vivir.",
+        href: "/personajes/noctalypse"
+      },
+      {
+        name: "Lyzi",
+        description:
+          "Con Lyzi comparte una comprensión silenciosa de los vínculos. Ambos saben que algunas heridas no se arreglan con órdenes, sino preparando el lugar adecuado para que el corazón se atreva a hablar.",
+        href: "/personajes/lyzi"
+      },
+      {
+        name: "Yuki Arhess",
+        description:
+          "Yuki exige precisión, datos y estructura; Fulgor le recuerda que algunos hechos también necesitan mito para ser soportados. Su dinámica mezcla respeto, fricción entre hielo y fuego, y una tensión deliciosa entre practicidad glacial y ceremonia dracónica.",
+        href: "/personajes/yuki"
+      },
+      {
+        name: "Selyra de los Siete Cielos",
+        description:
+          "Selyra mantiene con Fulgor una dinámica antigua, coqueta y confiada. Ella acude a él cuando siente vergüenza de presentarse ante una humana digna de su aliento. Fulgor la provoca, la escucha y termina ayudándola."
+      },
+      {
+        name: "Glasyra",
+        description:
+          "Glasyra observa desde el hielo. Con Fulgor no necesita hablar para influir. Cuando fuego y viento se mueven, el hielo registra el cambio."
+      },
+      {
+        name: "Voltrak",
+        description:
+          "Voltrak es una herida en la memoria dracónica de Fulgor: una cumbre de trueno caída no en duelo noble, sino en una guerra larga contra Korvess."
+      },
+      {
+        name: "Korvess",
+        description:
+          "Korvess no fue solo un enemigo antiguo. Fue una soberanía viva de Oscuridad que los dragones apenas lograron sellar. Fulgor sabe que confundir sellado con victoria es una forma peligrosa de arrogancia."
+      }
+    ],
+    relatedStories: [
+      {
+        title: "La Flor Carmesí y el maestro de la llama",
+        type: "Vínculo / Entrenamiento",
+        description:
+          "Fulgor guía a Rubí para que su fuego deje de ser solo explosión y aprenda a convertirse en forma, disciplina y danza. Su enseñanza no busca apagarla, sino darle dirección sin traicionar su naturaleza."
+      },
+      {
+        title: "Dragon’s Kitchen de Maghnarok",
+        type: "Comedia ceremonial / Cocina dracónica",
+        description:
+          "En el cráter vivo de Maghnarok, Fulgor convierte la cocina en transmisión dracónica, juicio de carácter y espectáculo de escala continental. Incluso el sabor puede volverse una prueba de fuego."
+      },
+      {
+        title: "El Teatro del Orgullo",
+        type: "Mediación emocional",
+        description:
+          "Al ver que Rubí y Noctalypse se apagan por separado, Fulgor coordina con Lyzi un encuentro en Luzabrasa. Carruaje, vestido, humor, vino y retirada oportuna: todo para que el orgullo ceda sin romperse."
+      },
+      {
+        title: "Uru-Uru bajo Glaciem",
+        type: "Lore primigenio",
+        description:
+          "Cuando Yuki detecta pulsaciones imposibles bajo los mares de Glaciem, convoca a Fulgor. El dragón revela que algunas presencias no están dormidas ni despiertas como los mortales entienden, sino presentes en una escala anterior a los mapas."
+      },
+      {
+        title: "La caída de Voltrak",
+        type: "Memoria dracónica",
+        description:
+          "Fulgor recuerda que Voltrak no murió en un duelo aislado, sino como punto de ruptura de una guerra larga contra Korvess. La Gran Falla quedó como cicatriz continental de aquel sellado incompleto."
+      },
+      {
+        title: "La Brisa, el Fuego y la Sombra del Hielo",
+        type: "Preludio elemental",
+        description:
+          "Selyra visita a Fulgor en Cindralith para confesar que ha encontrado a una humana digna de su aliento. Entre espejos de lava, zumaque, panes tostados y viejas coqueterías dracónicas, el fuego decide que también ha llegado su turno de presentarse ante Rubí."
+      }
+    ],
+    archive: {
+      fullName: "Fulgor",
+      commonName: "Fulgor",
+      apparentAge: "Ancestral / milenario",
+      gender: "Masculino",
+      race: "Dragón Primordial / Dragón Soberano del Fuego",
+      originRegion: "Cindralith / Maghnarok",
+      elementPath: "Fuego primordial",
+      professionRole:
+        "Maestro de aura ígnea, forjador legendario, gourmet dracónico, anfitrión ceremonial, memoria viviente de guerras antiguas, mediador emocional y Dragón Primordial del Fuego.",
+      masteryLevel:
+        "Soberano / Primordial. Su poder no se mide solo en destrucción, sino en antigüedad, dominio, criterio, memoria y capacidad de dar forma al fuego.",
+      identitySummary:
+        "Fulgor es el Dragón Primordial del Fuego: una presencia antigua que aprendió que la llama no solo arrasa, también cocina, guía, ilumina, celebra, forja, protege y recuerda. Con Rubí actúa como maestro y padrino; con los reinos, como memoria viva de verdades que el tiempo volvió mito; con sus invitados, como anfitrión convencido de que la ceremonia es una defensa contra el colapso general del gusto.",
+      designCanon:
+        "Fulgor debe verse principalmente como un dragón antiguo y majestuoso, no como un dragón rojo genérico. Su forma dracónica tiene escamas de oro antiguo, bronce, rojo magma y placas de obsidiana; ojos dorados con pupilas hendidas; brasas internas visibles; pecho como horno de forja; alas enormes y funcionales; garras nobles y peligrosas; presencia de montaña volcánica con modales aristocráticos. Su forma humana es secundaria: un adulto maduro, elegante, impecable, con ojos dorados o ámbar, ropa oscura refinada, capa o abrigo con detalles dorados y rojos, guantes, broche de llama, bastón ceremonial y, cuando corresponde, lentes de presentador o chef de Dragon’s Kitchen."
+    },
+    visualCanon: ["Escala primordial", "Acentos dorados y braseros", "Elegancia gourmet incluso en el exceso"]
+  },
   {
     slug: "aelwyn-solrenhal",
     name: "Aelwyn Solrenhal",
