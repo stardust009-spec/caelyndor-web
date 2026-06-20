@@ -6146,3 +6146,149 @@ body.has-music-player {
   box-shadow: 0 0 12px color-mix(in srgb, var(--story-accent, var(--color-ice)) 55%, transparent);
   transition: transform 80ms linear;
 }
+
+/* === Página de tema compartido (/s/[shareSlug]) ============================ */
+.shared-track {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: center;
+  max-width: 880px;
+  margin: var(--space-6) auto;
+}
+
+.shared-track__cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-soft);
+  background: var(--color-night-soft);
+}
+
+.shared-track__cover img {
+  object-fit: cover;
+}
+
+.shared-track__body h1 {
+  margin: 0.2rem 0 0.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1.1;
+}
+
+.shared-track__meta {
+  color: var(--color-silver);
+  font-size: 0.95rem;
+  margin: 0 0 0.8rem;
+}
+
+.shared-track__album {
+  color: var(--color-ash);
+}
+
+.shared-track__description {
+  color: var(--color-ash-bright);
+  max-width: 46ch;
+  margin: 0 0 1.4rem;
+}
+
+.shared-track__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.shared-track__play {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid color-mix(in srgb, var(--color-astral) 40%, var(--color-line));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-astral) 14%, transparent);
+  color: var(--color-ash-bright);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.shared-track__play:hover,
+.shared-track__play:focus-visible {
+  border-color: color-mix(in srgb, var(--color-astral) 70%, var(--color-line));
+  background: color-mix(in srgb, var(--color-astral) 22%, transparent);
+}
+
+.shared-track__share {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-silver);
+  font: inherit;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.shared-track__share:hover,
+.shared-track__share:focus-visible {
+  color: var(--color-ice);
+  border-color: color-mix(in srgb, var(--color-ice) 50%, var(--color-line));
+}
+
+.shared-track__back {
+  color: var(--color-ash);
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.shared-track__back:hover,
+.shared-track__back:focus-visible {
+  color: var(--color-ash-bright);
+  border-bottom-color: var(--color-line);
+}
+
+.shared-track__notfound {
+  max-width: 560px;
+  margin: var(--space-7) auto;
+  text-align: center;
+}
+
+.shared-track__notfound h1 {
+  font-family: var(--font-display);
+  margin: 0.4rem 0 0.8rem;
+}
+
+.shared-track__notfound p {
+  color: var(--color-ash);
+  margin: 0 0 1.4rem;
+}
+
+@media (max-width: 760px) {
+  .shared-track {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: var(--space-5);
+  }
+
+  .shared-track__cover {
+    max-width: 280px;
+  }
+
+  .shared-track__description {
+    margin-inline: auto;
+  }
+
+  .shared-track__actions {
+    justify-content: center;
+  }
+}

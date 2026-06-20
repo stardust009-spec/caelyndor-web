@@ -162,6 +162,12 @@ export function useMusicPlayer() {
 export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   const tracks = musicTracks;
   const audioRef = useRef<HTMLAudioElement>(null);
+  const mediaActionsRef = useRef<{
+    resume: () => void;
+    pause: () => void;
+    next: () => void;
+    previous: () => void;
+  } | null>(null);
   const [currentTrack, setCurrentTrack] = useState<MusicTrack | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -265,6 +271,61 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       audioRef.current.volume = volume;
     }
   }, [volume]);
+
+  // Media Session API: portada + metadatos en el reproductor del sistema
+  // (pantalla de bloqueo / notificación de Android, iOS y Chrome).
+  useEffect(() => {
+    if (typeof navigator === "undefined" || !("mediaSession" in navigator)) {
+      return;
+    }
+
+    if (!currentTrack) {
+      navigator.mediaSession.metadata = null;
+      return;
+    }
+
+    const cover = currentTrack.coverImage ?? FALLBACK_MUSIC_COVER;
+    const artworkSrc = cover.startsWith("/") ? new URL(cover, window.location.origin).href : cover;
+    const artworkType = cover.endsWith(".png")
+      ? "image/png"
+      : cover.endsWith(".webp")
+        ? "image/webp"
+        : "image/jpeg";
+
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: currentTrack.title,
+      artist: currentTrack.artist ?? "Caelyndor",
+      album: currentTrack.album ?? currentTrack.subtitle ?? "Caelyndor",
+      artwork: [{ src: artworkSrc, sizes: "512x512", type: artworkType }]
+    });
+  }, [currentTrack]);
+
+  useEffect(() => {
+    if (typeof navigator === "undefined" || !("mediaSession" in navigator)) {
+      return;
+    }
+
+    navigator.mediaSession.playbackState = isPlaying ? "playing" : "paused";
+  }, [isPlaying]);
+
+  useEffect(() => {
+    if (typeof navigator === "undefined" || !("mediaSession" in navigator)) {
+      return;
+    }
+
+    const session = navigator.mediaSession;
+    session.setActionHandler("play", () => mediaActionsRef.current?.resume());
+    session.setActionHandler("pause", () => mediaActionsRef.current?.pause());
+    session.setActionHandler("previoustrack", () => mediaActionsRef.current?.previous());
+    session.setActionHandler("nexttrack", () => mediaActionsRef.current?.next());
+
+    return () => {
+      session.setActionHandler("play", null);
+      session.setActionHandler("pause", null);
+      session.setActionHandler("previoustrack", null);
+      session.setActionHandler("nexttrack", null);
+    };
+  }, []);
 
   useEffect(() => {
     function handleExternalPlay(event: Event) {
@@ -497,6 +558,17 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       setCurrentTrack(tracks[0]);
     }
   }
+
+  mediaActionsRef.current = {
+    resume: () => {
+      if (currentTrack) {
+        setIsPlaying(true);
+      }
+    },
+    pause: () => setIsPlaying(false),
+    next: () => playNext({ countPlay: true }),
+    previous: () => playPrevious()
+  };
 
   const value: MusicPlayerContextValue = {
     tracks,

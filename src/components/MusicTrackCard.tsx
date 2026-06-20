@@ -1,7 +1,8 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import { HeartIcon, ListMusicIcon, PauseIcon, PlayIcon } from "@/components/MusicIcons";
-import type { MusicTrack } from "@/data/music";
+import { ShareButton } from "@/components/ShareButton";
+import { getShareSlug, trackShareDescription, type MusicTrack } from "@/data/music";
 
 type MusicTrackCardProps = {
   track: MusicTrack;
@@ -87,6 +88,13 @@ export function MusicTrackCard({
           >
             <ListMusicIcon size={13} /> <span>{queued ? "En cola" : "Cola"}</span>
           </button>
+          <ShareButton
+            className="music-card__action"
+            shareSlug={getShareSlug(track)}
+            title={track.title}
+            description={trackShareDescription(track)}
+            label="Compartir"
+          />
         </div>
         {hasError ? <p className="music-card__error">No se pudo cargar este archivo.</p> : null}
       </div>

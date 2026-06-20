@@ -14,13 +14,26 @@ export type MusicTrack = {
   mood?: string;
   accent?: string;
   coverImage?: string;
+  /** Slug corto y único para la URL compartible /s/[shareSlug]. Si se omite, se usa el id. */
+  shareSlug?: string;
+  /** Artista mostrado en Media Session / Open Graph. Por defecto "Caelyndor". */
+  artist?: string;
+  /** Álbum mostrado en Media Session / Open Graph. Por defecto el subtítulo o "Caelyndor". */
+  album?: string;
+  /** Descripción libre para la página compartida y los metadatos sociales. */
+  description?: string;
 };
 
-function track(trackData: Omit<MusicTrack, "src" | "coverImage">): MusicTrack {
+// `cover` permite apuntar a una portada explícita (p. ej. la convención
+// /music-covers/[entidad]-music-cover-[##].webp); si se omite, se usa la
+// portada curada en musicCovers.ts (`/images/music-covers/<id>.<ext>`).
+type TrackInput = Omit<MusicTrack, "src" | "coverImage"> & { cover?: string };
+
+function track({ cover, ...trackData }: TrackInput): MusicTrack {
   return {
     ...trackData,
     src: musicAsset(trackData.fileName),
-    coverImage: musicCovers[trackData.id]
+    coverImage: cover ?? musicCovers[trackData.id]
   };
 }
 
@@ -616,3 +629,33 @@ export const musicTracks: MusicTrack[] = [
     accent: "rgba(205, 185, 140, 0.34)"
   })
 ];
+
+/** Slug usado en la URL compartible /s/[shareSlug]. Cae al id si no hay uno propio. */
+export function getShareSlug(track: MusicTrack): string {
+  return track.shareSlug ?? track.id;
+}
+
+// Índice de búsqueda por shareSlug. Cada track es alcanzable por su id y, si lo
+// define, también por su shareSlug corto estilo Suno.
+const trackByShareSlug = new Map<string, MusicTrack>();
+for (const item of musicTracks) {
+  trackByShareSlug.set(item.id, item);
+  if (item.shareSlug) {
+    trackByShareSlug.set(item.shareSlug, item);
+  }
+}
+
+/** Resuelve un track por su shareSlug (o por su id como respaldo). */
+export function getTrackByShareSlug(slug: string): MusicTrack | undefined {
+  return trackByShareSlug.get(slug);
+}
+
+/** Texto de descripción para compartir / metadatos sociales, con respaldo. */
+export function trackShareDescription(track: MusicTrack): string {
+  return (
+    track.description ??
+    track.subtitle ??
+    track.mood ??
+    "Escucha este tema de Caelyndor."
+  );
+}
