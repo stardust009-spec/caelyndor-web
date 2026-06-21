@@ -287,10 +287,10 @@ export const characters: Character[] = [
     accent: "#7b5ca8",
     image: assetImage("noct_canon_portrait_v3.png"),
     profileAudio: {
-      enabled: false,
+      enabled: true,
       title: "Noctalypse — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/noctalypse-profile-summary.mp3",
+      src: "/audio/character-summaries/noctalypse-profile-summary.m4a",
       kind: "character-summary"
     },
     portraitPosition: "50% 18%",
@@ -678,10 +678,10 @@ export const characters: Character[] = [
     accent: "#a77aff",
     image: assetImage("lyzi_canon_portrait_v02.png"),
     profileAudio: {
-      enabled: false,
+      enabled: true,
       title: "Lyzi — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/lyzi-profile-summary.mp3",
+      src: "/audio/character-summaries/lyzi-profile-summary.m4a",
       kind: "character-summary"
     },
     description: "Camina donde los mapas fallan y oye lo que las ruinas todavia no se atreven a decir.",
@@ -1071,6 +1071,13 @@ export const characters: Character[] = [
     affinity: "LLAMA / DOGMA / REDENCIÓN",
     accent: "rgba(210, 190, 170, 0.30)",
     image: assetImage("alistair_canon_portrait.png"),
+    profileAudio: {
+      enabled: true,
+      title: "Alistair Valerius — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/alistair-valerius-profile-summary.m4a",
+      kind: "character-summary"
+    },
     portraitPosition: "50% 18%",
     portraitScale: 1.08,
     description: "Preceptor de Aethel Cineris, formado por la necesidad y la ley absoluta; una llama disciplinada que empieza a descubrir el peso de proteger.",
@@ -1290,6 +1297,13 @@ export const characters: Character[] = [
     accent: "#f0c75e",
     faction: "Dragones Soberanos",
     image: assetImage("fulgor_canon_portrait.png"),
+    profileAudio: {
+      enabled: true,
+      title: "Fulgor — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/fulgor-profile-summary.m4a",
+      kind: "character-summary"
+    },
     description: "Dragón primordial del fuego, gourmet y devoto de la etiqueta: capaz de incinerar un campo de batalla y aun así juzgar los modales de la mesa donde se celebró la victoria.",
     story:
       "Fulgor pertenece a una edad en que los dragones todavía creían poder medir el mundo desde la altura. Vivió guerras, pactos, pérdidas y sellados que los reinos humanos apenas conservan como supersticiones o notas marginales. Con el tiempo no se encerró en el desprecio hacia los mortales: aprendió de ellos, probó sus vinos, observó sus heridas y reconoció su extraña capacidad de fundar vida junto a cicatrices imposibles. En la era actual, su vínculo central es Rubí, portadora de su anillo y Flor Carmesí. También actúa como puente entre el grupo protagonista y la escala antigua del mundo, capaz de pasar del confeti a la memoria de Voltrak sin perder verdad en ninguna de las dos escenas.",
@@ -1469,6 +1483,13 @@ export const characters: Character[] = [
     affinity: "Solar / Plata / Herencia",
     accent: "#d8c88f",
     image: assetImage("aelwyn_canon_portrait.png"),
+    profileAudio: {
+      enabled: true,
+      title: "Aelwyn Solrenhal — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/aelwyn-solrenhal-profile-summary.m4a",
+      kind: "character-summary"
+    },
     description: "Carga una luz que no siempre salva, pero que insiste en revelar lo que otros prefieren dejar cubierto.",
     story:
       "Aelwyn nació en Artanis, hija de Ser Davoren Solrenhal, caballero desaparecido en la Cruzada del Abismo, y de Elyria, última lumenari conocida, fallecida al sellar una fisura solar. La ausencia paterna, la muerte materna y la rigidez de Artanis forjaron en ella una fe incómoda, sostenida en votos porque casi no quedaba nadie que la sostuviera. Tras enterarse de que su hermana de armas Tysha cayó en una escaramuza ligada a Glaciem, Aelwyn partió con su corcel Eclissio, llevando el broche de su madre, la tablilla de su voto y una carta de Tysha que reveló que su hermana la había protegido por amor, no por deber. Entró a Glaciem con bandera blanca —no como rendición, sino como promesa de no cruzar la espada— y allí descubrió, contra todo lo que le habían enseñado, un reino de estructura, permanencia y hogar. Cuando Mythra atacó una aldea de semihumanos, Aelwyn defendió a los inocentes sin pedir permiso, y ese camino terminó conduciéndola hacia Khaal'Zar Omunyek, que convirtió su dolor en trampa y la reclamó como propiedad dentro de su colección de gladiadores.",
@@ -1681,6 +1702,13 @@ export const characters: Character[] = [
     affinity: "Viento / Canto / Presagio",
     accent: "#9ccce8",
     image: assetImage("aria_canon_portrait.png"),
+    profileAudio: {
+      enabled: true,
+      title: "Aria Ventoleve — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/aria-ventoleve-profile-summary.m4a",
+      kind: "character-summary"
+    },
     description: "Su presencia parece ligera hasta que el aire alrededor decide obedecerla.",
     story:
       "Aria nació vinculada a las cortes de sombra del Continente Oscuro, entre nobleza vampírica y decadencia elegante. Ella y su hermano gemelo Adagio fueron abandonados tras la caída de sus padres y recogidos por Velamentum en una noche sin luna. No fueron salvados por amor: fueron elegidos por utilidad. La sociedad los convirtió en Máscaras. A Adagio le dieron canto, culpa y tiempo roto; a Aria, danza, deseo y control del pulso ajeno. Fue entrenada para seducir, distraer y eliminar, y su danza llegó a ser temida tanto en campos de batalla como en salones nobles. Aprendió a interpretar antes que sentir, que una emoción útil vale más que una verdadera, y que la belleza puede ser una jaula con perfume.",
@@ -1859,6 +1887,13 @@ export const characters: Character[] = [
     affinity: "Viento / Ritmo / Guardia",
     accent: "#7fb4c8",
     image: assetImage("adagio_canon_portrait.png"),
+    profileAudio: {
+      enabled: true,
+      title: "Adagio Ventoleve — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/adagio-ventoleve-profile-summary.m4a",
+      kind: "character-summary"
+    },
     description: "Donde otros se precipitan, Adagio mide el pulso exacto antes de dejar caer la respuesta.",
     story:
       "Adagio y su hermana gemela Aria nacieron en las cortes sombrías del Continente Oscuro y fueron abandonados tras la caída de sus padres. Velamentum los recogió en una noche sin luna y los convirtió en Máscaras rituales. A Aria le dio danza, deseo y control del pulso ajeno; a Adagio, canto, culpa y tiempo roto. Fue afinado para recordar el dolor de los demás antes de que el mundo lo olvide, y aprendió a embellecer verdades horribles hasta volverlas sospechosas. Su música se volvió capaz de arrastrar memorias, reabrir heridas y, en casos raros, redimir, siempre a un costo que cobra sobre su propia existencia.",
@@ -2066,10 +2101,10 @@ export const characters: Character[] = [
     accent: "rgba(176, 58, 58, 0.30)",
     image: assetImage("levia_canon_portrait.png"),
     profileAudio: {
-      enabled: false,
+      enabled: true,
       title: "Levia Thanis — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/levia-thanis-profile-summary.mp3",
+      src: "/audio/character-summaries/levia-thanis-profile-summary.m4a",
       kind: "character-summary"
     },
     portraitPosition: "50% 18%",
