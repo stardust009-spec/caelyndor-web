@@ -469,13 +469,13 @@ export const musicTracks: MusicTrack[] = [
     accent: "rgba(126, 174, 138, 0.34)"
   }),
   track({
-    id: "cindralith-cuando-la-arena-muerde",
-    title: "Cindralith — Cuando la arena muerde",
+    id: "cindralith-la-duna-que-acecha",
+    title: "Cindralith — La Duna que Acecha",
     subtitle: "Archivo regional",
-    fileName: "Cindralith — Cuando la arena muerde.mp3",
+    fileName: "Cindralith — La Duna que Acecha.mp3",
     category: "region",
     related: ["Cindralith"],
-    mood: "Arena / fuego",
+    mood: "Duna / acecho",
     accent: "rgba(210, 120, 90, 0.34)"
   }),
   track({
