@@ -6307,12 +6307,19 @@ body.has-music-player {
 }
 
 /* === Botón "Escuchar crónica" del hero de personaje ======================= */
+.detail-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-4);
+}
+
 .detail-hero__chronicle {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
   width: fit-content;
-  margin: 0 0 var(--space-4);
   padding: 0.48rem 1.05rem 0.48rem 0.5rem;
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--character-accent, var(--color-astral)) 42%, var(--color-line));
@@ -6369,8 +6376,42 @@ body.has-music-player {
   box-shadow: 0 0 14px color-mix(in srgb, var(--character-accent, var(--color-astral)) 40%, transparent);
 }
 
+.detail-hero__share {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.48rem 1rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--character-accent, var(--color-astral)) 28%, var(--color-line));
+  background: color-mix(in srgb, var(--character-accent, var(--color-astral)) 6%, transparent);
+  color: var(--color-silver);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.detail-hero__share:hover,
+.detail-hero__share:focus-visible {
+  border-color: color-mix(in srgb, var(--character-accent, var(--color-astral)) 55%, var(--color-line));
+  background: color-mix(in srgb, var(--character-accent, var(--color-astral)) 12%, transparent);
+  color: var(--color-ash-bright);
+  transform: translateY(-1px);
+}
+
+.detail-hero__share:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--character-accent, var(--color-astral)) 70%, white);
+  outline-offset: 2px;
+}
+
 @media (max-width: 760px) {
-  .detail-hero__chronicle {
+  .detail-hero__chronicle,
+  .detail-hero__share {
     min-height: 44px;
     font-size: 0.95rem;
   }

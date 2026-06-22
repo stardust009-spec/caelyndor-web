@@ -9,6 +9,7 @@ import { CharacterPortrait } from "@/components/CharacterPortrait";
 import { ChroniclerNote } from "@/components/ChroniclerNote";
 import { JsonLd } from "@/components/JsonLd";
 import { ProfileAudioButton } from "@/components/ProfileAudioButton";
+import { ShareButton } from "@/components/ShareButton";
 import { characters, getAdjacentCharacters, getCharacterBySlug } from "@/data/characters";
 import { characterSeo } from "@/lib/characterSeo";
 import { SITE_AUTHOR, SITE_AUTHOR_ALIASES, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -163,14 +164,23 @@ export default async function CharacterDetailPage({ params }: CharacterPageProps
             <h1>{headingName}</h1>
             <p className="detail-hero__title">{character.title}</p>
             <p className="status-pill">{character.role}</p>
-            {character.profileAudio?.enabled ? (
-              <ProfileAudioButton
-                audio={character.profileAudio}
-                characterName={headingName}
-                characterSlug={character.slug}
-                fallbackCover={character.image}
+            <div className="detail-hero__actions">
+              {character.profileAudio?.enabled ? (
+                <ProfileAudioButton
+                  audio={character.profileAudio}
+                  characterName={headingName}
+                  characterSlug={character.slug}
+                  fallbackCover={character.image}
+                />
+              ) : null}
+              <ShareButton
+                className="detail-hero__share"
+                path={`/personajes/${character.slug}`}
+                title={headingName}
+                description={character.identityPhrase ?? character.description}
+                label="Compartir"
               />
-            ) : null}
+            </div>
             <p className="detail-hero__identity">
               {character.identityPhrase ?? character.description}
             </p>
