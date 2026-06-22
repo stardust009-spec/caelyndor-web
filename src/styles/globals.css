@@ -5997,7 +5997,8 @@ body.has-music-player {
 }
 
 .story-stats__views,
-.story-stats__like {
+.story-stats__like,
+.story-stats__share {
   display: inline-flex;
   align-items: center;
   gap: 0.26rem;
@@ -6010,8 +6011,20 @@ body.has-music-player {
 }
 
 .story-stats__views svg,
-.story-stats__like svg {
+.story-stats__like svg,
+.story-stats__share svg {
   display: block;
+}
+
+.story-stats__share {
+  cursor: pointer;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.story-stats__share:hover,
+.story-stats__share:focus-visible {
+  color: var(--color-ice);
+  transform: translateY(-1px);
 }
 
 .story-stats__like {

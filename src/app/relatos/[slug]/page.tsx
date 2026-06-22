@@ -104,7 +104,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
             <span aria-hidden="true">✦</span>
             <span>~{story.readingMinutes} min de lectura</span>
           </p>
-          <StoryStats slug={story.slug} title={story.title} registerView />
+          <StoryStats slug={story.slug} title={story.title} shareDescription={story.teaser} registerView />
         </header>
 
         {story.playlist ? <StoryPlaylist playlist={story.playlist} /> : null}

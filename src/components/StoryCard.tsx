@@ -24,7 +24,7 @@ export function StoryCard({ story }: { story: Story }) {
           <Link className="text-link" href={`/relatos/${story.slug}`}>
             Leer relato
           </Link>
-          <StoryStats slug={story.slug} title={story.title} />
+          <StoryStats slug={story.slug} title={story.title} shareDescription={story.teaser} />
         </div>
       </div>
     </article>

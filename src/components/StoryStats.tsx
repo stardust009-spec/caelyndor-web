@@ -1,15 +1,18 @@
 "use client";
 
 import { EyeIcon, HeartIcon } from "@/components/MusicIcons";
+import { ShareButton } from "@/components/ShareButton";
 import { useStoryStats } from "@/components/useStoryStats";
 
 type StoryStatsProps = {
   slug: string;
   title: string;
   registerView?: boolean;
+  /** Texto descriptivo para compartir (normalmente el teaser del relato). */
+  shareDescription?: string;
 };
 
-export function StoryStats({ slug, title, registerView = false }: StoryStatsProps) {
+export function StoryStats({ slug, title, registerView = false, shareDescription }: StoryStatsProps) {
   const { counters, liked, toggleLike } = useStoryStats(slug, registerView);
 
   return (
@@ -29,6 +32,13 @@ export function StoryStats({ slug, title, registerView = false }: StoryStatsProp
       >
         <HeartIcon size={13} /> <span>{counters ? counters.likes : "–"}</span>
       </button>
+      <ShareButton
+        className="story-stats__share"
+        path={`/relatos/${slug}`}
+        title={title}
+        description={shareDescription}
+        label="Compartir"
+      />
     </div>
   );
 }

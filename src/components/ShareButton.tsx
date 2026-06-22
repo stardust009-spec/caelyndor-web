@@ -3,11 +3,14 @@
 import { useState } from "react";
 
 type ShareButtonProps = {
-  shareSlug: string;
   title: string;
   description?: string;
   label?: string;
   className?: string;
+  /** Ruta relativa a compartir (p. ej. "/relatos/foo"). Tiene prioridad sobre shareSlug. */
+  path?: string;
+  /** Música: si no se pasa `path`, se comparte /s/<shareSlug>. */
+  shareSlug?: string;
 };
 
 function ShareIcon({ size = 14 }: { size?: number }) {
@@ -32,12 +35,13 @@ function ShareIcon({ size = 14 }: { size?: number }) {
   );
 }
 
-export function ShareButton({ shareSlug, title, description, label = "Compartir", className }: ShareButtonProps) {
+export function ShareButton({ shareSlug, path, title, description, label = "Compartir", className }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
 
   async function handleShare() {
-    const url = `${window.location.origin}/s/${shareSlug}`;
-    const text = description ?? "Escucha este tema de Caelyndor.";
+    const relativePath = path ?? (shareSlug ? `/s/${shareSlug}` : "/");
+    const url = `${window.location.origin}${relativePath}`;
+    const text = description ?? title;
 
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
