@@ -60,7 +60,7 @@ export function GlobalMusicPlayer() {
     currentTime,
     duration,
     volume,
-    stats,
+    likedTracks,
     queue,
     queueTracks,
     shuffle,
@@ -130,7 +130,7 @@ export function GlobalMusicPlayer() {
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
   const isMuted = volume === 0;
-  const currentLiked = stats[currentTrack.id]?.liked ?? false;
+  const currentLiked = likedTracks[currentTrack.id] ?? false;
   const currentPlayerTheme = getPlayerTheme(currentTrack);
 
   return (

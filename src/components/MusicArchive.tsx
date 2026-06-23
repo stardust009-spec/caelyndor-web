@@ -44,6 +44,7 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
     currentTrack,
     isPlaying,
     stats,
+    likedTracks,
     queue,
     erroredTracks,
     setTrack,
@@ -473,7 +474,8 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
               onToggle={handleToggle}
               fallbackCover={FALLBACK_MUSIC_COVER}
               plays={stats[track.id]?.plays ?? 0}
-              liked={stats[track.id]?.liked ?? false}
+              likes={stats[track.id]?.likes ?? 0}
+              liked={likedTracks[track.id] ?? false}
               queued={queue.includes(track.id)}
               onLike={handleLike}
               onQueue={handleQueue}

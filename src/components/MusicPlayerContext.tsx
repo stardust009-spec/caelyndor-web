@@ -7,7 +7,10 @@ import { musicTracks, type MusicTrack } from "@/data/music";
 export const FALLBACK_MUSIC_COVER = "/images/music-covers/fallback_missing_cover.png";
 
 export type RepeatMode = "off" | "all" | "one";
-export type MusicStats = Record<string, { plays: number; liked: boolean }>;
+/** Conteos GLOBALES por tema (Redis vía /api/music-stats). El "me gusta" del
+ *  usuario se guarda aparte, por navegador, en `likedTracks`. */
+export type MusicStats = Record<string, { plays: number; likes: number }>;
+export type LikedTracks = Record<string, boolean>;
 export type PlayerTheme =
   | "default"
   | "carolina"
@@ -19,11 +22,77 @@ export type PlayerTheme =
   | "noct"
   | "levia";
 
-const statsStorageKey = "caelyndor_music_stats";
+const likedStorageKey = "caelyndor.music-liked.v2";
+const legacyStatsStorageKey = "caelyndor_music_stats";
 const queueStorageKey = "caelyndor_music_queue";
 const shuffleStorageKey = "caelyndor_music_shuffle";
 const repeatStorageKey = "caelyndor_music_repeat_mode";
 const volumeStorageKey = "caelyndor_music_volume";
+
+type MusicCounter = { plays: number; likes: number };
+
+/** Lee el set de temas que el usuario marcó (por navegador). Migra el esquema
+ *  viejo `caelyndor_music_stats` (plays+liked) tomando solo los `liked`. */
+function readLikedTracks(): LikedTracks {
+  try {
+    const stored = window.localStorage.getItem(likedStorageKey);
+    if (stored) {
+      return JSON.parse(stored) as LikedTracks;
+    }
+
+    const legacy = window.localStorage.getItem(legacyStatsStorageKey);
+    if (legacy) {
+      const parsed = JSON.parse(legacy) as Record<string, { liked?: boolean }>;
+      const migrated: LikedTracks = {};
+      for (const [id, value] of Object.entries(parsed)) {
+        if (value?.liked) {
+          migrated[id] = true;
+        }
+      }
+      return migrated;
+    }
+
+    return {};
+  } catch {
+    return {};
+  }
+}
+
+/** Lee los conteos globales (plays/likes) de los temas pedidos. */
+async function fetchMusicCounters(ids: string[]): Promise<Record<string, MusicCounter>> {
+  try {
+    const response = await fetch(`/api/music-stats?ids=${ids.join(",")}`);
+    if (!response.ok) {
+      return {};
+    }
+    const data = (await response.json()) as { stats?: Record<string, MusicCounter> };
+    return data.stats ?? {};
+  } catch {
+    // Sin red o contadores no configurados: se mantienen los valores en memoria.
+    return {};
+  }
+}
+
+/** Registra una acción (reproducción o me gusta) y devuelve el conteo nuevo. */
+async function sendMusicAction(
+  id: string,
+  action: "play" | "like" | "unlike"
+): Promise<MusicCounter | null> {
+  try {
+    const response = await fetch("/api/music-stats", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, action })
+    });
+    if (!response.ok) {
+      return null;
+    }
+    const data = (await response.json()) as { stats?: Record<string, MusicCounter> };
+    return data.stats?.[id] ?? null;
+  } catch {
+    return null;
+  }
+}
 
 function readJson<T>(key: string, fallback: T): T {
   try {
@@ -119,6 +188,7 @@ type MusicPlayerContextValue = {
   duration: number;
   volume: number;
   stats: MusicStats;
+  likedTracks: LikedTracks;
   queue: string[];
   queueTracks: MusicTrack[];
   shuffle: boolean;
@@ -174,6 +244,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.82);
   const [stats, setStats] = useState<MusicStats>({});
+  const [likedTracks, setLikedTracks] = useState<LikedTracks>({});
   const [queue, setQueue] = useState<string[]>([]);
   const [history, setHistory] = useState<string[]>([]);
   const [shuffle, setShuffle] = useState(false);
@@ -208,7 +279,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     currentIndex < tracks.length - 1;
 
   useEffect(() => {
-    setStats(readJson<MusicStats>(statsStorageKey, {}));
+    setLikedTracks(readLikedTracks());
     const storedQueue = readJson<string[]>(queueStorageKey, []).filter((id) => trackById.has(id));
     setQueue(storedQueue.length > 0 ? storedQueue : createRandomQueue(tracks, 10, tracks[0]?.id));
     setShuffle(readJson<boolean>(shuffleStorageKey, false));
@@ -216,13 +287,26 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     const storedVolume = Math.min(1, Math.max(0, readNumber(volumeStorageKey, 0.82)));
     setVolume(storedVolume);
     setStorageReady(true);
+
+    // Carga los conteos globales (plays/likes) desde la base de datos.
+    let cancelled = false;
+    void fetchMusicCounters(tracks.map((track) => track.id)).then((loaded) => {
+      if (!cancelled && Object.keys(loaded).length > 0) {
+        setStats(loaded);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, [trackById, tracks]);
 
   useEffect(() => {
     if (storageReady) {
-      window.localStorage.setItem(statsStorageKey, JSON.stringify(stats));
+      window.localStorage.setItem(likedStorageKey, JSON.stringify(likedTracks));
+      window.localStorage.removeItem(legacyStatsStorageKey);
     }
-  }, [stats, storageReady]);
+  }, [likedTracks, storageReady]);
 
   useEffect(() => {
     if (storageReady) {
@@ -349,9 +433,10 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
       ...current,
       [trackId]: {
         plays: (current[trackId]?.plays ?? 0) + 1,
-        liked: current[trackId]?.liked ?? false
+        likes: current[trackId]?.likes ?? 0
       }
     }));
+    void sendMusicAction(trackId, "play");
   }
 
   function setTrack(track: MusicTrack, options: SetTrackOptions = {}) {
@@ -494,13 +579,32 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
   }
 
   function handleLike(trackId: string) {
+    const nextLiked = !(likedTracks[trackId] ?? false);
+
+    setLikedTracks((current) => {
+      const next = { ...current };
+      if (nextLiked) {
+        next[trackId] = true;
+      } else {
+        delete next[trackId];
+      }
+      return next;
+    });
+
+    // Actualización optimista del conteo global.
     setStats((current) => ({
       ...current,
       [trackId]: {
         plays: current[trackId]?.plays ?? 0,
-        liked: !(current[trackId]?.liked ?? false)
+        likes: Math.max(0, (current[trackId]?.likes ?? 0) + (nextLiked ? 1 : -1))
       }
     }));
+
+    void sendMusicAction(trackId, nextLiked ? "like" : "unlike").then((counter) => {
+      if (counter) {
+        setStats((current) => ({ ...current, [trackId]: counter }));
+      }
+    });
   }
 
   function handleQueue(trackId: string) {
@@ -578,6 +682,7 @@ export function MusicPlayerProvider({ children }: { children: ReactNode }) {
     duration,
     volume,
     stats,
+    likedTracks,
     queue,
     queueTracks,
     shuffle,

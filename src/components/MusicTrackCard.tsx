@@ -11,6 +11,7 @@ type MusicTrackCardProps = {
   hasError: boolean;
   fallbackCover: string;
   plays: number;
+  likes: number;
   liked: boolean;
   queued: boolean;
   onToggle: (track: MusicTrack) => void;
@@ -25,6 +26,7 @@ export function MusicTrackCard({
   hasError,
   fallbackCover,
   plays,
+  likes,
   liked,
   queued,
   onToggle,
@@ -77,7 +79,7 @@ export function MusicTrackCard({
             aria-label={liked ? `Quitar me gusta de ${track.title}` : `Dar me gusta a ${track.title}`}
             aria-pressed={liked}
           >
-            <HeartIcon size={13} /> <span>{liked ? 1 : 0}</span>
+            <HeartIcon size={13} /> <span>{likes}</span>
           </button>
           <button
             className={queued ? "music-card__action music-card__action--active" : "music-card__action"}
