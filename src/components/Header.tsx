@@ -12,6 +12,7 @@ const navItems = [
   { href: "/cronologia", label: "Cronología" },
   { href: "/musica", label: "Música" },
   { href: "/arte", label: "Arte" },
+  { href: "/descargas", label: "Descargas" },
   { href: "/nuevo-libro", label: "Nuevo Libro" },
   { href: "/archivo", label: "Archivo" }
 ];

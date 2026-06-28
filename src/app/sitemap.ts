@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/musica`, lastModified, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/cronologia`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/arte`, lastModified, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/descargas`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/archivo`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${SITE_URL}/archivo/mundo`, lastModified, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/archivo/sistema-magico`, lastModified, changeFrequency: "monthly", priority: 0.5 },
