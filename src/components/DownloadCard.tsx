@@ -3,7 +3,7 @@
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import { useDownloadStats } from "@/components/useDownloadStats";
-import type { Wallpaper } from "@/data/wallpapers";
+import type { DownloadItem } from "@/data/wallpapers";
 
 function invocations(count: number | null) {
   if (count === null) {
@@ -12,80 +12,88 @@ function invocations(count: number | null) {
   return count === 1 ? "1 invocación" : `${count} invocaciones`;
 }
 
-type DownloadVariant = "desktop" | "mobile";
-
-const copy: Record<DownloadVariant, { png: string; mp4: string }> = {
-  desktop: { png: "Invocar imagen", mp4: "Invocar en movimiento" },
-  mobile: { png: "Llevar al bolsillo", mp4: "Despertar en mobile" }
+const typeLabel: Record<DownloadItem["type"], string> = {
+  wallpaper: "Wallpaper",
+  skin: "Skin"
 };
 
-export function DownloadCard({
-  wallpaper,
-  variant = "desktop"
-}: {
-  wallpaper: Wallpaper;
-  variant?: DownloadVariant;
-}) {
-  const ids = [wallpaper.png.fileId, wallpaper.mp4?.fileId].filter(
+const orientationLabel: Record<DownloadItem["orientation"], string> = {
+  desktop: "Desktop",
+  mobile: "Mobile"
+};
+
+// El copy del botón cambia según tipo y orientación. Las skins evocan "otra
+// faceta del personaje"; los wallpapers, invocar la imagen / el movimiento.
+function downloadCopy(item: DownloadItem): { png: string; mp4: string } {
+  if (item.type === "skin") {
+    return { png: "Invocar esta faceta", mp4: "Despertar esta faceta" };
+  }
+  if (item.orientation === "mobile") {
+    return { png: "Llevar al bolsillo", mp4: "Despertar en mobile" };
+  }
+  return { png: "Invocar imagen", mp4: "Invocar en movimiento" };
+}
+
+export function DownloadCard({ item }: { item: DownloadItem }) {
+  const ids = [item.png.fileId, item.mp4?.fileId].filter(
     (id): id is string => Boolean(id)
   );
   const { counts, registerDownload } = useDownloadStats(ids);
-  const labels = copy[variant];
+  const labels = downloadCopy(item);
+  const isMobile = item.orientation === "mobile";
+  const badge = `${typeLabel[item.type]} · ${orientationLabel[item.orientation]}`;
 
   return (
     <article
-      className={`wallpaper-card${variant === "mobile" ? " wallpaper-card--mobile" : ""}`}
-      style={{ "--wallpaper-accent": wallpaper.accent } as CSSProperties}
+      className={`wallpaper-card${isMobile ? " wallpaper-card--mobile" : ""}`}
+      style={{ "--wallpaper-accent": item.accent } as CSSProperties}
     >
       <a
         className="wallpaper-card__preview"
-        href={wallpaper.png.url}
-        onClick={() => registerDownload(wallpaper.png.fileId)}
+        href={item.png.url}
+        onClick={() => registerDownload(item.png.fileId)}
         rel="noopener"
-        aria-label={`Descargar ${wallpaper.title} en imagen estática`}
+        aria-label={`Descargar ${item.title} (${badge}) en imagen estática`}
       >
         <Image
-          src={wallpaper.preview}
-          alt={`Vista previa del fondo ${wallpaper.title}`}
+          src={item.preview}
+          alt={`Vista previa de ${item.title}`}
           fill
-          sizes={
-            variant === "mobile"
-              ? "(max-width: 760px) 44vw, 220px"
-              : "(max-width: 760px) 92vw, 380px"
-          }
+          sizes={isMobile ? "(max-width: 760px) 44vw, 220px" : "(max-width: 760px) 92vw, 380px"}
         />
+        <span className="wallpaper-card__badge">{badge}</span>
       </a>
 
       <div className="wallpaper-card__copy">
-        <h3>{wallpaper.title}</h3>
+        <h3>{item.title}</h3>
 
         <div className="wallpaper-card__downloads">
           <div className="wallpaper-card__download">
             <a
               className="wallpaper-card__button"
-              href={wallpaper.png.url}
-              onClick={() => registerDownload(wallpaper.png.fileId)}
+              href={item.png.url}
+              onClick={() => registerDownload(item.png.fileId)}
               rel="noopener"
             >
               <span aria-hidden="true">✦</span> {labels.png}
             </a>
             <span className="wallpaper-card__count" aria-live="polite">
-              {invocations(counts[wallpaper.png.fileId] ?? null)}
+              {invocations(counts[item.png.fileId] ?? null)}
             </span>
           </div>
 
-          {wallpaper.mp4 ? (
+          {item.mp4 ? (
             <div className="wallpaper-card__download">
               <a
                 className="wallpaper-card__button wallpaper-card__button--motion"
-                href={wallpaper.mp4.url}
-                onClick={() => registerDownload(wallpaper.mp4!.fileId)}
+                href={item.mp4.url}
+                onClick={() => registerDownload(item.mp4!.fileId)}
                 rel="noopener"
               >
                 <span aria-hidden="true">❉</span> {labels.mp4}
               </a>
               <span className="wallpaper-card__count" aria-live="polite">
-                {invocations(counts[wallpaper.mp4.fileId] ?? null)}
+                {invocations(counts[item.mp4.fileId] ?? null)}
               </span>
             </div>
           ) : null}

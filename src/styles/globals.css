@@ -6418,60 +6418,111 @@ body.has-music-player {
 }
 
 /* === Descargas / fondos de pantalla === */
-.wallpaper-category {
+.downloads-browser {
+  --wallpaper-accent: var(--color-astral);
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-7);
 }
 
-.wallpaper-category + .wallpaper-category {
-  margin-top: var(--space-8);
-  padding-top: var(--space-7);
-  border-top: 1px solid var(--color-line);
-}
-
-.wallpaper-category__head {
+.download-filters {
   display: grid;
-  gap: 0.45rem;
+  gap: var(--space-3);
 }
 
-.wallpaper-category__label {
-  display: inline-flex;
+.download-filter-row {
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-4);
-  margin: 0;
-  color: var(--color-ash-bright);
-  font-family: var(--font-display);
-  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
-  line-height: 1.1;
+  gap: var(--space-2);
 }
 
-.wallpaper-category__label::after {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--color-line), transparent);
-  content: "";
+.download-filter-row__label {
+  margin-right: var(--space-2);
+  color: var(--color-ash);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-.wallpaper-category__blurb {
-  max-width: 64ch;
-  margin: 0;
+/* Mismo chip que .gallery-filter, con acento configurable para el estado activo. */
+.download-filter {
+  --filter-accent: var(--color-astral);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.42rem 1rem;
+  background: transparent;
   color: var(--color-silver);
-  font-size: 0.98rem;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
 }
 
-.wallpaper-groups {
+.download-filter:hover {
+  border-color: color-mix(in srgb, var(--filter-accent) 50%, var(--color-line));
+  color: var(--color-ash-bright);
+}
+
+.download-filter--active {
+  border-color: color-mix(in srgb, var(--filter-accent) 70%, var(--color-line));
+  background: color-mix(in srgb, var(--filter-accent) 16%, transparent);
+  color: var(--color-ash-bright);
+}
+
+.download-filter:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--filter-accent) 70%, white);
+  outline-offset: 2px;
+}
+
+.download-filters__count {
+  margin: 0 0 0 auto;
+  color: var(--color-ash);
+  font-size: 0.9rem;
+}
+
+.downloads-browser__empty {
+  margin: 0;
+  padding: var(--space-6) 0;
+  color: var(--color-ash);
+  font-style: italic;
+}
+
+.download-characters {
   display: grid;
   gap: var(--space-8);
 }
 
-.wallpaper-group {
+.download-character {
+  --wallpaper-accent: var(--color-astral);
   display: grid;
   gap: var(--space-5);
 }
 
-.wallpaper-group {
-  --wallpaper-accent: var(--color-astral);
+/* Bloque por tipo (Wallpapers / Skins) dentro de un personaje. El subtítulo con
+   regla de acento actúa de separador sutil entre wallpapers y skins. */
+.download-type {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.download-type__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0;
+  color: var(--color-silver);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.download-type__label::after {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--wallpaper-accent) 45%, var(--color-line)), transparent);
+  content: "";
 }
 
 .wallpaper-group__head {
@@ -6555,6 +6606,23 @@ body.has-music-player {
   inset: 0;
   background: linear-gradient(180deg, transparent 60%, rgba(5, 6, 10, 0.45));
   content: "";
+}
+
+.wallpaper-card__badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 2;
+  border: 1px solid color-mix(in srgb, var(--wallpaper-accent) 40%, var(--color-line));
+  border-radius: 999px;
+  padding: 0.24rem 0.6rem;
+  background: rgba(5, 6, 10, 0.66);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: var(--color-ash-bright);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
 .wallpaper-card__preview img {

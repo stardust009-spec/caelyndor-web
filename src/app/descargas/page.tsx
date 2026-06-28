@@ -1,12 +1,11 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import { DownloadCard } from "@/components/DownloadCard";
+import { DownloadsBrowser } from "@/components/DownloadsBrowser";
 import { SectionIntro } from "@/components/SectionIntro";
-import { wallpaperCategories } from "@/data/wallpapers";
+import { downloadItems } from "@/data/wallpapers";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const description =
-  "Fondos de pantalla del archivo visual de Caelyndor para escritorio y mobile: retratos en 4K y loops animados de Rubí, Yuki, Lyzi y Aria. Descarga libre, imagen estática o en movimiento.";
+  "Fondos de pantalla y skins del archivo visual de Caelyndor para escritorio y mobile: retratos en 4K, loops animados y la línea Sylvalis Café de Rubí, Yuki, Lyzi y Aria. Filtra por personaje y categoría.";
 
 export const metadata: Metadata = {
   title: "Descargas",
@@ -35,50 +34,10 @@ export default function DownloadsPage() {
         <SectionIntro
           eyebrow="Archivo visual"
           title="Descargas"
-          text="Fondos de pantalla del Velo, para escritorio y mobile: retratos en 4K y loops animados de las chicas de Caelyndor. Invoca la imagen estática o despierta el movimiento, y llévalas a tu mundo."
+          text="Fondos de pantalla y skins del Velo, para escritorio y mobile: retratos en 4K, loops animados y otras facetas de las chicas de Caelyndor. Filtra por personaje y categoría, y llévalas a tu mundo."
         />
 
-        {wallpaperCategories.map((category) => (
-          <section
-            key={category.id}
-            className="wallpaper-category"
-            aria-label={`Fondos para ${category.label}`}
-          >
-            <div className="wallpaper-category__head">
-              <p className="wallpaper-category__label">{category.label}</p>
-              <p className="wallpaper-category__blurb">{category.blurb}</p>
-            </div>
-
-            <div className="wallpaper-groups">
-              {category.groups.map((group) => (
-                <section
-                  key={`${category.id}-${group.character}`}
-                  className="wallpaper-group"
-                  aria-label={`Fondos de ${group.character} para ${category.label}`}
-                  style={{ "--wallpaper-accent": group.accent } as CSSProperties}
-                >
-                  <div className="wallpaper-group__head">
-                    <h2>{group.character}</h2>
-                    <p>{group.blurb}</p>
-                  </div>
-                  <div
-                    className={`wallpaper-grid${
-                      category.layout === "mobile" ? " wallpaper-grid--mobile" : ""
-                    }`}
-                  >
-                    {group.wallpapers.map((wallpaper) => (
-                      <DownloadCard
-                        key={wallpaper.id}
-                        wallpaper={wallpaper}
-                        variant={category.layout}
-                      />
-                    ))}
-                  </div>
-                </section>
-              ))}
-            </div>
-          </section>
-        ))}
+        <DownloadsBrowser items={downloadItems} />
       </div>
     </section>
   );

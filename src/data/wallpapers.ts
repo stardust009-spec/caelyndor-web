@@ -219,3 +219,128 @@ export const allDownloadIds: string[] = wallpaperCategories.flatMap((category) =
     )
   )
 );
+
+// === Modelo unificado para filtros (personaje × tipo) ===
+// La página /descargas filtra por personaje y por tipo (Wallpapers / Skins).
+// Para eso aplanamos los wallpaper categories existentes y sumamos las skins,
+// etiquetando cada pieza con personaje, tipo y orientación. NO reescribe los
+// datos de arriba; los deriva.
+
+export type DownloadType = "wallpaper" | "skin";
+export type DownloadOrientation = "desktop" | "mobile";
+
+export type DownloadItem = {
+  id: string;
+  character: string;
+  type: DownloadType;
+  orientation: DownloadOrientation;
+  /** Subcategoría temática (p. ej. la línea de skins "sylvalis-cafe"). */
+  subcategory?: string;
+  title: string;
+  preview: string;
+  accent: string;
+  png: WallpaperDownload;
+  mp4?: WallpaperDownload;
+};
+
+/** Orden canónico de personajes en la página y en el filtro. */
+export const characterOrder = ["Rubí", "Yuki", "Lyzi", "Aria", "Grupo"];
+
+/** Acento de color por personaje (para destacar el filtro activo). */
+export const characterAccents: Record<string, string> = {
+  Rubí: "#c84b4b",
+  Yuki: "#8bc6df",
+  Lyzi: "#a77aff",
+  Aria: "#9ccce8",
+  Grupo: "#9a7dff"
+};
+
+// Skins — línea "Sylvalis Café" (cada skin es PNG, con variante desktop y mobile).
+export const skinItems: DownloadItem[] = [
+  {
+    id: "rubi-volcanic-parfait-desktop",
+    character: "Rubí",
+    type: "skin",
+    orientation: "desktop",
+    subcategory: "sylvalis-cafe",
+    title: "Volcanic Parfait",
+    preview: "/previews/wallpapers/skins/rubi-volcanic-parfait-desktop.webp",
+    accent: "#c84b4b",
+    png: { fileId: "rubi-volcanic-parfait-desktop-png", url: drive("1n8BW8pP5c6Jk9d5FxI_kIl6WuxiesNAW") }
+  },
+  {
+    id: "rubi-volcanic-parfait-mobile",
+    character: "Rubí",
+    type: "skin",
+    orientation: "mobile",
+    subcategory: "sylvalis-cafe",
+    title: "Volcanic Parfait",
+    preview: "/previews/wallpapers/skins/rubi-volcanic-parfait-mobile.webp",
+    accent: "#c84b4b",
+    png: { fileId: "rubi-volcanic-parfait-mobile-png", url: drive("1nm5z6HK1GkEcvjlXzg_g0eHkXt98l-6C") }
+  },
+  {
+    id: "yuki-royal-dessert-desktop",
+    character: "Yuki",
+    type: "skin",
+    orientation: "desktop",
+    subcategory: "sylvalis-cafe",
+    title: "Royal Dessert",
+    preview: "/previews/wallpapers/skins/yuki-royal-dessert-desktop.webp",
+    accent: "#8bc6df",
+    png: { fileId: "yuki-royal-dessert-desktop-png", url: drive("16fBoXp9q84Pe7MCur_SBTHuIHtoCD3Qc") }
+  },
+  {
+    id: "yuki-royal-dessert-mobile",
+    character: "Yuki",
+    type: "skin",
+    orientation: "mobile",
+    subcategory: "sylvalis-cafe",
+    title: "Royal Dessert",
+    preview: "/previews/wallpapers/skins/yuki-royal-dessert-mobile.webp",
+    accent: "#8bc6df",
+    png: { fileId: "yuki-royal-dessert-mobile-png", url: drive("1OiHpMJ1SFM-rYo8U6q2ZNO-4Ax6jZQLr") }
+  },
+  {
+    id: "lyzi-mystical-sweetness-desktop",
+    character: "Lyzi",
+    type: "skin",
+    orientation: "desktop",
+    subcategory: "sylvalis-cafe",
+    title: "Mystical Sweetness",
+    preview: "/previews/wallpapers/skins/lyzi-mystical-sweetness-desktop.webp",
+    accent: "#a77aff",
+    png: { fileId: "lyzi-mystical-sweetness-desktop-png", url: drive("12xuuUieJDUQVQO138bJqFJmsAJVrWluX") }
+  },
+  {
+    id: "lyzi-mystical-sweetness-mobile",
+    character: "Lyzi",
+    type: "skin",
+    orientation: "mobile",
+    subcategory: "sylvalis-cafe",
+    title: "Mystical Sweetness",
+    preview: "/previews/wallpapers/skins/lyzi-mystical-sweetness-mobile.webp",
+    accent: "#a77aff",
+    png: { fileId: "lyzi-mystical-sweetness-mobile-png", url: drive("1l_bTSClzLcfRHVGvxaw93YWfdimnlkkp") }
+  }
+];
+
+// Wallpapers existentes aplanados a DownloadItem (orientación = layout de la categoría).
+const wallpaperItems: DownloadItem[] = wallpaperCategories.flatMap((category) =>
+  category.groups.flatMap((group) =>
+    group.wallpapers.map((wallpaper) => ({
+      id: wallpaper.id,
+      character: group.character,
+      type: "wallpaper" as const,
+      orientation: category.layout,
+      title: wallpaper.title,
+      preview: wallpaper.preview,
+      accent: wallpaper.accent,
+      png: wallpaper.png,
+      mp4: wallpaper.mp4
+    }))
+  )
+);
+
+/** Catálogo completo de descargas (wallpapers + skins) para el navegador con filtros. */
+export const downloadItems: DownloadItem[] = [...wallpaperItems, ...skinItems];
