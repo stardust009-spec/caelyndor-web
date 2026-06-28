@@ -322,6 +322,28 @@ export const skinItems: DownloadItem[] = [
     preview: "/previews/wallpapers/skins/lyzi-mystical-sweetness-mobile.webp",
     accent: "#a77aff",
     png: { fileId: "lyzi-mystical-sweetness-mobile-png", url: drive("1l_bTSClzLcfRHVGvxaw93YWfdimnlkkp") }
+  },
+  {
+    id: "aria-sweet-bite-desktop",
+    character: "Aria",
+    type: "skin",
+    orientation: "desktop",
+    subcategory: "velamentum-cafe",
+    title: "Sweet Bite",
+    preview: "/previews/wallpapers/skins/aria-sweet-bite-desktop.webp",
+    accent: "#9ccce8",
+    png: { fileId: "aria-sweet-bite-desktop-png", url: drive("1wjF8POAv9TbrUhHYpNwKWA2xKllU2Ul6") }
+  },
+  {
+    id: "aria-sweet-bite-mobile",
+    character: "Aria",
+    type: "skin",
+    orientation: "mobile",
+    subcategory: "velamentum-cafe",
+    title: "Sweet Bite",
+    preview: "/previews/wallpapers/skins/aria-sweet-bite-mobile.webp",
+    accent: "#9ccce8",
+    png: { fileId: "aria-sweet-bite-mobile-png", url: drive("1Lf8qlIpMK2RsG_kXOMA368iXqBTP0MPI") }
   }
 ];
 
