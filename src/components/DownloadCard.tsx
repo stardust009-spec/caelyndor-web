@@ -12,15 +12,29 @@ function invocations(count: number | null) {
   return count === 1 ? "1 invocación" : `${count} invocaciones`;
 }
 
-export function DownloadCard({ wallpaper }: { wallpaper: Wallpaper }) {
+type DownloadVariant = "desktop" | "mobile";
+
+const copy: Record<DownloadVariant, { png: string; mp4: string }> = {
+  desktop: { png: "Invocar imagen", mp4: "Invocar en movimiento" },
+  mobile: { png: "Llevar al bolsillo", mp4: "Despertar en mobile" }
+};
+
+export function DownloadCard({
+  wallpaper,
+  variant = "desktop"
+}: {
+  wallpaper: Wallpaper;
+  variant?: DownloadVariant;
+}) {
   const ids = [wallpaper.png.fileId, wallpaper.mp4?.fileId].filter(
     (id): id is string => Boolean(id)
   );
   const { counts, registerDownload } = useDownloadStats(ids);
+  const labels = copy[variant];
 
   return (
     <article
-      className="wallpaper-card"
+      className={`wallpaper-card${variant === "mobile" ? " wallpaper-card--mobile" : ""}`}
       style={{ "--wallpaper-accent": wallpaper.accent } as CSSProperties}
     >
       <a
@@ -34,7 +48,11 @@ export function DownloadCard({ wallpaper }: { wallpaper: Wallpaper }) {
           src={wallpaper.preview}
           alt={`Vista previa del fondo ${wallpaper.title}`}
           fill
-          sizes="(max-width: 760px) 92vw, 380px"
+          sizes={
+            variant === "mobile"
+              ? "(max-width: 760px) 44vw, 220px"
+              : "(max-width: 760px) 92vw, 380px"
+          }
         />
       </a>
 
@@ -49,7 +67,7 @@ export function DownloadCard({ wallpaper }: { wallpaper: Wallpaper }) {
               onClick={() => registerDownload(wallpaper.png.fileId)}
               rel="noopener"
             >
-              <span aria-hidden="true">✦</span> Invocar imagen
+              <span aria-hidden="true">✦</span> {labels.png}
             </a>
             <span className="wallpaper-card__count" aria-live="polite">
               {invocations(counts[wallpaper.png.fileId] ?? null)}
@@ -64,7 +82,7 @@ export function DownloadCard({ wallpaper }: { wallpaper: Wallpaper }) {
                 onClick={() => registerDownload(wallpaper.mp4!.fileId)}
                 rel="noopener"
               >
-                <span aria-hidden="true">❉</span> Invocar en movimiento
+                <span aria-hidden="true">❉</span> {labels.mp4}
               </a>
               <span className="wallpaper-card__count" aria-live="polite">
                 {invocations(counts[wallpaper.mp4.fileId] ?? null)}

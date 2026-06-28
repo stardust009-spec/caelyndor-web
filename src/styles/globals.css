@@ -6418,6 +6418,48 @@ body.has-music-player {
 }
 
 /* === Descargas / fondos de pantalla === */
+.wallpaper-category {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.wallpaper-category + .wallpaper-category {
+  margin-top: var(--space-8);
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--color-line);
+}
+
+.wallpaper-category__head {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.wallpaper-category__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin: 0;
+  color: var(--color-ash-bright);
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.4vw, 2.7rem);
+  line-height: 1.1;
+}
+
+.wallpaper-category__label::after {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-line), transparent);
+  content: "";
+}
+
+.wallpaper-category__blurb {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--color-silver);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
 .wallpaper-groups {
   display: grid;
   gap: var(--space-8);
@@ -6457,6 +6499,25 @@ body.has-music-player {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 420px));
   gap: var(--space-6);
+}
+
+/* Mobile: tarjetas verticales 9:16 en columnas angostas. */
+.wallpaper-grid--mobile {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 240px));
+  gap: var(--space-5);
+}
+
+.wallpaper-card--mobile .wallpaper-card__preview {
+  aspect-ratio: 9 / 16;
+}
+
+.wallpaper-card--mobile .wallpaper-card__copy {
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.wallpaper-card--mobile .wallpaper-card__copy h3 {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
 }
 
 .wallpaper-card {
@@ -6582,6 +6643,12 @@ body.has-music-player {
 @media (max-width: 760px) {
   .wallpaper-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Las tarjetas verticales son angostas: dos por fila en el teléfono. */
+  .wallpaper-grid--mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
   }
 
   .wallpaper-card__button {
