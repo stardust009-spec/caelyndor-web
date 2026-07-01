@@ -1279,15 +1279,116 @@ export const characters: Character[] = [
   {
     slug: "faelan",
     name: "Faelan",
-    title: "El rumor del bosque antiguo",
-    role: "Guia, frontera y memoria salvaje",
-    affinity: "Bosque / Instinto / Raiz",
-    accent: "#7fae8a",
+    title: "El Susurro Nocturno",
+    role: "Asesino ciego de la Cuchilla Tenue; filo del Aire y deudor de cuatro silbatos",
+    affinity: "Aire / Silencio / Aura",
+    accent: "#8a94a6",
     image: assetImage("faelan_canon_portrait_v2.png"),
     portraitPosition: "50% 20%",
     portraitScale: 1.1,
-    description: "Se mueve como si el mundo natural todavia le debiera respuestas, y como si pudiera cobrarlas en silencio.",
-    visualCanon: ["Verdes apagados", "Texturas organicas", "Presencia alerta sin rigidez"]  },
+    description: "Un recaudador de impuestos renacido elfo y forjado como asesino: ciego, cubierto de cicatrices, lee el aura antes que el rostro y cobra caras sus advertencias.",
+    identityPhrase:
+      "El Susurro Nocturno: un recaudador de impuestos al que nadie respetó murió sin gloria y renació elfo — y pasó dos vidas aprendiendo a no ser visto, hasta que dejó de necesitar los ojos para conseguirlo.",
+    narrativeSection: {
+      title: "El peso de dos vidas en un cuerpo que no pidió ninguna",
+      lead:
+        "Faelan no llegó a Caelyndor buscando un destino. Llegó cargando otro, ajeno y gris, empujado dentro de un cuerpo de doce años que aún no sabía qué hacer con dos memorias completas. Todo lo que fue después —el filo, el silencio, la ceguera— nació de esa pregunta que nunca terminó de responderse del todo: ¿qué haces con una segunda vida cuando la primera no valió nada para nadie?",
+      paragraphs: [
+        "Antes de ser elfo, Faelan fue recaudador de impuestos: un hombre sin talento para correr rápido, sin nombre propio para el pueblo que lo despreciaba —solo «el recaudador»—, y sin una sola persona que lo despidiera cuando su historia terminó mal. Renació con esa vida entera todavía latiendo dentro del cuerpo nuevo, atrapado entre dos existencias, hasta que decidió que la segunda no iba a repetir el patrón de la primera.",
+        "Esa decisión lo llevó a la Cuchilla Tenue, el gremio de asesinos que lo entrenó junto a Marla Ojos de Ceniza bajo la mirada dura de Ardek y Thalyon, acogido de forma extraoficial por la Casa Vareth. Allí, su afinidad al Aire y su Habilidad Única —Pasos Silenciosos— lo convirtieron en algo más que un asesino con técnica: un hombre que el mundo dejó de poder detectar. Sin polvo en las botas, sin calor en el aire, sin olor, sin ruido. El Susurro Nocturno no ataca: simplemente deja de estar donde se lo esperaba, y vuelve a estar donde ya es demasiado tarde.",
+        "El amor no lo ablandó; lo endeudó. Cuando Marla quedó al borde de la muerte, Faelan construyó un sistema de cuatro silbatos: contratos de un solo uso que cambian misiones brutales por años robados de su propia vida y entregados a la de ella. Tres ya fueron usados. El cuarto —el que no le pertenece soplar a él— quedó en manos de Noctalypse, como una cuerda invisible que todavía vibra desde lejos cada vez que Faelan pasa el dedo sobre su copia.",
+        "Los años lo encontraron ciego, cubierto de cicatrices, con un trozo de oreja perdido y una calma que ya no distingue entre cansancio y filosofía. Ese es el Faelan que se cruza con Rubí, Yuki y Noctalypse en el Continente Oscuro: un hombre que arranca el corazón de un coloso sin esfuerzo visible, que ve sin ojos porque aprendió a leer el aura antes que el rostro, y que no ofrece ayuda —ofrece advertencias, cobradas caras y sin discursos como pago. Sigue siendo, en el fondo, el recaudador que nadie tomó en serio. Solo que ahora la deuda la cobra él."
+      ]
+    },
+    details: [
+      {
+        title: "Susurro Nocturno",
+        type: "Título núcleo",
+        text:
+          "No es solo un apodo de sigilo: es una ausencia sensorial completa. Faelan no genera olor, no levanta polvo, no emite presión de maná ni sonido de pasos. No se esconde de sus enemigos; deja de existir para ellos mientras decide cuándo volver a hacerlo."
+      },
+      {
+        title: "Pasos Silenciosos",
+        type: "Habilidad Única",
+        text:
+          "Nacida de su afinidad al Aire y perfeccionada mediante el Velo, reduce al mínimo cualquier rastro de su movimiento. Combinada con su entrenamiento de asesino de la Cuchilla Tenue, lo vuelve capaz de ejecutar cortes de precisión quirúrgica —como arrancar el corazón de un coloso sin desgarro ni sangre derramada— antes de que la víctima entienda que está en peligro."
+      },
+      {
+        title: "Los Cuatro Silbatos",
+        type: "Don y precio",
+        text:
+          "Un sistema de contratos de un solo uso, creados por Faelan para financiar la supervivencia de Marla con años de su propia existencia. Cada silbato soplado es una misión letal aceptada y una porción de vida entregada sin condiciones. El cuarto, guardado por Noctalypse, sigue sin sonar por decisión ajena a Faelan — hasta que deja de estarlo."
+      },
+      {
+        title: "El Recaudador",
+        type: "Vida pasada",
+        text:
+          "Un hombre gris, sin talento ni respeto, que cobraba deudas ajenas bajo lluvia y burla. Faelan no reniega de esa vida: la carga como referencia constante. Cada vez que alguien lo subestima, algo en él reconoce el patrón — y decide, otra vez, que esta vez será distinto."
+      },
+      {
+        title: "Visión sin ojos",
+        type: "Consecuencia / transformación",
+        text:
+          "En su etapa adulta, Faelan es ciego: sus ojos grises no enfocan nada. No lo necesita. Lee postura, peso, respiración, distancia e intención a través del aura ajena, lo que lo vuelve más peligroso ciego que la mayoría de los asesinos con vista completa."
+      }
+    ],
+    bonds: [
+      {
+        name: "Seralynn Vareth",
+        description:
+          "Su primer vínculo en la nueva vida: la niña espadachín que lo evaluó sin palabras el primer día y terminó enseñándole, sin proponérselo, que había algo por lo que valía la pena dejar de ser tibio. La relación queda abierta, marcada más por lealtad temprana y disciplina compartida que por resolución."
+      },
+      {
+        name: "Marla Ojos de Ceniza",
+        description:
+          "Su pareja y su filo gemelo dentro de la Cuchilla Tenue —agua y viento, dos elementos que Silvara describe como un tsunami inevitable cuando se mueven al unísono. Es también la razón de los silbatos: cada año que Faelan le compra es un año que él mismo deja de tener."
+      },
+      {
+        name: "Thalyon / Ardek",
+        description:
+          "Maestros de armas y figuras formativas dentro de la Cuchilla Tenue, responsables de convertir su talento crudo en técnica letal — Ardek insistiendo en entrenarlo pese a no pertenecer por sangre a la Casa Vareth."
+      },
+      {
+        name: "Noctalypse",
+        description:
+          "Guardián del cuarto silbato y, para cuando llega «El Aura», el único del cuarteto protagonista que pronuncia su nombre con verdadero peso. El vínculo entre ambos —custodio y deudor— sigue sin resolverse.",
+        href: "/personajes/noctalypse"
+      },
+      {
+        name: "Rubí, Yuki y Noctalypse",
+        description:
+          "Su encuentro con el cuarteto ocurre ya en su etapa ciega y legendaria: los recibe con desprecio funcional, no cruel, y les enseña —a la fuerza, sin pedagogía suave— que el aura no es superstición, sino una herramienta que puede matarlos antes de que aprendan a nombrarla."
+      }
+    ],
+    relatedStories: [
+      {
+        title: "La Bestia, la Flor y la Muerte",
+        type: "Arco de formación",
+        description:
+          "El renacer de Faelan, su entrada a la Cuchilla Tenue y el vínculo con Marla: la etapa donde decide que la segunda vida no repetirá a la primera."
+      },
+      {
+        title: "El Aura",
+        type: "Aparición adulta",
+        description:
+          "El mercenario ciego en el Continente Oscuro y el peso del cuarto silbato: Faelan cruza a Rubí, Yuki y Noctalypse y les enseña a la fuerza qué es el aura."
+      }
+    ],
+    archive: {
+      commonName: "Faelan «El Susurro Nocturno»",
+      race: "Elfo (renacido)",
+      elementPath: "Aire",
+      professionRole:
+        "Asesino de la Cuchilla Tenue, acogido de forma extraoficial por la Casa Vareth; en su primera vida, recaudador de impuestos.",
+      visualNotes:
+        "Faelan es ausencia hecha método: sin olor, sin ruido, sin calor perceptible. Su presencia se reconoce por lo que no altera a su alrededor, no por lo que sí. Cicatrices, vendas viejas, una oreja incompleta y ojos grises que no enfocan nada son la única evidencia de que ha estado ahí."
+    },
+    visualCanon: [
+      "Ausencia sensorial: sin olor, sin polvo, sin presión de maná ni sonido",
+      "Cicatrices, vendas viejas y una oreja incompleta",
+      "Ojos grises que no enfocan; presencia de ceniza y aire nocturno"
+    ]
+  },
   {
     slug: "fulgor",
     name: "Fulgor",
