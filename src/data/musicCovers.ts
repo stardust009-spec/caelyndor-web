@@ -61,5 +61,6 @@ export const musicCovers: Record<string, string> = {
   "cindralith-la-tumba-del-faraon-athem": "/images/music-covers/cindralith-la-tumba-del-faraon-athem.jpg",
   "cindralith-el-templo-del-silencio": "/images/music-covers/cindralith-el-templo-del-silencio.jpg",
   "cindralith-el-bazar-de-las-hojas-amatistas": "/images/music-covers/cindralith-el-bazar-de-las-hojas-amatistas.jpg",
-  "cindralith-bajo-los-toldos-de-arapas": "/images/music-covers/cindralith-bajo-los-toldos-de-arapas.jpg"
+  "cindralith-bajo-los-toldos-de-arapas": "/images/music-covers/cindralith-bajo-los-toldos-de-arapas.jpg",
+  "aelwyn-solrenhal-la-espina-dorada": "/images/music-covers/aelwyn-solrenhal-la-espina-dorada.jpg",
 };

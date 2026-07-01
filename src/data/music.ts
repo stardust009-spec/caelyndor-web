@@ -39,6 +39,16 @@ function track({ cover, ...trackData }: TrackInput): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "aelwyn-solrenhal-la-espina-dorada",
+    title: "Aelwyn Solrenhal — La Espina Dorada",
+    subtitle: "Tema de personaje",
+    fileName: "Aelwyn Solrenhal — La Espina Dorada.mp3",
+    category: "personaje",
+    related: ["Aelwyn Solrenhal"],
+    mood: "Dorado / espina",
+    accent: "rgba(216, 200, 143, 0.34)"
+  }),
+  track({
     id: "cindralith-zarqath-despierta",
     title: "Cindralith — Zarqath Despierta",
     subtitle: "Archivo regional",
