@@ -1284,6 +1284,13 @@ export const characters: Character[] = [
     affinity: "Aire / Silencio / Aura",
     accent: "#8a94a6",
     image: assetImage("faelan_canon_portrait_v2.png"),
+    profileAudio: {
+      enabled: true,
+      title: "Faelan — Crónica de personaje",
+      subtitle: "Caelyndor",
+      src: "/audio/character-summaries/faelan-profile-summary.m4a",
+      kind: "character-summary"
+    },
     portraitPosition: "50% 20%",
     portraitScale: 1.1,
     description: "Un recaudador de impuestos renacido elfo y forjado como asesino: ciego, cubierto de cicatrices, lee el aura antes que el rostro y cobra caras sus advertencias.",
