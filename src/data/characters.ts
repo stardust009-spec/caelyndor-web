@@ -859,10 +859,10 @@ export const characters: Character[] = [
     accent: "rgba(130, 170, 190, 0.30)",
     image: assetImage("halrik_canon_portrait.png"),
     profileAudio: {
-      enabled: false,
+      enabled: true,
       title: "Halrik de Hyldran — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/halrik-profile-summary.mp3",
+      src: "/audio/character-summaries/halrik-profile-summary.m4a",
       kind: "character-summary"
     },
     portraitPosition: "50% 18%",
