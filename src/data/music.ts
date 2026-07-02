@@ -56,7 +56,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Despertar / coloso",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "cindralith-aguijon-bajo-el-sol",
@@ -66,7 +66,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Aguijón / sol",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "cindralith-qharvass-en-las-dunas",
@@ -76,7 +76,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Dunas / acecho",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "cindralith-la-tumba-del-faraon-athem",
@@ -86,7 +86,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Tumba / faraón",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "cindralith-el-templo-del-silencio",
@@ -96,7 +96,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Templo / silencio",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "cindralith-el-bazar-de-las-hojas-amatistas",
@@ -106,7 +106,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Bazar / amatista",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "cindralith-bajo-los-toldos-de-arapas",
@@ -116,7 +116,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Toldos / oasis",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "cindralith-los-jardines-de-arapas",
@@ -126,7 +126,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Jardín / oasis",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "cindralith-el-patio-del-agua-suave",
@@ -136,7 +136,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Agua / calma",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "cindralith-la-arena-aprende-a-morder",
@@ -146,7 +146,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Arena / filo",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "levia-thanis-constelacion-que-calla",
@@ -176,7 +176,7 @@ export const musicTracks: MusicTrack[] = [
     category: "arco",
     related: ["Caelyndor"],
     mood: "Feria / vértigo",
-    accent: "rgba(225, 175, 105, 0.34)"
+    accent: "rgba(150, 152, 162, 0.34)"
   }),
   track({
     id: "caelyndor-un-veinte-para-volver-a-reir",
@@ -186,7 +186,7 @@ export const musicTracks: MusicTrack[] = [
     category: "arco",
     related: ["Caelyndor"],
     mood: "Feria / risa",
-    accent: "rgba(225, 175, 105, 0.34)"
+    accent: "rgba(150, 152, 162, 0.34)"
   }),
   track({
     id: "caelyndor-ovejas-pop-corn-y-polvos-sospechosos",
@@ -196,7 +196,7 @@ export const musicTracks: MusicTrack[] = [
     category: "arco",
     related: ["Caelyndor"],
     mood: "Feria / travesura",
-    accent: "rgba(225, 175, 105, 0.34)"
+    accent: "rgba(150, 152, 162, 0.34)"
   }),
   track({
     id: "caelyndor-gran-feria-gran",
@@ -206,7 +206,7 @@ export const musicTracks: MusicTrack[] = [
     category: "arco",
     related: ["Caelyndor"],
     mood: "Feria / pregón",
-    accent: "rgba(225, 175, 105, 0.34)"
+    accent: "rgba(150, 152, 162, 0.34)"
   }),
   track({
     id: "caelyndor-el-folleto-bajo-la-ceniza",
@@ -216,7 +216,7 @@ export const musicTracks: MusicTrack[] = [
     category: "arco",
     related: ["Caelyndor"],
     mood: "Feria / ceniza",
-    accent: "rgba(225, 175, 105, 0.34)"
+    accent: "rgba(150, 152, 162, 0.34)"
   }),
   track({
     id: "caelyndor-el-ultimo-baculo-del-lich-lord",
@@ -226,7 +226,7 @@ export const musicTracks: MusicTrack[] = [
     category: "arco",
     related: ["Caelyndor"],
     mood: "Feria / conjuro",
-    accent: "rgba(225, 175, 105, 0.34)"
+    accent: "rgba(150, 152, 162, 0.34)"
   }),
   track({
     id: "adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi",
@@ -476,7 +476,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Sylvalis"],
     mood: "Bosque / ruina",
-    accent: "rgba(126, 174, 138, 0.34)"
+    accent: "rgba(52, 122, 70, 0.34)"
   }),
   track({
     id: "cindralith-la-duna-que-acecha",
@@ -486,7 +486,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Cindralith"],
     mood: "Duna / acecho",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(196, 40, 58, 0.34)"
   }),
   track({
     id: "caelyndor-prologo-del-vacio",
@@ -496,7 +496,7 @@ export const musicTracks: MusicTrack[] = [
     category: "arco",
     related: ["Caelyndor"],
     mood: "Abismo / umbral",
-    accent: "rgba(154, 125, 255, 0.34)"
+    accent: "rgba(150, 152, 162, 0.34)"
   }),
   track({
     id: "rubi-rubizilla-el-juicio-de-cindralith",
@@ -526,7 +526,7 @@ export const musicTracks: MusicTrack[] = [
     category: "region",
     related: ["Sylvalis"],
     mood: "Sagrado / coral",
-    accent: "rgba(139, 198, 223, 0.34)"
+    accent: "rgba(52, 122, 70, 0.34)"
   }),
   track({
     id: "rubi-rubikick",
@@ -576,7 +576,7 @@ export const musicTracks: MusicTrack[] = [
     category: "arco",
     related: ["Caelyndor"],
     mood: "Sagrario / corrupción",
-    accent: "rgba(90, 70, 115, 0.34)"
+    accent: "rgba(150, 152, 162, 0.34)"
   }),
   track({
     id: "lyzi-noctalypse-lago-sin-luna",

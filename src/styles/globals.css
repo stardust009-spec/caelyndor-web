@@ -5338,6 +5338,76 @@ body.has-music-player {
   box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
 }
 
+/* Archivo regional: Cindralith (carmesí), Sylvalis (verde bosque) y Glaciem
+   (azul hielo), más el tono neutro para temas genéricos de Caelyndor. */
+.music-player--cindralith {
+  --player-theme-border: rgba(214, 60, 76, 0.3);
+  --player-theme-glow-a: rgba(196, 40, 58, 0.14);
+  --player-theme-glow-b: rgba(150, 26, 40, 0.1);
+  --player-theme-sweep: rgba(214, 60, 76, 0.14);
+  --player-theme-fill: linear-gradient(90deg, rgba(232, 90, 100, 0.86), rgba(168, 28, 44, 0.78));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(232, 90, 100, 0.86), rgba(168, 28, 44, 0.78));
+  --player-theme-thumb: #ea8a90;
+  --player-theme-thumb-border: rgba(234, 138, 144, 0.5);
+  --player-theme-button: #e58e94;
+  --player-theme-warm-a: rgba(196, 40, 58, 0.13);
+  --player-theme-warm-b: rgba(150, 26, 40, 0.07);
+  --player-theme-mote: rgba(220, 96, 104, 0.68);
+  --player-theme-mote-glow: rgba(196, 40, 58, 0.22);
+  --player-theme-firefly: rgba(224, 70, 80, 0.62);
+}
+
+.music-player--sylvalis {
+  --player-theme-border: rgba(80, 160, 96, 0.3);
+  --player-theme-glow-a: rgba(52, 122, 70, 0.14);
+  --player-theme-glow-b: rgba(30, 84, 46, 0.1);
+  --player-theme-sweep: rgba(80, 160, 96, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(108, 196, 128, 0.86), rgba(40, 108, 58, 0.78));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(108, 196, 128, 0.86), rgba(40, 108, 58, 0.78));
+  --player-theme-thumb: #8fdba2;
+  --player-theme-thumb-border: rgba(150, 220, 168, 0.5);
+  --player-theme-button: #92d6a4;
+  --player-theme-warm-a: rgba(52, 122, 70, 0.13);
+  --player-theme-warm-b: rgba(30, 84, 46, 0.07);
+  --player-theme-mote: rgba(120, 200, 138, 0.68);
+  --player-theme-mote-glow: rgba(52, 122, 70, 0.22);
+  --player-theme-firefly: rgba(100, 190, 118, 0.62);
+}
+
+.music-player--glaciem {
+  --player-theme-border: rgba(120, 190, 224, 0.3);
+  --player-theme-glow-a: rgba(90, 170, 210, 0.14);
+  --player-theme-glow-b: rgba(50, 110, 160, 0.1);
+  --player-theme-sweep: rgba(120, 190, 224, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(158, 216, 240, 0.86), rgba(66, 140, 190, 0.78));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(158, 216, 240, 0.86), rgba(66, 140, 190, 0.78));
+  --player-theme-thumb: #a9def0;
+  --player-theme-thumb-border: rgba(170, 224, 244, 0.5);
+  --player-theme-button: #a4dcef;
+  --player-theme-warm-a: rgba(90, 170, 210, 0.13);
+  --player-theme-warm-b: rgba(50, 110, 160, 0.07);
+  --player-theme-mote: rgba(140, 206, 234, 0.68);
+  --player-theme-mote-glow: rgba(90, 170, 210, 0.22);
+  --player-theme-firefly: rgba(110, 190, 224, 0.62);
+}
+
+.music-player--caelyndor {
+  --player-theme-border: rgba(170, 172, 182, 0.26);
+  --player-theme-glow-a: rgba(150, 152, 162, 0.1);
+  --player-theme-glow-b: rgba(110, 112, 122, 0.08);
+  --player-theme-sweep: rgba(170, 172, 182, 0.1);
+  --player-theme-fill: linear-gradient(90deg, rgba(200, 202, 210, 0.8), rgba(120, 122, 132, 0.7));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(200, 202, 210, 0.8), rgba(120, 122, 132, 0.7));
+  --player-theme-thumb: #c7c9d1;
+  --player-theme-thumb-border: rgba(199, 201, 209, 0.46);
+  --player-theme-button: #c3c5cd;
+  --player-theme-warm-a: rgba(150, 152, 162, 0.1);
+  --player-theme-warm-b: rgba(110, 112, 122, 0.06);
+  --player-theme-mote: rgba(180, 182, 190, 0.6);
+  --player-theme-mote-glow: rgba(150, 152, 162, 0.18);
+  --player-theme-firefly: rgba(160, 162, 172, 0.5);
+}
+
 .music-player--themed {
   border-top-color: var(--player-theme-border);
   background:

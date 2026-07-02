@@ -20,7 +20,11 @@ export type PlayerTheme =
   | "rubi"
   | "lyzi"
   | "noct"
-  | "levia";
+  | "levia"
+  | "cindralith"
+  | "sylvalis"
+  | "glaciem"
+  | "caelyndor";
 
 const likedStorageKey = "caelyndor.music-liked.v2";
 const legacyStatsStorageKey = "caelyndor_music_stats";
@@ -130,6 +134,24 @@ export function getPlayerTheme(track: MusicTrack | null): PlayerTheme {
   const related = track.related ?? [];
   const title = track.title;
   const haystack = `${title} ${related.join(" ")}`;
+
+  // Archivo regional / temas genéricos de Caelyndor: color por lugar, no por
+  // personaje. Se detecta por el nombre con el que arranca el título.
+  if (title.startsWith("Cindralith")) {
+    return "cindralith";
+  }
+
+  if (title.startsWith("Sylvalis")) {
+    return "sylvalis";
+  }
+
+  if (title.startsWith("Glaciem")) {
+    return "glaciem";
+  }
+
+  if (title.startsWith("Caelyndor")) {
+    return "caelyndor";
+  }
 
   if (haystack.includes("Carolina Varthalion")) {
     return "carolina";
