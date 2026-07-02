@@ -5408,6 +5408,25 @@ body.has-music-player {
   --player-theme-firefly: rgba(160, 162, 172, 0.5);
 }
 
+/* Aelrhyssa: reina caída y vigía del Velo — corona como memoria, luto
+   monocromático (blanco a negro) en vez de heredar un color ajeno. */
+.music-player--aelrhyssa {
+  --player-theme-border: rgba(232, 232, 238, 0.26);
+  --player-theme-glow-a: rgba(255, 255, 255, 0.1);
+  --player-theme-glow-b: rgba(18, 18, 22, 0.16);
+  --player-theme-sweep: rgba(232, 232, 238, 0.12);
+  --player-theme-fill: linear-gradient(90deg, rgba(250, 250, 252, 0.9), rgba(22, 22, 26, 0.86));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(250, 250, 252, 0.9), rgba(22, 22, 26, 0.86));
+  --player-theme-thumb: #f4f4f6;
+  --player-theme-thumb-border: rgba(244, 244, 246, 0.5);
+  --player-theme-button: #e7e7ea;
+  --player-theme-warm-a: rgba(255, 255, 255, 0.1);
+  --player-theme-warm-b: rgba(18, 18, 22, 0.08);
+  --player-theme-mote: rgba(240, 240, 244, 0.7);
+  --player-theme-mote-glow: rgba(255, 255, 255, 0.18);
+  --player-theme-firefly: rgba(60, 60, 68, 0.6);
+}
+
 .music-player--themed {
   border-top-color: var(--player-theme-border);
   background:

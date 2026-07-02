@@ -626,7 +626,7 @@ export const musicTracks: MusicTrack[] = [
     category: "personaje",
     related: ["Aelrhyssa", "Lirae’thar"],
     mood: "Corona / custodia",
-    accent: "rgba(210, 120, 90, 0.34)"
+    accent: "rgba(232, 232, 238, 0.3)"
   }),
   track({
     id: "eryndhel-retentio-mali",

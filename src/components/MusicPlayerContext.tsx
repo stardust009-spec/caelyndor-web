@@ -24,7 +24,8 @@ export type PlayerTheme =
   | "cindralith"
   | "sylvalis"
   | "glaciem"
-  | "caelyndor";
+  | "caelyndor"
+  | "aelrhyssa";
 
 const likedStorageKey = "caelyndor.music-liked.v2";
 const legacyStatsStorageKey = "caelyndor_music_stats";
@@ -151,6 +152,10 @@ export function getPlayerTheme(track: MusicTrack | null): PlayerTheme {
 
   if (title.startsWith("Caelyndor")) {
     return "caelyndor";
+  }
+
+  if (haystack.includes("Aelrhyssa")) {
+    return "aelrhyssa";
   }
 
   if (haystack.includes("Carolina Varthalion")) {
