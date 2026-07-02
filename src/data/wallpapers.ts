@@ -116,6 +116,13 @@ export const wallpaperCategories: WallpaperCategory[] = [
             preview: "/previews/wallpapers/grupo-winter-balcony-glaciem.webp",
             accent: "#8bc6df",
             png: { fileId: "grupo-winter-balcony-glaciem-png", url: drive("1g1PAfFdNPL6008VBJ9s8Nh9PgXjnNeFe") }
+          },
+          {
+            id: "grupo-dia-sin-mangas",
+            title: "Día Sin Mangas",
+            preview: "/previews/wallpapers/grupo-dia-sin-mangas-desktop.webp",
+            accent: "#9a7dff",
+            png: { fileId: "grupo-dia-sin-mangas-desktop-png", url: drive("17F2n2HSJR4GY2TB3PPRWQ8VTBbO7wdc6") }
           }
         ]
       }
@@ -204,6 +211,13 @@ export const wallpaperCategories: WallpaperCategory[] = [
             preview: "/previews/wallpapers/mobile/grupo-ecos-del-velo.webp",
             accent: "#9a7dff",
             png: { fileId: "grupo-ecos-del-velo-png", url: drive("1xSKuvEJdt3FCAt5aTGRVAO53JBLSqLFt") }
+          },
+          {
+            id: "grupo-dia-sin-mangas-mobile",
+            title: "Día Sin Mangas",
+            preview: "/previews/wallpapers/grupo-dia-sin-mangas-mobile.webp",
+            accent: "#9a7dff",
+            png: { fileId: "grupo-dia-sin-mangas-mobile-png", url: drive("1ZCtx4wGv12r77IE4k2SCgXVkzBThZKT7") }
           }
         ]
       }
