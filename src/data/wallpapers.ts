@@ -73,6 +73,14 @@ export const wallpaperCategories: WallpaperCategory[] = [
             accent: "#8bc6df",
             png: { fileId: "yuki-glaciem-png", url: drive("1xQM4ohxjZJItFSVB1LZZmUHl186dgMnQ") },
             mp4: { fileId: "yuki-glaciem-mp4", url: drive("1TROW7PggnCBGcTb9lYxJq45EpbauiI1O") }
+          },
+          {
+            id: "yuki-ice-mirror",
+            title: "Ice Mirror",
+            preview: "/previews/wallpapers/yuki-ice-mirror-desktop.webp",
+            accent: "#8bc6df",
+            png: { fileId: "yuki-ice-mirror-desktop-png", url: drive("1bKYmlUMVoksh5IoRhwKP-cGwWlQEgrYmU") },
+            mp4: { fileId: "yuki-ice-mirror-desktop-mp4", url: drive("1XRXLg8QmVTc0cXw1Bk2zuTgtUQL8-YY7") }
           }
         ]
       },
@@ -130,6 +138,14 @@ export const wallpaperCategories: WallpaperCategory[] = [
             preview: "/previews/wallpapers/grupo-tragedia-del-helado-desktop.webp",
             accent: "#9a7dff",
             png: { fileId: "grupo-tragedia-del-helado-desktop-png", url: drive("1pa74f74k7SFNPqCHS8ehcH9OSE4IDECq") }
+          },
+          {
+            id: "grupo-crimson-duel",
+            title: "Crimson Duel",
+            preview: "/previews/wallpapers/grupo-crimson-duel-desktop.webp",
+            accent: "#c84b4b",
+            png: { fileId: "grupo-crimson-duel-desktop-png", url: drive("1W-n3c4D2lKiBvuhy1BN8czGqOfLMIMTt") },
+            mp4: { fileId: "grupo-crimson-duel-desktop-mp4", url: drive("1dpIeqVvL-4F69NNR4o3X7FRgOOrYiTAg") }
           }
         ]
       }
