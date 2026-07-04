@@ -123,6 +123,13 @@ export const wallpaperCategories: WallpaperCategory[] = [
             preview: "/previews/wallpapers/grupo-dia-sin-mangas-desktop.webp",
             accent: "#9a7dff",
             png: { fileId: "grupo-dia-sin-mangas-desktop-png", url: drive("17F2n2HSJR4GY2TB3PPRWQ8VTBbO7wdc6") }
+          },
+          {
+            id: "grupo-tragedia-del-helado",
+            title: "Tragedia del Helado",
+            preview: "/previews/wallpapers/grupo-tragedia-del-helado-desktop.webp",
+            accent: "#9a7dff",
+            png: { fileId: "grupo-tragedia-del-helado-desktop-png", url: drive("1pa74f74k7SFNPqCHS8ehcH9OSE4IDECq") }
           }
         ]
       }
