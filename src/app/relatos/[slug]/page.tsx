@@ -6,10 +6,32 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { ReadingProgress } from "@/components/ReadingProgress";
 import { StoryPlaylist } from "@/components/StoryPlaylist";
+import { StorySeparator, type StorySeparatorVariant } from "@/components/StorySeparator";
 import { StoryStats } from "@/components/StoryStats";
 import { assetImage } from "@/data/assets";
-import { getStoryBySlug, stories } from "@/data/stories";
+import { getStoryBySlug, stories, type DominantCharacter } from "@/data/stories";
 import { SITE_AUTHOR, SITE_NAME, SITE_URL } from "@/lib/site";
+
+/* Canon de Separadores Lyzánthycos v1.0: paleta por personaje dominante.
+   Fallback obligatorio: estándar neutral cian de Caelyndor. */
+const LYZ_ACCENTS: Record<DominantCharacter, string> = {
+  rubi: "#ff8a5f",
+  yuki: "#9fd8ff",
+  lyzi: "#c9a7ff",
+  noctalypse: "#a08fdb",
+  ensemble: "#67d9ff"
+};
+
+const SEPARATOR_PATTERNS: { variant: StorySeparatorVariant; regex: RegExp }[] = [
+  { variant: "standard", regex: /^\s*(?:\*\s*){3}\s*$/ },
+  { variant: "standard", regex: /^\s*✦\s+✦\s+✦\s*$/ },
+  { variant: "ritual", regex: /^\s*✧\s+✦\s+✧\s*$/ },
+  { variant: "extended", regex: /^\s*✦\s*·\s*✧\s*·\s*✦\s*$/ }
+];
+
+function getSeparatorVariant(line: string): StorySeparatorVariant | null {
+  return SEPARATOR_PATTERNS.find(({ regex }) => regex.test(line))?.variant ?? null;
+}
 
 type StoryPageProps = {
   params: Promise<{ slug: string }>;
@@ -82,10 +104,12 @@ export default async function StoryPage({ params }: StoryPageProps) {
     }
   ];
 
+  const lyzAccent = LYZ_ACCENTS[story.dominantCharacter ?? "ensemble"] ?? LYZ_ACCENTS.ensemble;
+
   return (
     <article
       className="page-section story-page"
-      style={{ "--story-accent": story.accent } as CSSProperties}
+      style={{ "--story-accent": story.accent, "--lyz-accent": lyzAccent } as CSSProperties}
     >
       <JsonLd data={jsonLd} />
       <ReadingProgress />
@@ -111,9 +135,13 @@ export default async function StoryPage({ params }: StoryPageProps) {
 
         <div className="story-reader">
           {(() => {
-            const ornamentPattern = /^[✦☼✧✶*·.\s—–-]+$/;
+            // Ornamentos legados no cubiertos por el canon (———, ✶ ✶ ✶, etc.) caen al estándar.
+            const legacyOrnamentPattern = /^[✦☼✧✶*·.\s—–-]+$/;
             const firstProseIndex = story.paragraphs.findIndex(
-              (paragraph) => !paragraph.startsWith("### ") && !ornamentPattern.test(paragraph)
+              (paragraph) =>
+                !paragraph.startsWith("### ") &&
+                !getSeparatorVariant(paragraph) &&
+                !legacyOrnamentPattern.test(paragraph)
             );
 
             return story.paragraphs.map((paragraph, index) => {
@@ -125,12 +153,11 @@ export default async function StoryPage({ params }: StoryPageProps) {
                 );
               }
 
-              if (ornamentPattern.test(paragraph)) {
-                return (
-                  <p className="story-reader__ornament" key={index} aria-hidden="true">
-                    ✦ ✦ ✦
-                  </p>
-                );
+              const variant =
+                getSeparatorVariant(paragraph) ??
+                (legacyOrnamentPattern.test(paragraph) ? "standard" : null);
+              if (variant) {
+                return <StorySeparator variant={variant} key={index} />;
               }
 
               return (

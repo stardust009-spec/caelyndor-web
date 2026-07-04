@@ -5242,7 +5242,7 @@ h3 {
   width: 3.4rem;
   height: 1px;
   margin: 0.55em auto 0;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--story-accent) 65%, white), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--lyz-accent, var(--story-accent)) 65%, white), transparent);
   content: "";
 }
 
@@ -5254,6 +5254,33 @@ h3 {
   text-align: center;
   text-indent: 0.7em;
   text-shadow: 0 0 16px color-mix(in srgb, var(--story-accent) 40%, transparent);
+}
+
+/* Canon de Separadores Lyzánthycos v1.0 — tres destellos centrados, color por
+   personaje dominante (--lyz-accent); fallback: cian neutral de Caelyndor. */
+.story-separator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.35rem;
+  margin: 3.5rem auto;
+  color: var(--lyz-accent, #67d9ff);
+  font-size: 1rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--lyz-accent, #67d9ff) 45%, transparent);
+}
+
+.story-separator span {
+  display: inline-block;
+}
+
+.story-separator--ritual {
+  color: color-mix(in srgb, var(--lyz-accent, #67d9ff) 72%, white);
+}
+
+.story-separator--extended {
+  gap: 0.9rem;
 }
 
 .story-footer {
