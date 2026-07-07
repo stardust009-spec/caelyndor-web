@@ -39,6 +39,16 @@ function track({ cover, ...trackData }: TrackInput): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "carolina-varthalion-vino-tibio-con-naranja",
+    title: "Carolina Varthalion — Vino Tibio con Naranja",
+    subtitle: "Tema de personaje",
+    fileName: "Carolina Varthalion — Vino Tibio con Naranja.mp3",
+    category: "personaje",
+    related: ["Carolina Varthalion"],
+    mood: "Cálido / hogareño",
+    accent: "rgba(235, 210, 170, 0.34)"
+  }),
+  track({
     id: "aelwyn-solrenhal-la-espina-dorada",
     title: "Aelwyn Solrenhal — La Espina Dorada",
     subtitle: "Tema de personaje",
