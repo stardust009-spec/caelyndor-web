@@ -186,7 +186,7 @@ export function getPlayerTheme(track: MusicTrack | null): PlayerTheme {
     return "noct";
   }
 
-  if (haystack.includes("Levia")) {
+  if (haystack.includes("Levia") || haystack.includes("Caedran")) {
     return "levia";
   }
 

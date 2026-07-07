@@ -39,6 +39,16 @@ function track({ cover, ...trackData }: TrackInput): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "caedran-las-piedras-tambien-sangran",
+    title: "Caedran — Las Piedras También Sangran",
+    subtitle: "Tema de personaje",
+    fileName: "Caedran — Las Piedras También Sangran.mp3",
+    category: "personaje",
+    related: ["Caedran"],
+    mood: "Piedra / herida",
+    accent: "rgba(176, 58, 58, 0.34)"
+  }),
+  track({
     id: "carolina-varthalion-vino-tibio-con-naranja",
     title: "Carolina Varthalion — Vino Tibio con Naranja",
     subtitle: "Tema de personaje",

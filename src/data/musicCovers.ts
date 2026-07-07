@@ -64,4 +64,5 @@ export const musicCovers: Record<string, string> = {
   "cindralith-bajo-los-toldos-de-arapas": "/images/music-covers/cindralith-bajo-los-toldos-de-arapas.jpg",
   "aelwyn-solrenhal-la-espina-dorada": "/images/music-covers/aelwyn-solrenhal-la-espina-dorada.jpg",
   "carolina-varthalion-vino-tibio-con-naranja": "/images/music-covers/carolina-varthalion-vino-tibio-con-naranja.jpg",
+  "caedran-las-piedras-tambien-sangran": "/images/music-covers/caedran-las-piedras-tambien-sangran.jpg",
 };
