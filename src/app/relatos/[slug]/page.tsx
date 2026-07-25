@@ -140,6 +140,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
             const firstProseIndex = story.paragraphs.findIndex(
               (paragraph) =>
                 !paragraph.startsWith("### ") &&
+                !paragraph.startsWith("> ") &&
                 !getSeparatorVariant(paragraph) &&
                 !legacyOrnamentPattern.test(paragraph)
             );
@@ -150,6 +151,15 @@ export default async function StoryPage({ params }: StoryPageProps) {
                   <h2 className="story-reader__heading" key={index}>
                     {paragraph.slice(4)}
                   </h2>
+                );
+              }
+
+              // Epígrafe de capítulo (aforismo bajo el título, estilo SubCaely del maquetado).
+              if (paragraph.startsWith("> ")) {
+                return (
+                  <p className="story-reader__epigraph" key={index}>
+                    {paragraph.slice(2)}
+                  </p>
                 );
               }
 

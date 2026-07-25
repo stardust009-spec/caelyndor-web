@@ -5246,6 +5246,23 @@ h3 {
   content: "";
 }
 
+/* Epígrafe/aforismo bajo el título de cada capítulo (estilo SubCaely del maquetado). */
+.story-reader p.story-reader__epigraph {
+  max-width: 34rem;
+  margin: 0 auto 2.4em;
+  color: color-mix(in srgb, var(--story-accent) 30%, var(--color-ash));
+  font-style: italic;
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  line-height: 1.7;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.story-reader p.story-reader__epigraph::first-letter {
+  float: none;
+  font-size: inherit;
+}
+
 .story-reader .story-reader__ornament {
   margin: 2.2em 0;
   color: color-mix(in srgb, var(--story-accent) 75%, white);
