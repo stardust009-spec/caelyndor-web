@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
 import { ReadingProgress } from "@/components/ReadingProgress";
+import { StoryIllustration } from "@/components/StoryIllustration";
 import { StoryPlaylist } from "@/components/StoryPlaylist";
 import { StorySeparator, type StorySeparatorVariant } from "@/components/StorySeparator";
 import { StoryStats } from "@/components/StoryStats";
@@ -141,6 +142,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
               (paragraph) =>
                 !paragraph.startsWith("### ") &&
                 !paragraph.startsWith("> ") &&
+                !paragraph.startsWith("@@ilustracion:") &&
                 !getSeparatorVariant(paragraph) &&
                 !legacyOrnamentPattern.test(paragraph)
             );
@@ -151,6 +153,19 @@ export default async function StoryPage({ params }: StoryPageProps) {
                   <h2 className="story-reader__heading" key={index}>
                     {paragraph.slice(4)}
                   </h2>
+                );
+              }
+
+              // Ilustración horizontal de capítulo (solo en relatos que la declaran).
+              // Se oculta sola si el arte todavía no está subido al repo de assets.
+              if (paragraph.startsWith("@@ilustracion:")) {
+                return (
+                  <StoryIllustration
+                    slug={story.slug}
+                    number={paragraph.slice("@@ilustracion:".length).trim()}
+                    title={story.title}
+                    key={index}
+                  />
                 );
               }
 
