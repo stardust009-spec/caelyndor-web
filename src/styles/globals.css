@@ -6864,13 +6864,27 @@ body.has-music-player {
 }
 
 .story-illustration__caption {
-  margin-bottom: 0.8em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.story-illustration__caption-eyebrow {
   color: color-mix(in srgb, var(--story-accent) 55%, var(--color-ash));
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  text-align: center;
+}
+
+.story-illustration__caption-title {
+  color: var(--color-ash-bright);
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.25;
 }
 
 .story-illustration__thumb {

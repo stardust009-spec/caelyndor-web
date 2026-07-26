@@ -8,8 +8,10 @@ type StoryIllustrationProps = {
   /** Número de capítulo con dos dígitos ("06"), o una clave no numérica ("bonus"). */
   number: string;
   title: string;
-  /** Etiqueta pequeña opcional sobre la imagen (p. ej. "Ilustración extra"). */
+  /** Antetítulo pequeño opcional sobre la imagen (p. ej. "Registro adicional del Archivo"). */
   caption?: string;
+  /** Título opcional bajo el antetítulo (p. ej. "La logística sin épica"). */
+  captionTitle?: string;
 };
 
 function RotateDeviceIcon() {
@@ -22,7 +24,7 @@ function RotateDeviceIcon() {
   );
 }
 
-export function StoryIllustration({ slug, number, title, caption }: StoryIllustrationProps) {
+export function StoryIllustration({ slug, number, title, caption, captionTitle }: StoryIllustrationProps) {
   // Cadena de formatos: se intenta webp, luego jpg y png; si ninguno existe,
   // el bloque no se renderiza (el autor todavía no subió el arte del capítulo).
   const candidates = [
@@ -64,7 +66,12 @@ export function StoryIllustration({ slug, number, title, caption }: StoryIllustr
 
   return (
     <figure className="story-illustration">
-      {caption ? <figcaption className="story-illustration__caption">{caption}</figcaption> : null}
+      {caption || captionTitle ? (
+        <figcaption className="story-illustration__caption">
+          {caption ? <span className="story-illustration__caption-eyebrow">{caption}</span> : null}
+          {captionTitle ? <span className="story-illustration__caption-title">{captionTitle}</span> : null}
+        </figcaption>
+      ) : null}
       <button
         type="button"
         className="story-illustration__thumb"

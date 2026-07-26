@@ -203,7 +203,8 @@ export default async function StoryPage({ params }: StoryPageProps) {
               slug={story.slug}
               number="bonus"
               title={story.title}
-              caption="Ilustración extra"
+              caption="Registro adicional del Archivo"
+              captionTitle="La logística sin épica"
             />
           ) : null}
           <p className="story-footer__note">Fin del relato. El Archivo agradece su visita.</p>
