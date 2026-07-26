@@ -28,6 +28,9 @@ export type Story = {
   playlist?: StoryPlaylist;
   /** Si falta o es inválido, el renderer aplica el estándar neutral ("ensemble"). */
   dominantCharacter?: DominantCharacter;
+  /** Muestra una ilustración "bonus" al final (tras el ✦✦✦ de cierre).
+   *  Arte: relato-<slug>-ilustracion-bonus.webp (se oculta si no existe). */
+  bonusIllustration?: boolean;
 };
 
 export const stories: Story[] = [
@@ -45,6 +48,7 @@ export const stories: Story[] = [
     "wordCount": 14756,
     "readingMinutes": 69,
     "dominantCharacter": "ensemble",
+    "bonusIllustration": true,
     "paragraphs": [
       "@@ilustracion:01",
       "### Capítulo I — Una semana sin incendios",

@@ -6859,7 +6859,18 @@ body.has-music-player {
 
 /* === Ilustraciones horizontales de capítulo (relatos que las declaran) ===== */
 .story-illustration {
+  width: 100%;
   margin: 2.6em 0 2.2em;
+}
+
+.story-illustration__caption {
+  margin-bottom: 0.8em;
+  color: color-mix(in srgb, var(--story-accent) 55%, var(--color-ash));
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .story-illustration__thumb {

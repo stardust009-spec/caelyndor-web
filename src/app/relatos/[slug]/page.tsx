@@ -198,6 +198,14 @@ export default async function StoryPage({ params }: StoryPageProps) {
           <p className="story-footer__ornament" aria-hidden="true">
             ✦ ✦ ✦
           </p>
+          {story.bonusIllustration ? (
+            <StoryIllustration
+              slug={story.slug}
+              number="bonus"
+              title={story.title}
+              caption="Ilustración extra"
+            />
+          ) : null}
           <p className="story-footer__note">Fin del relato. El Archivo agradece su visita.</p>
           <Link className="button" href="/relatos">
             Volver a relatos

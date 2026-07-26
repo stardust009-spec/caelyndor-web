@@ -5,9 +5,11 @@ import { assetImage } from "@/data/assets";
 
 type StoryIllustrationProps = {
   slug: string;
-  /** Número de capítulo asociado, con dos dígitos (p. ej. "06"). */
+  /** Número de capítulo con dos dígitos ("06"), o una clave no numérica ("bonus"). */
   number: string;
   title: string;
+  /** Etiqueta pequeña opcional sobre la imagen (p. ej. "Ilustración extra"). */
+  caption?: string;
 };
 
 function RotateDeviceIcon() {
@@ -20,7 +22,7 @@ function RotateDeviceIcon() {
   );
 }
 
-export function StoryIllustration({ slug, number, title }: StoryIllustrationProps) {
+export function StoryIllustration({ slug, number, title, caption }: StoryIllustrationProps) {
   // Cadena de formatos: se intenta webp, luego jpg y png; si ninguno existe,
   // el bloque no se renderiza (el autor todavía no subió el arte del capítulo).
   const candidates = [
@@ -56,15 +58,18 @@ export function StoryIllustration({ slug, number, title }: StoryIllustrationProp
   }
 
   const src = candidates[candidateIndex];
-  const alt = `Ilustración del capítulo ${Number(number)} de «${title}»`;
+  const isChapter = /^\d+$/.test(number);
+  const scope = isChapter ? `del capítulo ${Number(number)}` : "extra";
+  const alt = `Ilustración ${scope} de «${title}»`;
 
   return (
     <figure className="story-illustration">
+      {caption ? <figcaption className="story-illustration__caption">{caption}</figcaption> : null}
       <button
         type="button"
         className="story-illustration__thumb"
         onClick={() => setOpen(true)}
-        aria-label={`Ampliar la ilustración del capítulo ${Number(number)} a pantalla completa`}
+        aria-label={`Ampliar la ilustración ${scope} a pantalla completa`}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
