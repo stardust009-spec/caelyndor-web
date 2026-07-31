@@ -55,13 +55,24 @@ no recibe nada del cliente: sortea 3 opciones, las persiste en `OfertaHu`
 (trazabilidad de qué ofreció el sistema), sortea una y la asigna en el mismo
 request. Reintentar devuelve siempre la misma HU.
 
-Nota (2ª corrección, 31-jul-2026): el sorteo de la oferta pasó a ser
-**uniforme plano** entre las 77 HU — sin filtro ni ponderación, ni por Senda
-ni por rareza (confirmado contra el tratado canónico: la HU se despierta sin
-atarse a ningún elemento). La función `calcularHUCompatibles` se renombró a
-`sortearOfertaHU`. `sendasAfines` deja de intervenir; se conserva como
-metadata de lore. El gate `no_senda` de `/api/hu/reveal` se mantiene como
-requisito narrativo (haber completado el Ritual), no mecánico.
+Nota (2ª corrección, 31-jul-2026): el sorteo de la oferta se hace sobre el
+catálogo **completo** de 77, con dos reglas que conviene no confundir:
+
+- **Senda: no interviene.** La HU se despierta sin atarse a ningún elemento;
+  quien tenga afinidad Llama tiene exactamente las mismas probabilidades que
+  quien tenga afinidad Aire. Se eliminó el mapeo Senda → pool de candidatas.
+  `sendasAfines` sobrevive solo como metadata de lore. La función
+  `calcularHUCompatibles` se renombró a `sortearOfertaHU` por eso.
+- **Rareza: sí interviene** (`RARITY_WEIGHT` = 8/4/2/1 para
+  Común/Poco Común/Épica/Legendaria), porque el tratado (Sección IV) exige
+  que las Legendarias sean "extremadamente raras". Un sorteo uniforme las
+  volvería tan frecuentes como una Común. Medido sobre 50.000 revelaciones:
+  Común 76,0 % · Poco Común 18,2 % · Épica 4,6 % · **Legendaria 1,2 %**
+  (≈ 1 de cada 83 lectores). No "simplificar" esto a uniforme: ya se probó
+  y se revirtió a propósito.
+
+El gate `no_senda` de `/api/hu/reveal` se mantiene como requisito narrativo
+(haber completado el Ritual), no mecánico.
 
 ## Variables de entorno
 
