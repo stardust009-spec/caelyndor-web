@@ -25,15 +25,20 @@ async function requestIp(): Promise<string> {
   return headerList.get("x-real-ip") ?? "unknown";
 }
 
-/** Registra en AdminAccessLog (solo escritura; sin endpoint de edición/borrado). */
+/**
+ * Registra en AdminAccessLog (solo escritura; sin endpoint de edición/borrado).
+ * `exportedCount` solo aplica a EXPORT_USERS: una fila por exportación con el
+ * total incluido, no una por usuario.
+ */
 export async function logAdminAccess(
   action: AdminAccessAction,
   adminUserId: string | null,
-  targetUserId: string | null = null
+  targetUserId: string | null = null,
+  exportedCount: number | null = null
 ): Promise<void> {
   const ipAddress = await requestIp();
   await getPrisma()
-    .adminAccessLog.create({ data: { action, adminUserId, targetUserId, ipAddress } })
+    .adminAccessLog.create({ data: { action, adminUserId, targetUserId, ipAddress, exportedCount } })
     .catch((error) => console.error("adminAccessLog:", error));
 }
 

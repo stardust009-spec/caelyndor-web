@@ -115,6 +115,7 @@ enum AdminAccessAction {
   VIEW_PROFILE
   VIEW_USER_LIST
   UNAUTHORIZED_ATTEMPT
+  EXPORT_USERS
 }
 
 /// Auditoría de acceso admin (Parte 3, sección 6). Solo escritura desde la
@@ -128,6 +129,11 @@ model AdminAccessLog {
   action       AdminAccessAction
   timestamp    DateTime          @default(now())
   ipAddress    String
+
+  /// Solo para EXPORT_USERS: cuántos usuarios salieron en ese archivo.
+  /// La exportación deja UNA fila con el total, a diferencia de VIEW_PROFILE
+  /// que registra una fila por usuario visto (Parte 3, sección 7.4).
+  exportedCount Int?
 
   @@index([timestamp])
 }

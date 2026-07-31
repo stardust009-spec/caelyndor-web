@@ -151,8 +151,21 @@ lógica ya consume pero que **nadie ha asignado aún** en los 14 relatos:
   handler y página repite la verificación completa contra BD (barrera
   interior). Intentos no autorizados con sesión quedan en `AdminAccessLog`.
 - Auditoría: `AdminAccessLog` (view_profile / view_user_list /
-  unauthorized_attempt; se registra CADA apertura de detalle) y
+  unauthorized_attempt / export_users; se registra CADA apertura de detalle) y
   `AdminModerationLog` (aplicar/levantar restricciones). Solo escritura.
+- Exportación CSV (sección 7.4): botón "Exportar" en `/admin/usuarios` →
+  `GET /api/admin/users/export`. Confirmación previa con el total, y **una
+  sola** fila de auditoría por exportación (`EXPORT_USERS` +
+  `exportedCount`), no una por usuario. Columnas limitadas a alias, email,
+  pais, ciudad, comuna, rango y fechaRegistro: nombre, apellidos y fecha de
+  nacimiento quedan fuera a propósito (minimización aplicada a la salida).
+  Dos detalles del formato, ambos para que Excel lo abra bien con doble clic
+  en configuración regional española: separador `;` (con `,` cae todo en una
+  columna) y BOM UTF-8 (sin él se rompen Ñuñoa, Peñalolén, Concepción).
+  Los campos que empiezan con `= + - @` se neutralizan con un apóstrofo:
+  el alias lo escribe el usuario y el moderador filtra lenguaje, no sintaxis
+  de fórmulas, así que un alias como `=HYPERLINK(...)` se ejecutaría al abrir
+  el archivo. La respuesta va con `Cache-Control: no-store`.
 - Moderación activa: `UserRestriction` con tres tipos independientes.
   `accion_silenciada` bloquea progreso/senda/HU/avatar/alias/perfil vía
   `assertNoRestriccion()`; `comentario_silenciado` queda preparado (no hay

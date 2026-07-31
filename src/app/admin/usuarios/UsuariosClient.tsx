@@ -17,6 +17,7 @@ export function UsuariosClient() {
   const [total, setTotal] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [error, setError] = useState<string | null>(null);
+  const [exportando, setExportando] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -41,13 +42,55 @@ export function UsuariosClient() {
 
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
+  async function exportar() {
+    // Fricción explícita: exportar expone más que abrir un perfil suelto.
+    const seguir = window.confirm(
+      `Vas a exportar los datos de ${total} usuarios, incluyendo su correo y ubicación aproximada. ¿Continuar?`
+    );
+    if (!seguir) {
+      return;
+    }
+
+    setExportando(true);
+    setError(null);
+    try {
+      const response = await fetch("/api/admin/users/export");
+      if (!response.ok) {
+        const data = (await response.json().catch(() => null)) as { error?: string } | null;
+        setError(data?.error ?? "No se pudo generar la exportación");
+        return;
+      }
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const nombre =
+        response.headers.get("content-disposition")?.match(/filename="([^"]+)"/)?.[1] ??
+        "caelyndor-usuarios.csv";
+      const enlace = document.createElement("a");
+      enlace.href = url;
+      enlace.download = nombre;
+      document.body.appendChild(enlace);
+      enlace.click();
+      enlace.remove();
+      URL.revokeObjectURL(url);
+    } catch {
+      setError("No se pudo generar la exportación");
+    } finally {
+      setExportando(false);
+    }
+  }
+
   if (error) {
     return <p className="cuenta-error">{error}</p>;
   }
 
   return (
     <div className="panel cuenta-panel">
-      <p className="cuenta-nota">{total} cuentas. La vista de detalle registra auditoría de acceso.</p>
+      <div className="admin-listado-cabecera">
+        <p className="cuenta-nota">{total} cuentas. La vista de detalle registra auditoría de acceso.</p>
+        <button type="button" className="button button--ghost" onClick={exportar} disabled={exportando}>
+          {exportando ? "Generando…" : "Exportar"}
+        </button>
+      </div>
       <div className="cuenta-tabla-wrap">
         <table className="cuenta-tabla">
           <thead>
