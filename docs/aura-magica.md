@@ -1,8 +1,9 @@
 # Sistema de Aura Mágica — cuentas, progreso y gamificación narrativa
 
-Fase 1: autenticación, progreso de lectura sincronizado, rangos, test de Senda,
-logros y Habilidad Única. Frontend de las pantallas del ritual y de la Prueba
-del Aura Interna: pendiente (esta fase entrega lógica y rutas).
+Parte 1: autenticación, progreso de lectura sincronizado, rangos, test de
+Senda, logros y Habilidad Única. Parte 2: perfil (`/cuenta`), avatar de
+catálogo cerrado, moderación de alias, sesiones y tema. Parte 3: cuenta de
+administrador (`/admin`) con 2FA, auditoría y moderación activa.
 
 ## Arquitectura
 
@@ -92,6 +93,59 @@ lógica ya consume pero que **nadie ha asignado aún** en los 14 relatos:
   `src/lib/server/achievementCatalog.ts` para "No dejaste a nadie atrás".
 - `secret?: boolean` — "Tras el Velo".
 - `nocturnal?: boolean` — "A la luz de la luna".
+
+## Parte 2 — perfil, avatar, alias, sesiones, tema (31-jul-2026)
+
+- **Sesiones (desviación declarada)**: el provider Credentials de Auth.js v5
+  no soporta database sessions; se implementó un híbrido — el JWT lleva `sid`
+  y cada login crea una fila `AppSession`; `currentAuthContext()` valida esa
+  fila en cada request, por lo que revocar (`revokedAt`) invalida de inmediato
+  en servidor. Cumple listar/revocar/invalidación inmediata de la sección 5.
+- **PlayerNameModerator** (`src/lib/nameModeration/` + listas editables en
+  `src/data/nameFilters/*.ts` — `.ts` y no `.js` porque el proyecto tiene
+  `allowJs: false`): normalización NFKD + leetspeak + separadores +
+  repetición + homóglifos acotados; 5 niveles de coincidencia; allowlist
+  prioritaria; el nivel de subcadena exige señales de evasión (Penélope pasa).
+- Datos personales opcionales y privados por diseño; la edad se deriva de
+  `fechaNacimiento`. Avatar solo de catálogo cerrado (12 sembrados, default
+  `rubi-chibi`; imágenes reales pendientes en `/images/avatars/`).
+- Tema Rubí/Noct/Sistema: persistido en `UserProfile.themePreference` +
+  `localStorage` para visitantes; paleta Rubí base en `globals.css`
+  (`[data-theme="rubi"]`), ajuste fino editorial pendiente.
+- 3 logros latentes (`AchievementPlaceholder`) — decorativos, fuera de la
+  barra de progreso real.
+
+## Parte 3 — cuenta de administrador (31-jul-2026)
+
+- `role` en User (default USER). Único mecanismo de asignación:
+  `npx tsx scripts/assign-admin.ts <email>` (manual) o el panel de la BD.
+  Ningún endpoint puede escribirlo.
+- Doble capa: `esAdminAutorizado()` (`src/lib/adminAccess.ts`) = rol ADMIN
+  **y** email en `ADMIN_EMAIL_ALLOWLIST`. Toda verificación admin pasa por
+  esa función; nunca se chequea `role === 'admin'` aislado.
+- 2FA TOTP obligatorio (otplib): setup/verify en `/admin`; la verificación se
+  marca por sesión (`AppSession.adminVerifiedAt`) con ventana de 4 h — más
+  corta que la sesión general. El secreto TOTP se guarda en la BD (rotarlo:
+  intervención manual).
+- Middleware (`src/middleware.ts`) protege `/admin/*` y `/api/admin/*`
+  verificando el JWT firmado + claim de rol (barrera exterior, Edge); cada
+  handler y página repite la verificación completa contra BD (barrera
+  interior). Intentos no autorizados con sesión quedan en `AdminAccessLog`.
+- Auditoría: `AdminAccessLog` (view_profile / view_user_list /
+  unauthorized_attempt; se registra CADA apertura de detalle) y
+  `AdminModerationLog` (aplicar/levantar restricciones). Solo escritura.
+- Moderación activa: `UserRestriction` con tres tipos independientes.
+  `accion_silenciada` bloquea progreso/senda/HU/avatar/alias/perfil vía
+  `assertNoRestriccion()`; `comentario_silenciado` queda preparado (no hay
+  comentarios aún); `ban_completo` revoca todas las sesiones en la misma
+  transacción y el login se rechaza con mensaje genérico. El admin no puede
+  restringirse a sí mismo. Expiración lazy por request (sin cron; decisión
+  declarada). Nunca se borran filas: `active=false` + liftedBy/liftedAt.
+- Tests: capas de autorización y vigencia son módulos puros testeados
+  (`tests/admin-access.test.ts`, `tests/restrictions.test.ts`); los flujos
+  HTTP completos (403 en /admin, ban revoca sesión) comparten esa misma
+  lógica vía `requireAdminApi`/`currentAuthContext` — la aserción integral
+  end-to-end contra la base real queda como verificación manual.
 
 ## Pendientes explícitos (fuera de esta fase)
 

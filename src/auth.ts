@@ -42,11 +42,26 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         const user = await prisma.user.findUnique({
           where: { email },
-          select: { id: true, email: true, displayName: true, passwordHash: true }
+          select: { id: true, email: true, displayName: true, passwordHash: true, role: true }
         });
 
         const valid = await bcrypt.compare(password, user?.passwordHash ?? DUMMY_HASH);
         if (!user || !valid) {
+          return null;
+        }
+
+        // Ban completo: el login se rechaza con el mismo "credenciales
+        // inválidas" genérico — sin detallar el motivo (Parte 3, sección 8.2).
+        const ban = await prisma.userRestriction.findFirst({
+          where: {
+            userId: user.id,
+            type: "BAN_COMPLETO",
+            active: true,
+            OR: [{ expiresAt: null }, { expiresAt: { gt: new Date() } }]
+          },
+          select: { id: true }
+        });
+        if (ban) {
           return null;
         }
 
@@ -59,7 +74,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           select: { id: true }
         });
 
-        return { id: user.id, email: user.email, name: user.displayName, sessionId: appSession.id };
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.displayName,
+          sessionId: appSession.id,
+          role: user.role
+        };
       }
     })
   ],
@@ -71,6 +92,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       const sessionId = (user as { sessionId?: string } | undefined)?.sessionId;
       if (sessionId) {
         token.sid = sessionId;
+      }
+      // Claim de rol para la barrera exterior (middleware, edge). La
+      // verificación autoritativa siempre es esAdminAutorizado() contra BD.
+      const role = (user as { role?: string } | undefined)?.role;
+      if (role) {
+        token.role = role;
       }
       return token;
     },

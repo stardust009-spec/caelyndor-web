@@ -12,11 +12,13 @@ declare module "next-auth" {
   interface User {
     /** Adjuntado por authorize() al crear la fila AppSession del login. */
     sessionId?: string;
+    role?: string;
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
     sid?: string;
+    role?: string;
   }
 }

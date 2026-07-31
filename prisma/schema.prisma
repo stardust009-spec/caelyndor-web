@@ -63,12 +63,25 @@ enum AvatarStyle {
   RETRATO_CIRCULAR
 }
 
+enum UserRole {
+  USER
+  ADMIN
+}
+
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
   passwordHash String
   displayName  String
   createdAt    DateTime @default(now())
+
+  /// Solo se asigna ADMIN por script manual (scripts/assign-admin.ts) o
+  /// directamente en la BD; NINGÚN endpoint de la aplicación puede escribirlo.
+  role UserRole @default(USER)
+
+  /// Secreto TOTP del 2FA obligatorio para cuentas admin (otplib).
+  totpSecret      String?
+  totpConfirmedAt DateTime?
 
   /// Derivado de los relatos completados; se recalcula en cada completado,
   /// nunca se edita a mano ni se acepta desde el cliente.
@@ -91,6 +104,54 @@ model User {
   restricciones          UserRestriction[] @relation("RestriccionesDe")
   restriccionesAplicadas UserRestriction[] @relation("RestriccionesAplicadasPor")
   restriccionesLevantadas UserRestriction[] @relation("RestriccionesLevantadasPor")
+
+  accesosComoAdmin      AdminAccessLog[]     @relation("AccesosDeAdmin")
+  accesosComoObjetivo   AdminAccessLog[]     @relation("AccesosSobreUsuario")
+  moderacionesComoAdmin AdminModerationLog[] @relation("ModeracionesDeAdmin")
+  moderacionesRecibidas AdminModerationLog[] @relation("ModeracionesSobreUsuario")
+}
+
+enum AdminAccessAction {
+  VIEW_PROFILE
+  VIEW_USER_LIST
+  UNAUTHORIZED_ATTEMPT
+}
+
+/// Auditoría de acceso admin (Parte 3, sección 6). Solo escritura desde la
+/// aplicación: no existe endpoint para editarlo ni borrarlo.
+model AdminAccessLog {
+  id           String            @id @default(cuid())
+  adminUserId  String?
+  adminUser    User?             @relation("AccesosDeAdmin", fields: [adminUserId], references: [id])
+  targetUserId String?
+  targetUser   User?             @relation("AccesosSobreUsuario", fields: [targetUserId], references: [id])
+  action       AdminAccessAction
+  timestamp    DateTime          @default(now())
+  ipAddress    String
+
+  @@index([timestamp])
+}
+
+enum AdminModerationAction {
+  APPLY_RESTRICTION
+  LIFT_RESTRICTION
+}
+
+/// Log de moderación activa (Parte 3, sección 8.3): quién, sobre quién,
+/// qué acción, cuándo y motivo. Solo escritura desde la aplicación.
+model AdminModerationLog {
+  id           String                @id @default(cuid())
+  adminUserId  String
+  adminUser    User                  @relation("ModeracionesDeAdmin", fields: [adminUserId], references: [id])
+  targetUserId String
+  targetUser   User                  @relation("ModeracionesSobreUsuario", fields: [targetUserId], references: [id])
+  action       AdminModerationAction
+  restriction  RestrictionType
+  reason       String
+  timestamp    DateTime              @default(now())
+  ipAddress    String
+
+  @@index([timestamp])
 }
 
 enum RestrictionType {
@@ -197,6 +258,10 @@ model AppSession {
   createdAt    DateTime  @default(now())
   lastActiveAt DateTime  @default(now())
   revokedAt    DateTime?
+
+  /// Último 2FA verificado en ESTA sesión: el acceso admin expira antes que
+  /// la sesión general (reautenticación periódica del área /admin).
+  adminVerifiedAt DateTime?
 
   @@index([userId, revokedAt])
 }

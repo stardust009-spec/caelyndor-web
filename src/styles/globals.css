@@ -7265,3 +7265,69 @@ body.story-lightbox-open {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
   }
 }
+
+/* ——— Panel de administración (Parte 3) ——— */
+
+.admin-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.admin-nav a {
+  color: var(--color-ice);
+}
+
+.admin-2fa-secret {
+  display: inline-block;
+  background: var(--color-night);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  letter-spacing: 0.12em;
+  margin: var(--space-2) 0;
+  word-break: break-all;
+}
+
+.admin-alias {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.admin-alias img {
+  border-radius: 50%;
+}
+
+.admin-paginacion {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.admin-datos {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+}
+
+.admin-datos dt {
+  color: var(--color-ash);
+}
+
+.admin-datos dd {
+  margin: 0;
+}
+
+.cuenta-form select {
+  background: var(--color-night);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-ash-bright);
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+}
