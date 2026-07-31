@@ -15,6 +15,12 @@ export type StoryPlaylist = {
  */
 export type DominantCharacter = "rubi" | "yuki" | "lyzi" | "noctalypse" | "ensemble";
 
+/**
+ * Regiones canónicas de Caelyndor con relatos asociados (para logros de universo).
+ * Ampliar aquí cuando se publique contenido de una región nueva.
+ */
+export type StoryRegion = "cindralith" | "glaciem" | "sylvalis";
+
 export type Story = {
   slug: string;
   title: string;
@@ -31,6 +37,22 @@ export type Story = {
   /** Muestra una ilustración "bonus" al final (tras el ✦✦✦ de cierre).
    *  Arte: relato-<slug>-ilustracion-bonus.webp (se oculta si no existe). */
   bonusIllustration?: boolean;
+
+  // ——— Metadata del sistema de Aura Mágica (progresión de lectores) ———
+  // Estos campos alimentan rangos y logros; los evalúa el servidor
+  // (src/lib/server). Su asignación por relato es una decisión editorial:
+  // ver docs/aura-magica.md § "Metadata pendiente por relato".
+  /** false para prólogos/fichas/anexos: se excluyen del conteo de rangos.
+   *  Si falta, se asume true (relato canónico). */
+  countsTowardProgression?: boolean;
+  /** Región del relato (logros "Bajo el sol de Cindralith", "Cartógrafo…", etc.). */
+  region?: StoryRegion;
+  /** Arco narrativo (logro "No dejaste a nadie atrás"). */
+  arc?: string;
+  /** Relato secreto tras el Velo (logro "Tras el Velo"). */
+  secret?: boolean;
+  /** Relato nocturno/especial (logro "A la luz de la luna"). */
+  nocturnal?: boolean;
 };
 
 export const stories: Story[] = [

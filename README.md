@@ -11,6 +11,20 @@ npm run dev
 
 Luego abre `http://localhost:3000`.
 
+## Variables de entorno
+
+| Variable | Uso |
+|---|---|
+| `DATABASE_URL` | Vercel Postgres — sistema de cuentas/Aura Mágica (Prisma) |
+| `AUTH_SECRET` | Firma de sesiones de Auth.js (`npx auth secret`) |
+| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | Redis REST: contadores de views/likes/descargas y rate limiting |
+| `KV_REST_API_URL` / `KV_REST_API_TOKEN` | Alternativa Vercel KV a las dos anteriores |
+| `NEXT_PUBLIC_GA_ID` | Google Analytics |
+
+El sistema de Aura Mágica (auth, progreso de lectura, rangos, logros, Senda,
+Habilidad Única) está documentado en `docs/aura-magica.md`. Comandos:
+`npm run db:migrate`, `npm run db:seed`, `npm test`.
+
 ## Build
 
 ```bash

@@ -1,0 +1,172 @@
+// Esquema del Aura Mágica — cuentas, progreso de lectura, Sendas, logros y HU.
+// Fuente de verdad de identidad del usuario: Postgres (nunca Redis — ver docs/aura-magica.md).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Las diez Sendas elementales. Las seis primeras son primarias/comunes;
+/// CONEXION, TRUENO, VACIO y FE son singulares/raras.
+enum Senda {
+  LLAMA
+  AGUA
+  HIELO
+  AIRE
+  TIERRA
+  VIDA
+  CONEXION
+  TRUENO
+  VACIO
+  FE
+}
+
+/// Rango del Aura según relatos distintos completados (0/1/5/25/50/100).
+/// "Cronista de Caelyndor" NO es un rango: es un logro dinámico (ver achievements).
+enum RangoAura {
+  AURA_LATENTE
+  NOVATO_DEL_AURA
+  PRIMERA_ESPECIALIZACION
+  SEGUNDA_ESPECIALIZACION
+  MAESTRIA_AVANZADA
+  MAESTRO_DEL_AURA
+}
+
+enum CategoriaLogro {
+  PROGRESION
+  UNIVERSO
+  CONDUCTA
+}
+
+enum RarezaHu {
+  COMUN
+  INFRECUENTE
+  RARA
+  SINGULAR
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  displayName  String
+  createdAt    DateTime @default(now())
+
+  /// Derivado de los relatos completados; se recalcula en cada completado,
+  /// nunca se edita a mano ni se acepta desde el cliente.
+  currentRank RangoAura @default(AURA_LATENTE)
+
+  sendaPrincipal Senda?
+  sendasCercanas Senda[] @default([])
+
+  habilidadUnicaId        String?
+  habilidadUnica          HabilidadUnica? @relation(fields: [habilidadUnicaId], references: [id])
+  habilidadUnicaElegidaEn DateTime?
+
+  progresos   StoryProgress[]
+  logros      UserAchievement[]
+  sendaTest   SendaTestResult?
+  ofertaHu    OfertaHu?
+}
+
+/// Progreso de lectura por relato. El contenido de los relatos vive en
+/// src/data/stories.ts (no hay tabla de relatos en la BD), por lo que la
+/// "FK" es el slug, validado en servidor contra el contenido real.
+model StoryProgress {
+  id        String @id @default(cuid())
+  userId    String
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  storySlug String
+
+  /// Posición actual (0-100). Puede bajar si el lector retrocede.
+  currentProgress Int @default(0)
+  /// Máximo histórico (0-100). Nunca baja.
+  highestProgress Int @default(0)
+
+  /// Se fija de forma irreversible al alcanzar highestProgress >= 95.
+  completedAt             DateTime?
+  /// Garantiza que la recompensa de completado se entrega una sola vez.
+  completionRewardClaimed Boolean   @default(false)
+
+  /// Relecturas completadas después de la primera lectura completa.
+  rereadCount Int @default(0)
+  /// Máquina de estados de relectura: se arma cuando, ya completado,
+  /// el lector vuelve al inicio; se consume al alcanzar 95% otra vez.
+  rereadArmed Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, storySlug])
+  @@index([userId, completedAt])
+}
+
+/// Catálogo de logros. El contenido (título, condición) se define en código
+/// (src/lib/server/achievementCatalog.ts) y se sincroniza aquí vía seed
+/// idempotente; la condición de desbloqueo SIEMPRE se evalúa en servidor.
+model Achievement {
+  id          String         @id
+  slug        String         @unique
+  title       String
+  description String
+  category    CategoriaLogro
+
+  usuarios UserAchievement[]
+}
+
+model UserAchievement {
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievementId String
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  unlockedAt    DateTime    @default(now())
+
+  @@unique([userId, achievementId])
+  @@index([userId])
+}
+
+/// Resultado del Ritual de Afinación. Uno por usuario; la única corrección
+/// permitida es la elección manual (eligioManual) y después queda fijo.
+model SendaTestResult {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// Respuestas crudas del ritual (ids de pregunta -> id de opción).
+  respuestas Json
+
+  sendaPrincipalResultado Senda
+  sendasCercanasResultado Senda[]
+
+  /// true si el usuario sobrescribió el resultado del cristal (una sola vez).
+  eligioManual Boolean  @default(false)
+  completedAt  DateTime @default(now())
+}
+
+/// Catálogo de Habilidades Únicas (77 en total entre 4 rarezas; se siembra
+/// un subconjunto inicial y se completa como contenido, no como código).
+model HabilidadUnica {
+  id          String   @id
+  nombre      String
+  descripcion String
+  rareza      RarezaHu
+  /// Sendas con afinidad natural a esta HU (para calcularHUCompatibles).
+  sendasAfines Senda[]
+
+  usuarios User[]
+}
+
+/// Las 3 opciones presentadas en la Prueba del Aura Interna. Se persisten
+/// para que /api/hu/choose solo acepte una HU realmente ofrecida.
+model OfertaHu {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  opciones  String[]
+  createdAt DateTime @default(now())
+}
