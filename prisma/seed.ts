@@ -15,6 +15,7 @@ import "dotenv/config";
 import { AvatarStyle, PrismaClient, RarezaHu, Senda } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { ACHIEVEMENT_CATALOG } from "../src/lib/server/achievementCatalog";
+import { DEFAULT_AVATAR_SLUG, buildAvatarCatalog } from "../src/data/avatarCatalog";
 
 const { LLAMA, AGUA, HIELO, AIRE, TIERRA, VIDA, CONEXION, TRUENO, VACIO, FE } = Senda;
 const { COMUN, POCO_COMUN, EPICA, LEGENDARIA } = RarezaHu;
@@ -176,36 +177,29 @@ async function main() {
   console.log(`Habilidades Únicas sembradas: ${HU_SEED.length} de 77.`);
 
   // ——— Catálogo de avatares (Parte 2, sección 3.3) ———
-  // Las imágenes reales las provee Claudio; los imageUrl son placeholders
-  // bajo /images/avatars/. Ampliar el catálogo = agregar filas aquí.
-  const personajes = ["Rubí", "Lyzi", "Noctalypse", "Aria", "Adagio", "Fulgor"];
-  const slugDe = (nombre: string) =>
-    nombre
-      .toLowerCase()
-      .normalize("NFKD")
-      .replace(/[̀-ͯ]/g, "");
-
-  let sortOrder = 0;
-  for (const style of [AvatarStyle.CHIBI, AvatarStyle.RETRATO_CIRCULAR]) {
-    const sufijo = style === AvatarStyle.CHIBI ? "chibi" : "retrato-circular";
-    for (const characterName of personajes) {
-      const slug = `${slugDe(characterName)}-${sufijo}`;
-      sortOrder += 1;
-      await prisma.avatarOption.upsert({
-        where: { slug },
-        create: {
-          slug,
-          characterName,
-          style,
-          imageUrl: `/images/avatars/${slug}.webp`,
-          isDefault: slug === "rubi-chibi", // exactamente uno: el fallback de registro
-          sortOrder
-        },
-        update: { characterName, style, sortOrder }
-      });
-    }
+  // Los slugs viven en src/data/avatarCatalog.ts, compartidos con el script
+  // de optimización, para que las filas sembradas y los .webp generados no
+  // puedan desincronizarse. Ampliar el catálogo = agregar una línea allí.
+  const avatares = buildAvatarCatalog();
+  for (const avatar of avatares) {
+    await prisma.avatarOption.upsert({
+      where: { slug: avatar.slug },
+      create: {
+        slug: avatar.slug,
+        characterName: avatar.characterName,
+        style: avatar.style as AvatarStyle,
+        imageUrl: avatar.imageUrl,
+        isDefault: avatar.isDefault, // exactamente uno: el fallback de registro
+        sortOrder: avatar.sortOrder
+      },
+      update: {
+        characterName: avatar.characterName,
+        style: avatar.style as AvatarStyle,
+        sortOrder: avatar.sortOrder
+      }
+    });
   }
-  console.log("Avatares sembrados: 12 (6 chibi + 6 retrato circular; default: rubi-chibi).");
+  console.log(`Avatares sembrados: ${avatares.length} (default: ${DEFAULT_AVATAR_SLUG}).`);
 
   // ——— Logros latentes (Parte 2, sección 7.2) — decorativos, sin condición ———
   const placeholders = [

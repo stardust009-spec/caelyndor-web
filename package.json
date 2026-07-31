@@ -10,6 +10,7 @@
     "test": "tsx --test tests/*.test.ts",
     "db:migrate": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",
+    "avatars:optimize": "tsx scripts/optimize-avatars.ts",
     "extract:music-covers": "node scripts/extract-music-covers.mjs",
     "lint": "next lint"
   },
@@ -36,6 +37,7 @@
     "eslint-config-next": "15.5.22",
     "music-metadata": "^11.12.3",
     "prisma": "^7.9.1",
+    "sharp": "^0.35.3",
     "tsx": "^4.23.1",
     "typescript": "5.8.3"
   },

@@ -12,3 +12,9 @@ tsconfig.tsbuildinfo
 
 .vercel
 .env*
+
+# Masters de avatares en alta resolución: no se publican ni se despliegan.
+# Lo versionado y servido son los .webp de public/images/avatars/, generados
+# con `npm run avatars:optimize`. Si prefieres versionar los masters (backup
+# a costa de ~5 MB en el repo y en cada deploy), borra esta línea.
+/assets/avatars-master/

@@ -127,7 +127,32 @@ lógica ya consume pero que **nadie ha asignado aún** en los 14 relatos:
   prioritaria; el nivel de subcadena exige señales de evasión (Penélope pasa).
 - Datos personales opcionales y privados por diseño; la edad se deriva de
   `fechaNacimiento`. Avatar solo de catálogo cerrado (12 sembrados, default
-  `rubi-chibi`; imágenes reales pendientes en `/images/avatars/`).
+  `rubi-chibi`).
+
+### Avatares: masters y optimización
+
+Los slugs viven en `src/data/avatarCatalog.ts`, compartidos por el seed y el
+script de optimización para que no puedan desincronizarse.
+
+```
+assets/avatars-master/<slug>.png   ← masters 1024px (gitignored, no se despliegan)
+        ↓  npm run avatars:optimize
+public/images/avatars/<slug>.webp  ← 256x256 q82, ~20 KB (esto sí se versiona)
+```
+
+Tamaños de visualización: 96px (perfil), 72px (detalle admin), 64px
+(selector), 28px (listado admin). Se sirven con `<img>` plano, **sin**
+`next/image`: el navegador descarga el archivo tal cual y el selector muestra
+los 12 a la vez, así que el peso importa (masters de 1024px = ~4,8 MB los 12;
+a 256px = ~240 KB).
+
+**Los masters deben ser cuadrados.** Nada los recorta en el front: no hay
+`object-fit` en los selectores y la hoja global aplica `img { height: auto }`,
+que anula el atributo `height`. Una imagen no cuadrada se renderiza deformada
+y el `border-radius: 50%` la convierte en elipse. El script lo verifica y se
+niega a generarla.
+
+`--force` regenera todo; sin él solo procesa lo que falta o cambió.
 - Tema Rubí/Noct/Sistema: persistido en `UserProfile.themePreference` +
   `localStorage` para visitantes; paleta Rubí base en `globals.css`
   (`[data-theme="rubi"]`), ajuste fino editorial pendiente.
