@@ -46,14 +46,22 @@ administrador (`/admin`) con 2FA, auditoría y moderación activa.
 | `/api/user/profile` | GET | Rango, Senda, HU, logros, conteos |
 | `/api/senda-test/status` | GET | Desbloqueo/estado del ritual + preguntas |
 | `/api/senda-test/submit` | POST | `{respuestas}` o `{eleccionManual}` (una sola corrección) |
-| `/api/hu/reveal` | POST | Revela la HU: el servidor calcula 3 compatibles, sortea una y la asigna |
+| `/api/hu/reveal` | POST | Revela la HU: el servidor sortea 3 al azar de las 77, sortea una y la asigna |
 | `/api/achievements` | GET | Catálogo + estado del usuario (o solo catálogo sin sesión) |
 
 Nota (corrección del 31-jul-2026): la HU **no la elige el usuario**. El
 endpoint original `/api/hu/choose` fue reemplazado por `/api/hu/reveal`, que
-no recibe nada del cliente: calcula las 3 opciones compatibles, las persiste
-en `OfertaHu` (trazabilidad de qué ofreció el sistema), sortea una y la
-asigna en el mismo request. Reintentar devuelve siempre la misma HU.
+no recibe nada del cliente: sortea 3 opciones, las persiste en `OfertaHu`
+(trazabilidad de qué ofreció el sistema), sortea una y la asigna en el mismo
+request. Reintentar devuelve siempre la misma HU.
+
+Nota (2ª corrección, 31-jul-2026): el sorteo de la oferta pasó a ser
+**uniforme plano** entre las 77 HU — sin filtro ni ponderación, ni por Senda
+ni por rareza (confirmado contra el tratado canónico: la HU se despierta sin
+atarse a ningún elemento). La función `calcularHUCompatibles` se renombró a
+`sortearOfertaHU`. `sendasAfines` deja de intervenir; se conserva como
+metadata de lore. El gate `no_senda` de `/api/hu/reveal` se mantiene como
+requisito narrativo (haber completado el Ritual), no mecánico.
 
 ## Variables de entorno
 
@@ -161,7 +169,8 @@ lógica ya consume pero que **nadie ha asignado aún** en los 14 relatos:
 - Catálogo completo de 77 HU sembrado desde el documento canónico
   ("Habilidades Únicas: El Don Innato"): 42 Comunes, 20 Poco Comunes,
   10 Épicas, 5 Legendarias. Las `sendasAfines` no están en el documento:
-  se asignaron temáticamente y son metadata editable en `prisma/seed.ts`.
+  se asignaron temáticamente y son metadata editable en `prisma/seed.ts`
+  (ya no intervienen en el sorteo; ver 2ª corrección arriba).
 - `ReadingProgress.tsx` sincroniza con `POST /api/progress/:storyId`
   (cada ≥5 % o 10 s, con `sendBeacon` al salir; 401 apaga el envío para
   visitantes sin sesión).

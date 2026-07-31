@@ -5,8 +5,9 @@
  * Innato" (42 Comunes, 20 Poco Comunes, 10 Épicas, 5 Legendarias).
  *
  * Nombres y descripciones: copiados del documento. Las afinidades de Senda
- * (sendasAfines) NO están en el documento — se asignaron temáticamente para
- * alimentar calcularHUCompatibles y son metadata editable sin tocar código.
+ * (sendasAfines) NO están en el documento — se asignaron temáticamente. Ya
+ * NO intervienen en la revelación de HU (el sorteo es plano entre las 77):
+ * quedan como metadata de lore por si sirven para flavor o features futuras.
  *
  * Ejecutar con: npm run db:seed (requiere DATABASE_URL).
  */

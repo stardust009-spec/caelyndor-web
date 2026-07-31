@@ -1,17 +1,9 @@
 import "server-only";
-import { RarezaHu, type HabilidadUnica, type Prisma } from "@/generated/prisma/client";
+import { type HabilidadUnica, type Prisma } from "@/generated/prisma/client";
 import { getPrisma, TX_OPTIONS } from "./db";
 import { HU_UNLOCK_THRESHOLD } from "./ranks";
 import { getStoryMetaMap } from "./storyContent";
 import { evaluateAchievements } from "./achievements";
-
-/** Peso de aparición por rareza en la Prueba del Aura Interna. */
-const RARITY_WEIGHT: Record<RarezaHu, number> = {
-  [RarezaHu.COMUN]: 8,
-  [RarezaHu.POCO_COMUN]: 4,
-  [RarezaHu.EPICA]: 2,
-  [RarezaHu.LEGENDARIA]: 1
-};
 
 export type HuView = Pick<HabilidadUnica, "id" | "nombre" | "descripcion" | "rareza">;
 
@@ -24,68 +16,36 @@ async function canonicalCompletedCount(tx: Prisma.TransactionClient, userId: str
   return rows.filter((row) => historias.get(row.storySlug)?.canonical).length;
 }
 
-function weightedSample(pool: HabilidadUnica[], count: number): HabilidadUnica[] {
-  const chosen: HabilidadUnica[] = [];
-  const candidates = [...pool];
-  while (chosen.length < count && candidates.length > 0) {
-    const total = candidates.reduce((sum, hu) => sum + RARITY_WEIGHT[hu.rareza], 0);
-    let roll = Math.random() * total;
-    let picked = candidates.length - 1;
-    for (let i = 0; i < candidates.length; i += 1) {
-      roll -= RARITY_WEIGHT[candidates[i].rareza];
-      if (roll <= 0) {
-        picked = i;
-        break;
-      }
-    }
-    chosen.push(candidates[picked]);
-    candidates.splice(picked, 1);
+/** Muestreo uniforme sin reemplazo (Fisher-Yates parcial). */
+function uniformSample<T>(pool: T[], count: number): T[] {
+  const arr = [...pool];
+  const n = Math.min(count, arr.length);
+  for (let i = 0; i < n; i += 1) {
+    const j = i + Math.floor(Math.random() * (arr.length - i));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-  return chosen;
+  return arr.slice(0, n);
 }
 
 /**
- * calcularHUCompatibles: función aislada a propósito (sección 6 del diseño)
- * para poder refinar la "compatibilidad" sin tocar el resto. Fase 1: pool por
- * afinidad de Senda (principal > cercanas > resto) + aleatoriedad ponderada
- * por rareza. Devuelve/persiste las 3 opciones en OfertaHu; NO asigna.
+ * sortearOfertaHU: sorteo probabilístico PLANO de 3 HU entre las 77 del
+ * catálogo, sin ningún filtro ni ponderación — ni por Senda ni por rareza.
+ * Confirmado contra el tratado canónico: la HU se despierta sin atarse a
+ * ningún elemento, así que quien tenga afinidad Llama tiene exactamente la
+ * misma chance de sacar cualquiera de las 77 que quien tenga afinidad Aire.
+ * Persiste las 3 en OfertaHu (trazabilidad de qué ofreció el sistema); NO asigna.
  */
-async function calcularHUCompatibles(
+async function sortearOfertaHU(
   tx: Prisma.TransactionClient,
-  userId: string,
-  sendaPrincipal: NonNullable<Prisma.UserGetPayload<{ select: { sendaPrincipal: true } }>["sendaPrincipal"]>,
-  sendasCercanas: Prisma.UserGetPayload<{ select: { sendasCercanas: true } }>["sendasCercanas"]
+  userId: string
 ): Promise<HabilidadUnica[]> {
   const existingOffer = await tx.ofertaHu.findUnique({ where: { userId } });
   if (existingOffer) {
     return tx.habilidadUnica.findMany({ where: { id: { in: existingOffer.opciones } } });
   }
 
-  const afinesPrincipal = await tx.habilidadUnica.findMany({
-    where: { sendasAfines: { has: sendaPrincipal } }
-  });
-  const afinesCercanas = await tx.habilidadUnica.findMany({
-    where: {
-      sendasAfines: { hasSome: sendasCercanas },
-      id: { notIn: afinesPrincipal.map((hu) => hu.id) }
-    }
-  });
-
-  // Garantiza al menos una HU afín a la Senda principal si el catálogo la tiene.
-  const primary = weightedSample(afinesPrincipal, 1);
-  const restPool = [
-    ...afinesPrincipal.filter((hu) => !primary.some((p) => p.id === hu.id)),
-    ...afinesCercanas
-  ];
-  const rest = weightedSample(restPool, 3 - primary.length);
-  let opciones = [...primary, ...rest];
-
-  if (opciones.length < 3) {
-    const filler = await tx.habilidadUnica.findMany({
-      where: { id: { notIn: opciones.map((hu) => hu.id) } }
-    });
-    opciones = [...opciones, ...weightedSample(filler, 3 - opciones.length)];
-  }
+  const catalogo = await tx.habilidadUnica.findMany();
+  const opciones = uniformSample(catalogo, 3);
 
   if (opciones.length > 0) {
     await tx.ofertaHu.create({ data: { userId, opciones: opciones.map((hu) => hu.id) } });
@@ -110,7 +70,7 @@ export async function revealHu(userId: string): Promise<HuRevealOutcome> {
   return prisma.$transaction(async (tx) => {
     const user = await tx.user.findUniqueOrThrow({
       where: { id: userId },
-      select: { sendaPrincipal: true, sendasCercanas: true, habilidadUnica: true }
+      select: { sendaPrincipal: true, habilidadUnica: true }
     });
 
     if (user.habilidadUnica) {
@@ -126,17 +86,19 @@ export async function revealHu(userId: string): Promise<HuRevealOutcome> {
     if (completed < HU_UNLOCK_THRESHOLD) {
       return { ok: false as const, error: "locked" as const };
     }
+    // Requisito narrativo del flujo (no de la mecánica): el Ritual de Afinación
+    // debe haberse completado antes de despertar la HU. El sorteo en sí ya no
+    // depende de la Senda.
     if (!user.sendaPrincipal) {
       return { ok: false as const, error: "no_senda" as const };
     }
 
-    const opciones = await calcularHUCompatibles(tx, userId, user.sendaPrincipal, user.sendasCercanas);
+    const opciones = await sortearOfertaHU(tx, userId);
     if (opciones.length === 0) {
       return { ok: false as const, error: "empty_catalog" as const };
     }
 
-    // Sorteo uniforme entre las 3 compatibles (el peso por rareza ya actuó
-    // al componer la oferta; el sorteo final es puro azar del destino).
+    // Sorteo uniforme final entre las 3 opciones ofrecidas.
     const sorteada = opciones[Math.floor(Math.random() * opciones.length)];
 
     // updateMany condicional: si otro request reveló primero, respetamos esa.
