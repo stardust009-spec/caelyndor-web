@@ -42,11 +42,13 @@ enum CategoriaLogro {
   CONDUCTA
 }
 
+/// Jerarquía canónica del documento "Habilidades Únicas (HU): El Don Innato":
+/// 42 Comunes, 20 Poco Comunes, 10 Épicas, 5 Legendarias.
 enum RarezaHu {
   COMUN
-  INFRECUENTE
-  RARA
-  SINGULAR
+  POCO_COMUN
+  EPICA
+  LEGENDARIA
 }
 
 model User {

@@ -8,19 +8,12 @@ import { evaluateAchievements } from "./achievements";
 /** Peso de aparición por rareza en la Prueba del Aura Interna. */
 const RARITY_WEIGHT: Record<RarezaHu, number> = {
   [RarezaHu.COMUN]: 8,
-  [RarezaHu.INFRECUENTE]: 4,
-  [RarezaHu.RARA]: 2,
-  [RarezaHu.SINGULAR]: 1
+  [RarezaHu.POCO_COMUN]: 4,
+  [RarezaHu.EPICA]: 2,
+  [RarezaHu.LEGENDARIA]: 1
 };
 
-export type HuOfferView = {
-  opciones: Pick<HabilidadUnica, "id" | "nombre" | "descripcion" | "rareza">[];
-};
-
-export type HuOfferOutcome =
-  | { ok: true; oferta: HuOfferView; yaElegida: false }
-  | { ok: true; elegida: Pick<HabilidadUnica, "id" | "nombre" | "descripcion" | "rareza">; yaElegida: true }
-  | { ok: false; error: "locked" | "no_senda" | "empty_catalog" };
+export type HuView = Pick<HabilidadUnica, "id" | "nombre" | "descripcion" | "rareza">;
 
 async function canonicalCompletedCount(tx: Prisma.TransactionClient, userId: string): Promise<number> {
   const historias = getStoryMetaMap();
@@ -53,12 +46,65 @@ function weightedSample(pool: HabilidadUnica[], count: number): HabilidadUnica[]
 
 /**
  * calcularHUCompatibles: función aislada a propósito (sección 6 del diseño)
- * para poder refinar la "compatibilidad" después sin tocar el resto.
- * Fase 1: pool por afinidad de Senda (principal > cercanas > resto) +
- * aleatoriedad ponderada por rareza. La oferta se PERSISTE (OfertaHu) para
- * que sea estable entre requests y para que /api/hu/choose pueda validar.
+ * para poder refinar la "compatibilidad" sin tocar el resto. Fase 1: pool por
+ * afinidad de Senda (principal > cercanas > resto) + aleatoriedad ponderada
+ * por rareza. Devuelve/persiste las 3 opciones en OfertaHu; NO asigna.
  */
-export async function calcularHUCompatibles(userId: string): Promise<HuOfferOutcome> {
+async function calcularHUCompatibles(
+  tx: Prisma.TransactionClient,
+  userId: string,
+  sendaPrincipal: NonNullable<Prisma.UserGetPayload<{ select: { sendaPrincipal: true } }>["sendaPrincipal"]>,
+  sendasCercanas: Prisma.UserGetPayload<{ select: { sendasCercanas: true } }>["sendasCercanas"]
+): Promise<HabilidadUnica[]> {
+  const existingOffer = await tx.ofertaHu.findUnique({ where: { userId } });
+  if (existingOffer) {
+    return tx.habilidadUnica.findMany({ where: { id: { in: existingOffer.opciones } } });
+  }
+
+  const afinesPrincipal = await tx.habilidadUnica.findMany({
+    where: { sendasAfines: { has: sendaPrincipal } }
+  });
+  const afinesCercanas = await tx.habilidadUnica.findMany({
+    where: {
+      sendasAfines: { hasSome: sendasCercanas },
+      id: { notIn: afinesPrincipal.map((hu) => hu.id) }
+    }
+  });
+
+  // Garantiza al menos una HU afín a la Senda principal si el catálogo la tiene.
+  const primary = weightedSample(afinesPrincipal, 1);
+  const restPool = [
+    ...afinesPrincipal.filter((hu) => !primary.some((p) => p.id === hu.id)),
+    ...afinesCercanas
+  ];
+  const rest = weightedSample(restPool, 3 - primary.length);
+  let opciones = [...primary, ...rest];
+
+  if (opciones.length < 3) {
+    const filler = await tx.habilidadUnica.findMany({
+      where: { id: { notIn: opciones.map((hu) => hu.id) } }
+    });
+    opciones = [...opciones, ...weightedSample(filler, 3 - opciones.length)];
+  }
+
+  if (opciones.length > 0) {
+    await tx.ofertaHu.create({ data: { userId, opciones: opciones.map((hu) => hu.id) } });
+  }
+  return opciones;
+}
+
+export type HuRevealOutcome =
+  | { ok: true; habilidad: HuView; nuevaRevelacion: boolean }
+  | { ok: false; error: "locked" | "no_senda" | "empty_catalog" };
+
+/**
+ * Prueba del Aura Interna (mecánica corregida): la HU NO la elige el usuario.
+ * En un único request se calculan las 3 compatibles, se persisten en OfertaHu
+ * (trazabilidad de qué ofreció el sistema), se SORTEA una y se asigna directo.
+ * El usuario la recibe como revelación. Idempotente: si ya tiene HU, se
+ * devuelve la existente sin sortear de nuevo.
+ */
+export async function revealHu(userId: string): Promise<HuRevealOutcome> {
   const prisma = getPrisma();
 
   return prisma.$transaction(async (tx) => {
@@ -69,7 +115,11 @@ export async function calcularHUCompatibles(userId: string): Promise<HuOfferOutc
 
     if (user.habilidadUnica) {
       const { id, nombre, descripcion, rareza } = user.habilidadUnica;
-      return { ok: true as const, elegida: { id, nombre, descripcion, rareza }, yaElegida: true as const };
+      return {
+        ok: true as const,
+        habilidad: { id, nombre, descripcion, rareza },
+        nuevaRevelacion: false
+      };
     }
 
     const completed = await canonicalCompletedCount(tx, userId);
@@ -80,91 +130,44 @@ export async function calcularHUCompatibles(userId: string): Promise<HuOfferOutc
       return { ok: false as const, error: "no_senda" as const };
     }
 
-    // Oferta ya generada: se devuelve tal cual (estable e idempotente).
-    const existingOffer = await tx.ofertaHu.findUnique({ where: { userId } });
-    if (existingOffer) {
-      const opciones = await tx.habilidadUnica.findMany({
-        where: { id: { in: existingOffer.opciones } },
-        select: { id: true, nombre: true, descripcion: true, rareza: true }
-      });
-      return { ok: true as const, oferta: { opciones }, yaElegida: false as const };
-    }
-
-    const afinesPrincipal = await tx.habilidadUnica.findMany({
-      where: { sendasAfines: { has: user.sendaPrincipal } }
-    });
-    const afinesCercanas = await tx.habilidadUnica.findMany({
-      where: {
-        sendasAfines: { hasSome: user.sendasCercanas },
-        id: { notIn: afinesPrincipal.map((hu) => hu.id) }
-      }
-    });
-
-    // Garantiza al menos una HU afín a la Senda principal si el catálogo la tiene.
-    const primary = weightedSample(afinesPrincipal, 1);
-    const restPool = [
-      ...afinesPrincipal.filter((hu) => !primary.some((p) => p.id === hu.id)),
-      ...afinesCercanas
-    ];
-    const rest = weightedSample(restPool, 3 - primary.length);
-    let opciones = [...primary, ...rest];
-
-    if (opciones.length < 3) {
-      const filler = await tx.habilidadUnica.findMany({
-        where: { id: { notIn: opciones.map((hu) => hu.id) } }
-      });
-      opciones = [...opciones, ...weightedSample(filler, 3 - opciones.length)];
-    }
+    const opciones = await calcularHUCompatibles(tx, userId, user.sendaPrincipal, user.sendasCercanas);
     if (opciones.length === 0) {
       return { ok: false as const, error: "empty_catalog" as const };
     }
 
-    await tx.ofertaHu.create({
-      data: { userId, opciones: opciones.map((hu) => hu.id) }
-    });
+    // Sorteo uniforme entre las 3 compatibles (el peso por rareza ya actuó
+    // al componer la oferta; el sorteo final es puro azar del destino).
+    const sorteada = opciones[Math.floor(Math.random() * opciones.length)];
 
-    return {
-      ok: true as const,
-      oferta: {
-        opciones: opciones.map(({ id, nombre, descripcion, rareza }) => ({ id, nombre, descripcion, rareza }))
-      },
-      yaElegida: false as const
-    };
-  }, TX_OPTIONS);
-}
-
-export type HuChooseOutcome =
-  | { ok: true; elegida: Pick<HabilidadUnica, "id" | "nombre" | "descripcion" | "rareza"> }
-  | { ok: false; error: "no_offer" | "not_in_offer" | "already_chosen" };
-
-/** Elección única de HU: valida contra la oferta persistida y fija una sola vez. */
-export async function chooseHu(userId: string, huId: string): Promise<HuChooseOutcome> {
-  const prisma = getPrisma();
-
-  return prisma.$transaction(async (tx) => {
-    const offer = await tx.ofertaHu.findUnique({ where: { userId } });
-    if (!offer) {
-      return { ok: false as const, error: "no_offer" as const };
-    }
-    if (!offer.opciones.includes(huId)) {
-      return { ok: false as const, error: "not_in_offer" as const };
-    }
-
-    // updateMany condicional: si otro request ya eligió, count = 0.
+    // updateMany condicional: si otro request reveló primero, respetamos esa.
     const updated = await tx.user.updateMany({
       where: { id: userId, habilidadUnicaId: null },
-      data: { habilidadUnicaId: huId, habilidadUnicaElegidaEn: new Date() }
+      data: { habilidadUnicaId: sorteada.id, habilidadUnicaElegidaEn: new Date() }
     });
     if (updated.count === 0) {
-      return { ok: false as const, error: "already_chosen" as const };
+      const winner = await tx.user.findUniqueOrThrow({
+        where: { id: userId },
+        select: { habilidadUnica: true }
+      });
+      const hu = winner.habilidadUnica!;
+      return {
+        ok: true as const,
+        habilidad: { id: hu.id, nombre: hu.nombre, descripcion: hu.descripcion, rareza: hu.rareza },
+        nuevaRevelacion: false
+      };
     }
 
     await evaluateAchievements(tx, userId);
 
-    const hu = await tx.habilidadUnica.findUniqueOrThrow({
-      where: { id: huId },
-      select: { id: true, nombre: true, descripcion: true, rareza: true }
-    });
-    return { ok: true as const, elegida: hu };
+    return {
+      ok: true as const,
+      habilidad: {
+        id: sorteada.id,
+        nombre: sorteada.nombre,
+        descripcion: sorteada.descripcion,
+        rareza: sorteada.rareza
+      },
+      nuevaRevelacion: true
+    };
   }, TX_OPTIONS);
 }

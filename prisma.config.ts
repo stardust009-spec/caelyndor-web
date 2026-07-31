@@ -6,7 +6,13 @@ import { defineConfig } from "prisma/config";
 export default defineConfig({
   schema: "prisma/schema.prisma",
   datasource: {
-    url: process.env.DATABASE_URL ?? "postgresql://pendiente:configure@localhost:5432/caelyndor"
+    // Migraciones e introspección van por la conexión directa (sin pgbouncer):
+    // Prisma Migrate usa advisory locks que el pooler de Neon no soporta bien.
+    url:
+      process.env.DATABASE_URL_UNPOOLED ??
+      process.env.POSTGRES_URL_NON_POOLING ??
+      process.env.DATABASE_URL ??
+      "postgresql://pendiente:configure@localhost:5432/caelyndor"
   },
   migrations: {
     path: "prisma/migrations",

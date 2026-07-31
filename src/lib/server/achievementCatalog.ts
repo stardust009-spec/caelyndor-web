@@ -230,7 +230,7 @@ export const ACHIEVEMENT_CATALOG: readonly LogroDef[] = [
   {
     slug: "el-don-despierta",
     title: "El don despierta",
-    description: "Elegiste tu Habilidad Única.",
+    description: "Tu Habilidad Única se reveló ante ti.",
     category: CategoriaLogro.CONDUCTA,
     condition: (ctx) => ctx.huElegida
   }

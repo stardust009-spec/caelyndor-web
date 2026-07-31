@@ -113,7 +113,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       style={{ "--story-accent": story.accent, "--lyz-accent": lyzAccent } as CSSProperties}
     >
       <JsonLd data={jsonLd} />
-      <ReadingProgress />
+      <ReadingProgress storySlug={story.slug} />
       <div className="container">
         <Breadcrumbs
           items={[

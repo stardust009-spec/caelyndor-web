@@ -45,13 +45,14 @@ del Aura Interna: pendiente (esta fase entrega lógica y rutas).
 | `/api/user/profile` | GET | Rango, Senda, HU, logros, conteos |
 | `/api/senda-test/status` | GET | Desbloqueo/estado del ritual + preguntas |
 | `/api/senda-test/submit` | POST | `{respuestas}` o `{eleccionManual}` (una sola corrección) |
-| `/api/hu/choose` | GET | Genera/devuelve las 3 opciones persistidas (OfertaHu) |
-| `/api/hu/choose` | POST | `{habilidadId}`: elección única validada contra la oferta |
+| `/api/hu/reveal` | POST | Revela la HU: el servidor calcula 3 compatibles, sortea una y la asigna |
 | `/api/achievements` | GET | Catálogo + estado del usuario (o solo catálogo sin sesión) |
 
-Nota: el GET de `/api/hu/choose` no estaba en la lista original; se añadió
-porque la oferta de 3 opciones debe persistirse y servirse desde el servidor
-para que el POST pueda validarla.
+Nota (corrección del 31-jul-2026): la HU **no la elige el usuario**. El
+endpoint original `/api/hu/choose` fue reemplazado por `/api/hu/reveal`, que
+no recibe nada del cliente: calcula las 3 opciones compatibles, las persiste
+en `OfertaHu` (trazabilidad de qué ofreció el sistema), sortea una y la
+asigna en el mismo request. Reintentar devuelve siempre la misma HU.
 
 ## Variables de entorno
 
@@ -96,11 +97,17 @@ lógica ya consume pero que **nadie ha asignado aún** en los 14 relatos:
 
 - "Testigo silencioso": requiere definir el evento de cliente de escena
   oculta; su condición devuelve `false` hasta entonces.
-- Catálogo de HU: sembradas 20 de 77; completar es trabajo editorial en
-  `prisma/seed.ts` (`HU_SEED`).
-- Frontend real del ritual de Senda y de la elección de HU.
-- Integrar `ReadingProgress.tsx` con `POST /api/progress/:storyId` (throttle
-  cliente cada ~5 % o pocos segundos).
-- Panel de administración, social, moderación, notificaciones push (stubs no
-  creados a propósito).
+- Frontend real del ritual de Senda y de la pantalla de revelación de HU.
 - Endurecer CSP a nonces/strict-dynamic.
+
+## Hecho después de la entrega inicial (31-jul-2026)
+
+- Migración + seed aplicados a la base real (Neon vía Vercel Postgres);
+  migraciones usan la conexión sin pooler (`DATABASE_URL_UNPOOLED`).
+- Catálogo completo de 77 HU sembrado desde el documento canónico
+  ("Habilidades Únicas: El Don Innato"): 42 Comunes, 20 Poco Comunes,
+  10 Épicas, 5 Legendarias. Las `sendasAfines` no están en el documento:
+  se asignaron temáticamente y son metadata editable en `prisma/seed.ts`.
+- `ReadingProgress.tsx` sincroniza con `POST /api/progress/:storyId`
+  (cada ≥5 % o 10 s, con `sendBeacon` al salir; 401 apaga el envío para
+  visitantes sin sesión).
