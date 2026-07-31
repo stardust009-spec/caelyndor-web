@@ -4,6 +4,7 @@ import { currentUserId } from "@/auth";
 import { readJsonBody, tooManyRequests, unauthorized } from "@/lib/server/http";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { chooseSendaManually, submitSendaTest } from "@/lib/server/sendaTestService";
+import { assertNoRestriccion } from "@/lib/server/restrictions";
 
 export const dynamic = "force-dynamic";
 
@@ -31,6 +32,11 @@ export async function POST(request: Request) {
   const limited = await rateLimit("senda-submit", userId, 10, 600);
   if (!limited.allowed) {
     return tooManyRequests();
+  }
+
+  const restriction = await assertNoRestriccion(userId, "accion");
+  if (restriction) {
+    return restriction;
   }
 
   const body = await readJsonBody(request, 8 * 1024);

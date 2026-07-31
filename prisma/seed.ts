@@ -11,7 +11,7 @@
  * Ejecutar con: npm run db:seed (requiere DATABASE_URL).
  */
 import "dotenv/config";
-import { PrismaClient, RarezaHu, Senda } from "../src/generated/prisma/client";
+import { AvatarStyle, PrismaClient, RarezaHu, Senda } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { ACHIEVEMENT_CATALOG } from "../src/lib/server/achievementCatalog";
 
@@ -173,6 +173,53 @@ async function main() {
     });
   }
   console.log(`Habilidades Únicas sembradas: ${HU_SEED.length} de 77.`);
+
+  // ——— Catálogo de avatares (Parte 2, sección 3.3) ———
+  // Las imágenes reales las provee Claudio; los imageUrl son placeholders
+  // bajo /images/avatars/. Ampliar el catálogo = agregar filas aquí.
+  const personajes = ["Rubí", "Lyzi", "Noctalypse", "Aria", "Adagio", "Fulgor"];
+  const slugDe = (nombre: string) =>
+    nombre
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[̀-ͯ]/g, "");
+
+  let sortOrder = 0;
+  for (const style of [AvatarStyle.CHIBI, AvatarStyle.RETRATO_CIRCULAR]) {
+    const sufijo = style === AvatarStyle.CHIBI ? "chibi" : "retrato-circular";
+    for (const characterName of personajes) {
+      const slug = `${slugDe(characterName)}-${sufijo}`;
+      sortOrder += 1;
+      await prisma.avatarOption.upsert({
+        where: { slug },
+        create: {
+          slug,
+          characterName,
+          style,
+          imageUrl: `/images/avatars/${slug}.webp`,
+          isDefault: slug === "rubi-chibi", // exactamente uno: el fallback de registro
+          sortOrder
+        },
+        update: { characterName, style, sortOrder }
+      });
+    }
+  }
+  console.log("Avatares sembrados: 12 (6 chibi + 6 retrato circular; default: rubi-chibi).");
+
+  // ——— Logros latentes (Parte 2, sección 7.2) — decorativos, sin condición ———
+  const placeholders = [
+    { id: "latente-1", sortOrder: 1, hintText: "Algo despierta en las profundidades del Vacío…" },
+    { id: "latente-2", sortOrder: 2, hintText: "Hay una melodía que solo suena cuando nadie escucha." },
+    { id: "latente-3", sortOrder: 3, hintText: "El Velo guarda una puerta que aún no tiene llave." }
+  ];
+  for (const placeholder of placeholders) {
+    await prisma.achievementPlaceholder.upsert({
+      where: { id: placeholder.id },
+      create: placeholder,
+      update: { sortOrder: placeholder.sortOrder, hintText: placeholder.hintText }
+    });
+  }
+  console.log("Logros latentes sembrados: 3.");
 
   await prisma.$disconnect();
 }

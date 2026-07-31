@@ -3,6 +3,7 @@ import { currentUserId } from "@/auth";
 import { tooManyRequests, unauthorized } from "@/lib/server/http";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { revealHu } from "@/lib/server/hu";
+import { assertNoRestriccion } from "@/lib/server/restrictions";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +27,11 @@ export async function POST() {
   const limited = await rateLimit("hu-reveal", userId, 10, 600);
   if (!limited.allowed) {
     return tooManyRequests();
+  }
+
+  const restriction = await assertNoRestriccion(userId, "accion");
+  if (restriction) {
+    return restriction;
   }
 
   const outcome = await revealHu(userId);

@@ -50,8 +50,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`
+            try {
+              var theme = localStorage.getItem('caelyndor-theme');
+              if (theme === 'rubi' || theme === 'noct') {
+                document.documentElement.dataset.theme = theme;
+              }
+            } catch (e) {}
+          `}
+        </Script>
         <SiteShell>{children}</SiteShell>
         {GA_ID && (
           <>

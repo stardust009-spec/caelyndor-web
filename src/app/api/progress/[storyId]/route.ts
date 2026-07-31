@@ -5,6 +5,7 @@ import { readJsonBody, tooManyRequests, unauthorized } from "@/lib/server/http";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { applyProgressUpdate } from "@/lib/server/progress";
 import { storyExists } from "@/lib/server/storyContent";
+import { assertNoRestriccion } from "@/lib/server/restrictions";
 
 export const dynamic = "force-dynamic";
 
@@ -25,6 +26,11 @@ export async function POST(request: Request, { params }: { params: Promise<{ sto
   const limited = await rateLimit("progress", userId, 30, 60);
   if (!limited.allowed) {
     return tooManyRequests();
+  }
+
+  const restriction = await assertNoRestriccion(userId, "accion");
+  if (restriction) {
+    return restriction;
   }
 
   const { storyId } = await params;

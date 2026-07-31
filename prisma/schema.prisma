@@ -51,6 +51,18 @@ enum RarezaHu {
   LEGENDARIA
 }
 
+/** Tema visual del sitio: Rubí (día), Noct (noche) o seguir al sistema. */
+enum ThemePreference {
+  RUBI
+  NOCT
+  SISTEMA
+}
+
+enum AvatarStyle {
+  CHIBI
+  RETRATO_CIRCULAR
+}
+
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
@@ -73,6 +85,120 @@ model User {
   logros      UserAchievement[]
   sendaTest   SendaTestResult?
   ofertaHu    OfertaHu?
+  profile     UserProfile?
+  sesiones    AppSession[]
+
+  restricciones          UserRestriction[] @relation("RestriccionesDe")
+  restriccionesAplicadas UserRestriction[] @relation("RestriccionesAplicadasPor")
+  restriccionesLevantadas UserRestriction[] @relation("RestriccionesLevantadasPor")
+}
+
+enum RestrictionType {
+  ACCION_SILENCIADA
+  COMENTARIO_SILENCIADO
+  BAN_COMPLETO
+}
+
+/// Moderación activa (Parte 3, sección 8): tres restricciones independientes,
+/// no un único campo de estado. Nunca se borra una fila al levantarla — se
+/// marca active=false con liftedBy/liftedAt para conservar el historial.
+/// Expiración: se evalúa al momento de cada request (expiresAt > now); una
+/// fila vencida se trata como inactiva sin necesidad de cron.
+model UserRestriction {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation("RestriccionesDe", fields: [userId], references: [id], onDelete: Cascade)
+
+  type   RestrictionType
+  active Boolean         @default(true)
+  /// Interno del equipo; nunca se muestra al usuario afectado.
+  reason String
+  /// null = permanente hasta levantarla a mano.
+  expiresAt DateTime?
+
+  appliedById String
+  appliedBy   User      @relation("RestriccionesAplicadasPor", fields: [appliedById], references: [id])
+  appliedAt   DateTime  @default(now())
+  liftedById  String?
+  liftedBy    User?     @relation("RestriccionesLevantadasPor", fields: [liftedById], references: [id])
+  liftedAt    DateTime?
+
+  @@index([userId, type, active])
+}
+
+/// Datos personales del lector. Política de privacidad por diseño (Parte 2,
+/// sección 2.1): todo lo opcional es PRIVADO — visible solo para el propio
+/// usuario; un eventual perfil público mostraría solo alias/avatar/rango/logros.
+model UserProfile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// Alias público, obligatorio, único; pasa SIEMPRE por PlayerNameModerator.
+  alias String @unique
+
+  // Opcionales y privados; la edad se deriva de fechaNacimiento, no se guarda.
+  nombre          String?
+  apellidoPaterno String?
+  apellidoMaterno String?
+  fechaNacimiento DateTime?
+  pais            String?
+  ciudad          String?
+  comuna          String?
+
+  avatarId String?
+  avatar   AvatarOption? @relation(fields: [avatarId], references: [id])
+
+  themePreference ThemePreference @default(SISTEMA)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+/// Catálogo cerrado de avatares curado por Claudio. Sin subida de imágenes
+/// por parte del usuario, bajo ninguna circunstancia en esta fase.
+model AvatarOption {
+  id            String      @id @default(cuid())
+  slug          String      @unique
+  characterName String
+  style         AvatarStyle
+  imageUrl      String
+  /// Exactamente uno en true: es el avatar que recibe todo usuario nuevo.
+  isDefault     Boolean     @default(false)
+  /// false lo retira del selector sin romper a quienes ya lo tienen elegido.
+  active        Boolean     @default(true)
+  sortOrder     Int         @default(0)
+
+  perfiles UserProfile[]
+}
+
+/// Logros "latentes": promesas visuales sin lógica de desbloqueo. Tabla
+/// separada de Achievement a propósito — nunca cuentan para la barra de
+/// progreso ni requieren condiciones de servidor.
+model AchievementPlaceholder {
+  id        String  @id @default(cuid())
+  sortOrder Int
+  hintText  String?
+}
+
+/// Registro server-side de sesiones (híbrido con JWT: el token lleva el id
+/// de esta fila como `sid`; toda verificación de identidad la valida aquí,
+/// por lo que revocar tiene efecto inmediato en servidor).
+model AppSession {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// Derivado del user-agent (ej. "Chrome (Windows)").
+  deviceLabel   String
+  /// Aproximada a nivel ciudad, derivada de IP (headers de Vercel); nunca exacta.
+  locationLabel String
+
+  createdAt    DateTime  @default(now())
+  lastActiveAt DateTime  @default(now())
+  revokedAt    DateTime?
+
+  @@index([userId, revokedAt])
 }
 
 /// Progreso de lectura por relato. El contenido de los relatos vive en

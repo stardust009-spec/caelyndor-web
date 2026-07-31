@@ -5,5 +5,18 @@ declare module "next-auth" {
     user: {
       id: string;
     } & DefaultSession["user"];
+    /** Id de la fila AppSession (registro server-side de sesiones). */
+    sessionId?: string;
+  }
+
+  interface User {
+    /** Adjuntado por authorize() al crear la fila AppSession del login. */
+    sessionId?: string;
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    sid?: string;
   }
 }

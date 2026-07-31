@@ -7025,3 +7025,243 @@ body.story-lightbox-open {
     animation: none;
   }
 }
+
+/* ——— Cuenta / Perfil del Aura (Parte 2) ——— */
+
+.panel {
+  background: var(--color-night-soft);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+.cuenta {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.cuenta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.cuenta-header h1 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+}
+
+.cuenta-avatar {
+  border-radius: 50%;
+  border: 1px solid var(--color-line);
+  background: var(--color-night);
+}
+
+.cuenta-rango,
+.cuenta-senda,
+.cuenta-hu,
+.cuenta-nota {
+  margin: 0 0 var(--space-2);
+  color: var(--color-ash);
+  font-size: 0.95rem;
+}
+
+.cuenta-panel h2 {
+  margin-top: 0;
+  font-family: var(--font-display);
+}
+
+.cuenta-status,
+.cuenta-aviso {
+  text-align: center;
+  color: var(--color-ash);
+}
+
+.cuenta-error {
+  color: var(--color-ember);
+  margin: var(--space-2) 0 0;
+}
+
+.cuenta-flavor {
+  color: var(--color-astral);
+  font-style: italic;
+  margin: var(--space-2) 0 0;
+}
+
+.cuenta-form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.cuenta-form label {
+  display: grid;
+  gap: var(--space-1);
+  font-size: 0.9rem;
+  color: var(--color-ash);
+}
+
+.cuenta-form input {
+  background: var(--color-night);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  color: var(--color-ash-bright);
+  padding: var(--space-2) var(--space-3);
+  font: inherit;
+}
+
+.cuenta-form--inline {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.cuenta-form--grid {
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.cuenta-form__acciones {
+  grid-column: 1 / -1;
+}
+
+.cuenta-acceso {
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.cuenta-switch {
+  background: none;
+  border: none;
+  color: var(--color-ice);
+  cursor: pointer;
+  margin-top: var(--space-4);
+  padding: 0;
+  font: inherit;
+}
+
+.cuenta-barra {
+  height: 0.6rem;
+  border-radius: 999px;
+  background: var(--color-night);
+  border: 1px solid var(--color-line);
+  overflow: hidden;
+}
+
+.cuenta-barra__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-astral), var(--color-ice));
+}
+
+.cuenta-latentes {
+  list-style: none;
+  display: flex;
+  gap: var(--space-3);
+  padding: 0;
+  margin: var(--space-4) 0 0;
+}
+
+.cuenta-latente {
+  border: 1px dashed var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-ash);
+  opacity: 0.75;
+}
+
+.cuenta-avatares {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: var(--space-3);
+}
+
+.cuenta-avatar-opcion {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  background: var(--color-night);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
+.cuenta-avatar-opcion img {
+  border-radius: 50%;
+  background: var(--color-night-soft);
+}
+
+.cuenta-avatar-opcion small {
+  display: block;
+  color: var(--color-ash);
+}
+
+.cuenta-avatar-opcion--activo {
+  border-color: var(--color-astral);
+  box-shadow: 0 0 0 1px var(--color-astral);
+}
+
+.cuenta-temas {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.cuenta-tema--activo {
+  border-color: var(--color-astral);
+  color: var(--color-ash-bright);
+}
+
+.cuenta-tabla-wrap {
+  overflow-x: auto;
+}
+
+.cuenta-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.cuenta-tabla th,
+.cuenta-tabla td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.cuenta-actual {
+  color: var(--color-ice);
+  font-size: 0.85rem;
+}
+
+.cuenta-cerrar {
+  text-align: right;
+}
+
+/* ——— Tema Rubí (día) ———
+   Paleta base clara; el ajuste fino es trabajo editorial posterior. */
+:root[data-theme="rubi"] {
+  --color-void: #f5eee9;
+  --color-night: #efe4dc;
+  --color-night-soft: #f9f3ee;
+  --color-ash: #6b5f66;
+  --color-ash-bright: #2a2028;
+  --color-silver: #4d4550;
+  --color-ember: #a53827;
+  --color-ice: #2d6f8e;
+  --color-astral: #6a4bd8;
+  --color-abyss: #d8c4e4;
+  --color-line: rgba(42, 32, 40, 0.16);
+  --shadow-soft: 0 24px 80px rgba(90, 60, 40, 0.18);
+}
+
+/* Transición entre temas, solo si el usuario no pide movimiento reducido */
+@media (prefers-reduced-motion: no-preference) {
+  html,
+  body,
+  .panel {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
+}
