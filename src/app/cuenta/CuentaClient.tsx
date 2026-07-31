@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { signIn, signOut } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 type Avatar = { id: string; slug: string; characterName: string; style: string; imageUrl: string };
 
@@ -64,6 +64,11 @@ async function jsonFetch<T>(url: string, init?: RequestInit): Promise<{ ok: bool
 }
 
 export function CuentaClient() {
+  // update() dispara el callback jwt con trigger "update", que relee alias y
+  // avatar desde la BD y reemite el token. Como el header consume la misma
+  // sesión vía SessionProvider, el cambio se ve al instante en todo el sitio
+  // sin cerrar sesión.
+  const { update: refrescarSesion } = useSession();
   const [loading, setLoading] = useState(true);
   const [perfil, setPerfil] = useState<Perfil | null>(null);
   const [sesiones, setSesiones] = useState<Sesion[]>([]);
@@ -93,6 +98,13 @@ export function CuentaClient() {
   useEffect(() => {
     void refresh();
   }, [refresh]);
+
+  /** Para los cambios que el header muestra (avatar y alias): además de
+   *  recargar el panel, reemite el token para que el header se entere. */
+  const refrescarPerfilYSesion = useCallback(async () => {
+    await refresh();
+    await refrescarSesion();
+  }, [refresh, refrescarSesion]);
 
   if (loading) {
     return <p className="cuenta-status">Consultando tu Aura…</p>;
@@ -150,8 +162,17 @@ export function CuentaClient() {
       </header>
 
       <LogrosPanel perfil={perfil} placeholders={placeholders} />
-      <AvatarPanel avatares={avatares} actual={perfil.profile?.avatar ?? null} onChange={refresh} onAviso={setAviso} />
-      <AliasPanel actual={perfil.profile?.alias ?? perfil.displayName} onChange={refresh} onAviso={setAviso} />
+      <AvatarPanel
+        avatares={avatares}
+        actual={perfil.profile?.avatar ?? null}
+        onChange={refrescarPerfilYSesion}
+        onAviso={setAviso}
+      />
+      <AliasPanel
+        actual={perfil.profile?.alias ?? perfil.displayName}
+        onChange={refrescarPerfilYSesion}
+        onAviso={setAviso}
+      />
       <TemaPanel actual={perfil.profile?.themePreference ?? "SISTEMA"} onAviso={setAviso} />
       <DatosPanel perfil={perfil} onChange={refresh} onAviso={setAviso} />
       <SesionesPanel sesiones={sesiones} onChange={refresh} onAviso={setAviso} />

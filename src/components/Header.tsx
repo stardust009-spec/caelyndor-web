@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 const navItems = [
@@ -14,13 +15,19 @@ const navItems = [
   { href: "/arte", label: "Arte" },
   { href: "/descargas", label: "Descargas" },
   { href: "/nuevo-libro", label: "Nuevo Libro" },
-  { href: "/archivo", label: "Archivo" },
-  { href: "/cuenta", label: "Cuenta" }
+  { href: "/archivo", label: "Archivo" }
 ];
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
+
+  // Alias y avatar vienen del JWT (ver auth.ts): sin llamada extra por página.
+  const avatarUrl = session?.user?.avatarUrl ?? null;
+  const avatarCharacter = session?.user?.avatarCharacter ?? null;
+  const alias = session?.user?.alias ?? null;
+  const cuentaActiva = pathname.startsWith("/cuenta");
 
   return (
     <header className="site-header">
@@ -63,6 +70,27 @@ export function Header() {
               </Link>
             );
           })}
+
+          {/* Cuenta: con sesión muestra el avatar junto al texto; sin sesión
+              queda el enlace de texto tal como estaba, nunca un círculo vacío. */}
+          <Link
+            className={`nav-cuenta ${avatarUrl ? "nav-cuenta--con-avatar" : ""}`}
+            href="/cuenta"
+            aria-current={cuentaActiva ? "page" : undefined}
+            onClick={() => setOpen(false)}
+          >
+            {avatarUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                className="nav-cuenta__avatar"
+                src={avatarUrl}
+                alt={avatarCharacter ? `Tu avatar: ${avatarCharacter}` : "Tu avatar"}
+                width={32}
+                height={32}
+              />
+            )}
+            <span>{alias ?? "Cuenta"}</span>
+          </Link>
         </nav>
       </div>
     </header>

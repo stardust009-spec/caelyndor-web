@@ -42,7 +42,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         const user = await prisma.user.findUnique({
           where: { email },
-          select: { id: true, email: true, displayName: true, passwordHash: true, role: true }
+          select: {
+            id: true,
+            email: true,
+            displayName: true,
+            passwordHash: true,
+            role: true,
+            profile: {
+              select: { alias: true, avatar: { select: { imageUrl: true, characterName: true } } }
+            }
+          }
         });
 
         const valid = await bcrypt.compare(password, user?.passwordHash ?? DUMMY_HASH);
@@ -79,13 +88,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           email: user.email,
           name: user.displayName,
           sessionId: appSession.id,
-          role: user.role
+          role: user.role,
+          // Alias y avatar viajan en el JWT para que el header los pinte sin
+          // pedir /api/user/profile en cada página. Son datos públicos del
+          // perfil; nada sensible entra aquí.
+          alias: user.profile?.alias ?? user.displayName,
+          avatarUrl: user.profile?.avatar?.imageUrl ?? null,
+          avatarCharacter: user.profile?.avatar?.characterName ?? null
         };
       }
     })
   ],
   callbacks: {
-    jwt({ token, user }) {
+    async jwt({ token, user, trigger }) {
       if (user?.id) {
         token.sub = user.id;
       }
@@ -99,6 +114,35 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (role) {
         token.role = role;
       }
+
+      const perfil = user as
+        | { alias?: string; avatarUrl?: string | null; avatarCharacter?: string | null }
+        | undefined;
+      if (perfil?.alias !== undefined) {
+        token.alias = perfil.alias;
+        token.avatarUrl = perfil.avatarUrl ?? null;
+        token.avatarCharacter = perfil.avatarCharacter ?? null;
+      }
+
+      // El JWT se emite en el login, así que un cambio posterior de avatar o
+      // alias no se vería hasta re-loguear. Con trigger "update" —que dispara
+      // update() desde el cliente tras guardar— se relee el perfil. Es la
+      // ÚNICA lectura a BD de este callback: el resto de las páginas sirven
+      // el token tal cual, sin consulta.
+      if (trigger === "update" && token.sub) {
+        const perfilActual = await getPrisma()
+          .userProfile.findUnique({
+            where: { userId: token.sub },
+            select: { alias: true, avatar: { select: { imageUrl: true, characterName: true } } }
+          })
+          .catch(() => null);
+        if (perfilActual) {
+          token.alias = perfilActual.alias;
+          token.avatarUrl = perfilActual.avatar?.imageUrl ?? null;
+          token.avatarCharacter = perfilActual.avatar?.characterName ?? null;
+        }
+      }
+
       return token;
     },
     session({ session, token }) {
@@ -108,6 +152,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       if (typeof token.sid === "string") {
         session.sessionId = token.sid;
       }
+      session.user.alias = typeof token.alias === "string" ? token.alias : null;
+      session.user.avatarUrl = typeof token.avatarUrl === "string" ? token.avatarUrl : null;
+      session.user.avatarCharacter =
+        typeof token.avatarCharacter === "string" ? token.avatarCharacter : null;
       return session;
     }
   }
