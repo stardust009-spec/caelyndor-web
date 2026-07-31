@@ -7049,9 +7049,38 @@ body.story-lightbox-open {
   gap: var(--space-5);
 }
 
+/* El h1 global escala con el viewport — clamp(2.7rem, 7vw, 5.7rem) — porque
+   está pensado para títulos a ancho completo. En /cuenta y /admin el contenido
+   vive en tarjetas y columnas acotadas (28rem y 56rem), así que ese tamaño
+   desbordaba: a 1280px de viewport el título medía 89.6px y "Caelyndor" se
+   salía 109px de la tarjeta de acceso. Aquí se acota el tamaño al ancho real
+   del contenedor y se permite partir palabras largas, porque los alias
+   admiten 30 caracteres y pueden no traer ningún espacio donde cortar. */
+.cuenta h1,
+.cuenta-acceso h1 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.cuenta h1 {
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+}
+
+.cuenta-acceso h1 {
+  font-size: clamp(1.65rem, 4.5vw, 2.5rem);
+}
+
 .cuenta-header h1 {
   margin: 0 0 var(--space-2);
   font-family: var(--font-display);
+  /* min-width:0 evita que un alias largo estire el ítem flex del header
+     más allá del contenedor en vez de ajustarse dentro de él. */
+  min-width: 0;
+}
+
+.cuenta-header > div {
+  min-width: 0;
 }
 
 .cuenta-avatar {
