@@ -13,7 +13,16 @@ export const AVATAR_STYLES = [
   { style: "RETRATO_CIRCULAR", suffix: "retrato-circular", etiqueta: "retrato" }
 ] as const;
 
-export const AVATAR_CHARACTERS = ["Rubí", "Lyzi", "Noctalypse", "Aria", "Adagio", "Fulgor"] as const;
+/** El orden de esta lista define el orden del selector (sortOrder). */
+export const AVATAR_CHARACTERS = [
+  "Rubí",
+  "Lyzi",
+  "Noctalypse",
+  "Aria",
+  "Adagio",
+  "Fulgor",
+  "Yuki"
+] as const;
 
 /** Slug del avatar que recibe todo usuario nuevo (isDefault en la BD). */
 export const DEFAULT_AVATAR_SLUG = "rubi-chibi";
