@@ -34,6 +34,30 @@ const AVISO_KB = 60;
 
 const force = process.argv.includes("--force");
 
+/**
+ * Placeholder para los avatares del catálogo que todavía no tienen master.
+ *
+ * Sin esto, el selector ofrece una opción cuyo archivo no existe: el usuario
+ * ve un ícono roto y, si la elige, se le queda de identidad en el header. Con
+ * el placeholder la opción se ve intencional —monograma sobre fondo oscuro,
+ * claramente "arte pendiente"— en vez de rota.
+ *
+ * No pisa arte real: solo se genera si no hay archivo de salida. Cuando el
+ * master aparece, la pasada normal lo regenera por mtime.
+ */
+function placeholderSvg(inicial: string): Buffer {
+  const size = AVATAR_SIZE_PX;
+  return Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+      <rect width="${size}" height="${size}" fill="#111522"/>
+      <circle cx="${size / 2}" cy="${size / 2}" r="${size / 2 - 10}" fill="#0a0d16" stroke="#2b2f3d" stroke-width="2"/>
+      <text x="50%" y="50%" dy="0.34em" text-anchor="middle"
+            font-family="Georgia, 'Times New Roman', serif" font-size="${Math.round(size * 0.42)}"
+            fill="#6f6878">${inicial}</text>
+    </svg>`
+  );
+}
+
 function kb(bytes: number): string {
   return `${(bytes / 1024).toFixed(1)} KB`;
 }
@@ -129,7 +153,24 @@ async function main() {
     );
   }
 
+  // Placeholders para lo que aún no tiene master, para que el selector nunca
+  // ofrezca una opción con imagen rota.
   const faltantes = [...slugsEsperados].filter((slug) => !procesados.has(slug));
+  const placeholdersNuevos: string[] = [];
+  const placeholdersVigentes: string[] = [];
+  for (const slug of faltantes) {
+    const entrada = catalogo.find((item) => item.slug === slug);
+    const destino = path.join(OUTPUT_DIR, `${slug}.webp`);
+    if (await existe(destino)) {
+      placeholdersVigentes.push(slug);
+      continue;
+    }
+    const inicial = (entrada?.characterName ?? slug).charAt(0).toUpperCase();
+    await sharp(placeholderSvg(inicial))
+      .webp({ quality: AVATAR_WEBP_QUALITY })
+      .toFile(destino);
+    placeholdersNuevos.push(slug);
+  }
 
   console.log("");
   console.log(`Generados: ${generados}${omitidos ? ` · sin cambios: ${omitidos}` : ""}`);
@@ -152,9 +193,17 @@ async function main() {
   if (faltantes.length > 0) {
     console.log("");
     console.warn(`Faltan masters para ${faltantes.length} de ${slugsEsperados.size} avatares:`);
-    for (const slug of faltantes) console.warn(`  - ${slug}`);
+    for (const slug of faltantes) {
+      const marca = placeholdersNuevos.includes(slug)
+        ? "placeholder generado"
+        : placeholdersVigentes.includes(slug)
+          ? "placeholder ya presente"
+          : "";
+      console.warn(`  - ${slug}${marca ? `  (${marca})` : ""}`);
+    }
+    console.warn("  Al dejar el master, la próxima pasada reemplaza el placeholder.");
   } else {
-    console.log("Catálogo completo: hay imagen para los 12 avatares.");
+    console.log(`Catálogo completo: hay imagen para los ${slugsEsperados.size} avatares.`);
   }
 }
 
