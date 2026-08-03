@@ -39,6 +39,16 @@ function track({ cover, ...trackData }: TrackInput): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "iris-la-bruja-del-fervor",
+    title: "Iris — La Bruja del Fervor",
+    subtitle: "Tema de personaje",
+    fileName: "Iris — La Bruja del Fervor.mp3",
+    category: "personaje",
+    related: ["Iris"],
+    mood: "Fervor / hechicería",
+    accent: "rgba(198, 66, 128, 0.34)"
+  }),
+  track({
     id: "caedran-las-piedras-tambien-sangran",
     title: "Caedran — Las Piedras También Sangran",
     subtitle: "Tema de personaje",
