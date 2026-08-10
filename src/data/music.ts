@@ -39,6 +39,16 @@ function track({ cover, ...trackData }: TrackInput): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "rubi-ven-al-fuego",
+    title: "Rubí — Ven al fuego",
+    subtitle: "Tema de personaje",
+    fileName: "Rubí — Ven al fuego.mp3",
+    category: "personaje",
+    related: ["Rubí"],
+    mood: "Fuego / invitación",
+    accent: "rgba(200, 75, 75, 0.34)"
+  }),
+  track({
     id: "iris-la-bruja-del-fervor",
     title: "Iris — La Bruja del Fervor",
     subtitle: "Tema de personaje",

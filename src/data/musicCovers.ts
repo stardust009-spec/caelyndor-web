@@ -66,4 +66,5 @@ export const musicCovers: Record<string, string> = {
   "carolina-varthalion-vino-tibio-con-naranja": "/images/music-covers/carolina-varthalion-vino-tibio-con-naranja.jpg",
   "caedran-las-piedras-tambien-sangran": "/images/music-covers/caedran-las-piedras-tambien-sangran.jpg",
   "iris-la-bruja-del-fervor": "/images/music-covers/iris-la-bruja-del-fervor.jpg",
+  "rubi-ven-al-fuego": "/images/music-covers/rubi-ven-al-fuego.jpg",
 };
