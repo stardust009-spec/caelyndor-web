@@ -41,9 +41,9 @@ export const musicTracks: MusicTrack[] = [
   track({
     id: "lencorias-donde-la-veta-cambia",
     title: "Lencorias — Donde la veta cambia",
-    subtitle: "Archivo regional",
+    subtitle: "Tema de personaje",
     fileName: "Lencorias — Donde la veta cambia.mp3",
-    category: "region",
+    category: "personaje",
     related: ["Lencorias"],
     mood: "Veta / mineral",
     accent: "rgba(170, 120, 84, 0.34)"
