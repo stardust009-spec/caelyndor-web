@@ -67,4 +67,5 @@ export const musicCovers: Record<string, string> = {
   "caedran-las-piedras-tambien-sangran": "/images/music-covers/caedran-las-piedras-tambien-sangran.jpg",
   "iris-la-bruja-del-fervor": "/images/music-covers/iris-la-bruja-del-fervor.jpg",
   "rubi-ven-al-fuego": "/images/music-covers/rubi-ven-al-fuego.jpg",
+  "lencorias-donde-la-veta-cambia": "/images/music-covers/lencorias-donde-la-veta-cambia.jpg",
 };

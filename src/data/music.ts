@@ -39,6 +39,16 @@ function track({ cover, ...trackData }: TrackInput): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "lencorias-donde-la-veta-cambia",
+    title: "Lencorias — Donde la veta cambia",
+    subtitle: "Archivo regional",
+    fileName: "Lencorias — Donde la veta cambia.mp3",
+    category: "region",
+    related: ["Lencorias"],
+    mood: "Veta / mineral",
+    accent: "rgba(170, 120, 84, 0.34)"
+  }),
+  track({
     id: "rubi-ven-al-fuego",
     title: "Rubí — Ven al fuego",
     subtitle: "Tema de personaje",
