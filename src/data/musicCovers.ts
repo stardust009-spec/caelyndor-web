@@ -68,4 +68,7 @@ export const musicCovers: Record<string, string> = {
   "iris-la-bruja-del-fervor": "/images/music-covers/iris-la-bruja-del-fervor.jpg",
   "rubi-ven-al-fuego": "/images/music-covers/rubi-ven-al-fuego.jpg",
   "lencorias-donde-la-veta-cambia": "/images/music-covers/lencorias-donde-la-veta-cambia.jpg",
+  "athem-inclinate-muerte": "/images/music-covers/athem-inclinate-muerte.jpg",
+  "yuki-arhess-glacies-manet": "/images/music-covers/yuki-arhess-glacies-manet.jpg",
+  "yuki-arhess-reinado-de-yuki": "/images/music-covers/yuki-arhess-reinado-de-yuki.jpg",
 };

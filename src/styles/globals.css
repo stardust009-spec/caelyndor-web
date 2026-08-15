@@ -5382,6 +5382,29 @@ body.has-music-player {
   box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
 }
 
+/* Athem: paleta bi-color como Levia, pero dorado + violeta. */
+.music-player--athem {
+  --player-theme-border: rgba(214, 178, 94, 0.3);
+  --player-theme-glow-a: rgba(224, 186, 96, 0.15);
+  --player-theme-glow-b: rgba(150, 92, 214, 0.14);
+  --player-theme-sweep: rgba(190, 150, 170, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(234, 198, 112, 0.88), rgba(158, 100, 224, 0.84));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(234, 198, 112, 0.88), rgba(158, 100, 224, 0.84));
+  --player-theme-thumb: #e8c46e;
+  --player-theme-thumb-border: rgba(234, 198, 112, 0.5);
+  --player-theme-button: #b98ee8;
+  --player-theme-warm-a: rgba(224, 186, 96, 0.13);
+  --player-theme-warm-b: rgba(150, 92, 214, 0.08);
+  --player-theme-mote: rgba(236, 202, 120, 0.68);
+  --player-theme-mote-glow: rgba(150, 92, 214, 0.22);
+  --player-theme-firefly: rgba(168, 108, 226, 0.64);
+}
+
+.music-player--athem .music-player__motes span:nth-child(even) {
+  background: var(--player-theme-firefly);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
+}
+
 /* Archivo regional: Cindralith (carmesí), Sylvalis (verde bosque) y Glaciem
    (azul hielo), más el tono neutro para temas genéricos de Caelyndor. */
 .music-player--cindralith {

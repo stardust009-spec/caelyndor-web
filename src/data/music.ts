@@ -39,6 +39,36 @@ function track({ cover, ...trackData }: TrackInput): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "yuki-arhess-glacies-manet",
+    title: "Yuki Arhess — Glacies Manet",
+    subtitle: "Tema de personaje",
+    fileName: "Yuki Arhess — Glacies Manet.mp3",
+    category: "personaje",
+    related: ["Yuki Arhess"],
+    mood: "Hielo / permanencia",
+    accent: "rgba(139, 198, 223, 0.34)"
+  }),
+  track({
+    id: "yuki-arhess-reinado-de-yuki",
+    title: "Yuki Arhess — Reinado de Yuki",
+    subtitle: "Tema de personaje",
+    fileName: "Yuki Arhess — Reinado de Yuki.mp3",
+    category: "personaje",
+    related: ["Yuki Arhess"],
+    mood: "Corona / hielo",
+    accent: "rgba(139, 198, 223, 0.34)"
+  }),
+  track({
+    id: "athem-inclinate-muerte",
+    title: "Athem — Inclínate, Muerte",
+    subtitle: "Tema de personaje",
+    fileName: "Athem — Inclínate, Muerte.mp3",
+    category: "personaje",
+    related: ["Athem"],
+    mood: "Dorado / violeta",
+    accent: "rgba(210, 175, 92, 0.34)"
+  }),
+  track({
     id: "lencorias-donde-la-veta-cambia",
     title: "Lencorias — Donde la veta cambia",
     subtitle: "Tema de personaje",

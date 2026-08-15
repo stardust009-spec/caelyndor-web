@@ -25,7 +25,8 @@ export type PlayerTheme =
   | "sylvalis"
   | "glaciem"
   | "caelyndor"
-  | "aelrhyssa";
+  | "aelrhyssa"
+  | "athem";
 
 const likedStorageKey = "caelyndor.music-liked.v2";
 const legacyStatsStorageKey = "caelyndor_music_stats";
@@ -188,6 +189,10 @@ export function getPlayerTheme(track: MusicTrack | null): PlayerTheme {
 
   if (haystack.includes("Levia") || haystack.includes("Caedran")) {
     return "levia";
+  }
+
+  if (haystack.includes("Athem")) {
+    return "athem";
   }
 
   return "default";
