@@ -1369,11 +1369,47 @@ si lo vieron en el cristal...
     ]
   },
   {
-    slug: "album-en-preparacion-i",
-    title: "Álbum en preparación I",
-    artist: "Crónicas de Caelyndor",
-    status: "Próximamente",
-    tracklist: []
+    slug: "aelwyn-solrenhal-juramentos-de-escarcha-y-sol",
+    title: "Aelwyn Solrenhal — Juramentos de Escarcha y Sol",
+    artist: "Aelwyn Solrenhal",
+    status: "Disponible",
+    heroImage: videoAsset("Juramentos_de_Es_carcha_y_Sol.webp"),
+    heroVideoMp4: videoAsset("Juramentos_de_Es_carcha_y_Sol_20seg.mp4"),
+    heroVideoWebm: videoAsset("Juramentos_de_Es_carcha_y_Sol_20seg.webm"),
+    description:
+      "Juramento en marcha, escarcha en la mirada, duelo bajo el sol y la sangre dorada del enemigo. El álbum de Aelwyn Solrenhal dentro del Archivo Sonoro de Caelyndor.",
+    tracklist: [
+      {
+        number: 1,
+        title: "Aelwyn Solrenhal — Donde los Juramentos Cabalgan Solos",
+        description: "Juramento en marcha: la promesa que cabalga sola.",
+        linkedTrackId: "aelwyn-solrenhal-donde-los-juramentos-cabalgan-solos"
+      },
+      {
+        number: 2,
+        title: "Aelwyn Solrenhal — Miradas de Escarcha y Luz",
+        description: "Escarcha y luz en la mirada; ternura y filo.",
+        linkedTrackId: "aelwyn-solrenhal-miradas-de-escarcha-y-luz"
+      },
+      {
+        number: 3,
+        title: "Aelwyn Solrenhal — Duelo contra el Sol",
+        description: "El duelo en la arena del imperio, bajo el sol.",
+        linkedTrackId: "aelwyn-solrenhal-duelo-contra-el-sol"
+      },
+      {
+        number: 4,
+        title: "Aelwyn Solrenhal — La Espina Dorada",
+        description: "La espina dorada de Aelwyn.",
+        linkedTrackId: "aelwyn-solrenhal-la-espina-dorada"
+      },
+      {
+        number: 5,
+        title: "Khaal'Zar Omunyek — Sangre Dorada",
+        description: "El enemigo y su sangre dorada.",
+        linkedTrackId: "khaalzar-omunyek-sangre-dorada"
+      }
+    ]
   },
   {
     slug: "album-en-preparacion-ii",

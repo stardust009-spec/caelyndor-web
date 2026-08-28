@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Image from "next/image";
+import { AdaptiveHeroVideo } from "@/components/AdaptiveHeroVideo";
 import { PlayIcon } from "@/components/MusicIcons";
 import { MusicTrackCard } from "@/components/MusicTrackCard";
 import { FALLBACK_MUSIC_COVER, useMusicPlayer } from "@/components/MusicPlayerContext";
@@ -303,21 +304,14 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
                     } as CSSProperties
                   }
                 >
-                  {selectedAlbum.heroVideoMp4 || selectedAlbum.heroVideoWebm ? (
-                    <video
+                  {selectedAlbum.heroVideoMp4 ? (
+                    <AdaptiveHeroVideo
                       key={selectedAlbum.slug}
                       className="music-album__header-video"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      poster={selectedAlbum.heroImage}
-                      aria-hidden="true"
-                    >
-                      {selectedAlbum.heroVideoWebm ? <source src={selectedAlbum.heroVideoWebm} type="video/webm" /> : null}
-                      {selectedAlbum.heroVideoMp4 ? <source src={selectedAlbum.heroVideoMp4} type="video/mp4" /> : null}
-                    </video>
+                      mp4={selectedAlbum.heroVideoMp4}
+                      webm={selectedAlbum.heroVideoWebm}
+                      poster={selectedAlbum.heroImage ?? ""}
+                    />
                   ) : (
                     <Image className="music-album__header-image" src={selectedAlbum.heroImage} alt="" fill sizes="(max-width: 760px) 100vw, 1120px" />
                   )}
