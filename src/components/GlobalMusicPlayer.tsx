@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { CoverMedia } from "@/components/CoverMedia";
 import {
   HeartIcon,
   ListMusicIcon,
@@ -181,15 +182,12 @@ export function GlobalMusicPlayer() {
       </span>
       <div className="music-player__track">
         <span className="music-player__cover" aria-hidden="true">
-          <Image
-            src={currentTrack.coverImage ?? FALLBACK_MUSIC_COVER}
-            alt={currentTrack.coverImage ? `Carátula de ${currentTrack.title}` : `Carátula no disponible para ${currentTrack.title}`}
-            fill
+          <CoverMedia
+            coverImage={currentTrack.coverImage}
+            coverVideo={currentTrack.coverVideo}
+            alt={`Carátula de ${currentTrack.title}`}
+            fallback={FALLBACK_MUSIC_COVER}
             sizes="52px"
-            onError={(event) => {
-              event.currentTarget.src = FALLBACK_MUSIC_COVER;
-              event.currentTarget.alt = `Carátula no disponible para ${currentTrack.title}`;
-            }}
           />
         </span>
         <span>

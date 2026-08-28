@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import Image from "next/image";
+import { CoverMedia } from "@/components/CoverMedia";
 import { HeartIcon, ListMusicIcon, PauseIcon, PlayIcon } from "@/components/MusicIcons";
 import { ShareButton } from "@/components/ShareButton";
 import { getShareSlug, trackShareDescription, type MusicTrack } from "@/data/music";
@@ -33,8 +33,6 @@ export function MusicTrackCard({
   onLike,
   onQueue
 }: MusicTrackCardProps) {
-  const cover = track.coverImage ?? fallbackCover;
-
   return (
     <article
       className={`music-card${isActive ? " music-card--active" : ""}${hasError ? " music-card--error" : ""}`}
@@ -48,15 +46,12 @@ export function MusicTrackCard({
         aria-pressed={isActive && isPlaying}
       >
         <span className="music-cover">
-          <Image
-            src={cover}
-            alt={track.coverImage ? `Carátula de ${track.title}` : `Carátula no disponible para ${track.title}`}
-            fill
+          <CoverMedia
+            coverImage={track.coverImage}
+            coverVideo={track.coverVideo}
+            alt={`Carátula de ${track.title}`}
+            fallback={fallbackCover}
             sizes="(max-width: 760px) 46vw, 210px"
-            onError={(event) => {
-              event.currentTarget.src = fallbackCover;
-              event.currentTarget.alt = `Carátula no disponible para ${track.title}`;
-            }}
           />
         </span>
         <span className="music-card__play" aria-hidden="true">

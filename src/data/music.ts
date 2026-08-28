@@ -1,4 +1,4 @@
-import { musicAsset } from "@/data/assets";
+import { musicAsset, videoAsset } from "@/data/assets";
 import { musicCovers } from "@/data/musicCovers";
 
 export type MusicCategory = "personaje" | "region" | "arco" | "duo" | "especial";
@@ -14,6 +14,9 @@ export type MusicTrack = {
   mood?: string;
   accent?: string;
   coverImage?: string;
+  /** Carátula animada (mp4/webm) que se reproduce en loop y sin sonido sobre la
+   *  portada estática; `coverImage` sigue siendo el póster y la OG image. */
+  coverVideo?: string;
   /** Slug corto y único para la URL compartible /s/[shareSlug]. Si se omite, se usa el id. */
   shareSlug?: string;
   /** Artista mostrado en Media Session / Open Graph. Por defecto "Caelyndor". */
@@ -27,13 +30,18 @@ export type MusicTrack = {
 // `cover` permite apuntar a una portada explícita (p. ej. la convención
 // /music-covers/[entidad]-music-cover-[##].webp); si se omite, se usa la
 // portada curada en musicCovers.ts (`/images/music-covers/<id>.<ext>`).
-type TrackInput = Omit<MusicTrack, "src" | "coverImage"> & { cover?: string };
+type TrackInput = Omit<MusicTrack, "src" | "coverImage" | "coverVideo"> & {
+  cover?: string;
+  /** Nombre del archivo de video en el repo de assets (se resuelve con videoAsset). */
+  coverVideoFile?: string;
+};
 
-function track({ cover, ...trackData }: TrackInput): MusicTrack {
+function track({ cover, coverVideoFile, ...trackData }: TrackInput): MusicTrack {
   return {
     ...trackData,
     src: musicAsset(trackData.fileName),
-    coverImage: cover ?? musicCovers[trackData.id]
+    coverImage: cover ?? musicCovers[trackData.id],
+    coverVideo: coverVideoFile ? videoAsset(coverVideoFile) : undefined
   };
 }
 
@@ -56,7 +64,8 @@ export const musicTracks: MusicTrack[] = [
     category: "personaje",
     related: ["Aelwyn Solrenhal"],
     mood: "Duelo / arena",
-    accent: "rgba(216, 200, 143, 0.34)"
+    accent: "rgba(216, 200, 143, 0.34)",
+    coverVideoFile: "Duelo contra el sol_animado.mp4"
   }),
   track({
     id: "khaalzar-omunyek-sangre-dorada",

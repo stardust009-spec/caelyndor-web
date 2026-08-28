@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
+import { CoverMedia } from "@/components/CoverMedia";
 import { PauseIcon, PlayIcon } from "@/components/MusicIcons";
 import { FALLBACK_MUSIC_COVER, useMusicPlayer } from "@/components/MusicPlayerContext";
 import { ShareButton } from "@/components/ShareButton";
@@ -16,23 +16,19 @@ export function SharedTrack({ track, shareSlug }: SharedTrackProps) {
   const { currentTrack, isPlaying, handleToggle } = useMusicPlayer();
   const isActive = currentTrack?.id === track.id;
   const isThisPlaying = isActive && isPlaying;
-  const cover = track.coverImage ?? FALLBACK_MUSIC_COVER;
   const artist = track.artist ?? "Caelyndor";
   const description = track.description ?? track.subtitle;
 
   return (
     <article className="shared-track">
       <div className="shared-track__cover">
-        <Image
-          src={cover}
-          alt={track.coverImage ? `Carátula de ${track.title}` : `Carátula no disponible para ${track.title}`}
-          fill
+        <CoverMedia
+          coverImage={track.coverImage}
+          coverVideo={track.coverVideo}
+          alt={`Carátula de ${track.title}`}
+          fallback={FALLBACK_MUSIC_COVER}
           sizes="(max-width: 760px) 80vw, 360px"
           priority
-          onError={(event) => {
-            event.currentTarget.src = FALLBACK_MUSIC_COVER;
-            event.currentTarget.alt = `Carátula no disponible para ${track.title}`;
-          }}
         />
       </div>
 

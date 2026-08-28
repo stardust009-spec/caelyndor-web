@@ -7451,3 +7451,13 @@ body.story-lightbox-open {
   aspect-ratio: 1;
   object-fit: cover;
 }
+
+/* Carátula animada (video en loop/mudo) — llena su contenedor como next/image fill. */
+.cover-media__video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
