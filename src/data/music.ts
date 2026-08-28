@@ -39,6 +39,46 @@ function track({ cover, ...trackData }: TrackInput): MusicTrack {
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "aelwyn-solrenhal-donde-los-juramentos-cabalgan-solos",
+    title: "Aelwyn Solrenhal — Donde los Juramentos Cabalgan Solos",
+    subtitle: "Tema de personaje",
+    fileName: "Aelwyn Solrenhal — Donde los Juramentos Cabalgan Solos.mp3",
+    category: "personaje",
+    related: ["Aelwyn Solrenhal"],
+    mood: "Juramento / cabalgata",
+    accent: "rgba(216, 200, 143, 0.34)"
+  }),
+  track({
+    id: "aelwyn-solrenhal-duelo-contra-el-sol",
+    title: "Aelwyn Solrenhal — Duelo contra el Sol",
+    subtitle: "Tema de personaje",
+    fileName: "Aelwyn Solrenhal — Duelo contra el Sol.mp3",
+    category: "personaje",
+    related: ["Aelwyn Solrenhal"],
+    mood: "Duelo / arena",
+    accent: "rgba(216, 200, 143, 0.34)"
+  }),
+  track({
+    id: "khaalzar-omunyek-sangre-dorada",
+    title: "Khaal'Zar Omunyek — Sangre Dorada",
+    subtitle: "Tema de personaje",
+    fileName: "Khaal'Zar Omunyek — Sangre Dorada.mp3",
+    category: "personaje",
+    related: ["Khaal'Zar Omunyek"],
+    mood: "Villano / sangre dorada",
+    accent: "rgba(206, 168, 78, 0.34)"
+  }),
+  track({
+    id: "aelwyn-solrenhal-miradas-de-escarcha-y-luz",
+    title: "Aelwyn Solrenhal — Miradas de Escarcha y Luz",
+    subtitle: "Tema de personaje",
+    fileName: "Aelwyn Solrenhal — Miradas de Escarcha y Luz.mp3",
+    category: "personaje",
+    related: ["Aelwyn Solrenhal"],
+    mood: "Escarcha / luz",
+    accent: "rgba(216, 200, 143, 0.34)"
+  }),
+  track({
     id: "yuki-arhess-glacies-manet",
     title: "Yuki Arhess — Glacies Manet",
     subtitle: "Tema de personaje",

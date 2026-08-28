@@ -71,4 +71,8 @@ export const musicCovers: Record<string, string> = {
   "athem-inclinate-muerte": "/images/music-covers/athem-inclinate-muerte.jpg",
   "yuki-arhess-glacies-manet": "/images/music-covers/yuki-arhess-glacies-manet.jpg",
   "yuki-arhess-reinado-de-yuki": "/images/music-covers/yuki-arhess-reinado-de-yuki.jpg",
+  "aelwyn-solrenhal-donde-los-juramentos-cabalgan-solos": "/images/music-covers/aelwyn-solrenhal-donde-los-juramentos-cabalgan-solos.jpg",
+  "aelwyn-solrenhal-duelo-contra-el-sol": "/images/music-covers/aelwyn-solrenhal-duelo-contra-el-sol.jpg",
+  "khaalzar-omunyek-sangre-dorada": "/images/music-covers/khaalzar-omunyek-sangre-dorada.jpg",
+  "aelwyn-solrenhal-miradas-de-escarcha-y-luz": "/images/music-covers/aelwyn-solrenhal-miradas-de-escarcha-y-luz.jpg",
 };

@@ -5405,6 +5405,29 @@ body.has-music-player {
   box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
 }
 
+/* Khaal'Zar Omunyek (villano): bi-color dorado + azul oscuro. */
+.music-player--khaalzar {
+  --player-theme-border: rgba(210, 176, 96, 0.3);
+  --player-theme-glow-a: rgba(220, 184, 96, 0.15);
+  --player-theme-glow-b: rgba(40, 64, 132, 0.17);
+  --player-theme-sweep: rgba(150, 140, 140, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(232, 196, 110, 0.88), rgba(42, 68, 146, 0.86));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(232, 196, 110, 0.88), rgba(42, 68, 146, 0.86));
+  --player-theme-thumb: #e6c46e;
+  --player-theme-thumb-border: rgba(232, 196, 110, 0.5);
+  --player-theme-button: #7194da;
+  --player-theme-warm-a: rgba(220, 184, 96, 0.13);
+  --player-theme-warm-b: rgba(40, 64, 132, 0.1);
+  --player-theme-mote: rgba(234, 198, 116, 0.68);
+  --player-theme-mote-glow: rgba(40, 64, 132, 0.24);
+  --player-theme-firefly: rgba(84, 124, 214, 0.64);
+}
+
+.music-player--khaalzar .music-player__motes span:nth-child(even) {
+  background: var(--player-theme-firefly);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
+}
+
 /* Archivo regional: Cindralith (carmesí), Sylvalis (verde bosque) y Glaciem
    (azul hielo), más el tono neutro para temas genéricos de Caelyndor. */
 .music-player--cindralith {

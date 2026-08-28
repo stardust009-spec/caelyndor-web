@@ -26,7 +26,8 @@ export type PlayerTheme =
   | "glaciem"
   | "caelyndor"
   | "aelrhyssa"
-  | "athem";
+  | "athem"
+  | "khaalzar";
 
 const likedStorageKey = "caelyndor.music-liked.v2";
 const legacyStatsStorageKey = "caelyndor_music_stats";
@@ -193,6 +194,10 @@ export function getPlayerTheme(track: MusicTrack | null): PlayerTheme {
 
   if (haystack.includes("Athem")) {
     return "athem";
+  }
+
+  if (haystack.includes("Khaal")) {
+    return "khaalzar";
   }
 
   return "default";
