@@ -1568,8 +1568,8 @@ h3 {
    cortar arte de ese lado (se pierde un poco por la derecha, es aceptable). */
 .music-album__header--focus-left .music-album__header-image,
 .music-album__header--focus-left .music-album__header-video {
-  object-position: left center;
-  transform-origin: left center;
+  object-position: 8% 50%;
+  transform-origin: 8% 50%;
 }
 
 .music-album__header h2 {
