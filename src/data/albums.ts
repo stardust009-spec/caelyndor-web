@@ -18,6 +18,9 @@ export type MusicAlbum = {
   heroImage?: string;
   heroVideoMp4?: string;
   heroVideoWebm?: string;
+  /** Encuadre del hero al recortar (object-fit cover). "left" ancla a la izquierda
+   *  para no cortar arte de ese lado; por defecto va centrado. */
+  heroFocus?: "left" | "center";
   tracklist: AlbumTrack[];
 };
 
@@ -1373,6 +1376,7 @@ si lo vieron en el cristal...
     title: "Aelwyn Solrenhal — Juramentos de Escarcha y Sol",
     artist: "Aelwyn Solrenhal",
     status: "Disponible",
+    heroFocus: "left",
     heroImage: videoAsset("Juramentos_de_Es_carcha_y_Sol.webp"),
     heroVideoMp4: videoAsset("Juramentos_de_Es_carcha_y_Sol_20seg.mp4"),
     heroVideoWebm: videoAsset("Juramentos_de_Es_carcha_y_Sol_20seg.webm"),

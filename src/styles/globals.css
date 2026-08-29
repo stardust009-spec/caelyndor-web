@@ -1564,6 +1564,14 @@ h3 {
   background: #05060a url("https://stardust009-spec.github.io/Caelyndor-Assets/carolinav_portada_album_hero.png") center / cover no-repeat;
 }
 
+/* Encuadre a la izquierda: ancla el recorte y el zoom a la izquierda para no
+   cortar arte de ese lado (se pierde un poco por la derecha, es aceptable). */
+.music-album__header--focus-left .music-album__header-image,
+.music-album__header--focus-left .music-album__header-video {
+  object-position: left center;
+  transform-origin: left center;
+}
+
 .music-album__header h2 {
   max-width: 860px;
   margin: 0;

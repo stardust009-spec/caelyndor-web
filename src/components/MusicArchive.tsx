@@ -289,7 +289,7 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
             <>
               {selectedAlbum.heroImage ? (
                 <div
-                  className="music-album__header"
+                  className={`music-album__header${selectedAlbum.heroFocus === "left" ? " music-album__header--focus-left" : ""}`}
                   onPointerMove={(event) => {
                     const rect = event.currentTarget.getBoundingClientRect();
                     const x = ((event.clientX - rect.left) / rect.width - 0.5) * -1;
