@@ -5436,6 +5436,70 @@ body.has-music-player {
   box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
 }
 
+/* Syleth, la diosa de la razón: monocolor verde jade. */
+.music-player--syleth {
+  --player-theme-border: rgba(64, 190, 150, 0.3);
+  --player-theme-glow-a: rgba(52, 184, 142, 0.15);
+  --player-theme-glow-b: rgba(28, 120, 96, 0.11);
+  --player-theme-sweep: rgba(64, 190, 150, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(86, 214, 168, 0.86), rgba(30, 140, 108, 0.8));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(86, 214, 168, 0.86), rgba(30, 140, 108, 0.8));
+  --player-theme-thumb: #6cd6a6;
+  --player-theme-thumb-border: rgba(108, 214, 166, 0.5);
+  --player-theme-button: #7ad8ad;
+  --player-theme-warm-a: rgba(52, 184, 142, 0.13);
+  --player-theme-warm-b: rgba(28, 120, 96, 0.07);
+  --player-theme-mote: rgba(110, 206, 166, 0.66);
+  --player-theme-mote-glow: rgba(40, 150, 116, 0.22);
+  --player-theme-firefly: rgba(90, 200, 156, 0.6);
+}
+
+/* Temari Calabruña, la vocera del huerto: bi-color café tierra + verde musgo. */
+.music-player--temari {
+  --player-theme-border: rgba(150, 120, 78, 0.3);
+  --player-theme-glow-a: rgba(150, 116, 72, 0.15);
+  --player-theme-glow-b: rgba(120, 142, 74, 0.14);
+  --player-theme-sweep: rgba(150, 130, 90, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(168, 130, 82, 0.88), rgba(122, 146, 76, 0.84));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(168, 130, 82, 0.88), rgba(122, 146, 76, 0.84));
+  --player-theme-thumb: #c69a63;
+  --player-theme-thumb-border: rgba(198, 154, 99, 0.5);
+  --player-theme-button: #9db068;
+  --player-theme-warm-a: rgba(150, 116, 72, 0.13);
+  --player-theme-warm-b: rgba(120, 142, 74, 0.08);
+  --player-theme-mote: rgba(198, 158, 104, 0.68);
+  --player-theme-mote-glow: rgba(120, 142, 74, 0.22);
+  --player-theme-firefly: rgba(140, 168, 88, 0.64);
+}
+
+.music-player--temari .music-player__motes span:nth-child(even) {
+  background: var(--player-theme-firefly);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
+}
+
+/* Dúo Odrim Vaelkoren & Lira Eserine: bi-color gris marfil (Odrim) + rosa (Lira). */
+.music-player--odrimlira {
+  --player-theme-border: rgba(210, 206, 194, 0.28);
+  --player-theme-glow-a: rgba(224, 222, 212, 0.12);
+  --player-theme-glow-b: rgba(226, 130, 172, 0.15);
+  --player-theme-sweep: rgba(210, 200, 200, 0.12);
+  --player-theme-fill: linear-gradient(90deg, rgba(230, 226, 214, 0.86), rgba(228, 132, 176, 0.84));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(230, 226, 214, 0.86), rgba(228, 132, 176, 0.84));
+  --player-theme-thumb: #e4e0d2;
+  --player-theme-thumb-border: rgba(228, 224, 210, 0.5);
+  --player-theme-button: #e693b8;
+  --player-theme-warm-a: rgba(224, 222, 212, 0.1);
+  --player-theme-warm-b: rgba(226, 130, 172, 0.09);
+  --player-theme-mote: rgba(232, 228, 216, 0.66);
+  --player-theme-mote-glow: rgba(226, 130, 172, 0.22);
+  --player-theme-firefly: rgba(230, 140, 182, 0.62);
+}
+
+.music-player--odrimlira .music-player__motes span:nth-child(even) {
+  background: var(--player-theme-firefly);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
+}
+
 /* Archivo regional: Cindralith (carmesí), Sylvalis (verde bosque) y Glaciem
    (azul hielo), más el tono neutro para temas genéricos de Caelyndor. */
 .music-player--cindralith {

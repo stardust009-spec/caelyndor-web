@@ -47,6 +47,36 @@ function track({ cover, coverVideoFile, ...trackData }: TrackInput): MusicTrack 
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "syleth-vuelve",
+    title: "Syleth, la diosa de la razón — Vuelve",
+    subtitle: "Tema de personaje",
+    fileName: "Syleth, la diosa de la razón — Vuelve.mp3",
+    category: "personaje",
+    related: ["Syleth"],
+    mood: "Diosa / regreso",
+    accent: "rgba(72, 190, 150, 0.32)"
+  }),
+  track({
+    id: "temari-calabruna-la-vocera-del-huerto",
+    title: "Temari Calabruña — La Vocera del Huerto",
+    subtitle: "Tema de personaje",
+    fileName: "Temari Calabruña — La Vocera del Huerto.mp3",
+    category: "personaje",
+    related: ["Temari Calabruña"],
+    mood: "Huerto / cosecha",
+    accent: "rgba(150, 120, 70, 0.32)"
+  }),
+  track({
+    id: "odrim-lira-solo-eran-huevos",
+    title: "Odrim Vaelkoren & Lira Eserine — Solo Eran Huevos",
+    subtitle: "Tema de dúo",
+    fileName: "Odrim Vaelkoren & Lira Eserine — Solo Eran Huevos.mp3",
+    category: "duo",
+    related: ["Odrim Vaelkoren", "Lira Eserine"],
+    mood: "Alquimia / comedia",
+    accent: "rgba(214, 150, 178, 0.32)"
+  }),
+  track({
     id: "aelwyn-solrenhal-donde-los-juramentos-cabalgan-solos",
     title: "Aelwyn Solrenhal — Donde los Juramentos Cabalgan Solos",
     subtitle: "Tema de personaje",

@@ -27,7 +27,10 @@ export type PlayerTheme =
   | "caelyndor"
   | "aelrhyssa"
   | "athem"
-  | "khaalzar";
+  | "khaalzar"
+  | "syleth"
+  | "temari"
+  | "odrimlira";
 
 const likedStorageKey = "caelyndor.music-liked.v2";
 const legacyStatsStorageKey = "caelyndor_music_stats";
@@ -198,6 +201,19 @@ export function getPlayerTheme(track: MusicTrack | null): PlayerTheme {
 
   if (haystack.includes("Khaal")) {
     return "khaalzar";
+  }
+
+  // Dúo Odrim Vaelkoren & Lira Eserine: bi-color gris marfil (Odrim) + rosa (Lira).
+  if (haystack.includes("Odrim")) {
+    return "odrimlira";
+  }
+
+  if (haystack.includes("Syleth")) {
+    return "syleth";
+  }
+
+  if (haystack.includes("Temari")) {
+    return "temari";
   }
 
   return "default";

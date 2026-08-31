@@ -75,4 +75,7 @@ export const musicCovers: Record<string, string> = {
   "aelwyn-solrenhal-duelo-contra-el-sol": "/images/music-covers/aelwyn-solrenhal-duelo-contra-el-sol.jpg",
   "khaalzar-omunyek-sangre-dorada": "/images/music-covers/khaalzar-omunyek-sangre-dorada.jpg",
   "aelwyn-solrenhal-miradas-de-escarcha-y-luz": "/images/music-covers/aelwyn-solrenhal-miradas-de-escarcha-y-luz.jpg",
+  "syleth-vuelve": "/images/music-covers/syleth-vuelve.jpg",
+  "temari-calabruna-la-vocera-del-huerto": "/images/music-covers/temari-calabruna-la-vocera-del-huerto.jpg",
+  "odrim-lira-solo-eran-huevos": "/images/music-covers/odrim-lira-solo-eran-huevos.jpg",
 };
