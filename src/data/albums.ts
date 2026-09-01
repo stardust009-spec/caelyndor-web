@@ -1387,55 +1387,605 @@ si lo vieron en el cristal...
         number: 1,
         title: "Aelwyn Solrenhal — La Espina Dorada",
         description: "Preludio: la presentación de Aelwyn, la espina dorada.",
-        linkedTrackId: "aelwyn-solrenhal-la-espina-dorada"
+        linkedTrackId: "aelwyn-solrenhal-la-espina-dorada",
+        lyrics: `Bajo mármol y sol,
+guardé mi nombre en silencio.
+Una cinta roja ardía
+donde termina mi trenza.
+La carta junto al alma,
+la espada quieta en mi mano,
+un caballo de luz fría
+respirando en el umbral.
+
+Artanis quedó atrás,
+sus templos siguen ardiendo.
+La ceniza de una hermana
+me llamó bajo el hielo.
+Tysha dejó dos sillas,
+un jardín bajo otro cielo.
+Yo llegué tarde a su risa,
+pero alcancé su verdad.
+
+Si el mundo borra los nombres,
+yo los cargo en la piel.
+Si mi filo duerme en sombra,
+mi mano sigue de pie.
+
+Soy la Espina Dorada,
+mi fulgor sabe sangrar.
+Juramento en la garganta,
+sol herido al cabalgar.
+Entre nieve, hierro y sombras,
+mi voto vuelve a brillar.
+Quien aún tenga un nombre
+no caerá al olvido jamás.
+
+Eclissio...
+Eclissio...
+
+Eclissio nunca se dobla,
+me mira y elige el rumbo.
+Con ojos de noche antigua
+y un sol pequeño al centro.
+La bandera blanca tiembla,
+pero mi pulso no se rinde.
+Vengo sin reino en la espalda,
+vengo a cumplir lo que siento.
+
+Madre de luz velada,
+padre perdido en barro,
+cada ausencia me acompaña
+como una vela sin sombra.
+
+Soy la Espina Dorada,
+mi fulgor sabe sangrar.
+Juramento en la garganta,
+sol herido al cabalgar.
+Entre nieve, hierro y sombras,
+mi voto vuelve a brillar.
+Quien aún tenga un nombre
+no caerá al olvido jamás.
+
+Mi espada no siempre canta.
+Mi fe también se cansó.
+Pero vi niños en la nieve
+y el mundo me respondió.
+No pedí permiso al miedo.
+No consulté la frontera.
+Puse el cuerpo ante la muerte
+y la luz cruzó mi herida.
+
+Halrik, guarda la puerta.
+Yuki, mira el invierno.
+Tysha, mira mis pasos.
+Elyria, deja una estrella.
+Davoren, si aún queda algo,
+bajo la noche enterrada,
+verás que tu hija camina
+sin cadenas en el alma.
+
+Soy la Espina Dorada,
+mi fulgor sabe sangrar.
+Juramento en la garganta,
+sol herido al cabalgar.
+Entre nieve, hierro y sombras,
+mi voto vuelve a brillar.
+Quien aún tenga un nombre
+no caerá al olvido jamás.
+
+La luz que protege,
+la luz que recuerda,
+la luz que se queda
+cuando el altar se quiebra.
+
+Mi voto no duerme.
+Mi herida recuerda.
+Mi espada espera.
+Yo sigo aquí.`
       },
       {
         number: 2,
         title: "Aelwyn Solrenhal — Donde los Juramentos Cabalgan Solos",
         description: "Cap. I — la carta, el viaje y la llegada a Glaciem.",
-        linkedTrackId: "aelwyn-solrenhal-donde-los-juramentos-cabalgan-solos"
+        linkedTrackId: "aelwyn-solrenhal-donde-los-juramentos-cabalgan-solos",
+        lyrics: `Antes de que la fe se quiebre,
+hubo una carta sin sello...
+
+Una carta sin sello me alcanzó,
+cinta roja deshilachada.
+Tysha, hermana de mi voto,
+callada bajo la escarcha.
+
+No lloré cuando lo supe,
+doblé mi capa en silencio.
+El broche de mi madre sube
+y quema donde no hay consuelo.
+
+Si el mundo cierra los templos,
+yo abro el camino a pie.
+Si mi hermana duerme en hielo,
+yo cabalgo tras su fe.
+
+Cabalgo sola hasta el confín,
+donde el juramento no descansa.
+Eclissio, guíame hasta el fin,
+donde la nieve aún la alcanza.
+No busco gloria ni perdón,
+solo traerla aunque sea ceniza.
+Quien lleva luz en el corazón
+no la abandona a la deriva.
+
+Eclissio...
+Eclissio...
+
+Un campo roto, un cielo ámbar,
+un caballo sin huellas ni dueño.
+No me eligió por obediencia,
+me eligió porque aún tenía sueño.
+
+Tocó mi mano y no fue pelo,
+fue memoria más antigua que yo.
+"No sabe de órdenes, solo de anhelo,"
+dijo Tysha, y el viento respondió.
+
+Catorce años, cordones torcidos,
+una trenza que no supe hacer.
+Tysha reía, siempre a mi lado,
+"pareces estatua que olvidó caer."
+
+Eclissio me juzgaba en la sombra,
+Tysha decía que era su humor.
+Dos hermanas sin sangre ni nombre,
+solo un lazo más fuerte que el dolor.
+
+Crucé el mármol, crucé el trigo dorado,
+llegué al blanco que no tiene fin.
+Bandera sin rendirme he alzado,
+no vengo a herir, vengo hasta aquí.
+
+Un soldado de Glaciem me recibe,
+sopa tibia, un establo, verdad.
+"Vengo como hermana, no paladín,"
+le dije, y él bajó la guardia ya.
+
+Halrik, guardián de escarcha y calma,
+me diste tregua sin pedir nada.
+Esa noche encontré en mi alma
+que el hielo también guarda un hogar.
+
+Cabalgo sola hasta el confín,
+donde el juramento no descansa.
+Eclissio, guíame hasta el fin,
+donde la nieve aún la alcanza.
+No busco gloria ni perdón,
+solo traerla aunque sea ceniza.
+Quien lleva luz en el corazón
+no la abandona a la deriva.
+
+Esta noche no hay templo ni trono,
+solo un fuego y un pan compartido.
+Puede que el hielo no sea mi hogar,
+pero esta tregua no ha sido en vano.
+
+Sigo el camino que ella dejó.
+Sigo su nombre bajo mi pecho.
+Eclissio, descansa esta noche...
+mañana seguimos el trayecto.`
       },
       {
         number: 3,
         title: "Aelwyn Solrenhal — Miradas de Escarcha y Luz",
         description: "Cap. I, más adelante — la masacre y la intervención de Yuki.",
-        linkedTrackId: "aelwyn-solrenhal-miradas-de-escarcha-y-luz"
+        linkedTrackId: "aelwyn-solrenhal-miradas-de-escarcha-y-luz",
+        lyrics: `Me dijeron que el hielo no ama,
+que esta tierra solo sabe helar.
+Pero vi faroles en la escarcha
+y honrar no es lo mismo que temblar.
+
+Miel congelada en un cuenco humilde,
+una anciana que no pide nada.
+Aquí nadie cierra la puerta,
+aunque el sol brille en mi coraza dorada.
+
+No es un reino sin alma,
+es un reino que sabe esperar.
+Glaciem no me quita la calma,
+me enseña otra forma de amar.
+
+Pero antes que cante el gallo,
+las trompetas rompen el cielo.
+Una aldea, más allá del muro,
+donde Mythra no pide duelo.
+
+"¡No te involucres!" gritaron,
+pero mi voto no sabe de espera.
+Eclissio ya estaba esperando,
+antes que sonara la primera.
+
+Orejas cortadas sobre la nieve,
+risas sin nombre, sin ley, sin razón.
+Una niña grita, nadie la libre,
+hasta que mi espada halló su misión.
+
+¡Soy la Espina Dorada en la escarcha!
+Mi juramento no pide permiso.
+Ocho cayeron bajo mi guardia,
+ninguno cayó por capricho.
+No soy castigo, soy memoria,
+lo que Mythra quiso borrar.
+Aunque el cielo no cuente esta historia,
+mi espada la va a relatar.
+
+El aire cambió, el fuego se apaga,
+una reina camina sin prisa.
+Sus dedos escriben la escarcha,
+"ya basta" fue toda su voz.
+
+Dos mujeres, un mismo peso,
+diferentes en forma y en frío.
+Una mirada bastó por respeto,
+sin palabras selló el desafío.
+
+No hubo aplauso ni gloria en la nieve,
+solo un gesto que dijo "lo sé".
+Glaciem, hoy entendí lo que se debe:
+el deber también sabe querer.`
       },
       {
         number: 4,
         title: "Khaal'Zar Omunyek — Sangre Dorada",
         description: "Cap. II — el origen de Khaal'Zar en la arena y su desprecio por los gemelos.",
-        linkedTrackId: "khaalzar-omunyek-sangre-dorada"
+        linkedTrackId: "khaalzar-omunyek-sangre-dorada",
+        lyrics: `No nací con la mano cerrada...
+la cerré a golpes.
+
+Arena, sudor, un dios de carne,
+lo miré caer sin que cantara.
+No fue duelo, fue sentencia,
+mi filo ni siquiera cantó.
+
+Sangre dorada en mis manos,
+trofeo que nadie se atrevió a tocar.
+Esclavo ayer, hoy soy destino,
+lo que el mundo no supo domar.
+
+Dos gemelos en un trono hueco,
+uno brilla, el otro observa.
+Ni uno sangró por lo que tiene,
+yo sangré por cada palabra.
+
+¡TODO!
+Cada paso, cada voz, cada mito.
+¡TODO!
+Lo que el poder no pide permiso. No importa cuna, no importa nombre, solo importa lo que puedas tomar.
+¡TODO!
+Yo no ruego, yo no imploro. Vine a cobrar.
+
+Dravhal confía, Dravhal se equivoca,
+la lealtad es solo otra arma.
+Ante el trono clavé la lanza
+en la espalda que confió en mi calma.
+
+"Vi oportunidad" fue mi sentencia,
+no hay traición donde no hay lealtad jurada.
+El Senado gritó justicia,
+yo solo escuché mi propia entrada.
+
+Poder sin voluntad es solo
+una vela en catedral vacía.
+Yo no vine a rogar limosna,
+vine a encender mi propio día.
+
+¡TODO!
+Cada paso, cada voz, cada mito.
+¡TODO!
+Lo que el poder no pide permiso. No importa cuna, no importa nombre, solo importa lo que puedas tomar.
+¡TODO!
+Yo no ruego, yo no imploro. Vine a cobrar.
+
+Soy mérito.
+Soy resultado.
+Soy lo que pasa...
+cuando el poder no pide nada.
+
+Comandante Supremo del Ala Oriental...
+Y esto... apenas comienza.
+
+¡TODOoooooOoOoO!`
       },
       {
         number: 5,
         title: "Aurex Primus & Virellius Nox — Gemelos del Brillo Contradicho",
         description: "Cap. II — la presentación formal de los gemelos en el trono.",
-        linkedTrackId: "aurex-virellius-gemelos-del-brillo-contradicho"
+        linkedTrackId: "aurex-virellius-gemelos-del-brillo-contradicho",
+        lyrics: `Aurex Primus... Virellius Nox...
+gemelos del brillo contradicho...
+
+Nací con el puño cerrado al mundo,
+lo abrieron, y había polvo de oro.
+Dijeron: "el futuro nos mira con luz,"
+yo solo supe: nadie compite con mi trono.
+
+Yo no lloré. No gemí. Solo abrí los ojos...
+un médico cayó de rodillas ante mí...
+una sacerdotisa dijo mi nombre... y murió...
+
+el futuro no me teme...
+simplemente, bosteza...
+
+¡Gemelos del brillo contradicho!
+Sol coronado, luna invertida.
+Uno arde hacia afuera sin descanso,
+el otro juzga en la sombra, en silencio.
+¡Gemelos del brillo contradicho!
+Un solo trono...
+dos formas de reinar.
+
+Rujo hacia afuera, proyecto mi fuego,
+cada palabra mía incendia el templo.
+No hay secreto que sobreviva a mi luz,
+soy el sol que ningún eclipse doblega.
+
+Yo condeno en privado, en la oscuridad...
+mi silencio pesa más que tu tormenta...
+
+donde tú destruyes,
+yo simplemente decido...
+
+y lo que decido...
+ya no tiene apelación.
+
+Hermano...
+a veces pienso que naciste
+solo para recordarme
+lo que no soy...
+
+...y yo pienso que tú naciste
+para que el mundo nunca olvide
+lo que temer...
+
+¡Gemelos del brillo contradicho!
+¡Sol coronado, luna invertida!
+Uno arde hacia afuera sin descanso,
+el otro juzga en la sombra, en silencio.
+
+¡Gemelos!
+¡Gemelos!
+
+¡Un solo trono!
+
+Dos formas...
+
+¡De reinar!
+
+Hasta el sol más grande se apaga...
+hasta la luna más fría se eclipsa...
+
+que Mythra recuerde...
+
+...que reinamos juntos.`
       },
       {
         number: 6,
         title: "Temari Calabruña — La Vocera del Huerto",
         description: "Cap. III — Temari se presenta.",
-        linkedTrackId: "temari-calabruna-la-vocera-del-huerto"
+        linkedTrackId: "temari-calabruna-la-vocera-del-huerto",
+        lyrics: `Buenos días, disculpe el temblor,
+soy Temari Calabruña, con honor.
+Me dicen la Vocera del Huerto,
+no por fama, sino por cariño cierto.
+
+Vengo de Qaebrog'thar, sin hogar fijo,
+hablo con las verduras, se los digo.
+Las cebollas saben del clima,
+y una betarraga me gritó desde arriba.
+
+Diecisiete años, una colita de estación,
+miedo a los puerros, no sé la razón.
+No soy buena para el silencio...
+pero soy buena escuchando.
+
+¡Pregúntale a las verduras!
+Ellas siempre saben más.
+Yo solo repito lo que susurran
+cuando nadie más las va a escuchar.
+No tengo carretón ni casa,
+pero tengo un huerto en el corazón.
+¡Pregúntale a las verduras!
+Yo soy su única voz.
+
+Las zanahorias hablan de más,
+le dijeron que Eclissio tiene una muela partida.
+Por eso el aliento a pantano y sal...
+¡No es mi culpa, es la verdad florida!
+
+Y entonces ella rió por primera vez...
+desde que el nombre de su hermana dolía.
+"Temari... juro por la luz,
+que nunca dejaré de protegerte, pase lo que pase."
+
+El caballo se alzó como testigo,
+la tierra tembló bajo el juramento.
+Y yo, que solo hablo con lo que crece,
+sentí que también eché raíces.
+
+¡Pregúntale a las verduras!
+Ellas siempre saben más.
+Yo solo repito lo que susurran
+cuando nadie más las va a escuchar.
+No tengo carretón ni casa,
+pero tengo un huerto en el corazón.
+¡Pregúntale a las verduras!
+Yo soy su única voz.
+
+Una ofrenda, una semilla, un pan sin corteza,
+una estatua pequeña marca la certeza.
+Salto de Raíz, así se llama el don...
+Vamos a Mythra... solo síganme a mí.`
       },
       {
         number: 7,
         title: "Odrim Vaelkoren & Lira Eserine — Solo Eran Huevos",
         description: "Cap. V — la leyenda del Desayuno del Fin del Mundo.",
-        linkedTrackId: "odrim-lira-solo-eran-huevos"
+        linkedTrackId: "odrim-lira-solo-eran-huevos",
+        lyrics: `Pedí una cosa. Solo una.
+"Lira. Solo. Huevos." Fueron mis palabras.
+Ella abrió el refrigerador interdimensional...
+y lo que salió no tenía nombre en ningún idioma.
+
+¡Pero encontré un ingrediente raro!
+¡Nadie dijo que no podía improvisar!
+La sartén empezó a vibrar, a juzgarme...
+¡y yo solo quería desayunar!
+
+Lira... solo... eran... huevos.
+¡Pero fue hermoso, profe, fue un logro!
+Convocaste un Senado de Sartenes.
+¡Con derecho a voto, no fue improvisado!
+
+La yema, ofendida, abrió un portal a Umbrenya.
+La mantequilla exigió representación legal.
+Y cuando quise recuperar mi cocina...
+tú ya estabas en la camilla de un hospital.
+
+¡Y tres meses después, funcionó!
+El globo llegó hasta las nubes más altas...
+¡hasta que ardió como una estrella nueva!
+
+Hermoso. Sí. Hasta que ardió.
+
+No pensamiento lineal, te dije mil veces...
+¡El caos también es una forma de ciencia!
+Ella improvisa. Él calcula.
+Ninguno de los dos ha ganado nunca.
+
+Lira... solo... eran... huevos.
+¡Y aun así, aprendiste algo nuevo!
+Aprendí... a esconder la sartén buena.
+¡Aprendiste a quererme, aunque sea un problema!
+
+...Solo eran huevos.
+Y aun así, profe... nunca me dejó de enseñar.`
       },
       {
         number: 8,
         title: "Aelwyn Solrenhal — Duelo contra el Sol",
         description: "Cap. VI-VII — el duelo amañado bajo el sol del imperio.",
-        linkedTrackId: "aelwyn-solrenhal-duelo-contra-el-sol"
+        linkedTrackId: "aelwyn-solrenhal-duelo-contra-el-sol",
+        lyrics: `El suelo tiembla antes que él golpee.
+El aire arde antes que él respire.
+
+Un astro furioso cruza la arena,
+mediodía cayendo sobre mi frente.
+Alzo el escudo, la cadena,
+lo que Tysha me dejó de valiente.
+
+No elegí esta guerra, la cargué,
+el chantaje de Khaal atado a mi espalda.
+Cada golpe que resisto, lo pagué
+antes de que empezara esta batalla.
+
+No tiemblo por el trueno,
+tiemblo por lo que sé y no puedo hablar.
+Mi voto es mi veneno,
+mi voto es lo único que me hace estar.
+
+¡Mi voto me sostiene!
+Aunque el sol me queme entera.
+No caigo aunque me abandone
+todo, menos la promesa.
+Golpe a golpe, hueso a hueso,
+sigo en pie, aunque no debiera.
+¡Mi voto me sostiene!
+Aunque el cielo se me muera.
+
+Tres golpes, tres pilares rotos,
+sangre y cobre en la garganta.
+Rodilla, codo, palma... y de nuevo,
+el cuerpo aprende lo que el alma aguanta.
+
+Una gota en su frente... no brilla,
+es opaca, es fría, es imposible.
+Khaal, la copa, el gesto, la orilla...
+Ya lo sé: el Sol muere invisible.
+
+No tiemblo por su espada,
+tiemblo por la verdad que cargo sola.
+Mi voto no dice nada,
+pero cada golpe que aguanto, la inmola.
+
+¡REX! ¡REX! ¡REX!
+A-EL-WYN... A-EL-WYN...
+
+¡Mi voto me sostiene!
+Aunque el sol me queme entera.
+No caigo aunque me abandone
+todo, menos la promesa.
+Golpe a golpe, hueso a hueso,
+sigo en pie, aunque no debiera.
+¡Mi voto me sostiene!
+Aunque el cielo se me muera.
+
+Un paso... otro... y las rodillas ceden.
+El mundo gira, el cráter me recibe.
+Sola en el centro de lo que se rompió,
+de pie, aunque nadie me lo pida.`
       },
       {
         number: 9,
         title: "Syleth, la diosa de la razón — Vuelve",
         description: "Cap. VII, justo después — El Rapto y el rescate de Syleth.",
-        linkedTrackId: "syleth-vuelve"
+        linkedTrackId: "syleth-vuelve",
+        lyrics: `No siento... no siento. Deduzco.
+Pero algo en ti rompe la fórmula.
+
+Mil futuros caen sobre tu mente,
+un solo hombre no puede ser todos.
+Vi la daga, vi el instante,
+vi el error antes que fuera tuyo.
+
+Yo no siento, yo deduzco,
+soy la lógica que ordena el mundo entero.
+Pero desde que te conduzco,
+hay una variable que no resuelvo.
+
+¡Vuelve!
+La ecuación está desbalanceada.
+¡Vuelve!
+Antes que pierdas lo que amabas.
+Corto el aire, cruzo el vacío,
+mis pies no queman lo que pisan.
+¡Vuelve!
+No dejaré que la locura te decida.
+
+Camino descalza sobre la arena,
+la sangre no toca lo que soy.
+El caos se ordena cuando llego,
+solo vine a buscarte hoy.
+
+Toco tu sien con dos dedos pálidos,
+"la fiebre del futuro no se doma en público."
+Tu laurel tiembla, tus ojos se apagan,
+te sujeto con fuerza que no es mi cuerpo.
+
+Te he visto morir mil veces,
+en mil versiones de este mismo día.
+Y aún así, cada vez que apareces,
+elijo salvarte... aunque la lógica lo desafía.
+
+¡Vuelve!
+La ecuación está desbalanceada.
+¡Vuelve!
+Antes que pierdas lo que amabas.
+Corto el aire, cruzo el vacío,
+mis pies no queman lo que pisan.
+¡Vuelve!
+No dejaré que la locura te decida.
+
+Constantemente imposible...
+así te nombré la primera vez.
+El portal se cierra como un ojo
+que ya ha visto lo que necesitaba ver.`
       }
     ]
   },
