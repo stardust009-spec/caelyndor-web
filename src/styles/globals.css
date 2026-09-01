@@ -5500,6 +5500,29 @@ body.has-music-player {
   box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
 }
 
+/* Dúo Aurex Primus & Virellius Nox: bi-color dorado solar (Aurex) + gris lunar (Virellius). */
+.music-player--aurexvirellius {
+  --player-theme-border: rgba(214, 180, 100, 0.3);
+  --player-theme-glow-a: rgba(226, 188, 100, 0.15);
+  --player-theme-glow-b: rgba(150, 162, 184, 0.13);
+  --player-theme-sweep: rgba(200, 190, 160, 0.13);
+  --player-theme-fill: linear-gradient(90deg, rgba(236, 198, 112, 0.88), rgba(168, 180, 202, 0.82));
+  --player-theme-fill-vertical: linear-gradient(0deg, rgba(236, 198, 112, 0.88), rgba(168, 180, 202, 0.82));
+  --player-theme-thumb: #e8c46e;
+  --player-theme-thumb-border: rgba(236, 198, 112, 0.5);
+  --player-theme-button: #b6c0d2;
+  --player-theme-warm-a: rgba(226, 188, 100, 0.13);
+  --player-theme-warm-b: rgba(150, 162, 184, 0.08);
+  --player-theme-mote: rgba(236, 200, 118, 0.68);
+  --player-theme-mote-glow: rgba(150, 162, 184, 0.22);
+  --player-theme-firefly: rgba(178, 190, 212, 0.62);
+}
+
+.music-player--aurexvirellius .music-player__motes span:nth-child(even) {
+  background: var(--player-theme-firefly);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--player-theme-firefly) 28%, transparent);
+}
+
 /* Archivo regional: Cindralith (carmesí), Sylvalis (verde bosque) y Glaciem
    (azul hielo), más el tono neutro para temas genéricos de Caelyndor. */
 .music-player--cindralith {

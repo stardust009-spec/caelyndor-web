@@ -78,4 +78,5 @@ export const musicCovers: Record<string, string> = {
   "syleth-vuelve": "/images/music-covers/syleth-vuelve.jpg",
   "temari-calabruna-la-vocera-del-huerto": "/images/music-covers/temari-calabruna-la-vocera-del-huerto.jpg",
   "odrim-lira-solo-eran-huevos": "/images/music-covers/odrim-lira-solo-eran-huevos.jpg",
+  "aurex-virellius-gemelos-del-brillo-contradicho": "/images/music-covers/aurex-virellius-gemelos-del-brillo-contradicho.jpg",
 };

@@ -30,7 +30,8 @@ export type PlayerTheme =
   | "khaalzar"
   | "syleth"
   | "temari"
-  | "odrimlira";
+  | "odrimlira"
+  | "aurexvirellius";
 
 const likedStorageKey = "caelyndor.music-liked.v2";
 const legacyStatsStorageKey = "caelyndor_music_stats";
@@ -214,6 +215,11 @@ export function getPlayerTheme(track: MusicTrack | null): PlayerTheme {
 
   if (haystack.includes("Temari")) {
     return "temari";
+  }
+
+  // Dúo Aurex Primus & Virellius Nox: bi-color dorado solar (Aurex) + gris lunar (Virellius).
+  if (haystack.includes("Aurex") || haystack.includes("Virellius")) {
+    return "aurexvirellius";
   }
 
   return "default";

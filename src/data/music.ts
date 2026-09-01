@@ -47,6 +47,16 @@ function track({ cover, coverVideoFile, ...trackData }: TrackInput): MusicTrack 
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "aurex-virellius-gemelos-del-brillo-contradicho",
+    title: "Aurex Primus & Virellius Nox — Gemelos del Brillo Contradicho",
+    subtitle: "Tema de dúo",
+    fileName: "Aurex Primus & Virellius Nox — Gemelos del Brillo Contradicho.mp3",
+    category: "duo",
+    related: ["Aurex Primus", "Virellius Nox"],
+    mood: "Gemelos / sol y luna",
+    accent: "rgba(214, 176, 96, 0.32)"
+  }),
+  track({
     id: "syleth-vuelve",
     title: "Syleth, la diosa de la razón — Vuelve",
     subtitle: "Tema de personaje",
