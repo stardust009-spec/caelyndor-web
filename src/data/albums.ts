@@ -1385,33 +1385,57 @@ si lo vieron en el cristal...
     tracklist: [
       {
         number: 1,
-        title: "Aelwyn Solrenhal — Donde los Juramentos Cabalgan Solos",
-        description: "Juramento en marcha: la promesa que cabalga sola.",
-        linkedTrackId: "aelwyn-solrenhal-donde-los-juramentos-cabalgan-solos"
-      },
-      {
-        number: 2,
-        title: "Aelwyn Solrenhal — Miradas de Escarcha y Luz",
-        description: "Escarcha y luz en la mirada; ternura y filo.",
-        linkedTrackId: "aelwyn-solrenhal-miradas-de-escarcha-y-luz"
-      },
-      {
-        number: 3,
-        title: "Aelwyn Solrenhal — Duelo contra el Sol",
-        description: "El duelo en la arena del imperio, bajo el sol.",
-        linkedTrackId: "aelwyn-solrenhal-duelo-contra-el-sol"
-      },
-      {
-        number: 4,
         title: "Aelwyn Solrenhal — La Espina Dorada",
-        description: "La espina dorada de Aelwyn.",
+        description: "Preludio: la presentación de Aelwyn, la espina dorada.",
         linkedTrackId: "aelwyn-solrenhal-la-espina-dorada"
       },
       {
-        number: 5,
+        number: 2,
+        title: "Aelwyn Solrenhal — Donde los Juramentos Cabalgan Solos",
+        description: "Cap. I — la carta, el viaje y la llegada a Glaciem.",
+        linkedTrackId: "aelwyn-solrenhal-donde-los-juramentos-cabalgan-solos"
+      },
+      {
+        number: 3,
+        title: "Aelwyn Solrenhal — Miradas de Escarcha y Luz",
+        description: "Cap. I, más adelante — la masacre y la intervención de Yuki.",
+        linkedTrackId: "aelwyn-solrenhal-miradas-de-escarcha-y-luz"
+      },
+      {
+        number: 4,
         title: "Khaal'Zar Omunyek — Sangre Dorada",
-        description: "El enemigo y su sangre dorada.",
+        description: "Cap. II — el origen de Khaal'Zar en la arena y su desprecio por los gemelos.",
         linkedTrackId: "khaalzar-omunyek-sangre-dorada"
+      },
+      {
+        number: 5,
+        title: "Aurex Primus & Virellius Nox — Gemelos del Brillo Contradicho",
+        description: "Cap. II — la presentación formal de los gemelos en el trono.",
+        linkedTrackId: "aurex-virellius-gemelos-del-brillo-contradicho"
+      },
+      {
+        number: 6,
+        title: "Temari Calabruña — La Vocera del Huerto",
+        description: "Cap. III — Temari se presenta.",
+        linkedTrackId: "temari-calabruna-la-vocera-del-huerto"
+      },
+      {
+        number: 7,
+        title: "Odrim Vaelkoren & Lira Eserine — Solo Eran Huevos",
+        description: "Cap. V — la leyenda del Desayuno del Fin del Mundo.",
+        linkedTrackId: "odrim-lira-solo-eran-huevos"
+      },
+      {
+        number: 8,
+        title: "Aelwyn Solrenhal — Duelo contra el Sol",
+        description: "Cap. VI-VII — el duelo amañado bajo el sol del imperio.",
+        linkedTrackId: "aelwyn-solrenhal-duelo-contra-el-sol"
+      },
+      {
+        number: 9,
+        title: "Syleth, la diosa de la razón — Vuelve",
+        description: "Cap. VII, justo después — El Rapto y el rescate de Syleth.",
+        linkedTrackId: "syleth-vuelve"
       }
     ]
   },
