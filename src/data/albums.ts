@@ -1325,49 +1325,843 @@ si lo vieron en el cristal...
         number: 1,
         title: "Aria Ventoleve — Tac (El Compás Que Perdí)",
         description: "Compás roto, pulso perdido y escena mecánica.",
-        linkedTrackId: "aria-ventoleve-tac-el-compas-que-perdi"
+        linkedTrackId: "aria-ventoleve-tac-el-compas-que-perdi",
+        lyrics: `Tac.
+Pausa.
+Tac.
+Así sonaba.
+
+Lo firmé con letra limpia,
+lo prometí sin temblar.
+Tenía el corazón en la boca,
+como siempre, sin callar.
+
+Dos puntos. Frío exacto.
+Una llave en cerradura ajena.
+Y el ruido que me definía
+se fue aprendiendo cadena.
+
+El galope se volvió paso.
+El paso se volvió arrastre.
+Hasta la rabia llegó distinta,
+afinada para otro paisaje.
+
+No fue el dolor, cariño.
+El dolor lo aguanto de pie.
+Fue que al buscar mi propio latido
+encontré el compás de él.
+
+Aria… Aria…
+
+Tac.
+Pausa demasiado larga.
+Tac.
+¿Ese soy yo todavía?
+
+Tac.
+La misma nota, distinta.
+Tac.
+Se la di por mi familia.
+
+¡Ay!
+¡Olé!
+Y el corazón aprendió
+a obedecer.
+
+Tac. Pausa. Tac.
+Tac. Pausa. Tac.
+
+Qué educado quedó.
+Qué bien portado.
+Qué aburrido.
+
+Me dijo que era protección.
+Yo dije que era una trampa.
+Los dos teníamos razón
+y la noche cobró su entrada.
+
+No lloré. Eso sería fácil.
+Me quedé de pie en el espejo
+mirando las dos marcas breves
+donde antes vivía el reflejo.
+
+Me puse cuello alto al día siguiente.
+Cubrí lo que él dejó escrito.
+Pero el compás ya era su música
+aunque no lo hubiera pedido.
+
+No le guardo todo el odio.
+Una parte me la guardo a mí.
+Por firmar con letra limpia
+lo que no debí decir.
+
+Tac.
+Pausa demasiado larga.
+Tac.
+¿Ese soy yo todavía?
+
+Tac.
+La misma nota, distinta.
+Tac.
+Se la di por mi familia.
+
+¡Ay!
+¡Olé!
+Y el corazón aprendió
+a obedecer.
+
+¡Aria! ¡Aria!
+¡Aria! ¡Aria!
+
+Tac.
+…
+¿Sigues ahí?
+
+Lo que perdí no fue el latido.
+Los latidos, vuelven.
+Lo que perdí fue el desorden,
+ese ruido que era mío.
+
+Ese corazón que mi madre
+oía desde el otro patio.
+Que me subía a la garganta
+cuando mentía demasiado.
+
+Ahora llega limpio y lento.
+Ahora no avisa ni grita.
+Ahora marca el tiempo de otro
+y yo finjo que no lo habita.
+
+Pero lo recuerdo.
+Lo recuerdo.
+Tac-tac-tac-tac
+así sonaba.
+Así era mío.
+Así era libre.
+Así era—
+
+Tac.
+Pausa demasiado larga.
+Tac.
+¡Ese soy yo todavía!
+
+Tac.
+La misma nota, distinta.
+Tac.
+Se la di — pero la recuerdo.
+
+¡Ay!
+¡Olé!
+Y el corazón aprendió…
+
+…pero yo no le enseñé a olvidar.
+
+Tac.
+Pausa.
+Tac.
+Sigo contando.`
       },
       {
         number: 2,
         title: "Aria Ventoleve — Ballet sin vida",
         description: "Ballet final de Aria, quietud y vida suspendida.",
-        linkedTrackId: "aria-ventoleve-ballet-sin-vida"
+        linkedTrackId: "aria-ventoleve-ballet-sin-vida",
+        lyrics: `El espejo devuelve un vacío sombrío,
+ningún rostro aparece, ningún reflejo es mío.
+
+El alba ya es mi piel, ¡la eternidad mi condena!
+Esta medialuna en mis labios ¡es solo una cadena!
+Me visto con tacones, y telas de mil albores,
+y escondo debajo de ellos mis auténticos horrores.
+
+La corona de joyas me oculta el pensar,
+mi máscara brillante, me obliga a callar.
+Lista para el ritual, para el ballet sin vida,
+mientras mi alma fatal pide una tarima…
+
+"Drop it."
+
+¡...PARA DANZAR!
+
+¡Y sonrío, sonrío hasta que el alma se me parte!
+¡mientras esparzo rosas al aire, para poder desangrarme!
+¡Y bailo, bailo un vals con mi propia demencia!
+¡y nadie ve que esta risa es mi sentencia!
+
+Los focos me ciegan, ardor de un falso sol,
+que amenaza con borrar mi falso arrebol.
+El público me asfixia, pulmones prestados,
+respiran por mí mis pecados prestados.
+Un niño me apunta, su risa es un eco,
+que danza en el abismo de mi pecho hueco.
+
+¡Más grande! ¡Más fuerte! ¡Me están aplaudiendo!
+¡Me desean la muerte! ¡Soy la máscara cómica… esa es mi ironía!
+
+¡BAILAD PARA MÍ! ¡BAILAD HASTA MORIR!
+
+Esta broma… ha terminado.
+El chiste de hoy…
+…sois vosotros.`
       },
       {
         number: 3,
         title: "Aria Ventoleve — No Mucho",
         description: "Número íntimo de Aria, contenido y filo bajo la voz.",
-        linkedTrackId: "aria-ventoleve-no-mucho"
+        linkedTrackId: "aria-ventoleve-no-mucho",
+        lyrics: `Ajá…
+No mires la puerta, cariño.
+La puerta no baila.
+
+¡Aria! ¡Aria!
+
+Entraste jurando prudencia,
+con cara de buena intención,
+pero tus ojos se fueron
+detrás de mi falda en rotación.
+
+Tú dices que solo mirabas,
+qué mentira tan formal,
+si hasta la copa en tu mano
+se puso a temblar.
+
+No voy a perseguirte,
+eso sería vulgar.
+Yo solo doy una vuelta
+y dejo al aire hablar.
+
+La banda ya lo sabe,
+la mesa lo notó,
+y tú sigues tan serio
+como si no ardiera el salón.
+
+Si te gusta mi cintura,
+dímelo claro, dímelo.
+Si te sube la locura,
+no te escondas, síguelo.
+
+Ven cerquita, ven riendo,
+que la banda ya entendió.
+Yo no muerdo…
+Bueno… no mucho.
+
+Dímelo, dímelo.
+Síguelo, síguelo.
+Dímelo, dímelo.
+Ay, cariño, síguelo.
+
+Te acercas como quien duda,
+te alejas como quien no,
+pero tus pies hace rato
+traicionaron tu opinión.
+
+No prometo luna llena,
+no prometo redención,
+solo una noche encendida
+y una mala decisión.
+
+Baila, baila,
+rosa carmesí.
+Baila, baila,
+llévame de aquí.
+
+Más bajo, caballeros.
+Todavía no empieza lo bueno.
+
+No soy santa de vitrina,
+no soy flor de confesión.
+Soy la risa en la garganta
+cuando pierdes el control.
+
+Si preguntas si es peligro,
+te respondo la verdad:
+cuando la rosa se mueve,
+alguien aprende a sangrar.
+
+Si te gusta mi cintura,
+dímelo claro, dímelo.
+Si te sube la locura,
+no te escondas, síguelo.
+
+Ven cerquita, ven riendo,
+que la banda ya entendió.
+Yo no muerdo…
+Bueno…, no mucho.
+
+Eso.
+Así.
+Un paso más.
+No era tan difícil perder la dignidad.
+
+No me pidas que sea buena,
+no me pidas compasión.
+Yo nací para la escena,
+para el vino y la ovación.
+
+Si tu orgullo se resiste,
+dale tiempo, va a caer.
+Todo hombre que dice "nunca"
+termina contando hasta tres.
+
+Uno…
+dos…
+tres…
+
+Dímelo, dímelo.
+Síguelo, síguelo.
+
+Si te gusta mi cintura,
+dímelo claro, dímelo.
+Si te sube la locura,
+no te escondas, síguelo.
+
+Ven cerquita, ven riendo,
+que la banda ya entendió.
+Yo no muerdo…
+Bueno… no mucho.
+
+Dímelo, dímelo.
+Síguelo, síguelo.
+Dímelo, dímelo.
+Ay, cariño, síguelo.
+
+No te obligué, cariño.
+Solo bailé primero.`
       },
       {
         number: 4,
         title: "Aria Ventoleve — Corazón de Títeres",
         description: "Títeres, corazón y cuerda emocional.",
-        linkedTrackId: "aria-ventoleve-corazon-de-titeres"
+        linkedTrackId: "aria-ventoleve-corazon-de-titeres",
+        lyrics: `Shhh.
+No te muevas todavía, cariño.
+Deja que la rosa decida si vales la pena.
+
+Aria… Ventoleve…
+
+Hago una herida pequeña,
+la palma, el muslo, da igual.
+Mi sangre florece despacio
+y aprende a bailar.
+
+No te toco. Eso sería vulgar.
+Yo dejo que el aire trabaje.
+Lo que tú llamas perfume
+es la mano que ya no escapa.
+
+No rompo tu voluntad,
+eso sería tan burdo.
+Yo la inclino, la convenzo,
+la enseño a buscar mi rumbo.
+
+Más miras mi danza,
+más hondo se vuelve el lazo.
+Y cuando creas que eliges,
+ya estarás dando el paso.
+
+Baila conmigo, corazón de títere.
+Si pierdes el paso, pierdes el control.
+No te obligo, no te fuerzo,
+solo te vuelvo inevitable, mi amor.
+
+La rosa se abre, la rosa decide
+cuántos latidos te quedan por dar.
+Late por mí, late por mí,
+que el escenario ya es mío al bailar.
+
+Late por mí, late por mí.
+Late por mí, late por mí.
+
+Eso. Así.
+¿Ves qué fácil fue querer obedecer?
+
+Roja si te deseo de veras,
+rosa si solo te pruebo.
+Violeta si me das miedo,
+gris si no vales mi juego.
+
+La rosa lee lo que escondes:
+deseo, vergüenza y temor.
+Y con cada color que enciende
+yo sé dónde clavar la flor.
+
+Pero entonces algo no encaja.
+Un hilo tiembla y se va.
+La rosa abre todos sus pétalos
+y deja de obedecerme a mí.
+
+Aria…
+Aria…
+
+No confundas mi perfume
+con libertad, mi cielo.
+A veces solo son mis dedos
+cerrándose sobre el juego.
+
+Pero si un hilo se corta,
+si un pulso aprende a escapar,
+yo sonrío más despacio
+y lo vuelvo a levantar.
+
+Y si no puedo tocarte,
+haré que quieras mirar.
+
+Baila conmigo, corazón de títere.
+Si pierdes el paso, pierdes la voz.
+No te obligo, no te fuerzo,
+solo te dejo sin otra canción.
+
+La rosa se abre, la rosa decide,
+pero esta noche dudó al florecer.
+Late por mí, late por mí,
+o enséñame cómo te atreves a no ceder.
+
+Qué curioso.
+Casi parecías difícil.
+
+Uno por uno caen.
+Uno por uno laten.
+Uno por uno vuelven.
+
+Pero tú…
+tú caíste igual. Jajaja.
+
+¡Aria! ¡Aria!
+
+Un hilo se corta.
+Otro se tensa.
+La rosa se cierra.
+La sala despierta.
+
+No me mires así.
+No me nombres así.
+No me hagas sentir
+lo que vine a fingir.
+
+Si el corazón no obedece…
+si el perfume no bastó…
+si la rosa tuvo miedo…
+
+Entonces bailo yo.
+
+Ya puedes irte, cariño.
+O quedarte.
+Pero tu corazón…
+
+ese todavía tiembla
+cuando levanto la mano yo.`
       },
       {
         number: 5,
         title: "Adagio Ventoleve — El poema de Bragi",
         description: "Apertura poética de Adagio, viento y memoria.",
-        linkedTrackId: "adagio-ventoleve-el-poema-de-bragi"
+        linkedTrackId: "adagio-ventoleve-el-poema-de-bragi",
+        lyrics: `"El espectáculo... acaba de comenzar."
+
+"Bragi me dicta y yo solo ejecuto,
+rimas de seda y un verso astuto.
+Si falta la gracia, yo pongo el acento,
+¡soy el bardo, el alma y el viento!
+¡Adagio aquí! ¡Adagio allá!
+¡El poema de Bragi pronto vendrá!"
+
+"¡Cuidado! ¡Atención! ¡Que el bardo camina!
+¡Se acerca la rima! ¡Se acerca la gloria!
+¡SE ACERCA EL FI...!"
+
+"Drop it."
+
+"¡FELICIDAD! ¡ETERNIDAD! ¡VERSO INMORTAL!
+¡YO SOY EL ECO DEL REINO ETERNAL!
+¡POR LA COPA DE BRAGI, POR EL ARTE SIN PAR!
+¡NADIE EN LA TIERRA ME PUEDE IGUALAR!"
+
+"¡Rima rima rima rima!
+¡Canta canta canta canta!
+¡Bravo Adagio! ¡Bravo Adagio! ¡Bravo!"
+
+"¡FELICIDAD! ¡ETERNIDAD! ¡VERSO INMORTAL!
+¡YO SOY EL ECO DEL REINO ETERNAL!
+¡BRAVO ADAGIO! ¡EL MUNDO ES MI ALTAR!"
+
+"¡LA-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!"
+
+"¡A-DA-GIO! ¡A-DA-GIO! ¡INMORTAL!"`
       },
       {
         number: 6,
         title: "Adagio Ventoleve — Bendito y Maldito",
         description: "Bendición y condena en una misma pieza.",
-        linkedTrackId: "adagio-ventoleve-bendito-y-maldito"
+        linkedTrackId: "adagio-ventoleve-bendito-y-maldito",
+        lyrics: `Mi madre dijo una vez…
+que algunos dones llegan con dos manos.
+Una te corona.
+La otra… te cobra.
+
+Y yo, naturalmente…
+bebí igual.
+
+Bragi me dio la copa cuando dejé de respirar,
+dijo mi nombre en un sitio donde no debía estar.
+La luz era dorada, la muerte cordial,
+y hasta mi propio miedo sonaba musical.
+
+¡Qué copa tan fina! ¡Qué brillo inmortal!
+¡Qué forma tan bella de abrir el umbral!
+Yo, joven y roto, sin saber si volver,
+bebí de aquel cielo por puro deber.
+
+¡Cuidado! ¡Atención!
+¡La copa brilló!
+¡El cielo cantó!
+¡La muerte esperó!
+
+¡Y yo, mal educado, volví del final
+con voz de bendito
+y pulso fatal!
+
+Bendición, dijeron.
+
+Qué palabra tan peligrosa.
+
+¡Bendito!
+¡Bendito!
+Con la voz encendida.
+Me dieron el canto,
+me alzaron la vida.
+
+¡Bendito!
+¡Bendito!
+Ruiseñor del dolor.
+Me pusieron la copa
+donde muere el temor.
+
+Pero Aria mordió la noche.
+Aria negó el final.
+Me arrancó de la tumba…
+y el cielo empezó a desafinar.
+
+No estoy vivo del todo, no terminé de morir,
+soy la nota suspendida que ella no dejó partir.
+Bragi me dio la copa, Aria me negó la tumba,
+y desde aquella noche mi corazón retumba.
+
+¡Qué crimen tan bello! ¡Qué amor criminal!
+¡Salvarme la vida salió espiritual!
+Ahora cada herida me aprende a llamar,
+cada despedida me obliga a cantar.
+
+Si canto, recuerdo.
+Si callo, también.
+Si salvo una herida,
+me pierdo después.
+
+Si Bragi me mira,
+no sé si rezar.
+No sé si darle gracias.
+No sé si gritar.
+
+Me bendijeron la voz…
+
+…y me maldijeron el silencio.
+
+¡Maldito!
+¡Maldito!
+Con la voz encendida.
+Me dieron el canto,
+me cobraron la vida.
+
+¡Maldito!
+¡Maldito!
+Ruiseñor del dolor.
+Bendito por la copa,
+maldito por volver.
+
+No canto a los muertos.
+No canto al final.
+Canto lo que muere
+y no puede sangrar.
+
+Una casa.
+Una infancia.
+Una promesa al caer.
+Todo lo que se rompe
+me vuelve a morder.
+
+Bragi me llama.
+Aria me ata.
+La copa brilla.
+La tumba canta.
+
+Bendito el don.
+Maldito el precio.
+Bendita la voz.
+Maldito el silencio.
+
+¡Bendito!
+¡Maldito!
+¡La copa y la herida!
+Me dieron el canto,
+me cobraron la vida.
+
+¡Bendito!
+¡Maldito!
+¡Corazón sin compás!
+Todo don que me salva
+me condena a cantar.
+
+¡Me bendijeron la voz…
+y me maldijeron
+el silencio!
+
+Bendito…
+Maldito…
+Bendito…
+Maldito…
+
+Bragi me dio la copa.
+Aria me negó la tumba.`
       },
       {
         number: 7,
         title: "Adagio Ventoleve — Letra Chica con disrupción",
         description: "Contrato, letra pequeña y disrupción.",
-        linkedTrackId: "adagio-ventoleve-letra-chica-con-disrupcion"
+        linkedTrackId: "adagio-ventoleve-letra-chica-con-disrupcion",
+        lyrics: `No todos los demonios huelen a azufre.
+Algunos sirven té…
+y preguntan dónde prefieres firmar.
+
+Entró sin llamar con guantes de seda,
+sonrió como deuda vestida de seda.
+Traía una taza, traía un favor,
+traía mi nombre doblado en dos.
+
+No alzó la voz, no mostró el puñal,
+solo puso el destino sobre el cristal.
+"Cuentas, propiedades, rutas, personal…"
+Qué forma tan fina de decir: funeral.
+
+Y Aria mordía la rabia en la boca,
+yo oí las cuerdas temblar por dentro.
+Él dijo "negocios" con voz de ceremonia,
+y el salón respiró testamento.
+
+¿Letra chica?
+
+¡Firma, firma, que el mundo no espera!
+¡Baila la tinta sobre la madera!
+Todo trato con demonios
+empieza limpio en el papel.
+
+¡Firma, firma, qué dulce condena!
+¡La casa es tuya, también la cadena!
+Si la suerte no sabe contabilidad,
+Mefironte sí la sabe hacer.
+
+No ofrece infiernos, ofrece solución;
+te cobra la vida con educación.
+No compra tu alma, qué vulgaridad:
+prefiere dejarla en propiedad.
+
+"Favores pendientes, enemigos también,
+deudas cobrables y obras de mal gusto."
+Yo casi aplaudo su forma cruel
+de llamar herencia a todo este susto.
+
+El té no existía, la taza tampoco,
+pero ahí seguía bebiendo despacio.
+Un demonio educado no rompe la puerta:
+te enseña a llamarla palacio.
+
+El músico aprende rápido.
+
+¡Firma, firma, que el mundo no espera!
+¡Baila la tinta sobre la madera!
+Todo trato con demonios
+empieza limpio en el papel.
+
+¡Firma, firma, qué dulce condena!
+¡La casa es tuya, también la cadena!
+Si la suerte no sabe contabilidad,
+Mefironte sí la sabe hacer.
+
+No lo encuentras.
+Te ocurre.
+No te grita.
+Te escribe.
+
+No te ata con fuego.
+Te ata con archivo.
+No te pide la sangre.
+Te deja el recibo.
+
+Y si Aria renuncia, traiciona a los muertos.
+Y si yo me callo, se pudre el compás.
+Así que sonrío frente al caballero
+que vende cadenas con guantes de paz.
+
+¡Firma, firma, que el mundo no espera!
+¡Baila la tinta sobre la madera!
+Todo trato con demonios
+empieza limpio en el papel.
+
+¡Firma, firma, qué dulce condena!
+¡La casa es tuya, también la cadena!
+Si la suerte no sabe contabilidad,
+Mefironte sí la sabe hacer.
+
+¡Y en la letra más pequeña
+cabe entera
+tu libertad!
+
+¡Firma! ¡Firma!
+¡Mefironte!
+¡Firma! ¡Firma!
+¡Mefironte!
+
+No era un trato.
+Era una cortesía.`
       },
       {
         number: 8,
         title: "Adagio Ventoleve — Marcha Nupcial; La hermana que perdí",
         description: "Marcha nupcial vuelta duelo por la hermana perdida.",
-        linkedTrackId: "adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi"
+        linkedTrackId: "adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi",
+        lyrics: `Queridos invitados…
+respiren con elegancia.
+
+Hoy no pierdo una hermana.
+La escolto hacia otro desastre.
+
+Paso corto, flor torcida,
+velo negro, luna herida.
+La capilla dice amén,
+pero el piso dice: "¿quién?"
+
+Ramo blanco, cinta rota,
+mi sonrisa casi flota.
+Si la boda va a empezar,
+que alguien revise el altar.
+
+Una hermana no se entrega,
+se acompaña hasta la puerta.
+Y si el mundo la reclama,
+¡que se quite la chaqueta!
+
+Sube el arco, baja el cielo,
+tiembla el cura, cruje el velo.
+Aria avanza, yo detrás…
+¡demasiado tarde para paz!
+
+Tac, tac, tac,
+marcha nupcial.
+Tac, tac, tac,
+algo va mal.
+
+Brilla la copa,
+ríe el salón.
+Yo llevo a Aria…
+con bendición y maldición.
+
+Tac, tac, tac,
+no mires atrás.
+Tac, tac, tac,
+sonríe nomás.
+
+Si el amor llama
+con voz funeral,
+que toque mi violín
+la marcha final.
+
+¡Cuidado con la alfombra!
+¡Cuidado con la flor!
+¡Cuidado con el novio
+si promete demasiado honor!
+
+La tía llora, el tío brinda,
+la lámpara se extingue linda.
+Tres palomas, cuatro cuervos,
+cinco dudas en los nervios.
+
+Yo, Adagio, fiel testigo,
+con el arco por abrigo.
+Si alguien piensa hacerla daño,
+le compongo un cumpleaños.
+
+Aria.
+
+No firmes nada sin leer.
+
+Especialmente si sonríe.
+
+Tac, tac, tac,
+entra la novia.
+Tac, tac, tac,
+muere la gloria.
+
+Campana quebrada,
+zapato en cristal.
+Qué ceremonia
+tan sentimental.
+
+Tac, tac, tac,
+ríe el violín.
+Tac, tac, tac,
+no hay fin, no hay fin.
+
+Si te arrebatan
+tu nombre al pasar,
+yo lo hago canción
+y lo vuelvo a gritar.
+
+Hermana mía,
+camina despacio.
+Que el mundo te mire,
+que aprenda tu paso.
+
+No vas sola,
+aunque yo bromee.
+Mi sombra tropieza,
+mi arco te cree.
+
+¡Que suba la cuerda!
+¡Que tiemble el mantel!
+¡Que el ramo se prenda
+con vino y laurel!
+
+¡Que giren los vivos!
+¡Que callen los muertos!
+¡Que nadie se atreva
+a cerrar esos puertos!
+
+Tac, tac, tac,
+marcha nupcial.
+Tac, tac, tac,
+dulce y fatal.
+
+Aria camina,
+la sala se abrió.
+Yo no la entrego…
+la escolto yo.
+
+Tac, tac, tac,
+que escuche el altar.
+Tac, tac, tac,
+no la van a quebrar.
+
+Si el destino canta
+con dientes de sal,
+mi violín responde:
+¡otra vez, otra vez, otra vez más!
+
+¡Aria Ventoleve!
+¡Flor de vendaval!
+¡Que tiemble la boda!
+¡Que baile el final!
+
+Finaaaaaaaal…
+
+Tac.`
       }
     ]
   },
