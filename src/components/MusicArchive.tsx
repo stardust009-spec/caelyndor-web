@@ -289,7 +289,7 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
             <>
               {selectedAlbum.heroImage ? (
                 <div
-                  className={`music-album__header${selectedAlbum.heroFocus === "left" ? " music-album__header--focus-left" : ""}`}
+                  className={`music-album__header${selectedAlbum.heroFocus === "left" ? " music-album__header--focus-left" : ""}${selectedAlbum.heroAspect ? " music-album__header--fit" : ""}`}
                   onPointerMove={(event) => {
                     const rect = event.currentTarget.getBoundingClientRect();
                     const x = ((event.clientX - rect.left) / rect.width - 0.5) * -1;
@@ -300,7 +300,10 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
                   style={
                     {
                       "--album-parallax-x": `${albumHeroOffset.x * 1.8}%`,
-                      "--album-parallax-y": `${albumHeroOffset.y * 1.2}%`
+                      "--album-parallax-y": `${albumHeroOffset.y * 1.2}%`,
+                      ...(selectedAlbum.heroAspect
+                        ? { aspectRatio: selectedAlbum.heroAspect, minHeight: 0 }
+                        : {})
                     } as CSSProperties
                   }
                 >
@@ -315,15 +318,17 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
                   ) : (
                     <Image className="music-album__header-image" src={selectedAlbum.heroImage} alt="" fill sizes="(max-width: 760px) 100vw, 1120px" />
                   )}
-                  <button
-                    className="music-album__play-all"
-                    type="button"
-                    onClick={playAlbum}
-                    aria-label={`Reproducir el álbum ${selectedAlbum.title} completo`}
-                  >
-                    <PlayIcon size={15} />
-                    <span>Reproducir álbum</span>
-                  </button>
+                  {!selectedAlbum.heroPlayInline ? (
+                    <button
+                      className="music-album__play-all"
+                      type="button"
+                      onClick={playAlbum}
+                      aria-label={`Reproducir el álbum ${selectedAlbum.title} completo`}
+                    >
+                      <PlayIcon size={15} />
+                      <span>Reproducir álbum</span>
+                    </button>
+                  ) : null}
                 </div>
               ) : null}
 
@@ -335,7 +340,7 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
                       <h3>{selectedAlbum.title}</h3>
                       {selectedAlbum.description ? <p>{selectedAlbum.description}</p> : null}
                     </div>
-                    {!selectedAlbum.heroImage ? (
+                    {!selectedAlbum.heroImage || selectedAlbum.heroPlayInline ? (
                       <button
                         className="music-album__play-all music-album__play-all--inline"
                         type="button"

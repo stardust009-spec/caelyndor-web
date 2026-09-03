@@ -21,6 +21,12 @@ export type MusicAlbum = {
   /** Encuadre del hero al recortar (object-fit cover). "left" ancla a la izquierda
    *  para no cortar arte de ese lado; por defecto va centrado. */
   heroFocus?: "left" | "center";
+  /** Proporción fija del hero (p. ej. "2.5 / 1"). Si se define, el slot se clava
+   *  a ese ratio para que un arte diseñado a esa medida calce sin recorte. */
+  heroAspect?: string;
+  /** Baja el botón "Reproducir álbum" a la fila del título (inline), fuera del
+   *  arte, para no tapar tipografía horneada en la imagen. */
+  heroPlayInline?: boolean;
   tracklist: AlbumTrack[];
 };
 
@@ -1317,9 +1323,13 @@ si lo vieron en el cristal...
     artist: "Aria & Adagio Ventoleve",
     status: "Disponible",
     heroFocus: "left",
-    heroImage: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V2.png"),
-    heroVideoMp4: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V2.mp4"),
-    heroVideoWebm: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V2.webm"),
+    heroAspect: "2.7 / 1",
+    heroPlayInline: true,
+    heroImage: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V3.png"),
+    // Video comentado para probar solo el V3.png. Reactivar cuando exista el video V3
+    // (renombrar a _V3) — el fallback webm y el mp4 vuelven a AdaptiveHeroVideo:
+    // heroVideoMp4: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V2.mp4"),
+    // heroVideoWebm: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V2.webm"),
     description:
       "Una vitrina de cámara, jaula, rosa, compás y herida para Aria y Adagio Ventoleve dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [

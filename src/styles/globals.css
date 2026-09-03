@@ -1572,6 +1572,14 @@ h3 {
   transform-origin: 8% 50%;
 }
 
+/* Hero de proporción fija: el slot se clava al ratio del arte y se anula el
+   zoom/parallax para que la imagen calce exacta, sin recortar bordes. */
+.music-album__header--fit .music-album__header-image,
+.music-album__header--fit .music-album__header-video {
+  transform: none;
+  object-position: center;
+}
+
 .music-album__header h2 {
   max-width: 860px;
   margin: 0;
