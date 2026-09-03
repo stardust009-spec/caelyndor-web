@@ -1316,8 +1316,10 @@ si lo vieron en el cristal...
     title: "Aria & Adagio Ventoleve — Jaula y Rosas",
     artist: "Aria & Adagio Ventoleve",
     status: "Disponible",
-    heroImage: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero.png"),
-    heroVideoMp4: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero.mp4"),
+    heroFocus: "left",
+    heroImage: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V2.png"),
+    heroVideoMp4: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V2.mp4"),
+    heroVideoWebm: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V2.webm"),
     description:
       "Una vitrina de cámara, jaula, rosa, compás y herida para Aria y Adagio Ventoleve dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
