@@ -1326,7 +1326,7 @@ si lo vieron en el cristal...
     heroPlayLeft: true,
     heroImage: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V3.png"),
     heroVideoMp4: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V3.mp4"),
-    // Sin webm V3 (aún no existe); AdaptiveHeroVideo usa el póster V3.png si el mp4 falla.
+    heroVideoWebm: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V3.webm"),
     description:
       "Una vitrina de cámara, jaula, rosa, compás y herida para Aria y Adagio Ventoleve dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
