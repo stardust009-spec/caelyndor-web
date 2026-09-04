@@ -318,17 +318,15 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
                   ) : (
                     <Image className="music-album__header-image" src={selectedAlbum.heroImage} alt="" fill sizes="(max-width: 760px) 100vw, 1120px" />
                   )}
-                  {!selectedAlbum.heroPlayInline ? (
-                    <button
-                      className="music-album__play-all"
-                      type="button"
-                      onClick={playAlbum}
-                      aria-label={`Reproducir el álbum ${selectedAlbum.title} completo`}
-                    >
-                      <PlayIcon size={15} />
-                      <span>Reproducir álbum</span>
-                    </button>
-                  ) : null}
+                  <button
+                    className={`music-album__play-all${selectedAlbum.heroPlayLeft ? " music-album__play-all--left" : ""}`}
+                    type="button"
+                    onClick={playAlbum}
+                    aria-label={`Reproducir el álbum ${selectedAlbum.title} completo`}
+                  >
+                    <PlayIcon size={15} />
+                    <span>Reproducir álbum</span>
+                  </button>
                 </div>
               ) : null}
 
@@ -340,7 +338,7 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
                       <h3>{selectedAlbum.title}</h3>
                       {selectedAlbum.description ? <p>{selectedAlbum.description}</p> : null}
                     </div>
-                    {!selectedAlbum.heroImage || selectedAlbum.heroPlayInline ? (
+                    {!selectedAlbum.heroImage ? (
                       <button
                         className="music-album__play-all music-album__play-all--inline"
                         type="button"

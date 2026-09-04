@@ -5741,6 +5741,12 @@ body.has-music-player {
   position: static;
 }
 
+/* Botón anclado a la izquierda (p. ej. hero de Aria, con tipografía a la derecha). */
+.music-album__play-all--left {
+  right: auto;
+  left: clamp(0.9rem, 2.4vw, 1.6rem);
+}
+
 .book-showcase {
   --book-accent: var(--color-astral);
   display: grid;

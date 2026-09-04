@@ -24,9 +24,9 @@ export type MusicAlbum = {
   /** Proporción fija del hero (p. ej. "2.5 / 1"). Si se define, el slot se clava
    *  a ese ratio para que un arte diseñado a esa medida calce sin recorte. */
   heroAspect?: string;
-  /** Baja el botón "Reproducir álbum" a la fila del título (inline), fuera del
-   *  arte, para no tapar tipografía horneada en la imagen. */
-  heroPlayInline?: boolean;
+  /** Ancla el botón "Reproducir álbum" a la esquina inferior IZQUIERDA del hero
+   *  (por defecto va a la derecha), para no tapar tipografía horneada a la derecha. */
+  heroPlayLeft?: boolean;
   tracklist: AlbumTrack[];
 };
 
@@ -1324,7 +1324,7 @@ si lo vieron en el cristal...
     status: "Disponible",
     heroFocus: "left",
     heroAspect: "2.7 / 1",
-    heroPlayInline: true,
+    heroPlayLeft: true,
     heroImage: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V3.png"),
     // Video comentado para probar solo el V3.png. Reactivar cuando exista el video V3
     // (renombrar a _V3) — el fallback webm y el mp4 vuelven a AdaptiveHeroVideo:
