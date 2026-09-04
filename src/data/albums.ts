@@ -1322,7 +1322,6 @@ si lo vieron en el cristal...
     title: "Aria & Adagio Ventoleve — Jaula y Rosas",
     artist: "Aria & Adagio Ventoleve",
     status: "Disponible",
-    heroFocus: "left",
     heroAspect: "2.7 / 1",
     heroPlayLeft: true,
     heroImage: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V3.png"),
