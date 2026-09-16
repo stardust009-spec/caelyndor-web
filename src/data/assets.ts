@@ -34,6 +34,12 @@ export function musicAsset(fileName: string) {
   return `${MUSIC_BASE}${encodeURIComponent(fileName.normalize("NFC"))}`;
 }
 
+// Audio de perfil (resúmenes de personaje) servido desde el repo de assets,
+// igual que la música, para no empaquetarlo en el deployment de Vercel.
+export function audioAsset(fileName: string) {
+  return `${MUSIC_BASE}${encodeURIComponent(fileName.normalize("NFC"))}`;
+}
+
 export function videoAsset(fileName: string) {
   return `${VIDEO_BASE}${encodeURIComponent(fileName.normalize("NFC"))}`;
 }

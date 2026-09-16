@@ -1,4 +1,4 @@
-import { assetImage } from "@/data/assets";
+import { assetImage, audioAsset } from "@/data/assets";
 
 export type CharacterNarrativeAccess = {
   label: string;
@@ -120,7 +120,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Yuki Arhess — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/yuki-profile-summary.m4a",
+      src: audioAsset("yuki-profile-summary.m4a"),
       kind: "character-summary"
     },
     description: "Guarda una calma peligrosa, como si cada palabra suya tuviera que cruzar una tormenta antes de existir.",
@@ -290,7 +290,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Noctalypse — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/noctalypse-profile-summary.m4a",
+      src: audioAsset("noctalypse-profile-summary.m4a"),
       kind: "character-summary"
     },
     portraitPosition: "50% 18%",
@@ -502,7 +502,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Rubí Kaelynn Vaer'Solyn — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/rubi-profile-summary.m4a",
+      src: audioAsset("rubi-profile-summary.m4a"),
       kind: "character-summary"
     },
     description: "Una presencia marcada por perdidas antiguas y una obstinacion capaz de encender reinos dormidos.",
@@ -681,7 +681,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Lyzi — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/lyzi-profile-summary.m4a",
+      src: audioAsset("lyzi-profile-summary.m4a"),
       kind: "character-summary"
     },
     description: "Camina donde los mapas fallan y oye lo que las ruinas todavia no se atreven a decir.",
@@ -862,7 +862,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Halrik de Hyldran — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/halrik-profile-summary.m4a",
+      src: audioAsset("halrik-profile-summary.m4a"),
       kind: "character-summary"
     },
     portraitPosition: "50% 18%",
@@ -1075,7 +1075,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Alistair Valerius — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/alistair-valerius-profile-summary.m4a",
+      src: audioAsset("alistair-valerius-profile-summary.m4a"),
       kind: "character-summary"
     },
     portraitPosition: "50% 18%",
@@ -1288,7 +1288,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Faelan — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/faelan-profile-summary.m4a",
+      src: audioAsset("faelan-profile-summary.m4a"),
       kind: "character-summary"
     },
     portraitPosition: "50% 20%",
@@ -1409,7 +1409,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Fulgor — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/fulgor-profile-summary.m4a",
+      src: audioAsset("fulgor-profile-summary.m4a"),
       kind: "character-summary"
     },
     description: "Dragón primordial del fuego, gourmet y devoto de la etiqueta: capaz de incinerar un campo de batalla y aun así juzgar los modales de la mesa donde se celebró la victoria.",
@@ -1595,7 +1595,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Aelwyn Solrenhal — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/aelwyn-solrenhal-profile-summary.m4a",
+      src: audioAsset("aelwyn-solrenhal-profile-summary.m4a"),
       kind: "character-summary"
     },
     description: "Carga una luz que no siempre salva, pero que insiste en revelar lo que otros prefieren dejar cubierto.",
@@ -1814,7 +1814,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Aria Ventoleve — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/aria-ventoleve-profile-summary.m4a",
+      src: audioAsset("aria-ventoleve-profile-summary.m4a"),
       kind: "character-summary"
     },
     description: "Su presencia parece ligera hasta que el aire alrededor decide obedecerla.",
@@ -1999,7 +1999,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Adagio Ventoleve — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/adagio-ventoleve-profile-summary.m4a",
+      src: audioAsset("adagio-ventoleve-profile-summary.m4a"),
       kind: "character-summary"
     },
     description: "Donde otros se precipitan, Adagio mide el pulso exacto antes de dejar caer la respuesta.",
@@ -2212,7 +2212,7 @@ export const characters: Character[] = [
       enabled: true,
       title: "Levia Thanis — Crónica de personaje",
       subtitle: "Caelyndor",
-      src: "/audio/character-summaries/levia-thanis-profile-summary.m4a",
+      src: audioAsset("levia-thanis-profile-summary.m4a"),
       kind: "character-summary"
     },
     portraitPosition: "50% 18%",
