@@ -47,6 +47,36 @@ function track({ cover, coverVideoFile, ...trackData }: TrackInput): MusicTrack 
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "noctalypse-el-del-pan",
+    title: "Noctalypse — El del Pan",
+    subtitle: "Tema de personaje",
+    fileName: "Noctalypse — El del Pan.mp3",
+    category: "personaje",
+    related: ["Noctalypse"],
+    mood: "Pan / abrigo",
+    accent: "rgba(123, 92, 168, 0.34)"
+  }),
+  track({
+    id: "aria-ventoleve-la-rosa-del-viento",
+    title: "Aria Ventoleve — La Rosa del Viento",
+    subtitle: "Tema de personaje",
+    fileName: "Aria Ventoleve — La Rosa del Viento.mp3",
+    category: "personaje",
+    related: ["Aria Ventoleve"],
+    mood: "Rosa / viento",
+    accent: "rgba(205, 185, 140, 0.34)"
+  }),
+  track({
+    id: "noctalypse-sombra-prestada",
+    title: "Noctalypse — Sombra Prestada",
+    subtitle: "Tema de personaje",
+    fileName: "Noctalypse — Sombra Prestada.mp3",
+    category: "personaje",
+    related: ["Noctalypse"],
+    mood: "Sombra / sostén",
+    accent: "rgba(123, 92, 168, 0.34)"
+  }),
+  track({
     id: "aurex-virellius-gemelos-del-brillo-contradicho",
     title: "Aurex Primus & Virellius Nox — Gemelos del Brillo Contradicho",
     subtitle: "Tema de dúo",

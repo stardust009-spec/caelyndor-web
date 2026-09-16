@@ -1,4 +1,7 @@
 export const musicCovers: Record<string, string> = {
+  "noctalypse-el-del-pan": "/images/music-covers/noctalypse-el-del-pan.jpg",
+  "aria-ventoleve-la-rosa-del-viento": "/images/music-covers/aria-ventoleve-la-rosa-del-viento.jpg",
+  "noctalypse-sombra-prestada": "/images/music-covers/noctalypse-sombra-prestada.jpg",
   "rubi-mi-placer-culpable": "/images/music-covers/rubi-mi-placer-culpable.jpg",
   "lyzi-lirios-para-una-sombra": "/images/music-covers/lyzi-lirios-para-una-sombra.jpg",
   "lyzi-corre-al-primer-perfume": "/images/music-covers/lyzi-corre-al-primer-perfume.jpg",
