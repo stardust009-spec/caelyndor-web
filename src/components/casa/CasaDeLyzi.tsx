@@ -424,14 +424,14 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
   // ——— bloqueo de scroll mientras hay un objeto abierto (el canal de la barra queda reservado
   // en toda la página para que el escenario no cambie de ancho al bloquear)
   useEffect(() => {
-    document.documentElement.classList.add("casa-page");
-    return () => document.documentElement.classList.remove("casa-page");
+    document.documentElement.classList.add("casa-html");
+    return () => document.documentElement.classList.remove("casa-html");
   }, []);
 
   useEffect(() => {
     const locked = mode !== "idle";
-    document.documentElement.classList.toggle("casa-locked", locked);
-    return () => document.documentElement.classList.remove("casa-locked");
+    document.documentElement.classList.toggle("casa-html--locked", locked);
+    return () => document.documentElement.classList.remove("casa-html--locked");
   }, [mode]);
 
   // ——— abrir / cerrar objetos de la sala
