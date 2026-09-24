@@ -618,6 +618,31 @@ html.casa-html .site-header {
   border-color: rgba(201, 167, 255, 0.6);
 }
 
+/* salida visible desde la sala (además de deslizar hacia arriba) */
+.casa-exit {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2.4rem);
+  top: 5.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--casa-line);
+  border-radius: 999px;
+  background: rgba(8, 7, 18, 0.62);
+  backdrop-filter: blur(10px);
+  color: rgba(244, 238, 252, 0.9);
+  font-size: 0.8rem;
+  cursor: pointer;
+  animation: casa-fade-in 500ms ease both;
+}
+
+.casa-exit:hover {
+  color: #fff;
+  border-color: rgba(201, 167, 255, 0.65);
+  background: rgba(167, 122, 255, 0.18);
+}
+
 /* ——— paneles de los objetos */
 .casa-panel {
   position: absolute;

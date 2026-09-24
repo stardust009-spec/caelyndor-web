@@ -26,10 +26,13 @@ type Beat = { g0: number; g1: number; vh: number };
 const BEATS: Beat[] = [
   { g0: 0, g1: 99, vh: 190 }, // el sendero hasta el arco
   { g0: 99, g1: 176, vh: 230 }, // el jardín: pausa para las leyendas
-  { g0: 176, g1: 239, vh: 150 }, // la puerta se abre y todo se vuelve luz
-  { g0: 239, g1: LAST, vh: 150 }, // la sala se revela
+  { g0: 176, g1: 214, vh: 110 }, // la puerta se abre
+  { g0: 214, g1: 266, vh: 40 }, // el destello del umbral pasa rápido (en ambos sentidos)
+  { g0: 266, g1: LAST, vh: 110 }, // la sala se revela
   { g0: LAST, g1: LAST, vh: 45 } // respiro en la sala
 ];
+/** Fotograma del jardín al que lleva "Volver al jardín". */
+const GARDEN = 140;
 /** Con movimiento reducido: dos escenas fijas (el jardín y la sala), sin vuelo de cámara. */
 const REDUCED_BEATS: Beat[] = [
   { g0: 140, g1: 140, vh: 120 },
@@ -55,6 +58,17 @@ function frameAt(scrolledVh: number, beats: Beat[]) {
   return beats[beats.length - 1].g1;
 }
 
+function vhAt(g: number, beats: Beat[]) {
+  let acc = 0;
+  for (const beat of beats) {
+    if (g <= beat.g1) {
+      return beat.g1 === beat.g0 ? acc : acc + clamp((g - beat.g0) / (beat.g1 - beat.g0), 0, 1) * beat.vh;
+    }
+    acc += beat.vh;
+  }
+  return acc;
+}
+
 const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
 
@@ -63,6 +77,14 @@ function coverLayout(cw: number, ch: number, iw: number, ih: number): Layout {
   const dw = iw * scale;
   const dh = ih * scale;
   return { cw, ch, dw, dh, ox: (cw - dw) / 2, oy: (ch - dh) / 2 };
+}
+
+/** Cierra una animación de acercamiento una sola vez (la llama el bucle o un respaldo). */
+function finishZoom(zoom: Zoom) {
+  zoom.t = zoom.to;
+  const done = zoom.done;
+  zoom.done = undefined;
+  done?.();
 }
 
 const pickOrient = (): Orient => (window.innerWidth / window.innerHeight < 0.82 ? "V" : "H");
@@ -381,11 +403,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
         const p = zoom.dur > 0 ? clamp((now - zoom.start) / zoom.dur, 0, 1) : 1;
         zoom.t = zoom.from + (zoom.to - zoom.from) * easeInOut(p);
         if (p < 1) again = true;
-        else if (zoom.done) {
-          const done = zoom.done;
-          zoom.done = undefined;
-          done();
-        }
+        else finishZoom(zoom);
       } else {
         const diff = targetRef.current - gRef.current;
         if (Math.abs(diff) > 0.015) {
@@ -455,7 +473,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       // arranca apenas estén todos (o a los 700 ms con los clave: el resto se funde al llegar)
       waitFor(() => store.loaded(seq) >= store.count(seq), 700).then(() => {
         if (modeRef.current !== "in") return;
-        zoomRef.current = {
+        const zoom: Zoom = {
           key,
           from: 0,
           to: 1,
@@ -464,7 +482,16 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
           dur: reducedRef.current || options.instant ? 0 : 1000,
           done: () => setModeBoth("panel")
         };
+        zoomRef.current = zoom;
         kickRef.current();
+        // respaldo: si el navegador pausa las animaciones (pestaña oculta), no quedar a medias
+        window.setTimeout(() => {
+          if (modeRef.current === "in" && zoomRef.current === zoom) {
+            finishZoom(zoom);
+            drawnRef.current = "";
+            kickRef.current();
+          }
+        }, zoom.dur + 900);
       });
     },
     [setModeBoth]
@@ -474,7 +501,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     const zoom = zoomRef.current;
     if (!zoom || modeRef.current !== "panel") return;
     setModeBoth("out");
-    zoomRef.current = {
+    const out: Zoom = {
       key: zoom.key,
       from: zoom.t,
       to: 0,
@@ -490,15 +517,32 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
         kickRef.current();
       }
     };
+    zoomRef.current = out;
     kickRef.current();
+    window.setTimeout(() => {
+      if (modeRef.current === "out" && zoomRef.current === out) finishZoom(out);
+    }, out.dur + 900);
   }, [setModeBoth]);
 
   const closeObjeto = useCallback(() => {
     if (modeRef.current !== "panel") return;
     const state = window.history.state as { casa?: string } | null;
-    if (state?.casa) window.history.back();
-    else {
-      if (window.location.hash) window.history.replaceState(window.history.state, "", window.location.pathname + window.location.search);
+    const clearHash = () => {
+      if (window.location.hash) {
+        window.history.replaceState(window.history.state, "", window.location.pathname + window.location.search);
+      }
+    };
+    if (state?.casa) {
+      window.history.back();
+      // si el popstate no llega (o lo intercepta el router), cerrar igual
+      window.setTimeout(() => {
+        if (modeRef.current === "panel") {
+          clearHash();
+          finishClose();
+        }
+      }, 450);
+    } else {
+      clearHash();
       finishClose();
     }
   }, [finishClose]);
@@ -567,6 +611,12 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
 
   const skipToHub = () => {
     window.scrollTo({ top: hubScrollY(), behavior: "auto" });
+  };
+
+  const backToGarden = () => {
+    const beatsNow = reducedRef.current ? REDUCED_BEATS : BEATS;
+    const top = trackTop() + (vhAt(GARDEN, beatsNow) / 100) * window.innerHeight;
+    window.scrollTo({ top, behavior: reducedRef.current ? "auto" : "smooth" });
   };
 
   const playTrack = (trackId?: string) => {
@@ -763,6 +813,11 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
           {phase !== "hub" && painted ? (
             <button type="button" className="casa-skip-hub" onClick={skipToHub}>
               Ir directo a la sala
+            </button>
+          ) : null}
+          {showHub ? (
+            <button type="button" className="casa-exit" onClick={backToGarden}>
+              <span aria-hidden="true">↑</span> Volver al jardín
             </button>
           ) : null}
 
