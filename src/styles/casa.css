@@ -1,0 +1,1472 @@
+/* ————————————————————————————————————————————————————————————————
+   La casa de Lyzi — portada narrativa (src/components/casa/)
+   ———————————————————————————————————————————————————————————————— */
+
+.casa {
+  --casa-violet: #a77aff;
+  --casa-violet-soft: #c9a7ff;
+  --casa-gold: #e8c46a;
+  --casa-ember: #ffcf8a;
+  --casa-glass: rgba(11, 9, 22, 0.84);
+  --casa-line: rgba(201, 167, 255, 0.28);
+  --casa-ink: #2a1b10;
+  --casa-dock-bottom: 1.1rem;
+  position: relative;
+  background: #05060a;
+}
+
+body.has-music-player .casa {
+  --casa-dock-bottom: 5.6rem;
+}
+
+html.casa-page {
+  scrollbar-gutter: stable;
+}
+
+/* sólo el elemento raíz: si el body también tuviera overflow hidden se volvería un
+   contenedor de scroll y el escenario perdería su position: sticky */
+html.casa-locked {
+  overflow: hidden;
+}
+
+/* el menú flota sobre el cielo nocturno en vez de taparlo con una franja */
+html.casa-page .site-header {
+  border-bottom-color: transparent;
+  background: linear-gradient(180deg, rgba(5, 6, 10, 0.72), rgba(5, 6, 10, 0.28) 70%, transparent);
+  backdrop-filter: none;
+}
+
+.casa-skip {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 9;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  background: var(--color-ash-bright);
+  color: var(--color-void);
+}
+
+.casa-skip:focus {
+  top: 5.2rem;
+}
+
+.casa__track {
+  position: relative;
+}
+
+.casa__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #05060a;
+  isolation: isolate;
+}
+
+.casa__poster,
+.casa__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.casa__poster {
+  object-fit: cover;
+  transition: opacity 600ms ease;
+}
+
+.casa__poster--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.casa__canvas {
+  display: block;
+}
+
+.casa__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 55%, transparent 55%, rgba(3, 3, 10, 0.55) 100%),
+    linear-gradient(180deg, rgba(5, 6, 10, 0.55), transparent 22%, transparent 78%, rgba(5, 6, 10, 0.5));
+}
+
+/* ——— título inicial */
+.casa__title {
+  position: absolute;
+  left: 50%;
+  top: 17%;
+  width: min(760px, calc(100% - 2rem));
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.6);
+}
+
+.casa__eyebrow {
+  margin: 0 0 0.4rem;
+  color: var(--casa-violet-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.casa__title h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 8vw, 6.4rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  color: #f4eefc;
+  text-shadow:
+    0 0 28px rgba(167, 122, 255, 0.45),
+    0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+.casa__phrase {
+  margin: 0.9rem 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  color: rgba(244, 238, 252, 0.86);
+}
+
+.casa__hint {
+  position: absolute;
+  left: 50%;
+  bottom: 2.2rem;
+  white-space: nowrap;
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  transform: translateX(-50%);
+  color: rgba(244, 238, 252, 0.78);
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.casa__hint span {
+  width: 1px;
+  height: 2.6rem;
+  background: linear-gradient(180deg, rgba(201, 167, 255, 0.9), transparent);
+  animation: casa-hint 2.2s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes casa-hint {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  40% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1) translateY(1.2rem);
+    opacity: 0;
+  }
+}
+
+.casa__caption {
+  position: absolute;
+  left: clamp(1rem, 3vw, 2.4rem);
+  top: 5.6rem;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--casa-line);
+  border-radius: 999px;
+  background: rgba(8, 7, 18, 0.55);
+  backdrop-filter: blur(10px);
+  color: rgba(244, 238, 252, 0.9);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.casa__loading {
+  position: absolute;
+  left: 50%;
+  bottom: 6.5rem;
+  margin: 0;
+  transform: translateX(-50%);
+  color: rgba(244, 238, 252, 0.72);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+}
+
+.casa__loading--zoom {
+  bottom: auto;
+  top: 50%;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(8, 7, 18, 0.6);
+  animation: casa-fade-in 400ms 300ms both;
+}
+
+.casa__failed {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  gap: 0.6rem;
+  justify-items: center;
+  padding: 1.2rem 1.6rem;
+  border: 1px solid var(--casa-line);
+  border-radius: 14px;
+  background: var(--casa-glass);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.casa__failed p {
+  margin: 0;
+}
+
+.casa__failed a {
+  color: var(--casa-violet-soft);
+  text-decoration: underline;
+}
+
+/* ——— puntos de interés (jardín y sala) */
+.casa__hotspots,
+.casa__objects {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.casa-spot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 180ms linear;
+  will-change: transform, opacity;
+}
+
+.casa-spot__glint {
+  position: absolute;
+  left: -1.1rem;
+  top: -1.1rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  /* halo oscuro: el brillo se distingue también sobre ventanas encendidas o flores luminosas */
+  background: radial-gradient(circle, rgba(12, 7, 26, 0.7) 0 38%, rgba(12, 7, 26, 0.32) 58%, transparent 72%);
+}
+
+.casa-spot__glint::before,
+.casa-spot__glint::after {
+  content: "";
+  position: absolute;
+  inset: 0.68rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, #f1e3ff 30%, rgba(201, 167, 255, 0.9) 55%, transparent 72%);
+  box-shadow: 0 0 14px 4px rgba(201, 167, 255, 0.55);
+}
+
+.casa-spot__glint::after {
+  inset: 0;
+  background: none;
+  border: 1px solid rgba(232, 214, 255, 0.7);
+  box-shadow: 0 0 12px rgba(201, 167, 255, 0.45);
+  animation: casa-ring 2.4s ease-out infinite;
+}
+
+@keyframes casa-ring {
+  0% {
+    transform: scale(0.45);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+.casa-spot__label {
+  position: absolute;
+  left: 1.3rem;
+  top: -0.9rem;
+  display: grid;
+  gap: 0.1rem;
+  min-width: max-content;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--casa-line);
+  border-radius: 10px;
+  background: rgba(10, 8, 20, 0.82);
+  color: #f4eefc;
+  font-size: 0.8rem;
+  line-height: 1.25;
+  text-align: left;
+  opacity: 0;
+  transform: translateX(-0.3rem);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+  pointer-events: none;
+}
+
+.casa-spot__label strong {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.casa-spot__label em {
+  color: rgba(232, 214, 255, 0.72);
+  font-style: normal;
+  font-size: 0.74rem;
+}
+
+.casa-spot:hover .casa-spot__label,
+.casa-spot:focus-visible .casa-spot__label,
+.casa-spot--hover .casa-spot__label,
+.casa-spot--open .casa-spot__label,
+.casa-spot--door .casa-spot__label {
+  opacity: 1;
+  transform: none;
+}
+
+.casa-spot:focus-visible {
+  outline: none;
+}
+
+.casa-spot:focus-visible .casa-spot__glint {
+  outline: 2px solid var(--color-ice);
+  outline-offset: 2px;
+}
+
+.casa-spot--door .casa-spot__glint::before {
+  background: radial-gradient(circle, #fff 0%, #ffe9c2 32%, rgba(255, 207, 138, 0.9) 55%, transparent 72%);
+  box-shadow: 0 0 18px 6px rgba(255, 207, 138, 0.55);
+}
+
+.casa-spot--door .casa-spot__glint::after {
+  border-color: rgba(255, 225, 170, 0.8);
+}
+
+.casa-spot--object .casa-spot__glint::before {
+  inset: 0.74rem;
+}
+
+/* cerca del borde derecho la etiqueta se abre hacia la izquierda */
+.casa-spot--flip .casa-spot__label {
+  left: auto;
+  right: 1.3rem;
+  text-align: right;
+  transform: translateX(0.3rem);
+}
+
+/* ——— leyenda del jardín */
+.casa-legend {
+  position: absolute;
+  z-index: 3;
+  width: min(360px, calc(100% - 2rem));
+  padding: 1.15rem 1.25rem 1.1rem;
+  border: 1px solid var(--casa-line);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(167, 122, 255, 0.16), transparent 60%),
+    var(--casa-glass);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  animation: casa-pop 260ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+.casa--vertical .casa-legend {
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: calc(var(--casa-dock-bottom) + 0.2rem);
+  width: auto;
+  max-height: 58svh;
+  overflow: auto;
+}
+
+@keyframes casa-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes casa-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.casa-legend__close {
+  position: absolute;
+  right: 0.55rem;
+  top: 0.45rem;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(244, 238, 252, 0.75);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.casa-legend__close:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.casa-legend__kicker,
+.casa-panel__kicker {
+  margin: 0 0 0.25rem;
+  color: var(--casa-violet-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.casa-legend h2 {
+  margin: 0 2rem 0.55rem 0;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #f7f0ff;
+}
+
+.casa-legend__text {
+  margin: 0;
+  color: rgba(244, 238, 252, 0.88);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.casa-legend__source {
+  margin: 0.55rem 0 0;
+  color: rgba(232, 196, 106, 0.85);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.88rem;
+}
+
+.casa-legend__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.95rem;
+}
+
+.casa-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid rgba(201, 167, 255, 0.38);
+  border-radius: 999px;
+  background: rgba(167, 122, 255, 0.1);
+  color: #f4eefc;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.casa-button:hover {
+  border-color: rgba(201, 167, 255, 0.7);
+  background: rgba(167, 122, 255, 0.22);
+}
+
+.casa-button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.casa-button--primary {
+  border-color: rgba(255, 207, 138, 0.65);
+  background: linear-gradient(135deg, rgba(255, 207, 138, 0.28), rgba(167, 122, 255, 0.22));
+}
+
+/* ——— brillo del objeto bajo el cursor (máscara renderizada en Blender) */
+.casa-glow {
+  position: absolute;
+  pointer-events: none;
+  animation: casa-fade-in 220ms ease both;
+}
+
+/* halo: la silueta del objeto, desenfocada y sumada como luz alrededor */
+.casa-glow__halo {
+  position: absolute;
+  inset: 0;
+  filter: blur(10px);
+  mix-blend-mode: screen;
+  animation: casa-breathe 2.6s ease-in-out infinite;
+}
+
+.casa-glow__mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #ffdf9e, #b88cff);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.casa-glow__mask--tint {
+  background: rgba(255, 238, 210, 0.14);
+  mix-blend-mode: screen;
+}
+
+@keyframes casa-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+/* ——— índice de objetos de la sala */
+.casa-dock {
+  position: absolute;
+  left: 50%;
+  bottom: var(--casa-dock-bottom);
+  display: flex;
+  gap: 0.35rem;
+  max-width: calc(100% - 1.5rem);
+  padding: 0.35rem;
+  border: 1px solid var(--casa-line);
+  border-radius: 999px;
+  background: rgba(8, 7, 18, 0.72);
+  backdrop-filter: blur(12px);
+  transform: translateX(-50%);
+  overflow-x: auto;
+  scrollbar-width: none;
+  animation: casa-fade-in 500ms ease both;
+}
+
+.casa-dock::-webkit-scrollbar {
+  display: none;
+}
+
+.casa-dock__item {
+  flex: 0 0 auto;
+  padding: 0.42rem 0.85rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(244, 238, 252, 0.82);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.casa-dock__item:hover,
+.casa-dock__item--hover,
+.casa-dock__item:focus-visible {
+  background: rgba(167, 122, 255, 0.22);
+  color: #fff;
+}
+
+.casa-skip-hub {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2.2rem);
+  bottom: var(--casa-dock-bottom);
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(244, 238, 252, 0.22);
+  border-radius: 999px;
+  background: rgba(8, 7, 18, 0.5);
+  color: rgba(244, 238, 252, 0.75);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.casa-skip-hub:hover {
+  color: #fff;
+  border-color: rgba(201, 167, 255, 0.6);
+}
+
+/* ——— paneles de los objetos */
+.casa-panel {
+  position: absolute;
+  z-index: 4;
+  right: clamp(0.75rem, 2.5vw, 2.4rem);
+  top: 5.4rem;
+  bottom: calc(var(--casa-dock-bottom) + 0.2rem);
+  display: flex;
+  flex-direction: column;
+  width: min(460px, 42vw);
+  border: 1px solid var(--casa-line);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(232, 196, 106, 0.1), transparent 45%),
+    radial-gradient(circle at 0% 100%, rgba(167, 122, 255, 0.14), transparent 50%),
+    var(--casa-glass);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(16px);
+  animation: casa-panel-in 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.casa-panel--leaving,
+.casa-libro--leaving {
+  animation: casa-panel-out 260ms ease both;
+}
+
+@keyframes casa-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes casa-panel-out {
+  to {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+}
+
+.casa--vertical .casa-panel {
+  left: 0;
+  right: 0;
+  top: auto;
+  bottom: 0;
+  width: auto;
+  max-height: 62svh;
+  border-radius: 20px 20px 0 0;
+  border-bottom: 0;
+  padding-bottom: env(safe-area-inset-bottom);
+  animation-name: casa-sheet-in;
+}
+
+body.has-music-player .casa--vertical .casa-panel {
+  bottom: 4.9rem;
+  border-radius: 20px;
+}
+
+@keyframes casa-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.casa-panel__header {
+  padding: 1rem 1.3rem 0.8rem;
+  border-bottom: 1px solid rgba(201, 167, 255, 0.14);
+}
+
+.casa-panel__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.7rem -0.35rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(244, 238, 252, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(244, 238, 252, 0.88);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.casa-panel__back:hover {
+  border-color: rgba(201, 167, 255, 0.6);
+  background: rgba(167, 122, 255, 0.14);
+}
+
+.casa-panel h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #f7f0ff;
+}
+
+.casa-panel h2:focus {
+  outline: none;
+}
+
+.casa-panel__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.3rem 1.3rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 167, 255, 0.35) transparent;
+}
+
+.casa-panel__lead {
+  margin: 0 0 1rem;
+  color: rgba(244, 238, 252, 0.9);
+  line-height: 1.65;
+}
+
+.casa-panel__subhead {
+  margin: 1.1rem 0 0.6rem;
+  color: var(--casa-gold);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.casa-panel__subhead:first-child {
+  margin-top: 0;
+}
+
+.casa-quote {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  border-left: 2px solid rgba(232, 196, 106, 0.6);
+  border-radius: 0 10px 10px 0;
+  background: rgba(232, 196, 106, 0.06);
+}
+
+.casa-quote p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(244, 238, 252, 0.9);
+}
+
+.casa-quote cite {
+  display: block;
+  margin-top: 0.45rem;
+  color: rgba(232, 196, 106, 0.8);
+  font-size: 0.8rem;
+  font-style: normal;
+}
+
+.casa-more {
+  display: inline-flex;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  color: var(--casa-violet-soft);
+  font-size: 0.92rem;
+  border-bottom: 1px solid rgba(201, 167, 255, 0.35);
+}
+
+.casa-more:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+.casa-list {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.casa-list > li {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(244, 238, 252, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.casa-list strong {
+  font-weight: 500;
+  color: #f4eefc;
+}
+
+.casa-list span {
+  color: rgba(244, 238, 252, 0.66);
+  font-size: 0.85rem;
+}
+
+.casa-list--links > li {
+  padding: 0;
+}
+
+.casa-list--links a {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  transition: background 160ms ease;
+}
+
+.casa-list--links a:hover {
+  background: rgba(167, 122, 255, 0.12);
+}
+
+.casa-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.9rem;
+}
+
+.casa-tabs__tab {
+  padding: 0.38rem 0.8rem;
+  border: 1px solid rgba(244, 238, 252, 0.14);
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(244, 238, 252, 0.75);
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.casa-tabs__tab--active {
+  border-color: rgba(201, 167, 255, 0.7);
+  background: rgba(167, 122, 255, 0.2);
+  color: #fff;
+}
+
+.casa-fichas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.casa-fichas a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem;
+  border: 1px solid rgba(244, 238, 252, 0.08);
+  border-radius: 12px;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.casa-fichas a:hover {
+  border-color: var(--ficha-accent, rgba(201, 167, 255, 0.6));
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.casa-fichas img {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid rgba(244, 238, 252, 0.2);
+}
+
+.casa-fichas span {
+  display: grid;
+  min-width: 0;
+}
+
+.casa-fichas strong {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.casa-fichas em {
+  overflow: hidden;
+  color: rgba(244, 238, 252, 0.6);
+  font-size: 0.72rem;
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.casa-eras {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  counter-reset: none;
+}
+
+.casa-eras li {
+  padding: 0.3rem 0;
+}
+
+.casa-eras li::marker {
+  color: var(--casa-gold);
+}
+
+.casa-eras strong {
+  display: block;
+  font-weight: 500;
+}
+
+.casa-eras span {
+  color: rgba(244, 238, 252, 0.6);
+  font-size: 0.82rem;
+}
+
+.casa-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.casa-cards--wide {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.casa-cards a {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.casa-cards img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 10px;
+  border: 1px solid rgba(244, 238, 252, 0.12);
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease;
+}
+
+.casa-cards--wide img {
+  aspect-ratio: 16 / 9;
+}
+
+.casa-cards a:hover img {
+  transform: translateY(-2px);
+  border-color: rgba(201, 167, 255, 0.6);
+}
+
+.casa-cards span {
+  overflow: hidden;
+  color: rgba(244, 238, 252, 0.78);
+  font-size: 0.76rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.casa-tracks {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.casa-track {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.4rem 0.6rem 0.4rem 0.4rem;
+  border: 1px solid rgba(244, 238, 252, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.casa-track:hover,
+.casa-track--playing {
+  border-color: rgba(201, 167, 255, 0.55);
+  background: rgba(167, 122, 255, 0.12);
+}
+
+.casa-track img,
+.casa-track__cover {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: rgba(167, 122, 255, 0.2);
+}
+
+.casa-track__text {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+}
+
+.casa-track__text strong {
+  overflow: hidden;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.casa-track__text em {
+  color: rgba(244, 238, 252, 0.6);
+  font-size: 0.74rem;
+  font-style: normal;
+}
+
+.casa-track__icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.casa-album {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.6rem !important;
+}
+
+.casa-album > span {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.casa-progress {
+  height: 0.5rem;
+  margin: 0.2rem 0 1rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.casa-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--casa-violet), var(--casa-gold));
+}
+
+.casa-facts {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+}
+
+.casa-facts dt {
+  color: var(--casa-violet-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.casa-facts dd {
+  margin: 0.1rem 0 0;
+  color: rgba(244, 238, 252, 0.88);
+}
+
+/* ——— el libro abierto: texto escrito sobre las páginas */
+.casa-libro {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  animation: casa-fade-in 500ms ease both;
+}
+
+.casa-libro > * {
+  pointer-events: auto;
+}
+
+.casa-libro__bar {
+  position: absolute;
+  left: clamp(0.75rem, 2.5vw, 2rem);
+  bottom: calc(var(--casa-dock-bottom) + 0.2rem);
+}
+
+.casa--vertical .casa-libro__bar {
+  bottom: auto;
+  top: 5rem;
+}
+
+.casa-libro__bar .casa-panel__back {
+  margin: 0;
+  background: rgba(8, 7, 18, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.casa-page {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--casa-ink);
+  font-family: var(--font-display);
+  animation: casa-ink 700ms 120ms ease both;
+}
+
+@keyframes casa-ink {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+  }
+}
+
+.casa-page__kicker {
+  margin: 0 0 0.3rem;
+  color: rgba(42, 27, 16, 0.62);
+  font-family: var(--font-body);
+  font-size: clamp(0.62rem, 0.9vw, 0.74rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.casa-page__title {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1rem, 1.9vw, 1.5rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #1e130a;
+}
+
+.casa-page__title:focus {
+  outline: none;
+}
+
+.casa-page__title--story {
+  font-size: clamp(1.05rem, 2.1vw, 1.65rem);
+}
+
+.casa-page__list {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(42, 27, 16, 0.3) transparent;
+}
+
+.casa-page__story {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.22rem 0.2rem;
+  border: 0;
+  border-bottom: 1px dotted rgba(42, 27, 16, 0.22);
+  background: none;
+  color: var(--casa-ink);
+  font-family: var(--font-display);
+  font-size: clamp(0.78rem, 1.15vw, 0.98rem);
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+}
+
+.casa-page__story:hover {
+  color: #5b2c86;
+}
+
+.casa-page__story--active {
+  color: #4a1f73;
+  font-style: italic;
+}
+
+.casa-page__dot {
+  flex: 0 0 auto;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  transform: translateY(-0.08rem);
+  box-shadow: 0 0 0 1px rgba(42, 27, 16, 0.25);
+}
+
+.casa-page__teaser {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0 0 0.6rem;
+  overflow-y: auto;
+  font-size: clamp(0.8rem, 1.2vw, 1.02rem);
+  line-height: 1.55;
+  color: #2f2014;
+}
+
+.casa-page__read {
+  flex: none;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(74, 31, 115, 0.45);
+  border-radius: 999px;
+  color: #4a1f73;
+  font-family: var(--font-body);
+  font-size: clamp(0.75rem, 1vw, 0.88rem);
+  transition: background 160ms ease;
+}
+
+.casa-page__read:hover {
+  background: rgba(74, 31, 115, 0.1);
+}
+
+.casa-libro:not(.casa-libro--on-pages) .casa-panel {
+  animation: none;
+}
+
+.casa-libro:not(.casa-libro--on-pages) .casa-page__title,
+.casa-libro:not(.casa-libro--on-pages) .casa-page__story,
+.casa-libro:not(.casa-libro--on-pages) .casa-page__teaser {
+  color: #f4eefc;
+}
+
+/* cintas-marcapáginas por personaje */
+.casa-cintas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.casa-cinta {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem 0.3rem 0.35rem;
+  border: 1px solid color-mix(in srgb, var(--cinta) 60%, transparent);
+  border-radius: 999px;
+  background: rgba(8, 7, 18, 0.62);
+  color: #fff;
+  font-size: 0.74rem;
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  transition:
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.casa-cinta__swatch {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: var(--cinta);
+  box-shadow: 0 0 10px var(--cinta);
+}
+
+.casa-cinta:hover,
+.casa-cinta--active {
+  background: color-mix(in srgb, var(--cinta) 30%, rgba(8, 7, 18, 0.8));
+  box-shadow: 0 0 18px color-mix(in srgb, var(--cinta) 55%, transparent);
+}
+
+.casa-cinta--anchored {
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+}
+
+.casa-cinta--anchored .casa-cinta__swatch {
+  width: 1rem;
+  height: 1rem;
+}
+
+.casa-cinta--anchored .casa-cinta__label {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.35rem);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(8, 7, 18, 0.78);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 160ms ease;
+  pointer-events: none;
+}
+
+.casa-cinta--anchored:hover .casa-cinta__label,
+.casa-cinta--anchored:focus-visible .casa-cinta__label,
+.casa-cinta--anchored.casa-cinta--active .casa-cinta__label {
+  opacity: 1;
+}
+
+.casa-cinta:not(.casa-cinta--anchored) {
+  position: static;
+  transform: none;
+}
+
+.casa-libro:not(.casa-libro--on-pages) .casa-cintas,
+.casa-cintas:has(.casa-cinta:not(.casa-cinta--anchored)) {
+  position: absolute;
+  inset: auto 0 var(--casa-dock-bottom);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+/* en vertical las cintas van en fila bajo el libro */
+.casa--vertical .casa-cintas {
+  position: absolute;
+  inset: auto 0 calc(var(--casa-dock-bottom) + 0.2rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.casa--vertical .casa-cinta {
+  position: static;
+  transform: none;
+}
+
+/* ——— índice clásico al final */
+.casa-indice {
+  position: relative;
+  padding: clamp(3rem, 8vw, 5.5rem) 0;
+  border-top: 1px solid rgba(201, 167, 255, 0.14);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(167, 122, 255, 0.1), transparent 30rem),
+    #07070f;
+}
+
+.casa-indice h2 {
+  margin: 0.3rem 0 1.6rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+  font-weight: 400;
+}
+
+.casa-indice__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.casa-indice__grid a {
+  display: grid;
+  gap: 0.25rem;
+  height: 100%;
+  padding: 0.95rem 1.05rem;
+  border: 1px solid rgba(244, 238, 252, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  transition:
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.casa-indice__grid a:hover {
+  border-color: rgba(201, 167, 255, 0.5);
+  background: rgba(167, 122, 255, 0.08);
+}
+
+.casa-indice__grid strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.casa-indice__grid span {
+  color: rgba(244, 238, 252, 0.66);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* ——— responsive y accesibilidad */
+@media (max-width: 760px) {
+  .casa__title {
+    top: 14%;
+  }
+
+  .casa__caption {
+    top: 5rem;
+    font-size: 0.7rem;
+  }
+
+  .casa-spot__label {
+    font-size: 0.74rem;
+  }
+
+  .casa-skip-hub {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .casa__hint {
+    bottom: 4.6rem;
+  }
+
+  .casa-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .casa-fichas {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (hover: none) {
+  .casa-spot--object .casa-spot__label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .casa__hint span,
+  .casa-spot__glint::after,
+  .casa-glow__mask {
+    animation: none;
+  }
+
+  .casa-legend,
+  .casa-panel,
+  .casa-libro,
+  .casa-page {
+    animation-duration: 1ms;
+  }
+}

@@ -13,7 +13,7 @@ const contentSecurityPolicy = [
   "img-src 'self' data: blob: https://raw.githubusercontent.com https://stardust009-spec.github.io https://www.google-analytics.com https://www.googletagmanager.com",
   "media-src 'self' https://raw.githubusercontent.com https://stardust009-spec.github.io",
   "font-src 'self' data:",
-  "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com",
+  "connect-src 'self' https://stardust009-spec.github.io https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
