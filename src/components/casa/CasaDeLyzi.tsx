@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { AmbientLayer, cameraAt } from "@/components/casa/ambient";
 import { CasaPanel } from "@/components/casa/CasaPanels";
 import { FrameStore, type CasaManifest, type Orient } from "@/components/casa/frameStore";
 import { useMusicPlayer } from "@/components/MusicPlayerContext";
@@ -110,6 +111,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const ambientRef = useRef<HTMLCanvasElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const hintRef = useRef<HTMLParagraphElement>(null);
   const gardenRef = useRef<HTMLParagraphElement>(null);
@@ -268,6 +270,11 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
         canvas.height = height;
         drawnRef.current = "";
       }
+      const live = ambientRef.current;
+      if (live && (live.width !== width || live.height !== height)) {
+        live.width = width;
+        live.height = height;
+      }
       const next = coverLayout(rect.width, rect.height, om.w, om.h);
       layoutRef.current = next;
       setLayout(next);
@@ -423,15 +430,63 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     }
     kickRef.current = kick;
 
+    // ——— capa viva: luciérnagas, llamas, nube y polvo (corre aunque no haya scroll)
+    const liveCanvas = ambientRef.current;
+    const liveCtx = liveCanvas?.getContext("2d") ?? null;
+    const camExt = om.cam?.exterior;
+    const camInt = om.cam?.entrada;
+    const layer = manifest.ambient && camExt && camInt ? new AmbientLayer(manifest.ambient) : null;
+    let liveRaf = 0;
+    let liveFade = 0;
+    const liveTick = (now: number) => {
+      liveRaf = 0;
+      if (!layer || !liveCtx || !liveCanvas || !camExt || !camInt || reducedRef.current || document.hidden) return;
+      liveCtx.setTransform(1, 0, 0, 1, 0, 0);
+      liveCtx.clearRect(0, 0, liveCanvas.width, liveCanvas.height);
+      const lay = layoutRef.current;
+      const busy = zoomRef.current !== null || modeRef.current !== "idle";
+      liveFade += ((busy ? 0 : 1) - liveFade) * 0.08;
+      if (lay && liveFade > 0.01 && stage.getBoundingClientRect().bottom > 0) {
+        const g = gRef.current;
+        const dpr = dprRef.current;
+        const t = now / 1000;
+        liveCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const aspect = om.w / om.h;
+        if (g < EXT) {
+          // se apaga al cruzar el umbral de luz
+          const fade = 1 - clamp((g - 200) / 22, 0, 1);
+          if (fade > 0.01) {
+            layer.drawExterior(liveCtx, t, { cam: cameraAt(camExt, g), sensor: camExt.sensor, aspect, layout: lay, alpha: liveFade * fade });
+          }
+        } else {
+          const fade = clamp((g - 262) / 26, 0, 1);
+          if (fade > 0.01) {
+            layer.drawInterior(liveCtx, t, { cam: cameraAt(camInt, g - EXT), sensor: camInt.sensor, aspect, layout: lay, alpha: liveFade * fade });
+          }
+        }
+      }
+      liveRaf = requestAnimationFrame(liveTick);
+    };
+    const startLive = () => {
+      if (!liveRaf && layer && !reducedRef.current && !document.hidden) liveRaf = requestAnimationFrame(liveTick);
+    };
+    const onVisibility = () => {
+      if (!document.hidden) startLive();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+
     resize();
     gRef.current = targetRef.current;
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", resize);
     kick();
+    startLive();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
+      document.removeEventListener("visibilitychange", onVisibility);
+      if (liveRaf) cancelAnimationFrame(liveRaf);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       rafRef.current = 0;
       store.dispose();
@@ -656,6 +711,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
             fetchPriority="high"
           />
           <canvas ref={canvasRef} className="casa__canvas" aria-hidden="true" />
+          <canvas ref={ambientRef} className="casa__canvas casa__ambient" aria-hidden="true" />
           <div className="casa__vignette" aria-hidden="true" />
 
           <div ref={titleRef} className="casa__title">

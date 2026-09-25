@@ -133,5 +133,32 @@ for (const orient of ["H", "V"]) {
   }
 }
 
+// capa viva: cámara por fotograma + luces, luciérnagas, luna y polvo (export_ambient.py)
+const readAmbient = async (name) => {
+  const file = path.join(SRC, `ambient_${name}.json`);
+  return (await exists(file)) ? JSON.parse(await readFile(file, "utf8")) : null;
+};
+const ext = await readAmbient("exterior");
+const int = await readAmbient("interior");
+if (ext && int) {
+  // sólo fuentes visibles: fuera las luces de relleno (guirnalda completa, vitrola, tronco)
+  const visible = (lights) =>
+    lights
+      .filter((light) => !/guirnalda|vitrola|junto al tronco/i.test(light.name))
+      .map(({ kind, p, color }) => ({ kind, p, color }));
+  manifest.ambient = {
+    exterior: { lights: visible(ext.lights), fireflies: ext.fireflies, moon: ext.moon },
+    interior: { lights: visible(int.lights), fairy: int.fairy, dust: int.dust }
+  };
+  for (const orient of ["H", "V"]) {
+    if (!manifest[orient]) continue;
+    manifest[orient].cam = {
+      exterior: ext.cams[orient]?.exterior,
+      entrada: int.cams[orient]?.entrada
+    };
+  }
+  console.log(`Capa viva: ${manifest.ambient.exterior.lights.length + manifest.ambient.interior.lights.length} luces, ${ext.fireflies.length} luciérnagas`);
+}
+
 await writeFile(path.join(OUT, "manifest.json"), JSON.stringify(manifest));
 console.log(`Total: ${(total / 1024 / 1024).toFixed(1)} MB → ${OUT}`);

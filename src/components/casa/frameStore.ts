@@ -4,6 +4,26 @@ export type Orient = "H" | "V";
 export type HotspotTrack = [number, number, number][];
 export type Point = [number, number];
 
+export type Vec3 = [number, number, number];
+/** Cámara de Blender en un fotograma: posición, rotación (cuaternión w,x,y,z) y lente en mm. */
+export type CamFrame = [number, number, number, number, number, number, number, number];
+export type CamTrack = { sensor: number; frames: CamFrame[] };
+
+export type AmbientLight = { kind: "flame" | "window" | "glow"; p: Vec3; color: string };
+export type AmbientWorld = {
+  exterior: {
+    lights: AmbientLight[];
+    /** [x, y, z, 1 si es dorada] */
+    fireflies: [number, number, number, number][];
+    moon: { p: Vec3; r: number } | null;
+  };
+  interior: {
+    lights: AmbientLight[];
+    fairy: Vec3[];
+    dust: { min: Vec3; max: Vec3 } | null;
+  };
+};
+
 export type OrientManifest = {
   w: number;
   h: number;
@@ -15,9 +35,11 @@ export type OrientManifest = {
     R: (Point | null)[];
     ribbons: Record<string, Point | null>;
   } | null;
+  /** cámara por fotograma del recorrido (para la capa viva) */
+  cam?: { exterior?: CamTrack; entrada?: CamTrack };
 };
 
-export type CasaManifest = { v: number; H: OrientManifest; V: OrientManifest };
+export type CasaManifest = { v: number; H: OrientManifest; V: OrientManifest; ambient?: AmbientWorld };
 
 type Job = { seq: string; index: number };
 

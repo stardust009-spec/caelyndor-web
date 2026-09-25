@@ -88,6 +88,11 @@ html.casa-html .site-header {
   display: block;
 }
 
+/* capa viva (luciérnagas, llamas, nube): transparente, sin capturar clics */
+.casa__ambient {
+  pointer-events: none;
+}
+
 .casa__vignette {
   position: absolute;
   inset: 0;
