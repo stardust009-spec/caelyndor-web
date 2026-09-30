@@ -270,9 +270,17 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     return track ? track.getBoundingClientRect().top + window.scrollY : 0;
   }, []);
 
+  /** Píxeles por "vh" del recorrido, medidos sobre la pista (el mismo alto que usa el CSS): no
+   *  cambia cuando la barra del navegador del celular aparece o se esconde, sí al girarlo. */
+  const vhUnit = useCallback(() => {
+    const track = trackRef.current;
+    const total = beatsLength(reducedRef.current ? REDUCED_BEATS : BEATS) + 100;
+    return track && track.offsetHeight > 0 ? track.offsetHeight / total : window.innerHeight / 100;
+  }, []);
+
   const hubScrollY = useCallback(
-    () => trackTop() + (beatsLength(reducedRef.current ? REDUCED_BEATS : BEATS) / 100) * window.innerHeight,
-    [trackTop]
+    () => trackTop() + beatsLength(reducedRef.current ? REDUCED_BEATS : BEATS) * vhUnit(),
+    [trackTop, vhUnit]
   );
 
   // ——— motor: carga de fotogramas, dibujo, bucles y overlays (sin re-render de React por fotograma)
@@ -329,30 +337,48 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       return coverLayout(rect.width, rect.height, manifest.w, manifest.h, pan);
     };
 
+    // se asigna más abajo, cuando ya existen draw() y overlay()
+    let paintNow = () => {};
+
     const resize = () => {
       const rect = stage.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       dprRef.current = dpr;
       const width = Math.round(rect.width * dpr);
       const height = Math.round(rect.height * dpr);
-      // asignar el tamaño limpia el canvas: sólo si de verdad cambió (en móvil la barra
-      // del navegador dispara resize sin cambiar el escenario, que mide 100svh)
+      layoutRef.current = layoutFor(zoomRef.current ? (manifest.rests[HUB]?.pan[0] ?? 0.5) : panRef.current);
+      // asignar el tamaño limpia el canvas: sólo si de verdad cambió, y se repinta en el acto
+      // para no mostrar un cuadro negro (el escenario sigue el alto real: la barra del
+      // navegador del celular lo agranda o achica)
       if (canvas.width !== width || canvas.height !== height) {
         canvas.width = width;
         canvas.height = height;
         drawnRef.current = "";
+        paintNow();
       }
-      layoutRef.current = layoutFor(panRef.current);
       setSize((current) =>
         current && current.cw === rect.width && current.ch === rect.height ? current : { cw: rect.width, ch: rect.height }
       );
       onScroll();
     };
 
+    // punto del recorrido (en vh de la pista) y ancho de pantalla con que se midió: al girar el
+    // celular la pista cambia de largo y el mismo scroll en píxeles caería en otro lado (o en el
+    // pie de página), así que se vuelve al mismo punto
+    let progress = -1;
+    let widthSeen = window.innerWidth;
+
     const onScroll = () => {
-      const scrolled = window.scrollY - trackTop();
-      const vh = (scrolled / window.innerHeight) * 100;
+      const unit = vhUnit();
       const activeBeats = reducedRef.current ? REDUCED_BEATS : BEATS;
+      if (window.innerWidth !== widthSeen) {
+        widthSeen = window.innerWidth;
+        if (progress >= 0 && progress <= beatsLength(activeBeats) + 100) {
+          window.scrollTo(0, trackTop() + progress * unit);
+        }
+      }
+      const vh = (window.scrollY - trackTop()) / unit;
+      progress = vh;
       const sample = sampleAt(clamp(vh, 0, beatsLength(activeBeats)), activeBeats, manifest.rests);
       targetRef.current = sample.p;
       panTargetRef.current = sample.pan;
@@ -502,6 +528,11 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       }
     };
 
+    paintNow = () => {
+      draw();
+      overlay();
+    };
+
     // el suavizado sigue al scroll en tiempo real (no por fotograma): igual a 60 o 120 Hz y en
     // equipos que botan fotogramas
     let running = false;
@@ -584,7 +615,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       store.dispose();
       if (storeRef.current === store) storeRef.current = null;
     };
-  }, [manifest, trackTop]);
+  }, [manifest, trackTop, vhUnit]);
 
   // ——— bloqueo de scroll mientras hay un objeto abierto (el canal de la barra queda reservado
   // en toda la página para que el escenario no cambie de ancho al bloquear)
@@ -793,7 +824,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
 
   const backToGarden = () => {
     const beatsNow = reducedRef.current ? REDUCED_BEATS : BEATS;
-    const top = trackTop() + (vhAtRest(GARDEN, beatsNow, 0.35) / 100) * window.innerHeight;
+    const top = trackTop() + vhAtRest(GARDEN, beatsNow, 0.35) * vhUnit();
     window.scrollTo({ top, behavior: reducedRef.current ? "auto" : "smooth" });
   };
 
