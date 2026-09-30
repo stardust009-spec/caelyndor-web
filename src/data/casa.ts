@@ -1,13 +1,14 @@
 /**
  * La casa de Lyzi — portada narrativa del portal.
  *
- * El recorrido se renderiza en Blender (Obra/Dioramas/Casa de Lyzi) y se sirve como secuencias
- * de fotogramas WebP + un manifest.json con la posición en pantalla de cada objeto clickeable.
- * Se preparan con `node scripts/casa-de-lyzi-frames.mjs`. La carpeta local
- * (public/casa-de-lyzi/) NO se versiona: en producción los fotogramas viven en el repo
- * Caelyndor-Assets (GitHub Pages), igual que la música, por el tope de Vercel.
+ * Escenas pintadas (Astra, Propuesta 02) animadas con video IA (Higgsfield · Kling 3.0): los
+ * tramos de scroll son secuencias de fotogramas WebP, los descansos y los primeros planos son
+ * bucles de video, y un manifest.json dice dónde queda cada cosa clickeable. Se preparan con
+ * `node scripts/casa-de-lyzi-video.mjs`. La carpeta local (public/casa-de-lyzi/) NO se versiona:
+ * en producción vive en el repo Caelyndor-Assets (GitHub Pages), igual que la música, por el
+ * tope de Vercel.
  */
-export const CASA_ASSET_BASE = process.env.NEXT_PUBLIC_CASA_ASSETS ?? "/casa-de-lyzi/v1";
+export const CASA_ASSET_BASE = process.env.NEXT_PUBLIC_CASA_ASSETS ?? "/casa-de-lyzi/v2";
 
 export const CASA_OBJETOS = [
   "biblioteca",
@@ -24,16 +25,6 @@ export type CasaObjeto = (typeof CASA_OBJETOS)[number];
 
 export const CASA_EXTERIOR = ["farol", "lirios", "tronco", "ventana", "macetero", "puerta"] as const;
 export type CasaExterior = (typeof CASA_EXTERIOR)[number];
-
-/** Fotogramas del exterior (0–239) en que cada leyenda del jardín puede aparecer. */
-export const CASA_EXTERIOR_WINDOWS: Record<CasaExterior, [number, number]> = {
-  farol: [26, 84],
-  lirios: [100, 150],
-  tronco: [100, 156],
-  ventana: [104, 176],
-  macetero: [112, 180],
-  puerta: [150, 212]
-};
 
 export const CASA_OBJETO_INFO: Record<CasaObjeto, { name: string; short: string; hint: string }> = {
   biblioteca: { name: "La biblioteca", short: "Biblioteca", hint: "Fichas, enciclopedia, cronología y libros" },

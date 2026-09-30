@@ -1,45 +1,36 @@
-export type Orient = "H" | "V";
-
-/** [x, y, visible] normalizados desde arriba-izquierda del fotograma. */
-export type HotspotTrack = [number, number, number][];
+/** [x, y] normalizados desde arriba-izquierda de la escena. */
 export type Point = [number, number];
 
-export type Vec3 = [number, number, number];
-/** Cámara de Blender en un fotograma: posición, rotación (cuaternión w,x,y,z) y lente en mm. */
-export type CamFrame = [number, number, number, number, number, number, number, number];
-export type CamTrack = { sensor: number; frames: CamFrame[] };
-
-export type AmbientLight = { kind: "flame" | "window" | "glow"; p: Vec3; color: string };
-export type AmbientWorld = {
-  exterior: {
-    lights: AmbientLight[];
-    /** [x, y, z, 1 si es dorada] */
-    fireflies: [number, number, number, number][];
-    moon: { p: Vec3; r: number } | null;
-  };
-  interior: {
-    lights: AmbientLight[];
-    fairy: Vec3[];
-    dust: { min: Vec3; max: Vec3 } | null;
-  };
+/** Escena de descanso: lámina fija, bucle vivo y encuadre en pantallas verticales. */
+export type CasaRest = {
+  id: string;
+  plate: string;
+  loop: string;
+  /** centro horizontal del encuadre vertical al llegar y al irse (el scroll barre la escena) */
+  pan: [number, number];
 };
 
-export type OrientManifest = {
+export type CasaBook = {
+  /** esquinas de cada página del libro abierto */
+  L: Point[];
+  R: Point[];
+  /** dónde se posa el botón de cada cinta */
+  ribbons: Record<string, Point>;
+};
+
+export type CasaManifest = {
+  v: number;
   w: number;
   h: number;
+  /** fotogramas por secuencia: t1…t4 (tramos de scroll) y zoom-<objeto> */
   seq: Record<string, number>;
-  hs: Record<string, HotspotTrack>;
+  rests: CasaRest[];
+  /** leyendas del exterior: en qué escena de descanso y en qué punto */
+  spots: Record<string, { rest: number; p: Point }>;
   hub: Record<string, Point>;
-  book: {
-    L: (Point | null)[];
-    R: (Point | null)[];
-    ribbons: Record<string, Point | null>;
-  } | null;
-  /** cámara por fotograma del recorrido (para la capa viva) */
-  cam?: { exterior?: CamTrack; entrada?: CamTrack };
+  closeups: Record<string, { plate: string; loop: string }>;
+  book: CasaBook | null;
 };
-
-export type CasaManifest = { v: number; H: OrientManifest; V: OrientManifest; ambient?: AmbientWorld };
 
 type Job = { seq: string; index: number };
 
@@ -59,7 +50,6 @@ export class FrameStore {
 
   constructor(
     private readonly base: string,
-    readonly orient: Orient,
     private readonly counts: Record<string, number>,
     private readonly concurrency = 6
   ) {}
@@ -69,7 +59,7 @@ export class FrameStore {
   }
 
   url(seq: string, index: number) {
-    return `${this.base}/${this.orient}/${seq}/${String(index).padStart(3, "0")}.webp`;
+    return `${this.base}/H/${seq}/${String(index).padStart(3, "0")}.webp`;
   }
 
   request(seq: string, options: { stride?: number; priority?: boolean } = {}) {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import type { Orient, OrientManifest, Point } from "@/components/casa/frameStore";
+import type { CasaBook, Point } from "@/components/casa/frameStore";
 import { PauseIcon, PlayIcon } from "@/components/MusicIcons";
 import { useMusicPlayer } from "@/components/MusicPlayerContext";
 import {
@@ -17,13 +17,15 @@ import {
 } from "@/data/casa";
 
 type Layout = { cw: number; ch: number; ox: number; oy: number; dw: number; dh: number };
+type Orient = "H" | "V";
 
 type PanelProps = {
   objeto: CasaObjeto;
   content: CasaContent;
   orient: Orient;
   layout: Layout | null;
-  book: OrientManifest["book"];
+  /** páginas y cintas del libro abierto (null: el libro va como panel, p. ej. en vertical) */
+  book: CasaBook | null;
   leaving: boolean;
   onClose: () => void;
 };
@@ -364,8 +366,8 @@ function Visitas() {
 
 const HEADER_SAFE = 84; // alto del menú fijo + margen
 
-function pageRect(points: (Point | null)[], layout: Layout) {
-  const valid = points.filter((point): point is Point => point !== null);
+function pageRect(points: Point[], layout: Layout) {
+  const valid = points;
   if (valid.length < 4) return null;
   const xs = valid.map(([x]) => layout.ox + x * layout.dw);
   const ys = valid.map(([, y]) => layout.oy + y * layout.dh);
@@ -405,14 +407,13 @@ function CasaLibro({ content, orient, layout, book, leaving, onClose }: PanelPro
   }, [book, layout, orient]);
 
   const cintaDef = CASA_CINTAS.find((item) => item.key === cinta)!;
-  // cada botón se posa sobre su cinta, a medio camino entre el borde del libro y la punta
-  const bookBottom = pages ? Math.max(pages.list.top + pages.list.height, pages.detail.top + pages.detail.height) : 0;
+  // cada botón se posa sobre su cinta de seda (punto medido en la escena del libro)
   const ribbons = CASA_CINTAS.map((item) => {
     const point = book?.ribbons[item.key];
     if (!point || !layout || !pages || orient === "V") return { ...item, style: undefined };
     const x = layout.ox + point[0] * layout.dw;
     const y = layout.oy + point[1] * layout.dh;
-    return { ...item, style: { left: x, top: Math.min(bookBottom + (y - bookBottom) * 0.55, layout.ch - 60) } };
+    return { ...item, style: { left: x, top: Math.min(y, layout.ch - 60) } };
   });
 
   const listPage = (

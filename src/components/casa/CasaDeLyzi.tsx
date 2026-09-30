@@ -1,15 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { AmbientLayer, cameraAt } from "@/components/casa/ambient";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CasaPanel } from "@/components/casa/CasaPanels";
-import { FrameStore, type CasaManifest, type Orient } from "@/components/casa/frameStore";
+import { FrameStore, type CasaManifest, type CasaRest } from "@/components/casa/frameStore";
 import { useMusicPlayer } from "@/components/MusicPlayerContext";
 import {
   CASA_ASSET_BASE,
   CASA_EXTERIOR,
-  CASA_EXTERIOR_WINDOWS,
   CASA_OBJETOS,
   CASA_OBJETO_INFO,
   type CasaContent,
@@ -17,67 +15,81 @@ import {
   type CasaObjeto
 } from "@/data/casa";
 
-// ——— Guion del recorrido (en fotogramas globales: exterior 0–239, sala 240–323)
-const EXT = 240;
-const ENT = 84;
-const LAST = EXT + ENT - 1;
-
-type Beat = { g0: number; g1: number; vh: number };
-/** Cada tramo avanza de g0 a g1 mientras se desplazan `vh` alturas de pantalla (en %). */
+// ——— Guion del recorrido. Posición p: 0 la casita a lo lejos · 1 el arco · 2 el jardín ·
+// 3 la puerta · 4 la sala. Entre dos descansos corre un tramo (t1…t4): el vuelo de cámara
+// hecho con video IA, que el scroll recorre fotograma a fotograma.
+type Beat = { p0: number; p1: number; vh: number };
+/** Cada tramo avanza de p0 a p1 mientras se desplazan `vh` alturas de pantalla (en %). */
 const BEATS: Beat[] = [
-  { g0: 0, g1: 99, vh: 190 }, // el sendero hasta el arco
-  { g0: 99, g1: 176, vh: 230 }, // el jardín: pausa para las leyendas
-  { g0: 176, g1: 214, vh: 110 }, // la puerta se abre
-  { g0: 214, g1: 266, vh: 40 }, // el destello del umbral pasa rápido (en ambos sentidos)
-  { g0: 266, g1: LAST, vh: 110 }, // la sala se revela
-  { g0: LAST, g1: LAST, vh: 45 } // respiro en la sala
+  { p0: 0, p1: 0, vh: 35 }, // la casita a lo lejos (título)
+  { p0: 0, p1: 1, vh: 150 }, // el sendero hasta el arco
+  { p0: 1, p1: 1, vh: 55 }, // el arco y el farol
+  { p0: 1, p1: 2, vh: 130 }, // cruzando el arco
+  { p0: 2, p1: 2, vh: 95 }, // el jardín: pausa para las leyendas
+  { p0: 2, p1: 3, vh: 120 }, // hasta la puerta, que se abre
+  { p0: 3, p1: 3, vh: 55 }, // la puerta entreabierta
+  { p0: 3, p1: 4, vh: 95 }, // el umbral de luz y la sala
+  { p0: 4, p1: 4, vh: 45 } // respiro en la sala
 ];
-/** Fotograma del jardín al que lleva "Volver al jardín". */
-const GARDEN = 140;
-/** Con movimiento reducido: dos escenas fijas (el jardín y la sala), sin vuelo de cámara. */
+const GARDEN = 2;
+const HUB = 4;
+/** Con movimiento reducido: las escenas fijas, sin vuelo de cámara ni bucles. */
 const REDUCED_BEATS: Beat[] = [
-  { g0: 140, g1: 140, vh: 120 },
-  { g0: LAST, g1: LAST, vh: 60 }
+  { p0: 0, p1: 0, vh: 50 },
+  { p0: 1, p1: 1, vh: 60 },
+  { p0: GARDEN, p1: GARDEN, vh: 90 },
+  { p0: 3, p1: 3, vh: 60 },
+  { p0: HUB, p1: HUB, vh: 60 }
 ];
+const ZOOM_IN_MS = 1300;
+const ZOOM_OUT_MS = 950;
+/** Distancia (en escenas) desde la que se empieza a bajar el bucle de un descanso. */
+const LOOP_PRELOAD = 0.6;
 
 type Mode = "idle" | "in" | "panel" | "out";
 type Phase = "exterior" | "entrada" | "hub";
 type Layout = { cw: number; ch: number; ox: number; oy: number; dw: number; dh: number };
 type Zoom = { key: CasaObjeto; from: number; to: number; start: number; dur: number; t: number; done?: () => void };
+type Sample = { p: number; pan: number };
 
 const beatsLength = (beats: Beat[]) => beats.reduce((sum, beat) => sum + beat.vh, 0);
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-function frameAt(scrolledVh: number, beats: Beat[]) {
+/** Posición en el recorrido y encuadre horizontal (pantallas verticales) para un scroll dado. */
+function sampleAt(scrolledVh: number, beats: Beat[], rests: CasaRest[]): Sample {
+  const pan = (index: number) => rests[index]?.pan ?? [0.5, 0.5];
   let acc = 0;
-  for (const beat of beats) {
-    if (scrolledVh <= acc + beat.vh) {
-      const t = beat.vh ? (scrolledVh - acc) / beat.vh : 1;
-      return beat.g0 + (beat.g1 - beat.g0) * Math.min(1, Math.max(0, t));
+  for (const [i, beat] of beats.entries()) {
+    if (scrolledVh <= acc + beat.vh || i === beats.length - 1) {
+      const t = beat.vh ? clamp((scrolledVh - acc) / beat.vh, 0, 1) : 1;
+      if (beat.p0 === beat.p1) {
+        const [a, b] = pan(beat.p0);
+        return { p: beat.p0, pan: lerp(a, b, t) };
+      }
+      return { p: lerp(beat.p0, beat.p1, t), pan: lerp(pan(beat.p0)[1], pan(beat.p1)[0], t) };
     }
     acc += beat.vh;
   }
-  return beats[beats.length - 1].g1;
+  return { p: HUB, pan: 0.5 };
 }
 
-function vhAt(g: number, beats: Beat[]) {
+/** Scroll (en vh) a una fracción `where` del descanso `p`. */
+function vhAtRest(p: number, beats: Beat[], where: number) {
   let acc = 0;
   for (const beat of beats) {
-    if (g <= beat.g1) {
-      return beat.g1 === beat.g0 ? acc : acc + clamp((g - beat.g0) / (beat.g1 - beat.g0), 0, 1) * beat.vh;
-    }
+    if (beat.p0 === p && beat.p1 === p) return acc + beat.vh * where;
     acc += beat.vh;
   }
   return acc;
 }
 
-const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
-
-function coverLayout(cw: number, ch: number, iw: number, ih: number): Layout {
+/** Encuadre "cover" con el centro horizontal en `cx` (sin dejar bordes vacíos). */
+function coverLayout(cw: number, ch: number, iw: number, ih: number, cx = 0.5): Layout {
   const scale = Math.max(cw / iw, ch / ih);
   const dw = iw * scale;
   const dh = ih * scale;
-  return { cw, ch, dw, dh, ox: (cw - dw) / 2, oy: (ch - dh) / 2 };
+  return { cw, ch, dw, dh, ox: clamp(cw / 2 - cx * dw, cw - dw, 0), oy: (ch - dh) / 2 };
 }
 
 /** Cierra una animación de acercamiento una sola vez (la llama el bucle o un respaldo). */
@@ -88,7 +100,7 @@ function finishZoom(zoom: Zoom) {
   done?.();
 }
 
-const pickOrient = (): Orient => (window.innerWidth / window.innerHeight < 0.82 ? "V" : "H");
+const isPortrait = () => window.innerWidth / window.innerHeight < 0.82;
 
 function waitFor(condition: () => boolean, timeout: number) {
   return new Promise<void>((resolve) => {
@@ -105,26 +117,38 @@ function isObjeto(value: string): value is CasaObjeto {
   return (CASA_OBJETOS as readonly string[]).includes(value);
 }
 
+function placeVideo(video: HTMLVideoElement, lay: Layout) {
+  const key = `${lay.ox.toFixed(1)}:${lay.oy.toFixed(1)}:${lay.dw.toFixed(1)}:${lay.dh.toFixed(1)}`;
+  if (video.dataset.place === key) return;
+  video.dataset.place = key;
+  video.style.width = `${lay.dw}px`;
+  video.style.height = `${lay.dh}px`;
+  video.style.transform = `translate3d(${lay.ox}px, ${lay.oy}px, 0)`;
+}
+
 export function CasaDeLyzi({ content }: { content: CasaContent }) {
   const { tracks, currentTrack, isPlaying, handleToggle } = useMusicPlayer();
 
   const trackRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const ambientRef = useRef<HTMLCanvasElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const hintRef = useRef<HTMLParagraphElement>(null);
   const gardenRef = useRef<HTMLParagraphElement>(null);
   const salaRef = useRef<HTMLParagraphElement>(null);
   const extButtons = useRef<Partial<Record<CasaExterior, HTMLButtonElement | null>>>({});
+  const loopRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const closeVideoRef = useRef<HTMLVideoElement>(null);
 
   const storeRef = useRef<FrameStore | null>(null);
   const manifestRef = useRef<CasaManifest | null>(null);
   const layoutRef = useRef<Layout | null>(null);
-  const orientRef = useRef<Orient>("H");
   const reducedRef = useRef(false);
+  const loopsOkRef = useRef(true);
   const gRef = useRef(0);
   const targetRef = useRef(0);
+  const panRef = useRef(0.5);
+  const panTargetRef = useRef(0.5);
   const zoomRef = useRef<Zoom | null>(null);
   const modeRef = useRef<Mode>("idle");
   const phaseRef = useRef<Phase>("exterior");
@@ -137,9 +161,9 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
 
   const [manifest, setManifest] = useState<CasaManifest | null>(null);
   const [failed, setFailed] = useState(false);
-  const [orient, setOrient] = useState<Orient>("H");
+  const [portrait, setPortrait] = useState(false);
   const [reduced, setReduced] = useState(false);
-  const [layout, setLayout] = useState<Layout | null>(null);
+  const [size, setSize] = useState<{ cw: number; ch: number } | null>(null);
   const [phase, setPhase] = useState<Phase>("exterior");
   const [legend, setLegend] = useState<{ key: CasaExterior; x: number; y: number } | null>(null);
   const [active, setActive] = useState<CasaObjeto | null>(null);
@@ -147,6 +171,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
   const [hovered, setHovered] = useState<CasaObjeto | null>(null);
   const [painted, setPainted] = useState(false);
   const [loadedPct, setLoadedPct] = useState(0);
+  const [closeReady, setCloseReady] = useState(false);
 
   const beats = reduced ? REDUCED_BEATS : BEATS;
   const scrollVh = beatsLength(beats);
@@ -165,15 +190,8 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     };
     apply();
     media.addEventListener("change", apply);
-    const onResize = () => {
-      const next = pickOrient();
-      if (next !== orientRef.current) {
-        orientRef.current = next;
-        setOrient(next);
-      }
-    };
-    orientRef.current = pickOrient();
-    setOrient(orientRef.current);
+    const onResize = () => setPortrait(isPortrait());
+    onResize();
     window.addEventListener("resize", onResize);
     return () => {
       media.removeEventListener("change", apply);
@@ -191,6 +209,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       })
       .then((data) => {
         if (cancelled) return;
+        if (data.v !== 2 || !data.seq?.t1) throw new Error("manifest");
         manifestRef.current = data;
         setManifest(data);
       })
@@ -212,14 +231,9 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     [trackTop]
   );
 
-  // ——— motor: carga de fotogramas, dibujo y overlays (sin re-render de React por fotograma)
+  // ——— motor: carga de fotogramas, dibujo, bucles y overlays (sin re-render de React por fotograma)
   useEffect(() => {
     if (!manifest) return;
-    const om = manifest[orient];
-    if (!om || !om.seq.exterior) {
-      setFailed(true);
-      return;
-    }
     const canvas = canvasRef.current;
     const stage = stageRef.current;
     if (!canvas || !stage) return;
@@ -232,29 +246,43 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       connection?: { saveData?: boolean; effectiveType?: string };
     };
     const smallDevice = window.innerWidth < 700 || (nav.deviceMemory ?? 8) <= 4;
-    // con ahorro de datos o red lenta basta 1 de cada 4 fotogramas (el fundido entre ellos suaviza)
+    // con ahorro de datos o red lenta basta 1 de cada 4 fotogramas (el fundido entre ellos
+    // suaviza) y las escenas quedan fijas: los bucles de video no se bajan
     const slowNetwork = Boolean(nav.connection?.saveData) || /(^|-)(2g|3g)$/.test(nav.connection?.effectiveType ?? "");
+    loopsOkRef.current = !slowNetwork;
     const stride = slowNetwork ? 4 : smallDevice ? 2 : 1;
-    const store = new FrameStore(CASA_ASSET_BASE, orient, om.seq, smallDevice ? 4 : 6);
+    const store = new FrameStore(CASA_ASSET_BASE, manifest.seq, smallDevice ? 4 : 6);
     storeRef.current = store;
     drawnRef.current = "";
+    const tramos = ["t1", "t2", "t3", "t4"];
     if (reducedRef.current) {
-      store.request("exterior", { stride: 16, priority: true });
-      store.request("entrada", { stride: 16, priority: true });
+      // sólo las escenas de descanso
+      tramos.forEach((seq) => store.prioritize(seq, [0]));
+      store.prioritize("t4", [store.count("t4") - 1]);
     } else {
-      store.request("exterior", { stride });
-      store.request("entrada", { stride });
+      // de grueso a fino en todos los tramos a la vez: el recorrido completo se puede
+      // recorrer casi de inmediato y va ganando fluidez
+      for (const step of [16, 8, 4, 2, 1]) {
+        if (step < stride) break;
+        for (const seq of tramos) store.request(seq, { stride: step });
+      }
     }
-    const expected = (om.seq.exterior ?? 0) + (om.seq.entrada ?? 0);
+    const expected = tramos.reduce((sum, seq) => sum + Math.ceil(store.count(seq) / stride), 0);
     let lastPct = -1;
     store.onFrame = () => {
-      const pct = Math.round(((store.loaded("exterior") + store.loaded("entrada")) / Math.max(1, expected)) * 100);
+      const loaded = tramos.reduce((sum, seq) => sum + store.loaded(seq), 0);
+      const pct = Math.min(100, Math.round((loaded / Math.max(1, expected)) * 100));
       if (pct !== lastPct && pct % 5 === 0) {
         lastPct = pct;
         setLoadedPct(pct);
       }
       drawnRef.current = "";
       kick();
+    };
+
+    const layoutFor = (pan: number) => {
+      const rect = stage.getBoundingClientRect();
+      return coverLayout(rect.width, rect.height, manifest.w, manifest.h, pan);
     };
 
     const resize = () => {
@@ -270,14 +298,10 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
         canvas.height = height;
         drawnRef.current = "";
       }
-      const live = ambientRef.current;
-      if (live && (live.width !== width || live.height !== height)) {
-        live.width = width;
-        live.height = height;
-      }
-      const next = coverLayout(rect.width, rect.height, om.w, om.h);
-      layoutRef.current = next;
-      setLayout(next);
+      layoutRef.current = layoutFor(panRef.current);
+      setSize((current) =>
+        current && current.cw === rect.width && current.ch === rect.height ? current : { cw: rect.width, ch: rect.height }
+      );
       onScroll();
     };
 
@@ -285,7 +309,9 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       const scrolled = window.scrollY - trackTop();
       const vh = (scrolled / window.innerHeight) * 100;
       const activeBeats = reducedRef.current ? REDUCED_BEATS : BEATS;
-      targetRef.current = frameAt(clamp(vh, 0, beatsLength(activeBeats)), activeBeats);
+      const sample = sampleAt(clamp(vh, 0, beatsLength(activeBeats)), activeBeats, manifest.rests);
+      targetRef.current = sample.p;
+      panTargetRef.current = sample.pan;
       const open = legendRef.current;
       if (open && Math.abs(window.scrollY - open.scrollY) > 70) {
         legendRef.current = null;
@@ -303,36 +329,34 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       ctx.globalAlpha = 1;
     };
 
+    /** Tramo y fotograma (fraccionario) para una posición del recorrido. */
+    const tramoAt = (g: number) => {
+      const k = clamp(Math.floor(g), 0, 3);
+      const seq = tramos[k];
+      return { seq, position: clamp(g - k, 0, 1) * (store.count(seq) - 1) };
+    };
+
     let paintedOnce = false;
     const draw = () => {
-      let seq: string;
-      let position: number;
+      let { seq, position } = tramoAt(gRef.current);
       const zoom = zoomRef.current;
       if (zoom) {
         seq = `zoom-${zoom.key}`;
         position = zoom.t * (store.count(seq) - 1);
-      } else {
-        const g = gRef.current;
-        if (g < EXT) {
-          seq = "exterior";
-          position = g;
-        } else {
-          seq = "entrada";
-          position = g - EXT;
-        }
       }
       const base = Math.floor(position);
       const frac = position - base;
       let index = store.nearest(seq, base);
       if (index < 0 && zoom) {
         // el acercamiento aún no llega: mantener la vista de la sala
-        seq = "entrada";
-        index = store.nearest(seq, ENT - 1);
+        seq = "t4";
+        index = store.nearest(seq, store.count(seq) - 1);
       }
       if (index < 0) return;
       const next = Math.min(base + 1, store.count(seq) - 1);
       const blend = index === base && frac > 0.04 && store.isReady(seq, next) ? Math.round(frac * 8) / 8 : 0;
-      const key = `${seq}:${index}:${blend}`;
+      const lay = layoutRef.current;
+      const key = `${seq}:${index}:${blend}:${lay ? lay.ox.toFixed(1) : ""}`;
       if (key === drawnRef.current) return;
       drawnRef.current = key;
       const image = store.get(seq, index);
@@ -352,77 +376,128 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       if (node) node.style.opacity = String(value);
     };
 
+    /** Bucles de los descansos: se bajan al acercarse y suenan (mudos) sólo con la escena quieta. */
+    const loops = () => {
+      const g = gRef.current;
+      const lay = layoutRef.current;
+      const settled =
+        !zoomRef.current &&
+        modeRef.current === "idle" &&
+        Math.abs(g - Math.round(g)) < 0.004 &&
+        Math.abs(targetRef.current - g) < 0.004;
+      const restNow = settled ? Math.round(g) : -1;
+      const allowed = loopsOkRef.current && !reducedRef.current;
+      manifest.rests.forEach((rest, i) => {
+        const video = loopRefs.current[i];
+        if (!video) return;
+        if (lay) placeVideo(video, lay);
+        if (allowed && !video.getAttribute("src") && Math.abs(g - i) <= LOOP_PRELOAD) {
+          video.preload = "auto";
+          video.src = `${CASA_ASSET_BASE}/${rest.loop}`;
+        }
+        const wanted = allowed && i === restNow && Boolean(video.getAttribute("src"));
+        if (wanted && video.paused && !video.dataset.starting) {
+          // al llegar, desde el principio: arranca junto a la escena del tramo que acaba de pasar
+          video.dataset.starting = "1";
+          video.currentTime = 0;
+          video
+            .play()
+            .catch(() => {})
+            .finally(() => {
+              delete video.dataset.starting;
+              kick();
+            });
+        } else if (!wanted && !video.paused) {
+          video.pause();
+        }
+        const on = wanted && !video.paused && video.readyState >= 3;
+        video.classList.toggle("casa__loop--on", on);
+      });
+    };
+
     const overlay = () => {
       const g = gRef.current;
       const lay = layoutRef.current;
-      setOpacity(titleRef.current, clamp(1 - g / 26, 0, 1));
-      setOpacity(hintRef.current, clamp(1 - g / 6, 0, 1));
-      const gardenIn = clamp((g - 104) / 10, 0, 1) * clamp((176 - g) / 10, 0, 1);
-      setOpacity(gardenRef.current, reducedRef.current ? (g < 200 ? 1 : 0) : gardenIn);
-      setOpacity(salaRef.current, zoomRef.current ? 0 : clamp((g - 292) / 18, 0, 1));
-      // leyendas del jardín: siguen al objeto fotograma a fotograma
-      const frame = Math.round(clamp(g, 0, EXT - 1));
+      setOpacity(titleRef.current, clamp(1 - g / 0.2, 0, 1));
+      setOpacity(hintRef.current, clamp(1 - g / 0.06, 0, 1));
+      const gardenIn = clamp((g - 0.85) / 0.15, 0, 1) * clamp((3.15 - g) / 0.15, 0, 1);
+      setOpacity(gardenRef.current, reducedRef.current ? (g > 0.5 && g < 3.5 ? 1 : 0) : gardenIn);
+      setOpacity(salaRef.current, zoomRef.current ? 0 : clamp((g - 3.8) / 0.2, 0, 1));
+      // leyendas del exterior: cada una vive en su escena de descanso
       for (const key of CASA_EXTERIOR) {
         const button = extButtons.current[key];
-        if (!button || !lay) continue;
-        const track = om.hs[key];
-        const [a, b] = CASA_EXTERIOR_WINDOWS[key];
+        const spot = manifest.spots[key];
+        if (!button) continue;
         let opacity = 0;
         let x = 0;
         let y = 0;
-        if (track && g < EXT - 1 && !zoomRef.current) {
-          const point = track[frame];
-          if (point) {
-            [x, y] = point;
-            const windowFade = reducedRef.current ? 1 : clamp((g - a + 6) / 6, 0, 1) * clamp((b + 6 - g) / 6, 0, 1);
-            opacity = point[2] ? windowFade : 0;
-          }
+        if (spot && lay && !zoomRef.current) {
+          opacity = clamp(1 - Math.abs(g - spot.rest) / 0.05, 0, 1);
+          x = lay.ox + spot.p[0] * lay.dw;
+          y = lay.oy + spot.p[1] * lay.dh;
+          // en vertical el encuadre barre la escena: fuera de cuadro no se ofrece
+          if (x < 18 || x > lay.cw - 18) opacity = 0;
         }
         const visible = opacity > 0.25;
-        const screenX = lay.ox + x * lay.dw;
-        button.classList.toggle("casa-spot--flip", screenX > lay.cw * 0.62);
+        button.classList.toggle("casa-spot--flip", x > (lay?.cw ?? 0) * 0.62);
         button.style.opacity = String(opacity);
-        button.style.transform = `translate3d(${lay.ox + x * lay.dw}px, ${lay.oy + y * lay.dh}px, 0)`;
+        button.style.transform = `translate3d(${x}px, ${y}px, 0)`;
         button.style.pointerEvents = visible ? "auto" : "none";
         button.tabIndex = visible ? 0 : -1;
         button.setAttribute("aria-hidden", visible ? "false" : "true");
       }
-      const nextPhase: Phase = g < EXT - 0.5 ? "exterior" : g < LAST - 0.6 ? "entrada" : "hub";
+      loops();
+      const nextPhase: Phase = g < 3.35 ? "exterior" : g < HUB - 0.01 ? "entrada" : "hub";
       if (nextPhase !== phaseRef.current) {
         phaseRef.current = nextPhase;
         setPhase(nextPhase);
         if (nextPhase === "hub") {
-          // precarga liviana: máscaras y el primer tramo de cada acercamiento
-          for (const objeto of CASA_OBJETOS) {
-            const mask = new Image();
-            mask.src = `${CASA_ASSET_BASE}/${orient}/mask/${objeto}.webp`;
-            store.request(`zoom-${objeto}`, { stride: 8 });
-          }
+          // precarga liviana: el arranque de cada acercamiento
+          for (const objeto of CASA_OBJETOS) store.request(`zoom-${objeto}`, { stride: 8 });
         }
       }
     };
 
+    // el suavizado sigue al scroll en tiempo real (no por fotograma): igual a 60 o 120 Hz y en
+    // equipos que botan fotogramas
+    let running = false;
+    let lastStep = 0;
     const step = (now: number) => {
       rafRef.current = 0;
+      const dt = running ? Math.min(now - lastStep, 120) : 1000 / 60;
+      lastStep = now;
+      running = true;
+      const ease = reducedRef.current ? 1 : 1 - Math.exp(-dt / 110);
       let again = false;
       const zoom = zoomRef.current;
       if (zoom) {
+        // los videos de acercamiento ya traen su propia aceleración: avance lineal
         const p = zoom.dur > 0 ? clamp((now - zoom.start) / zoom.dur, 0, 1) : 1;
-        zoom.t = zoom.from + (zoom.to - zoom.from) * easeInOut(p);
+        zoom.t = zoom.from + (zoom.to - zoom.from) * p;
         if (p < 1) again = true;
         else finishZoom(zoom);
       } else {
         const diff = targetRef.current - gRef.current;
-        if (Math.abs(diff) > 0.015) {
-          gRef.current += reducedRef.current ? diff : diff * 0.14;
+        if (Math.abs(diff) > 0.0005) {
+          gRef.current += diff * ease;
           again = true;
         } else {
           gRef.current = targetRef.current;
         }
       }
+      const panDiff = panTargetRef.current - panRef.current;
+      if (Math.abs(panDiff) > 0.0005) {
+        panRef.current += panDiff * ease;
+        again = true;
+      } else {
+        panRef.current = panTargetRef.current;
+      }
+      // durante un acercamiento el encuadre es el de la sala
+      layoutRef.current = layoutFor(zoom ? (manifest.rests[HUB]?.pan[0] ?? 0.5) : panRef.current);
       draw();
       overlay();
       if (again) kick();
+      else running = false;
     };
 
     function kick() {
@@ -430,69 +505,42 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     }
     kickRef.current = kick;
 
-    // ——— capa viva: luciérnagas, llamas, nube y polvo (corre aunque no haya scroll)
-    const liveCanvas = ambientRef.current;
-    const liveCtx = liveCanvas?.getContext("2d") ?? null;
-    const camExt = om.cam?.exterior;
-    const camInt = om.cam?.entrada;
-    const layer = manifest.ambient && camExt && camInt ? new AmbientLayer(manifest.ambient) : null;
-    let liveRaf = 0;
-    let liveFade = 0;
-    const liveTick = (now: number) => {
-      liveRaf = 0;
-      if (!layer || !liveCtx || !liveCanvas || !camExt || !camInt || reducedRef.current || document.hidden) return;
-      liveCtx.setTransform(1, 0, 0, 1, 0, 0);
-      liveCtx.clearRect(0, 0, liveCanvas.width, liveCanvas.height);
-      const lay = layoutRef.current;
-      const busy = zoomRef.current !== null || modeRef.current !== "idle";
-      liveFade += ((busy ? 0 : 1) - liveFade) * 0.08;
-      if (lay && liveFade > 0.01 && stage.getBoundingClientRect().bottom > 0) {
-        const g = gRef.current;
-        const dpr = dprRef.current;
-        const t = now / 1000;
-        liveCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        const aspect = om.w / om.h;
-        if (g < EXT) {
-          // se apaga al cruzar el umbral de luz
-          const fade = 1 - clamp((g - 200) / 22, 0, 1);
-          if (fade > 0.01) {
-            layer.drawExterior(liveCtx, t, { cam: cameraAt(camExt, g), sensor: camExt.sensor, aspect, layout: lay, alpha: liveFade * fade });
-          }
-        } else {
-          const fade = clamp((g - 262) / 26, 0, 1);
-          if (fade > 0.01) {
-            layer.drawInterior(liveCtx, t, { cam: cameraAt(camInt, g - EXT), sensor: camInt.sensor, aspect, layout: lay, alpha: liveFade * fade });
-          }
-        }
-      }
-      liveRaf = requestAnimationFrame(liveTick);
-    };
-    const startLive = () => {
-      if (!liveRaf && layer && !reducedRef.current && !document.hidden) liveRaf = requestAnimationFrame(liveTick);
-    };
+    // un bucle que empieza a sonar (o se queda sin datos) vuelve a evaluar las escenas
+    const videos = loopRefs.current.filter((video): video is HTMLVideoElement => Boolean(video));
+    for (const video of videos) {
+      video.muted = true;
+      video.addEventListener("playing", kick);
+      video.addEventListener("canplay", kick);
+      video.addEventListener("waiting", kick);
+    }
     const onVisibility = () => {
-      if (!document.hidden) startLive();
+      if (!document.hidden) kick();
     };
     document.addEventListener("visibilitychange", onVisibility);
 
     resize();
     gRef.current = targetRef.current;
+    panRef.current = panTargetRef.current;
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", resize);
     kick();
-    startLive();
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
       document.removeEventListener("visibilitychange", onVisibility);
-      if (liveRaf) cancelAnimationFrame(liveRaf);
+      for (const video of videos) {
+        video.removeEventListener("playing", kick);
+        video.removeEventListener("canplay", kick);
+        video.removeEventListener("waiting", kick);
+        video.pause();
+      }
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       rafRef.current = 0;
       store.dispose();
       if (storeRef.current === store) storeRef.current = null;
     };
-  }, [manifest, orient, trackTop]);
+  }, [manifest, trackTop]);
 
   // ——— bloqueo de scroll mientras hay un objeto abierto (el canal de la barra queda reservado
   // en toda la página para que el escenario no cambie de ancho al bloquear)
@@ -506,6 +554,26 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     document.documentElement.classList.toggle("casa-html--locked", locked);
     return () => document.documentElement.classList.remove("casa-html--locked");
   }, [mode]);
+
+  // ——— bucle vivo del primer plano (detrás del panel del objeto abierto)
+  const stopCloseVideo = useCallback(() => {
+    const video = closeVideoRef.current;
+    setCloseReady(false);
+    if (!video) return;
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
+  }, []);
+
+  const startCloseVideo = useCallback((key: CasaObjeto) => {
+    const video = closeVideoRef.current;
+    const closeup = manifestRef.current?.closeups[key];
+    setCloseReady(false);
+    if (!video || !closeup || !loopsOkRef.current || reducedRef.current) return;
+    video.muted = true;
+    video.preload = "auto";
+    video.src = `${CASA_ASSET_BASE}/${closeup.loop}`;
+  }, []);
 
   // ——— abrir / cerrar objetos de la sala
   const openObjeto = useCallback(
@@ -524,7 +592,8 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       const seq = `zoom-${key}`;
       // la vista de la sala primero (es el respaldo mientras llega el acercamiento)
       store.prioritize(seq);
-      store.prioritize("entrada", [ENT - 1]);
+      store.prioritize("t4", [store.count("t4") - 1]);
+      startCloseVideo(key);
       // arranca apenas estén todos (o a los 700 ms con los clave: el resto se funde al llegar)
       waitFor(() => store.loaded(seq) >= store.count(seq), 700).then(() => {
         if (modeRef.current !== "in") return;
@@ -534,8 +603,15 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
           to: 1,
           t: 0,
           start: performance.now(),
-          dur: reducedRef.current || options.instant ? 0 : 1000,
-          done: () => setModeBoth("panel")
+          dur: reducedRef.current || options.instant ? 0 : ZOOM_IN_MS,
+          done: () => {
+            setModeBoth("panel");
+            const video = closeVideoRef.current;
+            if (video?.getAttribute("src")) {
+              video.currentTime = 0;
+              video.play().catch(() => {});
+            }
+          }
         };
         zoomRef.current = zoom;
         kickRef.current();
@@ -549,23 +625,25 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
         }, zoom.dur + 900);
       });
     },
-    [setModeBoth]
+    [setModeBoth, startCloseVideo]
   );
 
   const finishClose = useCallback(() => {
     const zoom = zoomRef.current;
     if (!zoom || modeRef.current !== "panel") return;
     setModeBoth("out");
+    setCloseReady(false);
     const out: Zoom = {
       key: zoom.key,
       from: zoom.t,
       to: 0,
       t: zoom.t,
-      start: performance.now(),
-      dur: reducedRef.current ? 0 : 760,
+      start: performance.now() + 160, // deja que el bucle del primer plano se desvanezca
+      dur: reducedRef.current ? 0 : ZOOM_OUT_MS,
       done: () => {
         zoomRef.current = null;
         drawnRef.current = "";
+        stopCloseVideo();
         setActive(null);
         setModeBoth("idle");
         returnFocusRef.current?.focus({ preventScroll: true });
@@ -576,8 +654,8 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     kickRef.current();
     window.setTimeout(() => {
       if (modeRef.current === "out" && zoomRef.current === out) finishZoom(out);
-    }, out.dur + 900);
-  }, [setModeBoth]);
+    }, out.dur + 1100);
+  }, [setModeBoth, stopCloseVideo]);
 
   const closeObjeto = useCallback(() => {
     if (modeRef.current !== "panel") return;
@@ -621,11 +699,11 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     const key = window.location.hash.slice(1);
     if (!isObjeto(key)) return;
     window.scrollTo({ top: hubScrollY(), behavior: "auto" });
-    targetRef.current = LAST;
-    gRef.current = LAST;
+    targetRef.current = HUB;
+    gRef.current = HUB;
     const store = storeRef.current;
     store?.prioritize(`zoom-${key}`, [store.count(`zoom-${key}`) - 1]);
-    store?.prioritize("entrada", [ENT - 1]);
+    store?.prioritize("t4", [store.count("t4") - 1]);
     const timer = window.setTimeout(() => openObjeto(key, { fromHash: true, instant: true }), 250);
     return () => window.clearTimeout(timer);
   }, [manifest, hubScrollY, openObjeto]);
@@ -670,7 +748,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
 
   const backToGarden = () => {
     const beatsNow = reducedRef.current ? REDUCED_BEATS : BEATS;
-    const top = trackTop() + (vhAt(GARDEN, beatsNow) / 100) * window.innerHeight;
+    const top = trackTop() + (vhAtRest(GARDEN, beatsNow, 0.35) / 100) * window.innerHeight;
     window.scrollTo({ top, behavior: reducedRef.current ? "auto" : "smooth" });
   };
 
@@ -679,23 +757,33 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     if (track) handleToggle(track);
   };
 
+  // encuadres fijos: la sala (objetos clickeables) y los primeros planos (paneles, libro)
+  const hubLayout = useMemo(
+    () => (size && manifest ? coverLayout(size.cw, size.ch, manifest.w, manifest.h, manifest.rests[HUB]?.pan[0] ?? 0.5) : null),
+    [size, manifest]
+  );
+  const closeLayout = useMemo(
+    () => (size && manifest ? coverLayout(size.cw, size.ch, manifest.w, manifest.h, manifest.rests[HUB]?.pan[0] ?? 0.5) : null),
+    [size, manifest]
+  );
+
   const legendData = legend ? content.legends[legend.key] : null;
-  const maskStyle = (key: CasaObjeto) => {
-    const url = `url(${CASA_ASSET_BASE}/${orient}/mask/${key}.webp)`;
-    return { WebkitMaskImage: url, maskImage: url };
-  };
-  const om = manifest?.[orient];
   const hubPoint = (key: CasaObjeto) => {
-    const point = om?.hub[key];
-    if (!point || !layout) return null;
-    return { left: layout.ox + point[0] * layout.dw, top: layout.oy + point[1] * layout.dh };
+    const point = manifest?.hub[key];
+    if (!point || !hubLayout) return null;
+    const left = hubLayout.ox + point[0] * hubLayout.dw;
+    const top = hubLayout.oy + point[1] * hubLayout.dh;
+    // en vertical la sala se recorta: lo que queda fuera se abre desde el índice de abajo
+    if (left < 14 || left > hubLayout.cw - 14) return null;
+    return { left, top };
   };
   const showHub = phase === "hub" && mode === "idle";
   const legendTrack = legendData?.trackId ? tracks.find((item) => item.id === legendData.trackId) : undefined;
   const legendPlaying = Boolean(legendTrack && currentTrack?.id === legendTrack.id && isPlaying);
+  const hoveredPoint = hovered && showHub ? hubPoint(hovered) : null;
 
   return (
-    <div className={`casa casa--${orient === "V" ? "vertical" : "horizontal"}${reduced ? " casa--reduced" : ""}`}>
+    <div className={`casa casa--${portrait ? "vertical" : "horizontal"}${reduced ? " casa--reduced" : ""}`}>
       <a className="casa-skip" href="#casa-indice">
         Saltar el recorrido e ir al índice
       </a>
@@ -705,13 +793,50 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             className={`casa__poster${painted ? " casa__poster--hidden" : ""}`}
-            src={`${CASA_ASSET_BASE}/poster-${orient}.webp`}
+            src={`${CASA_ASSET_BASE}/poster-H.webp`}
             alt=""
             aria-hidden="true"
             fetchPriority="high"
           />
           <canvas ref={canvasRef} className="casa__canvas" aria-hidden="true" />
-          <canvas ref={ambientRef} className="casa__canvas casa__ambient" aria-hidden="true" />
+          {/* escenas vivas: un bucle de video por descanso, sobre el último fotograma del tramo */}
+          {manifest?.rests.map((rest, i) => (
+            <video
+              key={rest.id}
+              ref={(node) => {
+                loopRefs.current[i] = node;
+              }}
+              className="casa__loop"
+              muted
+              loop
+              playsInline
+              preload="none"
+              disablePictureInPicture
+              aria-hidden="true"
+              tabIndex={-1}
+            />
+          ))}
+          <video
+            ref={closeVideoRef}
+            className={`casa__loop casa__loop--close${closeReady && mode === "panel" ? " casa__loop--on" : ""}`}
+            style={
+              closeLayout
+                ? {
+                    width: closeLayout.dw,
+                    height: closeLayout.dh,
+                    transform: `translate3d(${closeLayout.ox}px, ${closeLayout.oy}px, 0)`
+                  }
+                : undefined
+            }
+            muted
+            loop
+            playsInline
+            preload="none"
+            disablePictureInPicture
+            aria-hidden="true"
+            tabIndex={-1}
+            onPlaying={() => setCloseReady(true)}
+          />
           <div className="casa__vignette" aria-hidden="true" />
 
           <div ref={titleRef} className="casa__title">
@@ -742,7 +867,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
             </div>
           ) : null}
 
-          {/* leyendas del jardín */}
+          {/* leyendas del exterior */}
           <div className="casa__hotspots" aria-label="Detalles del jardín">
             {CASA_EXTERIOR.map((key) => (
               <button
@@ -771,10 +896,10 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
               aria-modal="false"
               aria-labelledby="casa-legend-title"
               style={
-                orient === "H" && layout
+                !portrait && size
                   ? {
-                      left: clamp(legend.x < layout.cw / 2 ? legend.x + 34 : legend.x - 34 - 360, 16, layout.cw - 376),
-                      top: clamp(legend.y - 120, 90, layout.ch - 380)
+                      left: clamp(legend.x < size.cw / 2 ? legend.x + 34 : legend.x - 34 - 360, 16, size.cw - 376),
+                      top: clamp(legend.y - 120, 90, size.ch - 380)
                     }
                   : undefined
               }
@@ -807,30 +932,21 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
           ) : null}
 
           {/* la sala: objetos clickeables */}
-          {hovered && showHub && layout ? (
-            <div
-              className="casa-glow"
-              aria-hidden="true"
-              style={{ left: layout.ox, top: layout.oy, width: layout.dw, height: layout.dh }}
-            >
-              <div className="casa-glow__halo">
-                <div className="casa-glow__mask" style={maskStyle(hovered)} />
-              </div>
-              <div className="casa-glow__mask casa-glow__mask--tint" style={maskStyle(hovered)} />
-            </div>
+          {hoveredPoint ? (
+            <div className="casa-glow" aria-hidden="true" style={{ left: hoveredPoint.left, top: hoveredPoint.top }} />
           ) : null}
           {showHub ? (
             <div className="casa__objects" aria-label="Objetos de la sala">
               {CASA_OBJETOS.map((key) => {
                 const point = hubPoint(key);
-                if (!point) return null;
+                if (!point || !hubLayout) return null;
                 const info = CASA_OBJETO_INFO[key];
                 return (
                   <button
                     key={key}
                     type="button"
                     className={`casa-spot casa-spot--object${hovered === key ? " casa-spot--hover" : ""}${
-                      layout && point.left > layout.cw * 0.62 ? " casa-spot--flip" : ""
+                      point.left > hubLayout.cw * 0.62 ? " casa-spot--flip" : ""
                     }`}
                     style={{ transform: `translate3d(${point.left}px, ${point.top}px, 0)` }}
                     aria-label={`${info.name}: ${info.hint}`}
@@ -877,14 +993,14 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
             </button>
           ) : null}
 
-          {active && (mode === "panel" || mode === "out") && om ? (
+          {active && (mode === "panel" || mode === "out") && manifest ? (
             <CasaPanel
               key={active}
               objeto={active}
               content={content}
-              orient={orient}
-              layout={layout}
-              book={om.book}
+              orient={portrait ? "V" : "H"}
+              layout={closeLayout}
+              book={portrait ? null : manifest.book}
               leaving={mode === "out"}
               onClose={closeObjeto}
             />

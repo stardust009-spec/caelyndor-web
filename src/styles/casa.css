@@ -88,9 +88,23 @@ html.casa-html .site-header {
   display: block;
 }
 
-/* capa viva (luciérnagas, llamas, nube): transparente, sin capturar clics */
-.casa__ambient {
+/* escenas vivas: bucles de video sobre el último fotograma del tramo. Aparecen despacio
+   cuando la escena queda quieta y se apagan rápido al seguir el scroll (el tramo ya corre debajo) */
+.casa__loop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 140ms linear;
+}
+
+.casa__loop--on {
+  opacity: 1;
+  transition: opacity 700ms ease;
 }
 
 .casa__vignette {
@@ -520,35 +534,17 @@ html.casa-html .site-header {
   background: linear-gradient(135deg, rgba(255, 207, 138, 0.28), rgba(167, 122, 255, 0.22));
 }
 
-/* ——— brillo del objeto bajo el cursor (máscara renderizada en Blender) */
+/* ——— brillo del objeto bajo el cursor: luz cálida sumada alrededor del punto */
 .casa-glow {
   position: absolute;
+  width: clamp(9rem, 18vw, 16rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
   pointer-events: none;
-  animation: casa-fade-in 220ms ease both;
-}
-
-/* halo: la silueta del objeto, desenfocada y sumada como luz alrededor */
-.casa-glow__halo {
-  position: absolute;
-  inset: 0;
-  filter: blur(10px);
+  background: radial-gradient(circle, rgba(255, 223, 158, 0.38), rgba(184, 140, 255, 0.16) 42%, transparent 70%);
   mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
   animation: casa-breathe 2.6s ease-in-out infinite;
-}
-
-.casa-glow__mask {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(160deg, #ffdf9e, #b88cff);
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-.casa-glow__mask--tint {
-  background: rgba(255, 238, 210, 0.14);
-  mix-blend-mode: screen;
 }
 
 @keyframes casa-breathe {
@@ -674,10 +670,19 @@ html.casa-html .site-header {
   animation: casa-panel-out 260ms ease both;
 }
 
+/* primeros planos con el protagonista a la derecha (Rollito, la vela del escritorio):
+   el panel se abre a la izquierda para no taparlo */
+.casa--horizontal .casa-panel--rollito,
+.casa--horizontal .casa-panel--escritorio {
+  left: clamp(0.75rem, 2.5vw, 2.4rem);
+  right: auto;
+  --casa-panel-from: -18px;
+}
+
 @keyframes casa-panel-in {
   from {
     opacity: 0;
-    transform: translateX(18px);
+    transform: translateX(var(--casa-panel-from, 18px));
   }
   to {
     opacity: 1;
@@ -1459,6 +1464,11 @@ body.has-music-player .casa--vertical .casa-panel {
     font-size: 0.7rem;
   }
 
+  /* en angosto el rótulo de la sala ocupa casi todo el ancho: la salida baja una línea */
+  .casa-exit {
+    top: 7.6rem;
+  }
+
   .casa-spot__label {
     font-size: 0.74rem;
   }
@@ -1490,7 +1500,7 @@ body.has-music-player .casa--vertical .casa-panel {
 @media (prefers-reduced-motion: reduce) {
   .casa__hint span,
   .casa-spot__glint::after,
-  .casa-glow__mask {
+  .casa-glow {
     animation: none;
   }
 
