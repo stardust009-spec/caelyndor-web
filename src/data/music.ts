@@ -47,6 +47,156 @@ function track({ cover, coverVideoFile, ...trackData }: TrackInput): MusicTrack 
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "rubi-espectro-sexy-con-capa-de-llamas",
+    title: "Rubí — Espectro sexy con capa de llamas",
+    subtitle: "Tema de personaje",
+    fileName: "Rubí — Espectro sexy con capa de llamas.mp3",
+    category: "personaje",
+    related: ["Rubí"],
+    mood: "Fuego / bravata",
+    accent: "rgba(200, 75, 75, 0.34)"
+  }),
+  track({
+    id: "rubi-la-flor-carmesi",
+    title: "Rubí — La Flor Carmesí",
+    subtitle: "Tema de personaje",
+    fileName: "Rubí — La Flor Carmesí.mp3",
+    category: "personaje",
+    related: ["Rubí"],
+    mood: "Flor / carmesí",
+    accent: "rgba(200, 75, 75, 0.34)"
+  }),
+  track({
+    id: "rubi-no-me-rubies-ahora",
+    title: "Rubí — No me rubíes ahora",
+    subtitle: "Tema de personaje",
+    fileName: "Rubí — No me rubíes ahora.mp3",
+    category: "personaje",
+    related: ["Rubí"],
+    mood: "Filo / advertencia",
+    accent: "rgba(200, 75, 75, 0.34)"
+  }),
+  track({
+    id: "rubi-nunca-hubo-un-demonio",
+    title: "Rubí — Nunca hubo un demonio",
+    subtitle: "Tema de personaje",
+    fileName: "Rubí — Nunca hubo un demonio.mp3",
+    category: "personaje",
+    related: ["Rubí"],
+    mood: "Verdad / defensa",
+    accent: "rgba(200, 75, 75, 0.34)"
+  }),
+  track({
+    id: "rubi-yo-no-naci-yo-estalle",
+    title: "Rubí — Yo no nací, yo estallé",
+    subtitle: "Tema de personaje",
+    fileName: "Rubí — Yo no nací, yo estallé.mp3",
+    category: "personaje",
+    related: ["Rubí"],
+    mood: "Origen / estallido",
+    accent: "rgba(200, 75, 75, 0.34)"
+  }),
+  track({
+    id: "yuki-vela-aromatica",
+    title: "Yuki — Vela aromática",
+    subtitle: "Tema de personaje",
+    fileName: "Yuki — Vela aromática.mp3",
+    category: "personaje",
+    related: ["Yuki Arhess"],
+    mood: "Calma / hogar",
+    accent: "rgba(139, 198, 223, 0.34)"
+  }),
+  track({
+    id: "yuki-aun-no-me-derrito",
+    title: "Yuki — Aún no me derrito",
+    subtitle: "Tema de personaje",
+    fileName: "Yuki — Aún no me derrito.mp3",
+    category: "personaje",
+    related: ["Yuki Arhess"],
+    mood: "Hielo / resistencia",
+    accent: "rgba(139, 198, 223, 0.34)"
+  }),
+  track({
+    id: "yuki-me-lo-dijo-mi-corazon",
+    title: "Yuki — Me lo dijo mi corazón",
+    subtitle: "Tema de personaje",
+    fileName: "Yuki — Me lo dijo mi corazón.mp3",
+    category: "personaje",
+    related: ["Yuki Arhess"],
+    mood: "Deshielo / confesión",
+    accent: "rgba(139, 198, 223, 0.34)"
+  }),
+  track({
+    id: "yuki-el-gallo-no-canto",
+    title: "Yuki — El gallo no cantó",
+    subtitle: "Tema de personaje",
+    fileName: "Yuki — El gallo no cantó.mp3",
+    category: "personaje",
+    related: ["Yuki Arhess"],
+    mood: "Alba / espera",
+    accent: "rgba(139, 198, 223, 0.34)"
+  }),
+  track({
+    id: "yuki-esta-lista",
+    title: "Yuki — Está lista",
+    subtitle: "Tema de personaje",
+    fileName: "Yuki — Está lista.mp3",
+    category: "personaje",
+    related: ["Yuki Arhess"],
+    mood: "Decisión / temple",
+    accent: "rgba(139, 198, 223, 0.34)"
+  }),
+  track({
+    id: "lyzi-quedate-con-ella",
+    title: "Lyzi — Quédate con ella",
+    subtitle: "Tema de personaje",
+    fileName: "Lyzi — Quédate con ella.mp3",
+    category: "personaje",
+    related: ["Lyzi"],
+    mood: "Ternura / ruego",
+    accent: "rgba(167, 122, 255, 0.34)"
+  }),
+  track({
+    id: "lyzi-oye-orejudo",
+    title: "Lyzi — Oye, orejudo",
+    subtitle: "Tema de personaje",
+    fileName: "Lyzi — Oye, orejudo.mp3",
+    category: "personaje",
+    related: ["Lyzi"],
+    mood: "Juego / cariño",
+    accent: "rgba(167, 122, 255, 0.34)"
+  }),
+  track({
+    id: "lyzi-no-me-rubies",
+    title: "Lyzi — No me rubíes",
+    subtitle: "Tema de personaje",
+    fileName: "Lyzi — No me rubíes.mp3",
+    category: "personaje",
+    related: ["Lyzi"],
+    mood: "Broma / límite",
+    accent: "rgba(167, 122, 255, 0.34)"
+  }),
+  track({
+    id: "lyzi-un-nombre-imperfecto",
+    title: "Lyzi — Un nombre imperfecto",
+    subtitle: "Tema de personaje",
+    fileName: "Lyzi — Un nombre imperfecto.mp3",
+    category: "personaje",
+    related: ["Lyzi"],
+    mood: "Nombre / afecto",
+    accent: "rgba(167, 122, 255, 0.34)"
+  }),
+  track({
+    id: "lyzi-fui-llorada",
+    title: "Lyzi — Fui llorada",
+    subtitle: "Tema de personaje",
+    fileName: "Lyzi — Fui llorada.mp3",
+    category: "personaje",
+    related: ["Lyzi"],
+    mood: "Duelo / eco",
+    accent: "rgba(167, 122, 255, 0.34)"
+  }),
+  track({
     id: "noctalypse-el-del-pan",
     title: "Noctalypse — El del Pan",
     subtitle: "Tema de personaje",
