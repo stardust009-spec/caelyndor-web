@@ -126,6 +126,25 @@ function placeVideo(video: HTMLVideoElement, lay: Layout) {
   video.style.transform = `translate3d(${lay.ox}px, ${lay.oy}px, 0)`;
 }
 
+/** Portal (celular) que gira de vertical a horizontal, con la flecha del giro. */
+function RotatePortalIcon() {
+  return (
+    <svg className="casa-rotate__icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <g className="casa-rotate__phone">
+        <rect x="22" y="12" width="20" height="36" rx="4" />
+        <line x1="29" y1="16.5" x2="35" y2="16.5" />
+        <circle cx="32" cy="43" r="1.2" fill="currentColor" stroke="none" />
+      </g>
+      <g className="casa-rotate__arrow">
+        <path d="M13 36a20 20 0 0 0 15 18" />
+        <polyline points="23.5 55.5 28 54 26.5 49.5" />
+      </g>
+    </svg>
+  );
+}
+
+const ROTATE_DISMISSED_KEY = "casa-de-lyzi.rotate.dismissed";
+
 export function CasaDeLyzi({ content }: { content: CasaContent }) {
   const { tracks, currentTrack, isPlaying, handleToggle } = useMusicPlayer();
 
@@ -172,6 +191,8 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
   const [painted, setPainted] = useState(false);
   const [loadedPct, setLoadedPct] = useState(0);
   const [closeReady, setCloseReady] = useState(false);
+  const [coarse, setCoarse] = useState(false);
+  const [rotateDismissed, setRotateDismissed] = useState(false);
 
   const beats = reduced ? REDUCED_BEATS : BEATS;
   const scrollVh = beatsLength(beats);
@@ -197,6 +218,29 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
       media.removeEventListener("change", apply);
       window.removeEventListener("resize", onResize);
     };
+  }, []);
+
+  // ——— aviso de girar el portal: sólo en pantallas táctiles, y si ya eligió "Seguir así" no insiste
+  useEffect(() => {
+    const media = window.matchMedia("(pointer: coarse)");
+    const apply = () => setCoarse(media.matches);
+    apply();
+    media.addEventListener("change", apply);
+    try {
+      setRotateDismissed(window.sessionStorage.getItem(ROTATE_DISMISSED_KEY) === "1");
+    } catch {
+      // sin almacenamiento (modo privado estricto): el aviso sólo se descarta en memoria
+    }
+    return () => media.removeEventListener("change", apply);
+  }, []);
+
+  const dismissRotate = useCallback(() => {
+    setRotateDismissed(true);
+    try {
+      window.sessionStorage.setItem(ROTATE_DISMISSED_KEY, "1");
+    } catch {
+      // ídem
+    }
   }, []);
 
   // ——— manifiesto
@@ -713,6 +757,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
       if (modeRef.current === "panel") closeObjeto();
+      else if (document.querySelector(".casa-rotate")) dismissRotate();
       else if (legendRef.current) {
         legendRef.current = null;
         setLegend(null);
@@ -720,7 +765,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [closeObjeto]);
+  }, [closeObjeto, dismissRotate]);
 
   const openLegend = (key: CasaExterior) => {
     const button = extButtons.current[key];
@@ -778,6 +823,8 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
     return { left, top };
   };
   const showHub = phase === "hub" && mode === "idle";
+  // la sala en un celular vertical queda muy recortada: se sugiere girarlo (nunca en la portada)
+  const showRotate = showHub && portrait && coarse && !rotateDismissed;
   const legendTrack = legendData?.trackId ? tracks.find((item) => item.id === legendData.trackId) : undefined;
   const legendPlaying = Boolean(legendTrack && currentTrack?.id === legendTrack.id && isPlaying);
   const hoveredPoint = hovered && showHub ? hubPoint(hovered) : null;
@@ -993,6 +1040,20 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
             <button type="button" className="casa-exit" onClick={backToGarden}>
               <span aria-hidden="true">↑</span> Volver al jardín
             </button>
+          ) : null}
+
+          {showRotate ? (
+            <div className="casa-rotate" role="dialog" aria-modal="true" aria-labelledby="casa-rotate-text">
+              <div className="casa-rotate__card">
+                <RotatePortalIcon />
+                <p id="casa-rotate-text" className="casa-rotate__text">
+                  Gira tu portal para ver mejor esta sala.
+                </p>
+                <button type="button" className="casa-button casa-rotate__skip" onClick={dismissRotate} autoFocus>
+                  Seguir así
+                </button>
+              </div>
+            </div>
           ) : null}
 
           {active && (mode === "panel" || mode === "out") && manifest ? (

@@ -575,6 +575,97 @@ html.casa-html .site-header {
   }
 }
 
+/* ——— aviso de girar el portal (sala en celular vertical) */
+.casa-rotate {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: radial-gradient(circle at 50% 45%, rgba(8, 7, 18, 0.5), rgba(5, 6, 10, 0.86));
+  backdrop-filter: blur(3px);
+  animation: casa-fade-in 450ms ease both;
+}
+
+.casa-rotate__card {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  width: min(300px, 100%);
+  padding: 1.6rem 1.4rem 1.3rem;
+  border: 1px solid var(--casa-line);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(167, 122, 255, 0.18), transparent 62%),
+    var(--casa-glass);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  text-align: center;
+}
+
+.casa-rotate__icon {
+  width: 76px;
+  height: 76px;
+  color: var(--casa-violet-soft);
+  filter: drop-shadow(0 0 12px rgba(167, 122, 255, 0.45));
+}
+
+/* el portal gira a lo ancho, se queda un momento y vuelve */
+.casa-rotate__phone {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: casa-rotate-phone 2.8s ease-in-out infinite;
+}
+
+.casa-rotate__arrow {
+  color: var(--casa-ember);
+  animation: casa-rotate-arrow 2.8s ease-in-out infinite;
+}
+
+@keyframes casa-rotate-phone {
+  0%,
+  22% {
+    transform: rotate(0deg);
+  }
+  45%,
+  72% {
+    transform: rotate(-90deg);
+  }
+  95%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes casa-rotate-arrow {
+  0%,
+  16% {
+    opacity: 0;
+  }
+  28%,
+  48% {
+    opacity: 1;
+  }
+  60%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.casa-rotate__text {
+  margin: 0;
+  color: #fff;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.casa-rotate__skip {
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+
 /* ——— índice de objetos de la sala */
 .casa-dock {
   position: absolute;
@@ -1523,6 +1614,35 @@ body.has-music-player .casa--vertical .casa-panel {
   }
 }
 
+/* celular de lado: poca altura. El rótulo sube a la franja del menú (vacía entre el logo y
+   el botón) para no tapar los objetos de arriba de la sala */
+@media (max-height: 500px) and (orientation: landscape) {
+  .casa__caption {
+    top: 1.15rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.68rem;
+    white-space: nowrap;
+  }
+
+  .casa__caption-place:has(+ .casa__caption-voice) {
+    display: none;
+  }
+
+  .casa__caption-place + .casa__caption-voice {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .casa__caption-voice {
+    font-size: 0.86rem;
+  }
+
+  .casa-exit {
+    top: 4.6rem;
+  }
+}
+
 @media (hover: none) {
   .casa-spot--object .casa-spot__label {
     display: none;
@@ -1532,8 +1652,14 @@ body.has-music-player .casa--vertical .casa-panel {
 @media (prefers-reduced-motion: reduce) {
   .casa__hint span,
   .casa-spot__glint::after,
-  .casa-glow {
+  .casa-glow,
+  .casa-rotate__phone,
+  .casa-rotate__arrow {
     animation: none;
+  }
+
+  .casa-rotate__arrow {
+    opacity: 1;
   }
 
   .casa-legend,
