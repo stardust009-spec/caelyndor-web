@@ -283,24 +283,53 @@ function Biblioteca({ content }: { content: CasaContent }) {
   );
 }
 
+const VITROLA_TABS = ["Lo último", "Lo más escuchado"] as const;
+const VITROLA_SIZE = 12;
+
 function Vitrola({ content }: { content: CasaContent }) {
-  const { tracks, currentTrack, isPlaying, handleToggle, playCollection } = useMusicPlayer();
+  const { tracks, stats, currentTrack, isPlaying, handleToggle, playCollection } = useMusicPlayer();
+  const [tab, setTab] = useState<(typeof VITROLA_TABS)[number]>("Lo último");
   const byId = useMemo(() => new Map(tracks.map((track) => [track.id, track])), [tracks]);
+  // lo último = el orden del archivo (los temas nuevos se suben arriba); lo más escuchado = conteo global
+  const list = useMemo(() => {
+    const ordered =
+      tab === "Lo último" ? tracks : [...tracks].sort((a, b) => (stats[b.id]?.plays ?? 0) - (stats[a.id]?.plays ?? 0));
+    return ordered.slice(0, VITROLA_SIZE);
+  }, [tab, tracks, stats]);
   return (
     <>
-      <h3 className="casa-panel__subhead">Suena en la casa de Lyzi</h3>
-      <ul className="casa-tracks">
-        {content.lyziTracks.map((item) => {
-          const track = byId.get(item.id);
-          if (!track) return null;
-          const playing = currentTrack?.id === item.id && isPlaying;
+      <div className="casa-tabs" role="tablist" aria-label="Discos de la vitrola">
+        {VITROLA_TABS.map((name) => (
+          <button
+            key={name}
+            type="button"
+            role="tab"
+            aria-selected={tab === name}
+            className={`casa-tabs__tab${tab === name ? " casa-tabs__tab--active" : ""}`}
+            onClick={() => setTab(name)}
+          >
+            {name}
+          </button>
+        ))}
+      </div>
+      <ul className="casa-tracks" role="tabpanel" aria-label={tab}>
+        {list.map((track) => {
+          const playing = currentTrack?.id === track.id && isPlaying;
+          // "Rubí — La Flor Carmesí": el tema arriba y de quién es abajo
+          const cut = track.title.indexOf(" — ");
+          const song = cut > 0 ? track.title.slice(cut + 3) : track.title;
+          const who = cut > 0 ? track.title.slice(0, cut) : (track.subtitle ?? "");
           return (
-            <li key={item.id}>
+            <li key={track.id}>
               <button type="button" className={`casa-track${playing ? " casa-track--playing" : ""}`} onClick={() => handleToggle(track)}>
-                {item.cover ? <Image src={item.cover} alt="" width={44} height={44} sizes="44px" /> : <span className="casa-track__cover" />}
+                {track.coverImage ? (
+                  <Image src={track.coverImage} alt="" width={44} height={44} sizes="44px" />
+                ) : (
+                  <span className="casa-track__cover" />
+                )}
                 <span className="casa-track__text">
-                  <strong>{item.title.replace(/^(Lyzi|Sylvalis) — /, "")}</strong>
-                  <em>{item.subtitle ?? item.title.split(" — ")[0]}</em>
+                  <strong>{song}</strong>
+                  <em>{who}</em>
                 </span>
                 <span className="casa-track__icon" aria-label={playing ? "Pausar" : "Reproducir"}>
                   {playing ? <PauseIcon size={16} /> : <PlayIcon size={16} />}

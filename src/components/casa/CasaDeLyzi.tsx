@@ -842,17 +842,19 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
           <div ref={titleRef} className="casa__title">
             <p className="casa__eyebrow">La casa de Lyzi</p>
             <h1>CAELYNDOR</h1>
-            <p className="casa__phrase">Toda herida deja un reino.</p>
+            <p className="casa__phrase">Ven, te cuento una historia.</p>
           </div>
           <p ref={hintRef} className="casa__hint">
             {reduced ? "Desliza para ir de escena en escena" : "Desliza para acercarte"}
             <span aria-hidden="true" />
           </p>
           <p ref={gardenRef} className="casa__caption casa__caption--garden">
-            El jardín de Lyzi · toca lo que brilla
+            <span className="casa__caption-place">El jardín de Lyzi</span>
+            <span className="casa__caption-voice">Toca lo que brilla.</span>
           </p>
           <p ref={salaRef} className="casa__caption casa__caption--sala">
-            La sala de Lyzi{showHub ? " · explora sus objetos" : ""}
+            <span className="casa__caption-place">La sala de Lyzi</span>
+            {showHub ? <span className="casa__caption-voice">Elige algo. Te contaré su historia.</span> : null}
           </p>
 
           {!painted && !failed && mode === "idle" ? (

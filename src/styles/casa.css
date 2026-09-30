@@ -213,6 +213,24 @@ html.casa-html .site-header {
   text-transform: uppercase;
   opacity: 0;
   pointer-events: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+/* la voz de la narradora: la misma letra que "Ven, te cuento una historia." */
+.casa__caption-voice {
+  color: #fff;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.casa__caption-place + .casa__caption-voice {
+  padding-left: 0.7rem;
+  border-left: 1px solid var(--casa-line);
 }
 
 .casa__loading {
@@ -1464,9 +1482,23 @@ body.has-music-player .casa--vertical .casa-panel {
     font-size: 0.7rem;
   }
 
+  /* en angosto habla sólo la narradora: el lugar ya se ve en la escena */
+  .casa__caption-place:has(+ .casa__caption-voice) {
+    display: none;
+  }
+
+  .casa__caption-place + .casa__caption-voice {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .casa__caption-voice {
+    font-size: 0.9rem;
+  }
+
   /* en angosto el rótulo de la sala ocupa casi todo el ancho: la salida baja una línea */
   .casa-exit {
-    top: 7.6rem;
+    top: 8.1rem;
   }
 
   .casa-spot__label {

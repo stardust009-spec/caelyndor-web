@@ -73,7 +73,6 @@ export type CasaStory = {
 
 export type CasaCharacter = { slug: string; name: string; title: string; image: string; accent: string };
 export type CasaAlbum = { slug: string; title: string; status?: string; trackIds: string[] };
-export type CasaTrack = { id: string; title: string; subtitle?: string; cover?: string };
 export type CasaCard = { id: string; title: string; image: string; href: string };
 
 export type CasaContent = {
@@ -84,7 +83,6 @@ export type CasaContent = {
   eras: { title: string; type: string }[];
   books: { title: string; status: string; href: string }[];
   albums: CasaAlbum[];
-  lyziTracks: CasaTrack[];
   gallery: CasaCard[];
   downloads: CasaCard[];
   forja: { title: string; status: string; progress: number; lastUpdate: string; nextMilestone: string; definition: string };

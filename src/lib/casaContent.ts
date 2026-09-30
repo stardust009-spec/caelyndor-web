@@ -86,10 +86,6 @@ export function buildCasaContent(): CasaContent {
     }))
     .filter((album) => album.trackIds.length > 0);
 
-  const lyziTracks = musicTracks
-    .filter((track) => /^(Lyzi|Sylvalis)\b/.test(track.title))
-    .map((track) => ({ id: track.id, title: track.title, subtitle: track.subtitle, cover: track.coverImage }));
-
   const portraitOrder = ["personaje-rubi", "personaje-lyzi", "personaje-yuki", "personaje-noctalypse"];
   const gallery = [
     ...portraitOrder.map((id) => galleryItems.find((item) => item.id === id)).filter((item) => item !== undefined),
@@ -124,7 +120,6 @@ export function buildCasaContent(): CasaContent {
       .sort((first, second) => first.order - second.order)
       .map((book) => ({ title: book.title, status: book.status, href: "/libros" })),
     albums,
-    lyziTracks,
     gallery,
     downloads,
     forja: {
