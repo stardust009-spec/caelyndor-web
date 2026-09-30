@@ -32,6 +32,132 @@ export type MusicAlbum = {
 
 export const musicAlbums: MusicAlbum[] = [
   {
+    slug: "rubi-flor-carmesi",
+    title: "Rubí — Flor Carmesí",
+    artist: "Rubí",
+    status: "Disponible",
+    heroAspect: "2.7 / 1",
+    heroImage: videoAsset("rubi_flor_carmesi_album_hero.png"),
+    description:
+      "Fuego, bravata, verdad y estallido: el álbum escénico de Rubí dentro del Archivo Sonoro de Caelyndor.",
+    tracklist: [
+      {
+        number: 1,
+        title: "Rubí — La Flor Carmesí",
+        description: "Tema-título: la flor que arde sin pedir permiso.",
+        linkedTrackId: "rubi-la-flor-carmesi"
+      },
+      {
+        number: 2,
+        title: "Rubí — Yo no nací, yo estallé",
+        description: "Origen a fuego vivo: no vino al mundo, lo reventó.",
+        linkedTrackId: "rubi-yo-no-naci-yo-estalle"
+      },
+      {
+        number: 3,
+        title: "Rubí — Nunca hubo un demonio",
+        description: "Defensa y verdad: lo que llamaron monstruo era ella entera.",
+        linkedTrackId: "rubi-nunca-hubo-un-demonio"
+      },
+      {
+        number: 4,
+        title: "Rubí — No me rubíes ahora",
+        description: "Filo y advertencia con nombre propio.",
+        linkedTrackId: "rubi-no-me-rubies-ahora"
+      },
+      {
+        number: 5,
+        title: "Rubí — Espectro sexy con capa de llamas",
+        description: "Bravata incendiaria, puro show de fuego.",
+        linkedTrackId: "rubi-espectro-sexy-con-capa-de-llamas"
+      }
+    ]
+  },
+  {
+    slug: "yuki-arhess-corona-de-escarcha",
+    title: "Yuki Arhess — Corona de Escarcha",
+    artist: "Yuki Arhess",
+    status: "Disponible",
+    heroAspect: "2.7 / 1",
+    heroImage: videoAsset("yuki_arhess_album_hero.png"),
+    description:
+      "Hielo que resiste y corazón que confiesa: el álbum de Yuki Arhess, reina de Glaciem, dentro del Archivo Sonoro de Caelyndor.",
+    tracklist: [
+      {
+        number: 1,
+        title: "Yuki — Está lista",
+        description: "Decisión y temple: la reina que ya eligió.",
+        linkedTrackId: "yuki-esta-lista"
+      },
+      {
+        number: 2,
+        title: "Yuki — El gallo no cantó",
+        description: "Alba en suspenso, la espera que no anuncia.",
+        linkedTrackId: "yuki-el-gallo-no-canto"
+      },
+      {
+        number: 3,
+        title: "Yuki — Aún no me derrito",
+        description: "Hielo que resiste, orgullo de escarcha.",
+        linkedTrackId: "yuki-aun-no-me-derrito"
+      },
+      {
+        number: 4,
+        title: "Yuki — Me lo dijo mi corazón",
+        description: "El deshielo íntimo: la confesión bajo la corona.",
+        linkedTrackId: "yuki-me-lo-dijo-mi-corazon"
+      },
+      {
+        number: 5,
+        title: "Yuki — Vela aromática",
+        description: "Calma de hogar, el frío que por fin descansa.",
+        linkedTrackId: "yuki-vela-aromatica"
+      }
+    ]
+  },
+  {
+    slug: "lyzi-el-bosque-que-escucha",
+    title: "Lyzi — El Bosque que Escucha",
+    artist: "Lyzi",
+    status: "Disponible",
+    heroAspect: "2.7 / 1",
+    heroImage: videoAsset("lyzi_album_hero.png"),
+    description:
+      "Luna tibia, nueve colas, ternura y duelo: el álbum de Lyzi desde Sylvalis, dentro del Archivo Sonoro de Caelyndor.",
+    tracklist: [
+      {
+        number: 1,
+        title: "Lyzi — Un nombre imperfecto",
+        description: "El nombre que se quiere aunque no encaje.",
+        linkedTrackId: "lyzi-un-nombre-imperfecto"
+      },
+      {
+        number: 2,
+        title: "Lyzi — No me rubíes",
+        description: "Broma y límite: cariño con las orejas en guardia.",
+        linkedTrackId: "lyzi-no-me-rubies"
+      },
+      {
+        number: 3,
+        title: "Lyzi — Oye, orejudo",
+        description: "Juego y ternura para quien ella eligió.",
+        linkedTrackId: "lyzi-oye-orejudo"
+      },
+      {
+        number: 4,
+        title: "Lyzi — Quédate con ella",
+        description: "Ruego suave: la petición que cuida.",
+        linkedTrackId: "lyzi-quedate-con-ella"
+      },
+      {
+        number: 5,
+        title: "Lyzi — Fui llorada",
+        description: "Duelo y eco: ser llorada y seguir sonando.",
+        linkedTrackId: "lyzi-fui-llorada"
+      }
+    ]
+  },
+  {
     slug: "carolina-telarana-de-cristal",
     title: "Carolina Varthalion — Telaraña de Cristal",
     artist: "Carolina Varthalion",
