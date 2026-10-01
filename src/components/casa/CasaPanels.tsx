@@ -101,10 +101,10 @@ function renderBody(key: Exclude<CasaObjeto, "libro">, content: CasaContent): Re
     case "mapa":
       return (
         <>
-          <blockquote className="casa-quote">
+          <div className="casa-quote">
             <p>{content.mapa.text}</p>
-            <cite>Glosario · Sylvalis</cite>
-          </blockquote>
+            <p className="casa-quote__note">{content.mapa.note}</p>
+          </div>
           <ul className="casa-list casa-list--links">
             {content.archive
               .filter((item) => ["Mundo", "Reinos", "Glosario", "Bestiario"].includes(item.title))

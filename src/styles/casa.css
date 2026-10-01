@@ -915,6 +915,15 @@ body.has-music-player .casa--vertical .casa-panel {
   color: rgba(244, 238, 252, 0.9);
 }
 
+/* segunda voz del bloque: una nota al margen, separada del texto principal */
+.casa-quote p.casa-quote__note {
+  margin-top: 0.7rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(232, 196, 106, 0.22);
+  color: rgba(232, 196, 106, 0.88);
+  font-size: 0.94em;
+}
+
 .casa-quote cite {
   display: block;
   margin-top: 0.45rem;

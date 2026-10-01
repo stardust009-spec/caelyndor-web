@@ -89,7 +89,7 @@ export type CasaContent = {
   gallery: CasaCard[];
   downloads: CasaCard[];
   forja: { title: string; status: string; progress: number; lastUpdate: string; nextMilestone: string; definition: string };
-  mapa: { text: string };
+  mapa: { text: string; note: string };
   rollito: { bond: string; quote: string; story?: { slug: string; title: string } };
   archivista: string;
 };

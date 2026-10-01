@@ -130,7 +130,12 @@ export function buildCasaContent(): CasaContent {
       nextMilestone: currentBook.nextMilestone,
       definition: glossary("La Forja")
     },
-    mapa: { text: glossary("Sylvalis") },
+    // texto del autor para el mapa canon (2026-09-30): nombra los lugares que se ven en el tapiz
+    mapa: {
+      text:
+        "Sylvalis es un continente de bosques antiguos donde la naturaleza y el espíritu forman una misma trama. En su interior se encuentran Sotos Caya, el Lago de Estrellas y el inmenso Árbol de Lüm. Al norte, el Bosque de Cristal marca la frontera donde sus tierras comienzan a mezclarse con las nieves de Glaciem.",
+      note: "Una parte de este mapa fue arrancada. Lyzi no suele responder cuando le preguntan por qué."
+    },
     rollito: {
       bond: bond("Rollito"),
       quote: rincon ?? PENDIENTE,
