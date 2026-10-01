@@ -1,14 +1,17 @@
+import { VIDEO_BASE } from "@/data/assets";
+
 /**
  * La casa de Lyzi — portada narrativa del portal.
  *
  * Escenas pintadas (Astra, Propuesta 02) animadas con video IA (Higgsfield · Kling 3.0): los
  * tramos de scroll son secuencias de fotogramas WebP, los descansos y los primeros planos son
  * bucles de video, y un manifest.json dice dónde queda cada cosa clickeable. Se preparan con
- * `node scripts/casa-de-lyzi-video.mjs`. La carpeta local (public/casa-de-lyzi/) NO se versiona:
- * en producción vive en el repo Caelyndor-Assets (GitHub Pages), igual que la música, por el
- * tope de Vercel.
+ * `node scripts/casa-de-lyzi-video.mjs` en public/casa-de-lyzi/v2 (NO se versiona) y se publican
+ * copiando esa carpeta a casa-de-lyzi/v2/ del repo Caelyndor-Assets (GitHub Pages), igual que la
+ * música, por el tope de Vercel. Para probar en local con los archivos de public/:
+ * NEXT_PUBLIC_CASA_ASSETS=/casa-de-lyzi/v2
  */
-export const CASA_ASSET_BASE = process.env.NEXT_PUBLIC_CASA_ASSETS ?? "/casa-de-lyzi/v2";
+export const CASA_ASSET_BASE = process.env.NEXT_PUBLIC_CASA_ASSETS ?? `${VIDEO_BASE}casa-de-lyzi/v2`;
 
 export const CASA_OBJETOS = [
   "biblioteca",

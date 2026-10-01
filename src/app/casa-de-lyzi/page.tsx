@@ -9,9 +9,7 @@ export const metadata: Metadata = {
   title: "La casa de Lyzi",
   description:
     "Recorre la casa de Lyzi en Sylvalis: su biblioteca, el libro de relatos, la vitrola y los rincones donde vive el universo de Caelyndor.",
-  alternates: { canonical: "/casa-de-lyzi" },
-  // Vista previa: no se indexa hasta que reemplace al Inicio.
-  robots: { index: false, follow: true }
+  alternates: { canonical: "/casa-de-lyzi" }
 };
 
 const indice = [

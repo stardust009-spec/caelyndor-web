@@ -7570,3 +7570,84 @@ body.story-lightbox-open {
   height: 100%;
   object-fit: cover;
 }
+
+/* ——— Inicio: acceso destacado a la casa de Lyzi (src/components/CasaTeaser.tsx) */
+.casa-teaser {
+  padding: var(--space-6) 0 0;
+}
+
+.casa-teaser__card {
+  position: relative;
+  display: grid;
+  align-items: end;
+  min-height: clamp(260px, 40vw, 460px);
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  color: inherit;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.casa-teaser__image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 62%;
+  transition: transform 900ms ease;
+}
+
+.casa-teaser__card:hover .casa-teaser__image,
+.casa-teaser__card:focus-visible .casa-teaser__image {
+  transform: scale(1.04);
+}
+
+.casa-teaser__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(5, 6, 10, 0.86) 0%, rgba(5, 6, 10, 0.5) 45%, rgba(5, 6, 10, 0.05) 78%),
+    linear-gradient(0deg, rgba(5, 6, 10, 0.6), transparent 45%);
+}
+
+.casa-teaser__content {
+  display: grid;
+  justify-items: start;
+  gap: 0.5rem;
+  max-width: 34rem;
+  padding: clamp(1.4rem, 4vw, 2.6rem);
+}
+
+.casa-teaser__content .eyebrow {
+  margin: 0;
+}
+
+.casa-teaser__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.casa-teaser__phrase {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(244, 238, 252, 0.88);
+}
+
+.casa-teaser__cta {
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .casa-teaser__image {
+    transition: none;
+  }
+}

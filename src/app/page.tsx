@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CasaTeaser } from "@/components/CasaTeaser";
 import { FloatingLyziPlayer } from "@/components/FloatingLyziPlayer";
 import { HeroVelo } from "@/components/HeroVelo";
 import { JsonLd } from "@/components/JsonLd";
@@ -55,6 +56,7 @@ export default function HomePage() {
     <>
       <JsonLd data={homeJsonLd} />
       <HeroVelo />
+      <CasaTeaser />
       <section className="section section--raised" aria-labelledby="destacados">
         <div className="container">
           <SectionIntro
