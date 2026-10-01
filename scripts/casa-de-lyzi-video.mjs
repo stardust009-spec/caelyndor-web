@@ -55,7 +55,9 @@ const CLOSEUPS = {
   libro: { plate: "07_libro.png", loop: "C_libro_a.mp4", zoom: "Z_libro_a.mp4" },
   vitrola: { plate: "08_vitrola.png", loop: "C_vitrola_a.mp4", zoom: "Z_vitrola_a.mp4" },
   cuadros: { plate: "09_retratos.png", loop: "C_retratos_a.mp4", zoom: "Z_retratos_a.mp4" },
-  mapa: { plate: "10_mapa.png", loop: "C_mapa_a.mp4", zoom: "Z_mapa_a.mp4" },
+  // el tapiz lleva el mapa canon de Sylvalis (el autor, 2026-09-30) montado sobre la lámina y los
+  // videos de Astra/Kling: Obra/Dioramas/Casa de Lyzi/canon/ (lámina) y *_mapa_canon.mp4 (videos)
+  mapa: { plate: "C:/Users/cbarr/Documents/Proyecto NX_03/Obra/Dioramas/Casa de Lyzi/canon/10_mapa_canon.png", loop: "C_mapa_canon.mp4", zoom: "Z_mapa_canon.mp4" },
   escritorio: { plate: "11_escritorio.png", loop: "C_escritorio_a.mp4", zoom: "Z_escritorio_a.mp4" },
   baul: { plate: "12_baul.png", loop: "C_baul_a.mp4", zoom: "Z_baul_a.mp4" },
   rollito: { plate: "13_rollito.png", loop: "C_rollito_a.mp4", zoom: "Z_rollito_a.mp4" },
@@ -250,7 +252,7 @@ if (ONLY === "all" || ONLY === "plates") {
   await mkdir(path.join(OUT, "plates"), { recursive: true });
   for (const rest of RESTS) total += await plate(path.join(PLATES, rest.plate), path.join(OUT, "plates", `${rest.id}.webp`));
   for (const [key, item] of Object.entries(CLOSEUPS)) {
-    total += await plate(path.join(PLATES, item.plate), path.join(OUT, "plates", `${key}.webp`));
+    total += await plate(path.resolve(PLATES, item.plate), path.join(OUT, "plates", `${key}.webp`));
   }
   // póster liviano para el primer pintado (LCP)
   run("ffmpeg", [
