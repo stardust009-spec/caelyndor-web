@@ -47,6 +47,12 @@ const nextConfig: NextConfig = {
       }
     ]
   },
+  async redirects() {
+    return [
+      // la casa de Lyzi se publicó primero en su propia ruta y ahora es el Inicio
+      { source: "/casa-de-lyzi", destination: "/", permanent: true }
+    ];
+  },
   async headers() {
     return [
       {
