@@ -37,7 +37,9 @@ export const musicAlbums: MusicAlbum[] = [
     artist: "Rubí",
     status: "Disponible",
     heroAspect: "2.7 / 1",
-    heroImage: videoAsset("rubi_flor_carmesi_album_hero.png"),
+    heroImage: videoAsset("rubi-flor-carmesi.png"),
+    heroVideoMp4: videoAsset("rubi-flor-carmesi.mp4"),
+    heroVideoWebm: videoAsset("rubi-flor-carmesi.webm"),
     description:
       "Fuego, bravata, verdad y estallido: el álbum escénico de Rubí dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
@@ -74,12 +76,14 @@ export const musicAlbums: MusicAlbum[] = [
     ]
   },
   {
-    slug: "yuki-arhess-corona-de-escarcha",
-    title: "Yuki Arhess — Corona de Escarcha",
+    slug: "yuki-arhess-aun-no-me-derrito",
+    title: "Yuki Arhess — Aún no me derrito",
     artist: "Yuki Arhess",
     status: "Disponible",
     heroAspect: "2.7 / 1",
-    heroImage: videoAsset("yuki_arhess_album_hero.png"),
+    heroImage: videoAsset("yuki-arhess-aun-no-me-derrito.png"),
+    heroVideoMp4: videoAsset("yuki-arhess-aun-no-me-derrito.mp4"),
+    heroVideoWebm: videoAsset("yuki-arhess-aun-no-me-derrito.webm"),
     description:
       "Hielo que resiste y corazón que confiesa: el álbum de Yuki Arhess, reina de Glaciem, dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
@@ -116,12 +120,14 @@ export const musicAlbums: MusicAlbum[] = [
     ]
   },
   {
-    slug: "lyzi-el-bosque-que-escucha",
-    title: "Lyzi — El Bosque que Escucha",
+    slug: "lyzi-el-bosque-sabe-mi-nombre",
+    title: "Lyzi — El bosque sabe mi nombre",
     artist: "Lyzi",
     status: "Disponible",
     heroAspect: "2.7 / 1",
-    heroImage: videoAsset("lyzi_album_hero.png"),
+    heroImage: videoAsset("lyzi-el-bosque-sabe-mi-nombre.png"),
+    heroVideoMp4: videoAsset("lyzi-el-bosque-sabe-mi-nombre.mp4"),
+    heroVideoWebm: videoAsset("lyzi-el-bosque-sabe-mi-nombre.webm"),
     description:
       "Luna tibia, nueve colas, ternura y duelo: el álbum de Lyzi desde Sylvalis, dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
