@@ -45,15 +45,15 @@ export const musicAlbums: MusicAlbum[] = [
     tracklist: [
       {
         number: 1,
-        title: "Rubí — La Flor Carmesí",
-        description: "Tema-título: la flor que arde sin pedir permiso.",
-        linkedTrackId: "rubi-la-flor-carmesi"
-      },
-      {
-        number: 2,
         title: "Rubí — Yo no nací, yo estallé",
         description: "Origen a fuego vivo: no vino al mundo, lo reventó.",
         linkedTrackId: "rubi-yo-no-naci-yo-estalle"
+      },
+      {
+        number: 2,
+        title: "Rubí — Espectro sexy con capa de llamas",
+        description: "Bravata incendiaria, puro show de fuego.",
+        linkedTrackId: "rubi-espectro-sexy-con-capa-de-llamas"
       },
       {
         number: 3,
@@ -69,9 +69,9 @@ export const musicAlbums: MusicAlbum[] = [
       },
       {
         number: 5,
-        title: "Rubí — Espectro sexy con capa de llamas",
-        description: "Bravata incendiaria, puro show de fuego.",
-        linkedTrackId: "rubi-espectro-sexy-con-capa-de-llamas"
+        title: "Rubí — La Flor Carmesí",
+        description: "Tema-título: la flor que arde sin pedir permiso.",
+        linkedTrackId: "rubi-la-flor-carmesi"
       }
     ]
   },
@@ -101,21 +101,21 @@ export const musicAlbums: MusicAlbum[] = [
       },
       {
         number: 3,
-        title: "Yuki — Aún no me derrito",
-        description: "Hielo que resiste, orgullo de escarcha.",
-        linkedTrackId: "yuki-aun-no-me-derrito"
-      },
-      {
-        number: 4,
         title: "Yuki — Me lo dijo mi corazón",
         description: "El deshielo íntimo: la confesión bajo la corona.",
         linkedTrackId: "yuki-me-lo-dijo-mi-corazon"
       },
       {
-        number: 5,
+        number: 4,
         title: "Yuki — Vela aromática",
         description: "Calma de hogar, el frío que por fin descansa.",
         linkedTrackId: "yuki-vela-aromatica"
+      },
+      {
+        number: 5,
+        title: "Yuki — Aún no me derrito",
+        description: "Hielo que resiste, orgullo de escarcha.",
+        linkedTrackId: "yuki-aun-no-me-derrito"
       }
     ]
   },
@@ -133,15 +133,15 @@ export const musicAlbums: MusicAlbum[] = [
     tracklist: [
       {
         number: 1,
-        title: "Lyzi — Un nombre imperfecto",
-        description: "El nombre que se quiere aunque no encaje.",
-        linkedTrackId: "lyzi-un-nombre-imperfecto"
+        title: "Lyzi — Fui llorada",
+        description: "Duelo y eco: ser llorada y seguir sonando.",
+        linkedTrackId: "lyzi-fui-llorada"
       },
       {
         number: 2,
-        title: "Lyzi — No me rubíes",
-        description: "Broma y límite: cariño con las orejas en guardia.",
-        linkedTrackId: "lyzi-no-me-rubies"
+        title: "Lyzi — Un nombre imperfecto",
+        description: "El nombre que se quiere aunque no encaje.",
+        linkedTrackId: "lyzi-un-nombre-imperfecto"
       },
       {
         number: 3,
@@ -151,15 +151,15 @@ export const musicAlbums: MusicAlbum[] = [
       },
       {
         number: 4,
-        title: "Lyzi — Quédate con ella",
-        description: "Ruego suave: la petición que cuida.",
-        linkedTrackId: "lyzi-quedate-con-ella"
+        title: "Lyzi — No me rubíes",
+        description: "Broma y límite: cariño con las orejas en guardia.",
+        linkedTrackId: "lyzi-no-me-rubies"
       },
       {
         number: 5,
-        title: "Lyzi — Fui llorada",
-        description: "Duelo y eco: ser llorada y seguir sonando.",
-        linkedTrackId: "lyzi-fui-llorada"
+        title: "Lyzi — Quédate con ella",
+        description: "Ruego suave: la petición que cuida.",
+        linkedTrackId: "lyzi-quedate-con-ella"
       }
     ]
   },
