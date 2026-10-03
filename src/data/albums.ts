@@ -31,6 +31,25 @@ export type MusicAlbum = {
 };
 
 export const musicAlbums: MusicAlbum[] = [
+  /* === Noctalypse — El Lector de Sombras ===
+     Espacio reservado (primer álbum). Temas por confirmar: completar la tracklist
+     y DESCOMENTAR este bloque para activarlo. Hero ya en Caelyndor-Assets.
+  {
+    slug: "noctalypse-el-lector-de-sombras",
+    title: "Noctalypse — El Lector de Sombras",
+    artist: "Noctalypse",
+    status: "Disponible",
+    heroAspect: "2.7 / 1",
+    heroImage: videoAsset("noctalypse-el-lector-de-sombras.png"),
+    heroVideoMp4: videoAsset("noctalypse-el-lector-de-sombras.mp4"),
+    heroVideoWebm: videoAsset("noctalypse-el-lector-de-sombras.webm"),
+    description:
+      "Sombra prestada, eclipse y abismo: el álbum de Noctalypse, el que lee las sombras, dentro del Archivo Sonoro de Caelyndor.",
+    tracklist: [
+      // TODO: temas por confirmar por el autor.
+    ]
+  },
+  === fin Noctalypse === */
   {
     slug: "rubi-flor-carmesi",
     title: "Rubí — Flor Carmesí",
