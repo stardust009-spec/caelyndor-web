@@ -50,6 +50,25 @@ export const musicAlbums: MusicAlbum[] = [
     ]
   },
   === fin Noctalypse === */
+  /* === Xirian — Génesis Oscuro ===
+     Slot reservado (comentado). Pendiente: hero wide 1568x576 (png/mp4/webm) en
+     Caelyndor-Assets, temas + tracklist, y posición definitiva. DESCOMENTAR para activar.
+  {
+    slug: "xirian-genesis-oscuro",
+    title: "Xirian — Génesis Oscuro",
+    artist: "Xirian",
+    status: "Disponible",
+    heroAspect: "2.7 / 1",
+    heroImage: videoAsset("xirian-genesis-oscuro.png"),
+    heroVideoMp4: videoAsset("xirian-genesis-oscuro.mp4"),
+    heroVideoWebm: videoAsset("xirian-genesis-oscuro.webm"),
+    description:
+      "Génesis oscuro, origen y sombra: el álbum de Xirian dentro del Archivo Sonoro de Caelyndor.",
+    tracklist: [
+      // TODO: temas por confirmar.
+    ]
+  },
+  === fin Xirian === */
   {
     slug: "rubi-flor-carmesi",
     title: "Rubí — Flor Carmesí",
@@ -1468,30 +1487,30 @@ si lo vieron en el cristal...
       }
     ]
   },
-  /* === Adagio Ventoleve — El Poema de Bragi  (TÍTULO PROPUESTO, confirmar) ===
+  /* === Adagio Ventoleve — El Verso que Envenena ===
      Slot reservado (comentado). Pendiente:
-       1) título definitivo del álbum,
-       2) hero wide 1568x576 (png/mp4/webm) en Caelyndor-Assets,
-       3) MOVER aquí las 4 pistas de Adagio que hoy están en el álbum de Aria
+       1) hero wide 1568x576 (png/mp4/webm) en Caelyndor-Assets,
+       2) MOVER aquí las 4 pistas de Adagio que hoy están en el álbum de Aria
           "Jaula y Rosas" (cortar esas entradas con sus lyrics y pegarlas en el
           tracklist de abajo):
             adagio-ventoleve-el-poema-de-bragi
             adagio-ventoleve-bendito-y-maldito
             adagio-ventoleve-letra-chica-con-disrupcion
             adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi
-     Al activar: completar tracklist, ajustar nombres de hero al título final y
+     Al activar: completar tracklist, renombrar el álbum de Aria a
+     "Aria Ventoleve — Jaula y Rosas" (quitar "& Adagio" de title y artist), y
      DESCOMENTAR este bloque.
   {
-    slug: "adagio-ventoleve-el-poema-de-bragi",
-    title: "Adagio Ventoleve — El Poema de Bragi",
+    slug: "adagio-ventoleve-el-verso-que-envenena",
+    title: "Adagio Ventoleve — El Verso que Envenena",
     artist: "Adagio Ventoleve",
     status: "Disponible",
     heroAspect: "2.7 / 1",
-    heroImage: videoAsset("adagio-ventoleve-el-poema-de-bragi.png"),
-    heroVideoMp4: videoAsset("adagio-ventoleve-el-poema-de-bragi.mp4"),
-    heroVideoWebm: videoAsset("adagio-ventoleve-el-poema-de-bragi.webm"),
+    heroImage: videoAsset("adagio-ventoleve-el-verso-que-envenena.png"),
+    heroVideoMp4: videoAsset("adagio-ventoleve-el-verso-que-envenena.mp4"),
+    heroVideoWebm: videoAsset("adagio-ventoleve-el-verso-que-envenena.webm"),
     description:
-      "Partitura, duelo y el hermano que tocó la marcha: el álbum de Adagio Ventoleve dentro del Archivo Sonoro de Caelyndor.",
+      "Verso que envenena, duelo y el hermano que tocó la marcha: el álbum de Adagio Ventoleve dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
       // TODO: mover aquí las 4 pistas de Adagio desde el álbum de Aria.
     ]
