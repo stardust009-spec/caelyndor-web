@@ -1523,7 +1523,6 @@ si lo vieron en el cristal...
     artist: "Aria & Adagio Ventoleve",
     status: "Disponible",
     heroAspect: "2.7 / 1",
-    heroPlayLeft: true,
     heroImage: videoAsset("aria-ventoleve-jaula-y-rosas.png"),
     heroVideoMp4: videoAsset("aria-ventoleve-jaula-y-rosas.mp4"),
     heroVideoWebm: videoAsset("aria-ventoleve-jaula-y-rosas.webm"),

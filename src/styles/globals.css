@@ -5752,6 +5752,13 @@ body.has-music-player {
       background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
   }
 
+  /* Nudge óptico: el triángulo ▶ se percibe centrado desplazándolo un pelo
+     a la derecha dentro del círculo. */
+  .music-album__play-all:not(.music-album__play-all--inline) svg {
+    transform: translateX(1.5px);
+    transition: transform 240ms ease;
+  }
+
   .music-album__play-all:not(.music-album__play-all--inline) span {
     max-width: 0;
     opacity: 0;
@@ -5760,13 +5767,20 @@ body.has-music-player {
     transition: max-width 260ms ease, opacity 200ms ease;
   }
 
-  .music-album__play-all:not(.music-album__play-all--inline):hover,
+  /* Se expande al pasar el mouse por cualquier parte del banner (o con foco de
+     teclado); se colapsa solo al salir. */
+  .music-album__header:hover .music-album__play-all:not(.music-album__play-all--inline),
   .music-album__play-all:not(.music-album__play-all--inline):focus-visible {
     padding: 0.62rem 1.2rem;
     gap: 0.5rem;
   }
 
-  .music-album__play-all:not(.music-album__play-all--inline):hover span,
+  .music-album__header:hover .music-album__play-all:not(.music-album__play-all--inline) svg,
+  .music-album__play-all:not(.music-album__play-all--inline):focus-visible svg {
+    transform: none;
+  }
+
+  .music-album__header:hover .music-album__play-all:not(.music-album__play-all--inline) span,
   .music-album__play-all:not(.music-album__play-all--inline):focus-visible span {
     max-width: 12rem;
     opacity: 1;
