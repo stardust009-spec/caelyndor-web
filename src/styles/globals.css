@@ -1561,7 +1561,7 @@ h3 {
 
 .music-album__header-video {
   display: block;
-  background: #05060a url("https://stardust009-spec.github.io/Caelyndor-Assets/carolinav_portada_album_hero.png") center / cover no-repeat;
+  background: #05060a;
 }
 
 /* Encuadre a la izquierda: ancla el recorte y el zoom a la izquierda para no
