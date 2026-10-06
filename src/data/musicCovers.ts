@@ -1,4 +1,5 @@
 export const musicCovers: Record<string, string> = {
+  "adagio-ventoleve-cadenza-del-espejo-verde": "/images/music-covers/adagio-ventoleve-cadenza-del-espejo-verde.jpg",
   "rubi-espectro-sexy-con-capa-de-llamas": "/images/music-covers/rubi-espectro-sexy-con-capa-de-llamas.jpg",
   "rubi-la-flor-carmesi": "/images/music-covers/rubi-la-flor-carmesi.jpg",
   "rubi-no-me-rubies-ahora": "/images/music-covers/rubi-no-me-rubies-ahora.jpg",

@@ -47,6 +47,16 @@ function track({ cover, coverVideoFile, ...trackData }: TrackInput): MusicTrack 
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "adagio-ventoleve-cadenza-del-espejo-verde",
+    title: "Adagio Ventoleve — Cadenza del Espejo Verde",
+    subtitle: "Tema de personaje",
+    fileName: "Adagio Ventoleve — Cadenza del Espejo Verde.mp3",
+    category: "personaje",
+    related: ["Adagio Ventoleve"],
+    mood: "Cadenza / espejo",
+    accent: "rgba(170, 190, 210, 0.34)"
+  }),
+  track({
     id: "rubi-espectro-sexy-con-capa-de-llamas",
     title: "Rubí — Espectro sexy con capa de llamas",
     subtitle: "Tema de personaje",

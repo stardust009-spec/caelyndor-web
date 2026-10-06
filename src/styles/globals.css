@@ -5748,6 +5748,7 @@ body.has-music-player {
   .music-album__play-all:not(.music-album__play-all--inline) {
     padding: 0.62rem;
     gap: 0;
+    justify-content: center;
     transition: padding 240ms ease, gap 240ms ease, border-color 200ms ease,
       background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
   }
@@ -5755,12 +5756,13 @@ body.has-music-player {
   /* Nudge óptico: el triángulo ▶ se percibe centrado desplazándolo un pelo
      a la derecha dentro del círculo. */
   .music-album__play-all:not(.music-album__play-all--inline) svg {
-    transform: translateX(1.5px);
+    transform: translateX(1px);
     transition: transform 240ms ease;
   }
 
   .music-album__play-all:not(.music-album__play-all--inline) span {
     max-width: 0;
+    min-width: 0;
     opacity: 0;
     overflow: hidden;
     white-space: nowrap;

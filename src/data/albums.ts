@@ -1488,19 +1488,6 @@ si lo vieron en el cristal...
       }
     ]
   },
-  /* === Adagio Ventoleve — El Verso que Envenena ===
-     Slot reservado (comentado). Pendiente:
-       1) hero wide 1568x576 (png/mp4/webm) en Caelyndor-Assets,
-       2) MOVER aquí las 4 pistas de Adagio que hoy están en el álbum de Aria
-          "Jaula y Rosas" (cortar esas entradas con sus lyrics y pegarlas en el
-          tracklist de abajo):
-            adagio-ventoleve-el-poema-de-bragi
-            adagio-ventoleve-bendito-y-maldito
-            adagio-ventoleve-letra-chica-con-disrupcion
-            adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi
-     Al activar: completar tracklist, renombrar el álbum de Aria a
-     "Aria Ventoleve — Jaula y Rosas" (quitar "& Adagio" de title y artist), y
-     DESCOMENTAR este bloque.
   {
     slug: "adagio-ventoleve-el-verso-que-envenena",
     title: "Adagio Ventoleve — El Verso que Envenena",
@@ -1513,14 +1500,430 @@ si lo vieron en el cristal...
     description:
       "Verso que envenena, duelo y el hermano que tocó la marcha: el álbum de Adagio Ventoleve dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
-      // TODO: mover aquí las 4 pistas de Adagio desde el álbum de Aria.
+      {
+        number: 1,
+        title: "Adagio Ventoleve — El poema de Bragi",
+        description: "Apertura poética de Adagio, viento y memoria.",
+        linkedTrackId: "adagio-ventoleve-el-poema-de-bragi",
+        lyrics: `"El espectáculo... acaba de comenzar."
+
+"Bragi me dicta y yo solo ejecuto,
+rimas de seda y un verso astuto.
+Si falta la gracia, yo pongo el acento,
+¡soy el bardo, el alma y el viento!
+¡Adagio aquí! ¡Adagio allá!
+¡El poema de Bragi pronto vendrá!"
+
+"¡Cuidado! ¡Atención! ¡Que el bardo camina!
+¡Se acerca la rima! ¡Se acerca la gloria!
+¡SE ACERCA EL FI...!"
+
+"Drop it."
+
+"¡FELICIDAD! ¡ETERNIDAD! ¡VERSO INMORTAL!
+¡YO SOY EL ECO DEL REINO ETERNAL!
+¡POR LA COPA DE BRAGI, POR EL ARTE SIN PAR!
+¡NADIE EN LA TIERRA ME PUEDE IGUALAR!"
+
+"¡Rima rima rima rima!
+¡Canta canta canta canta!
+¡Bravo Adagio! ¡Bravo Adagio! ¡Bravo!"
+
+"¡FELICIDAD! ¡ETERNIDAD! ¡VERSO INMORTAL!
+¡YO SOY EL ECO DEL REINO ETERNAL!
+¡BRAVO ADAGIO! ¡EL MUNDO ES MI ALTAR!"
+
+"¡LA-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!"
+
+"¡A-DA-GIO! ¡A-DA-GIO! ¡INMORTAL!"`
+      },
+      {
+        number: 2,
+        title: "Adagio Ventoleve — Bendito y Maldito",
+        description: "Bendición y condena en una misma pieza.",
+        linkedTrackId: "adagio-ventoleve-bendito-y-maldito",
+        lyrics: `Mi madre dijo una vez…
+que algunos dones llegan con dos manos.
+Una te corona.
+La otra… te cobra.
+
+Y yo, naturalmente…
+bebí igual.
+
+Bragi me dio la copa cuando dejé de respirar,
+dijo mi nombre en un sitio donde no debía estar.
+La luz era dorada, la muerte cordial,
+y hasta mi propio miedo sonaba musical.
+
+¡Qué copa tan fina! ¡Qué brillo inmortal!
+¡Qué forma tan bella de abrir el umbral!
+Yo, joven y roto, sin saber si volver,
+bebí de aquel cielo por puro deber.
+
+¡Cuidado! ¡Atención!
+¡La copa brilló!
+¡El cielo cantó!
+¡La muerte esperó!
+
+¡Y yo, mal educado, volví del final
+con voz de bendito
+y pulso fatal!
+
+Bendición, dijeron.
+
+Qué palabra tan peligrosa.
+
+¡Bendito!
+¡Bendito!
+Con la voz encendida.
+Me dieron el canto,
+me alzaron la vida.
+
+¡Bendito!
+¡Bendito!
+Ruiseñor del dolor.
+Me pusieron la copa
+donde muere el temor.
+
+Pero Aria mordió la noche.
+Aria negó el final.
+Me arrancó de la tumba…
+y el cielo empezó a desafinar.
+
+No estoy vivo del todo, no terminé de morir,
+soy la nota suspendida que ella no dejó partir.
+Bragi me dio la copa, Aria me negó la tumba,
+y desde aquella noche mi corazón retumba.
+
+¡Qué crimen tan bello! ¡Qué amor criminal!
+¡Salvarme la vida salió espiritual!
+Ahora cada herida me aprende a llamar,
+cada despedida me obliga a cantar.
+
+Si canto, recuerdo.
+Si callo, también.
+Si salvo una herida,
+me pierdo después.
+
+Si Bragi me mira,
+no sé si rezar.
+No sé si darle gracias.
+No sé si gritar.
+
+Me bendijeron la voz…
+
+…y me maldijeron el silencio.
+
+¡Maldito!
+¡Maldito!
+Con la voz encendida.
+Me dieron el canto,
+me cobraron la vida.
+
+¡Maldito!
+¡Maldito!
+Ruiseñor del dolor.
+Bendito por la copa,
+maldito por volver.
+
+No canto a los muertos.
+No canto al final.
+Canto lo que muere
+y no puede sangrar.
+
+Una casa.
+Una infancia.
+Una promesa al caer.
+Todo lo que se rompe
+me vuelve a morder.
+
+Bragi me llama.
+Aria me ata.
+La copa brilla.
+La tumba canta.
+
+Bendito el don.
+Maldito el precio.
+Bendita la voz.
+Maldito el silencio.
+
+¡Bendito!
+¡Maldito!
+¡La copa y la herida!
+Me dieron el canto,
+me cobraron la vida.
+
+¡Bendito!
+¡Maldito!
+¡Corazón sin compás!
+Todo don que me salva
+me condena a cantar.
+
+¡Me bendijeron la voz…
+y me maldijeron
+el silencio!
+
+Bendito…
+Maldito…
+Bendito…
+Maldito…
+
+Bragi me dio la copa.
+Aria me negó la tumba.`
+      },
+      {
+        number: 3,
+        title: "Adagio Ventoleve — Letra Chica con disrupción",
+        description: "Contrato, letra pequeña y disrupción.",
+        linkedTrackId: "adagio-ventoleve-letra-chica-con-disrupcion",
+        lyrics: `No todos los demonios huelen a azufre.
+Algunos sirven té…
+y preguntan dónde prefieres firmar.
+
+Entró sin llamar con guantes de seda,
+sonrió como deuda vestida de seda.
+Traía una taza, traía un favor,
+traía mi nombre doblado en dos.
+
+No alzó la voz, no mostró el puñal,
+solo puso el destino sobre el cristal.
+"Cuentas, propiedades, rutas, personal…"
+Qué forma tan fina de decir: funeral.
+
+Y Aria mordía la rabia en la boca,
+yo oí las cuerdas temblar por dentro.
+Él dijo "negocios" con voz de ceremonia,
+y el salón respiró testamento.
+
+¿Letra chica?
+
+¡Firma, firma, que el mundo no espera!
+¡Baila la tinta sobre la madera!
+Todo trato con demonios
+empieza limpio en el papel.
+
+¡Firma, firma, qué dulce condena!
+¡La casa es tuya, también la cadena!
+Si la suerte no sabe contabilidad,
+Mefironte sí la sabe hacer.
+
+No ofrece infiernos, ofrece solución;
+te cobra la vida con educación.
+No compra tu alma, qué vulgaridad:
+prefiere dejarla en propiedad.
+
+"Favores pendientes, enemigos también,
+deudas cobrables y obras de mal gusto."
+Yo casi aplaudo su forma cruel
+de llamar herencia a todo este susto.
+
+El té no existía, la taza tampoco,
+pero ahí seguía bebiendo despacio.
+Un demonio educado no rompe la puerta:
+te enseña a llamarla palacio.
+
+El músico aprende rápido.
+
+¡Firma, firma, que el mundo no espera!
+¡Baila la tinta sobre la madera!
+Todo trato con demonios
+empieza limpio en el papel.
+
+¡Firma, firma, qué dulce condena!
+¡La casa es tuya, también la cadena!
+Si la suerte no sabe contabilidad,
+Mefironte sí la sabe hacer.
+
+No lo encuentras.
+Te ocurre.
+No te grita.
+Te escribe.
+
+No te ata con fuego.
+Te ata con archivo.
+No te pide la sangre.
+Te deja el recibo.
+
+Y si Aria renuncia, traiciona a los muertos.
+Y si yo me callo, se pudre el compás.
+Así que sonrío frente al caballero
+que vende cadenas con guantes de paz.
+
+¡Firma, firma, que el mundo no espera!
+¡Baila la tinta sobre la madera!
+Todo trato con demonios
+empieza limpio en el papel.
+
+¡Firma, firma, qué dulce condena!
+¡La casa es tuya, también la cadena!
+Si la suerte no sabe contabilidad,
+Mefironte sí la sabe hacer.
+
+¡Y en la letra más pequeña
+cabe entera
+tu libertad!
+
+¡Firma! ¡Firma!
+¡Mefironte!
+¡Firma! ¡Firma!
+¡Mefironte!
+
+No era un trato.
+Era una cortesía.`
+      },
+      {
+        number: 4,
+        title: "Adagio Ventoleve — Marcha Nupcial; La hermana que perdí",
+        description: "Marcha nupcial vuelta duelo por la hermana perdida.",
+        linkedTrackId: "adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi",
+        lyrics: `Queridos invitados…
+respiren con elegancia.
+
+Hoy no pierdo una hermana.
+La escolto hacia otro desastre.
+
+Paso corto, flor torcida,
+velo negro, luna herida.
+La capilla dice amén,
+pero el piso dice: "¿quién?"
+
+Ramo blanco, cinta rota,
+mi sonrisa casi flota.
+Si la boda va a empezar,
+que alguien revise el altar.
+
+Una hermana no se entrega,
+se acompaña hasta la puerta.
+Y si el mundo la reclama,
+¡que se quite la chaqueta!
+
+Sube el arco, baja el cielo,
+tiembla el cura, cruje el velo.
+Aria avanza, yo detrás…
+¡demasiado tarde para paz!
+
+Tac, tac, tac,
+marcha nupcial.
+Tac, tac, tac,
+algo va mal.
+
+Brilla la copa,
+ríe el salón.
+Yo llevo a Aria…
+con bendición y maldición.
+
+Tac, tac, tac,
+no mires atrás.
+Tac, tac, tac,
+sonríe nomás.
+
+Si el amor llama
+con voz funeral,
+que toque mi violín
+la marcha final.
+
+¡Cuidado con la alfombra!
+¡Cuidado con la flor!
+¡Cuidado con el novio
+si promete demasiado honor!
+
+La tía llora, el tío brinda,
+la lámpara se extingue linda.
+Tres palomas, cuatro cuervos,
+cinco dudas en los nervios.
+
+Yo, Adagio, fiel testigo,
+con el arco por abrigo.
+Si alguien piensa hacerla daño,
+le compongo un cumpleaños.
+
+Aria.
+
+No firmes nada sin leer.
+
+Especialmente si sonríe.
+
+Tac, tac, tac,
+entra la novia.
+Tac, tac, tac,
+muere la gloria.
+
+Campana quebrada,
+zapato en cristal.
+Qué ceremonia
+tan sentimental.
+
+Tac, tac, tac,
+ríe el violín.
+Tac, tac, tac,
+no hay fin, no hay fin.
+
+Si te arrebatan
+tu nombre al pasar,
+yo lo hago canción
+y lo vuelvo a gritar.
+
+Hermana mía,
+camina despacio.
+Que el mundo te mire,
+que aprenda tu paso.
+
+No vas sola,
+aunque yo bromee.
+Mi sombra tropieza,
+mi arco te cree.
+
+¡Que suba la cuerda!
+¡Que tiemble el mantel!
+¡Que el ramo se prenda
+con vino y laurel!
+
+¡Que giren los vivos!
+¡Que callen los muertos!
+¡Que nadie se atreva
+a cerrar esos puertos!
+
+Tac, tac, tac,
+marcha nupcial.
+Tac, tac, tac,
+dulce y fatal.
+
+Aria camina,
+la sala se abrió.
+Yo no la entrego…
+la escolto yo.
+
+Tac, tac, tac,
+que escuche el altar.
+Tac, tac, tac,
+no la van a quebrar.
+
+Si el destino canta
+con dientes de sal,
+mi violín responde:
+¡otra vez, otra vez, otra vez más!
+
+¡Aria Ventoleve!
+¡Flor de vendaval!
+¡Que tiemble la boda!
+¡Que baile el final!
+
+Finaaaaaaaal…
+
+Tac.`
+      },
+      {
+        number: 5,
+        title: "Adagio Ventoleve — Cadenza del Espejo Verde",
+        description: "Cadenza del espejo verde: floritura solista de Adagio.",
+        linkedTrackId: "adagio-ventoleve-cadenza-del-espejo-verde"
+      }
     ]
   },
-  === fin Adagio === */
   {
     slug: "aria-adagio-ventoleve-jaula-y-rosas",
-    title: "Aria & Adagio Ventoleve — Jaula y Rosas",
-    artist: "Aria & Adagio Ventoleve",
+    title: "Aria Ventoleve — Jaula y Rosas",
+    artist: "Aria Ventoleve",
     status: "Disponible",
     heroAspect: "2.7 / 1",
     heroImage: videoAsset("aria-ventoleve-jaula-y-rosas.png"),
@@ -1961,415 +2364,9 @@ cuando levanto la mano yo.`
       },
       {
         number: 5,
-        title: "Adagio Ventoleve — El poema de Bragi",
-        description: "Apertura poética de Adagio, viento y memoria.",
-        linkedTrackId: "adagio-ventoleve-el-poema-de-bragi",
-        lyrics: `"El espectáculo... acaba de comenzar."
-
-"Bragi me dicta y yo solo ejecuto,
-rimas de seda y un verso astuto.
-Si falta la gracia, yo pongo el acento,
-¡soy el bardo, el alma y el viento!
-¡Adagio aquí! ¡Adagio allá!
-¡El poema de Bragi pronto vendrá!"
-
-"¡Cuidado! ¡Atención! ¡Que el bardo camina!
-¡Se acerca la rima! ¡Se acerca la gloria!
-¡SE ACERCA EL FI...!"
-
-"Drop it."
-
-"¡FELICIDAD! ¡ETERNIDAD! ¡VERSO INMORTAL!
-¡YO SOY EL ECO DEL REINO ETERNAL!
-¡POR LA COPA DE BRAGI, POR EL ARTE SIN PAR!
-¡NADIE EN LA TIERRA ME PUEDE IGUALAR!"
-
-"¡Rima rima rima rima!
-¡Canta canta canta canta!
-¡Bravo Adagio! ¡Bravo Adagio! ¡Bravo!"
-
-"¡FELICIDAD! ¡ETERNIDAD! ¡VERSO INMORTAL!
-¡YO SOY EL ECO DEL REINO ETERNAL!
-¡BRAVO ADAGIO! ¡EL MUNDO ES MI ALTAR!"
-
-"¡LA-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!"
-
-"¡A-DA-GIO! ¡A-DA-GIO! ¡INMORTAL!"`
-      },
-      {
-        number: 6,
-        title: "Adagio Ventoleve — Bendito y Maldito",
-        description: "Bendición y condena en una misma pieza.",
-        linkedTrackId: "adagio-ventoleve-bendito-y-maldito",
-        lyrics: `Mi madre dijo una vez…
-que algunos dones llegan con dos manos.
-Una te corona.
-La otra… te cobra.
-
-Y yo, naturalmente…
-bebí igual.
-
-Bragi me dio la copa cuando dejé de respirar,
-dijo mi nombre en un sitio donde no debía estar.
-La luz era dorada, la muerte cordial,
-y hasta mi propio miedo sonaba musical.
-
-¡Qué copa tan fina! ¡Qué brillo inmortal!
-¡Qué forma tan bella de abrir el umbral!
-Yo, joven y roto, sin saber si volver,
-bebí de aquel cielo por puro deber.
-
-¡Cuidado! ¡Atención!
-¡La copa brilló!
-¡El cielo cantó!
-¡La muerte esperó!
-
-¡Y yo, mal educado, volví del final
-con voz de bendito
-y pulso fatal!
-
-Bendición, dijeron.
-
-Qué palabra tan peligrosa.
-
-¡Bendito!
-¡Bendito!
-Con la voz encendida.
-Me dieron el canto,
-me alzaron la vida.
-
-¡Bendito!
-¡Bendito!
-Ruiseñor del dolor.
-Me pusieron la copa
-donde muere el temor.
-
-Pero Aria mordió la noche.
-Aria negó el final.
-Me arrancó de la tumba…
-y el cielo empezó a desafinar.
-
-No estoy vivo del todo, no terminé de morir,
-soy la nota suspendida que ella no dejó partir.
-Bragi me dio la copa, Aria me negó la tumba,
-y desde aquella noche mi corazón retumba.
-
-¡Qué crimen tan bello! ¡Qué amor criminal!
-¡Salvarme la vida salió espiritual!
-Ahora cada herida me aprende a llamar,
-cada despedida me obliga a cantar.
-
-Si canto, recuerdo.
-Si callo, también.
-Si salvo una herida,
-me pierdo después.
-
-Si Bragi me mira,
-no sé si rezar.
-No sé si darle gracias.
-No sé si gritar.
-
-Me bendijeron la voz…
-
-…y me maldijeron el silencio.
-
-¡Maldito!
-¡Maldito!
-Con la voz encendida.
-Me dieron el canto,
-me cobraron la vida.
-
-¡Maldito!
-¡Maldito!
-Ruiseñor del dolor.
-Bendito por la copa,
-maldito por volver.
-
-No canto a los muertos.
-No canto al final.
-Canto lo que muere
-y no puede sangrar.
-
-Una casa.
-Una infancia.
-Una promesa al caer.
-Todo lo que se rompe
-me vuelve a morder.
-
-Bragi me llama.
-Aria me ata.
-La copa brilla.
-La tumba canta.
-
-Bendito el don.
-Maldito el precio.
-Bendita la voz.
-Maldito el silencio.
-
-¡Bendito!
-¡Maldito!
-¡La copa y la herida!
-Me dieron el canto,
-me cobraron la vida.
-
-¡Bendito!
-¡Maldito!
-¡Corazón sin compás!
-Todo don que me salva
-me condena a cantar.
-
-¡Me bendijeron la voz…
-y me maldijeron
-el silencio!
-
-Bendito…
-Maldito…
-Bendito…
-Maldito…
-
-Bragi me dio la copa.
-Aria me negó la tumba.`
-      },
-      {
-        number: 7,
-        title: "Adagio Ventoleve — Letra Chica con disrupción",
-        description: "Contrato, letra pequeña y disrupción.",
-        linkedTrackId: "adagio-ventoleve-letra-chica-con-disrupcion",
-        lyrics: `No todos los demonios huelen a azufre.
-Algunos sirven té…
-y preguntan dónde prefieres firmar.
-
-Entró sin llamar con guantes de seda,
-sonrió como deuda vestida de seda.
-Traía una taza, traía un favor,
-traía mi nombre doblado en dos.
-
-No alzó la voz, no mostró el puñal,
-solo puso el destino sobre el cristal.
-"Cuentas, propiedades, rutas, personal…"
-Qué forma tan fina de decir: funeral.
-
-Y Aria mordía la rabia en la boca,
-yo oí las cuerdas temblar por dentro.
-Él dijo "negocios" con voz de ceremonia,
-y el salón respiró testamento.
-
-¿Letra chica?
-
-¡Firma, firma, que el mundo no espera!
-¡Baila la tinta sobre la madera!
-Todo trato con demonios
-empieza limpio en el papel.
-
-¡Firma, firma, qué dulce condena!
-¡La casa es tuya, también la cadena!
-Si la suerte no sabe contabilidad,
-Mefironte sí la sabe hacer.
-
-No ofrece infiernos, ofrece solución;
-te cobra la vida con educación.
-No compra tu alma, qué vulgaridad:
-prefiere dejarla en propiedad.
-
-"Favores pendientes, enemigos también,
-deudas cobrables y obras de mal gusto."
-Yo casi aplaudo su forma cruel
-de llamar herencia a todo este susto.
-
-El té no existía, la taza tampoco,
-pero ahí seguía bebiendo despacio.
-Un demonio educado no rompe la puerta:
-te enseña a llamarla palacio.
-
-El músico aprende rápido.
-
-¡Firma, firma, que el mundo no espera!
-¡Baila la tinta sobre la madera!
-Todo trato con demonios
-empieza limpio en el papel.
-
-¡Firma, firma, qué dulce condena!
-¡La casa es tuya, también la cadena!
-Si la suerte no sabe contabilidad,
-Mefironte sí la sabe hacer.
-
-No lo encuentras.
-Te ocurre.
-No te grita.
-Te escribe.
-
-No te ata con fuego.
-Te ata con archivo.
-No te pide la sangre.
-Te deja el recibo.
-
-Y si Aria renuncia, traiciona a los muertos.
-Y si yo me callo, se pudre el compás.
-Así que sonrío frente al caballero
-que vende cadenas con guantes de paz.
-
-¡Firma, firma, que el mundo no espera!
-¡Baila la tinta sobre la madera!
-Todo trato con demonios
-empieza limpio en el papel.
-
-¡Firma, firma, qué dulce condena!
-¡La casa es tuya, también la cadena!
-Si la suerte no sabe contabilidad,
-Mefironte sí la sabe hacer.
-
-¡Y en la letra más pequeña
-cabe entera
-tu libertad!
-
-¡Firma! ¡Firma!
-¡Mefironte!
-¡Firma! ¡Firma!
-¡Mefironte!
-
-No era un trato.
-Era una cortesía.`
-      },
-      {
-        number: 8,
-        title: "Adagio Ventoleve — Marcha Nupcial; La hermana que perdí",
-        description: "Marcha nupcial vuelta duelo por la hermana perdida.",
-        linkedTrackId: "adagio-ventoleve-marcha-nupcial-la-hermana-que-perdi",
-        lyrics: `Queridos invitados…
-respiren con elegancia.
-
-Hoy no pierdo una hermana.
-La escolto hacia otro desastre.
-
-Paso corto, flor torcida,
-velo negro, luna herida.
-La capilla dice amén,
-pero el piso dice: "¿quién?"
-
-Ramo blanco, cinta rota,
-mi sonrisa casi flota.
-Si la boda va a empezar,
-que alguien revise el altar.
-
-Una hermana no se entrega,
-se acompaña hasta la puerta.
-Y si el mundo la reclama,
-¡que se quite la chaqueta!
-
-Sube el arco, baja el cielo,
-tiembla el cura, cruje el velo.
-Aria avanza, yo detrás…
-¡demasiado tarde para paz!
-
-Tac, tac, tac,
-marcha nupcial.
-Tac, tac, tac,
-algo va mal.
-
-Brilla la copa,
-ríe el salón.
-Yo llevo a Aria…
-con bendición y maldición.
-
-Tac, tac, tac,
-no mires atrás.
-Tac, tac, tac,
-sonríe nomás.
-
-Si el amor llama
-con voz funeral,
-que toque mi violín
-la marcha final.
-
-¡Cuidado con la alfombra!
-¡Cuidado con la flor!
-¡Cuidado con el novio
-si promete demasiado honor!
-
-La tía llora, el tío brinda,
-la lámpara se extingue linda.
-Tres palomas, cuatro cuervos,
-cinco dudas en los nervios.
-
-Yo, Adagio, fiel testigo,
-con el arco por abrigo.
-Si alguien piensa hacerla daño,
-le compongo un cumpleaños.
-
-Aria.
-
-No firmes nada sin leer.
-
-Especialmente si sonríe.
-
-Tac, tac, tac,
-entra la novia.
-Tac, tac, tac,
-muere la gloria.
-
-Campana quebrada,
-zapato en cristal.
-Qué ceremonia
-tan sentimental.
-
-Tac, tac, tac,
-ríe el violín.
-Tac, tac, tac,
-no hay fin, no hay fin.
-
-Si te arrebatan
-tu nombre al pasar,
-yo lo hago canción
-y lo vuelvo a gritar.
-
-Hermana mía,
-camina despacio.
-Que el mundo te mire,
-que aprenda tu paso.
-
-No vas sola,
-aunque yo bromee.
-Mi sombra tropieza,
-mi arco te cree.
-
-¡Que suba la cuerda!
-¡Que tiemble el mantel!
-¡Que el ramo se prenda
-con vino y laurel!
-
-¡Que giren los vivos!
-¡Que callen los muertos!
-¡Que nadie se atreva
-a cerrar esos puertos!
-
-Tac, tac, tac,
-marcha nupcial.
-Tac, tac, tac,
-dulce y fatal.
-
-Aria camina,
-la sala se abrió.
-Yo no la entrego…
-la escolto yo.
-
-Tac, tac, tac,
-que escuche el altar.
-Tac, tac, tac,
-no la van a quebrar.
-
-Si el destino canta
-con dientes de sal,
-mi violín responde:
-¡otra vez, otra vez, otra vez más!
-
-¡Aria Ventoleve!
-¡Flor de vendaval!
-¡Que tiemble la boda!
-¡Que baile el final!
-
-Finaaaaaaaal…
-
-Tac.`
+        title: "Aria Ventoleve — La Rosa del Viento",
+        description: "La rosa del viento: brisa, rumbo y presagio en la voz de Aria.",
+        linkedTrackId: "aria-ventoleve-la-rosa-del-viento"
       }
     ]
   },
