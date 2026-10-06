@@ -1,4 +1,4 @@
-import { assetImage, videoAsset } from "@/data/assets";
+import { videoAsset } from "@/data/assets";
 
 export type AlbumTrack = {
   number: number;
@@ -206,9 +206,10 @@ export const musicAlbums: MusicAlbum[] = [
     title: "Carolina Varthalion — Telaraña de Cristal",
     artist: "Carolina Varthalion",
     status: "Disponible",
-    heroImage: assetImage("carolinav_portada_album_hero.png"),
-    heroVideoWebm: videoAsset("carolinav_portada_album_hero.webm"),
-    heroVideoMp4: videoAsset("carolinav_portada_album_hero.mp4"),
+    heroAspect: "2.7 / 1",
+    heroImage: videoAsset("carolina-telarana-de-cristal.png"),
+    heroVideoMp4: videoAsset("carolina-telarana-de-cristal.mp4"),
+    heroVideoWebm: videoAsset("carolina-telarana-de-cristal.webm"),
     description:
       "Diva noir, jazz venenoso, diamante, teatro, juicio, espejo y red. El primer álbum escénico de Carolina Varthalion dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
@@ -1523,9 +1524,9 @@ si lo vieron en el cristal...
     status: "Disponible",
     heroAspect: "2.7 / 1",
     heroPlayLeft: true,
-    heroImage: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V3.png"),
-    heroVideoMp4: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V3.mp4"),
-    heroVideoWebm: videoAsset("aria_ventoleve_jaula_y_rosas_album_hero_V3.webm"),
+    heroImage: videoAsset("aria-ventoleve-jaula-y-rosas.png"),
+    heroVideoMp4: videoAsset("aria-ventoleve-jaula-y-rosas.mp4"),
+    heroVideoWebm: videoAsset("aria-ventoleve-jaula-y-rosas.webm"),
     description:
       "Una vitrina de cámara, jaula, rosa, compás y herida para Aria y Adagio Ventoleve dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
@@ -2378,10 +2379,10 @@ Tac.`
     title: "Aelwyn Solrenhal — Juramentos de Escarcha y Sol",
     artist: "Aelwyn Solrenhal",
     status: "Disponible",
-    heroFocus: "left",
-    heroImage: videoAsset("Juramentos_de_Es_carcha_y_Sol.webp"),
-    heroVideoMp4: videoAsset("Juramentos_de_Es_carcha_y_Sol_20seg.mp4"),
-    heroVideoWebm: videoAsset("Juramentos_de_Es_carcha_y_Sol_20seg.webm"),
+    heroAspect: "2.7 / 1",
+    heroImage: videoAsset("aelwyn-juramentos-de-escarcha-y-sol.png"),
+    heroVideoMp4: videoAsset("aelwyn-juramentos-de-escarcha-y-sol.mp4"),
+    heroVideoWebm: videoAsset("aelwyn-juramentos-de-escarcha-y-sol.webm"),
     description:
       "Juramento en marcha, escarcha en la mirada, duelo bajo el sol y la sangre dorada del enemigo. El álbum de Aelwyn Solrenhal dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
