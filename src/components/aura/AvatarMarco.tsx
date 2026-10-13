@@ -19,7 +19,9 @@ type AvatarMarcoProps = {
 export function AvatarMarco({ src, alt, marcoSlug, size, className }: AvatarMarcoProps) {
   const marco = getMarco(marcoSlug);
   const conArte = marco !== null && MARCOS_CON_ARTE.includes(marco.slug);
-  const estilo = { "--avatar": `${size}px`, "--marco-lienzo": 1 / AVATAR_EN_MARCO } as CSSProperties;
+  // ×0.96: el hueco del arte queda un 4 % más chico que el avatar, así el
+  // anillo monta levemente sobre su borde y no asoma una línea de fondo.
+  const estilo = { "--avatar": `${size}px`, "--marco-lienzo": (1 / AVATAR_EN_MARCO) * 0.96 } as CSSProperties;
 
   return (
     <span className={["avatar-marco", className ?? ""].join(" ").trim()} style={estilo}>
