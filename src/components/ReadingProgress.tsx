@@ -12,9 +12,38 @@ type ReadingProgressProps = {
 const SYNC_STEP = 5;
 const SYNC_INTERVAL_MS = 10_000;
 
+/** Un párrafo cuenta como visto si sigue en pantalla en dos revisiones
+ *  seguidas (≈1 s): leer lo deja visible mucho más, arrastrar la barra no. */
+const SEEN_TICK_MS = 1_000;
+/** Por relato y por navegador, para sumar tramos entre visitas. */
+const SEEN_STORAGE_PREFIX = "caelyndor.lectura-vista.";
+
+function loadSeen(key: string, total: number): boolean[] {
+  try {
+    const stored = window.localStorage.getItem(key);
+    // Si el relato cambió de largo, los índices ya no corresponden: se reinicia.
+    if (stored && stored.length === total) {
+      return Array.from(stored, (char) => char === "1");
+    }
+  } catch {
+    // Sin almacenamiento (modo privado, bloqueado): se mide solo esta visita.
+  }
+  return new Array<boolean>(total).fill(false);
+}
+
+function saveSeen(key: string, seen: boolean[]) {
+  try {
+    window.localStorage.setItem(key, seen.map((value) => (value ? "1" : "0")).join(""));
+  } catch {
+    // Ver loadSeen.
+  }
+}
+
 export function ReadingProgress({ target = ".story-reader", storySlug }: ReadingProgressProps) {
   const [progress, setProgress] = useState(0);
   const syncState = useRef({ lastSent: -1, lastSentAt: 0, latest: 0, disabled: false });
+  /** % de párrafos vistos (0-100); el servidor lo usa para validar el completado. */
+  const seenPercent = useRef(0);
 
   // Sincronización con el backend (solo lectores con sesión; un 401 apaga el
   // envío en silencio — los visitantes anónimos no generan tráfico repetido).
@@ -23,21 +52,37 @@ export function ReadingProgress({ target = ".story-reader", storySlug }: Reading
       return;
     }
     const state = syncState.current;
+    let retryTimer = 0;
 
-    async function send(value: number) {
-      if (state.disabled || value <= state.lastSent) {
+    function payload(value: number) {
+      return JSON.stringify({ progress: value, seen: seenPercent.current });
+    }
+
+    async function send(value: number, force = false) {
+      if (state.disabled || (!force && value <= state.lastSent)) {
         return;
       }
-      state.lastSent = value;
+      state.lastSent = Math.max(state.lastSent, value);
       state.lastSentAt = Date.now();
       try {
         const response = await fetch(`/api/progress/${storySlug}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ progress: value })
+          body: payload(value)
         });
         if (response.status === 401) {
           state.disabled = true;
+          return;
+        }
+        // Avance suficiente pero aún falta tiempo de lectura: se reintenta
+        // cuando el servidor indique, por si el lector sigue en la página.
+        const data = (await response.json().catch(() => null)) as { pendingSeconds?: number | null } | null;
+        if (typeof data?.pendingSeconds === "number") {
+          window.clearTimeout(retryTimer);
+          retryTimer = window.setTimeout(
+            () => void send(Math.round(state.latest * 100), true),
+            (data.pendingSeconds + 1) * 1000
+          );
         }
       } catch {
         // Sin red o servidor caído: el próximo tick lo reintenta.
@@ -55,13 +100,13 @@ export function ReadingProgress({ target = ".story-reader", storySlug }: Reading
       }
     }, 2_000);
 
-    // Último envío al salir de la página (el umbral del 95% lo decide el servidor).
+    // Último envío al salir de la página (el umbral de completado lo decide el servidor).
     function flush() {
       const value = Math.round(state.latest * 100);
       if (!state.disabled && value > state.lastSent) {
         navigator.sendBeacon(
           `/api/progress/${storySlug}`,
-          new Blob([JSON.stringify({ progress: value })], { type: "application/json" })
+          new Blob([payload(value)], { type: "application/json" })
         );
         state.lastSent = value;
       }
@@ -70,10 +115,70 @@ export function ReadingProgress({ target = ".story-reader", storySlug }: Reading
 
     return () => {
       window.clearInterval(timer);
+      window.clearTimeout(retryTimer);
       window.removeEventListener("pagehide", flush);
       flush();
     };
   }, [storySlug]);
+
+  // Tramos realmente visitados: qué párrafos estuvieron en pantalla un rato.
+  useEffect(() => {
+    if (!storySlug) {
+      return;
+    }
+    const root = document.querySelector<HTMLElement>(target);
+    const items = root ? Array.from(root.querySelectorAll<HTMLElement>("p, h2")) : [];
+    if (items.length === 0) {
+      return;
+    }
+
+    const storageKey = SEEN_STORAGE_PREFIX + storySlug;
+    const seen = loadSeen(storageKey, items.length);
+    const indexOf = new Map(items.map((item, index) => [item, index]));
+    const visible = new Set<number>();
+    let previous = new Set<number>();
+
+    function recount() {
+      const count = seen.reduce((total, value) => total + (value ? 1 : 0), 0);
+      seenPercent.current = Math.round((count / items.length) * 100);
+    }
+    recount();
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        const index = indexOf.get(entry.target as HTMLElement);
+        if (index === undefined) {
+          continue;
+        }
+        if (entry.isIntersecting) {
+          visible.add(index);
+        } else {
+          visible.delete(index);
+        }
+      }
+    });
+    items.forEach((item) => observer.observe(item));
+
+    const timer = window.setInterval(() => {
+      let changed = false;
+      for (const index of visible) {
+        if (previous.has(index) && !seen[index]) {
+          seen[index] = true;
+          changed = true;
+        }
+      }
+      previous = new Set(visible);
+      if (changed) {
+        recount();
+        saveSeen(storageKey, seen);
+      }
+    }, SEEN_TICK_MS);
+
+    return () => {
+      window.clearInterval(timer);
+      observer.disconnect();
+    };
+  }, [storySlug, target]);
 
   useEffect(() => {
     const element = document.querySelector<HTMLElement>(target);

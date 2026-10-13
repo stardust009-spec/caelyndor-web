@@ -2,11 +2,11 @@ import "server-only";
 import type { Prisma, RangoAura } from "@/generated/prisma/client";
 import { getPrisma, TX_OPTIONS } from "./db";
 import { computeRank, nextRankInfo, rankLabel } from "./ranks";
-import { getStoryMetaMap } from "./storyContent";
+import { getStoryMetaMap, getStoryReadingMinutes } from "./storyContent";
 import { evaluateAchievements } from "./achievements";
+import { COMPLETION_THRESHOLD, evaluateReading } from "./readingValidation";
 
-/** El relato se considera completado al alcanzar este highestProgress. */
-export const COMPLETION_THRESHOLD = 95;
+export { COMPLETION_THRESHOLD };
 /** Con el relato ya completado, volver por debajo de esto arma una relectura. */
 const REREAD_RESET_THRESHOLD = 5;
 
@@ -17,6 +17,8 @@ export type ProgressUpdateResult = {
   completed: boolean;
   /** true solo la primera vez que este update cruza el umbral de completado. */
   newlyCompleted: boolean;
+  /** Avance suficiente pero falta tiempo de lectura: segundos para reintentar. */
+  pendingSeconds: number | null;
   rank: RangoAura;
   rankLabel: string;
   /** Relatos canónicos distintos completados. */
@@ -48,10 +50,12 @@ async function countCompletedCanonical(tx: Prisma.TransactionClient, userId: str
 export async function applyProgressUpdate(
   userId: string,
   storySlug: string,
-  progress: number
+  progress: number,
+  seenPercent: number
 ): Promise<ProgressUpdateResult> {
   const prisma = getPrisma();
   const value = Math.max(0, Math.min(100, Math.round(progress)));
+  const seen = Math.max(0, Math.min(100, Math.round(seenPercent)));
 
   return prisma.$transaction(async (tx) => {
     const existing = await tx.storyProgress.upsert({
@@ -60,6 +64,7 @@ export async function applyProgressUpdate(
       update: { currentProgress: value },
       select: {
         id: true,
+        createdAt: true,
         highestProgress: true,
         completedAt: true,
         completionRewardClaimed: true,
@@ -90,12 +95,29 @@ export async function applyProgressUpdate(
       }
     }
 
-    // Completado irreversible: solo cruza una vez.
-    const completedNowCount = await tx.storyProgress.updateMany({
-      where: { id: existing.id, completedAt: null, highestProgress: { gte: COMPLETION_THRESHOLD } },
-      data: { completedAt: new Date() }
-    });
-    const newlyCompleted = completedNowCount.count === 1;
+    // Completado irreversible: solo cruza una vez, y solo si además del avance
+    // hubo tiempo de lectura y tramos vistos (readingValidation.ts). El tiempo
+    // se mide en servidor desde el primer progreso registrado del relato.
+    const now = new Date();
+    let newlyCompleted = false;
+    let pendingSeconds: number | null = null;
+    if (!existing.completedAt) {
+      const verdict = evaluateReading({
+        highestProgress: Math.max(existing.highestProgress, value),
+        elapsedSeconds: (now.getTime() - existing.createdAt.getTime()) / 1000,
+        seenPercent: seen,
+        readingMinutes: getStoryReadingMinutes(storySlug)
+      });
+      if (verdict.met) {
+        const completedNowCount = await tx.storyProgress.updateMany({
+          where: { id: existing.id, completedAt: null, highestProgress: { gte: COMPLETION_THRESHOLD } },
+          data: { completedAt: now }
+        });
+        newlyCompleted = completedNowCount.count === 1;
+      } else {
+        pendingSeconds = verdict.pendingSeconds === null ? null : Math.ceil(verdict.pendingSeconds);
+      }
+    }
 
     // Recompensa exactamente una vez: quien gana este updateMany la entrega.
     let newAchievements: string[] = [];
@@ -141,6 +163,7 @@ export async function applyProgressUpdate(
       highestProgress: row.highestProgress,
       completed: row.completedAt !== null,
       newlyCompleted,
+      pendingSeconds,
       rank,
       rankLabel: rankLabel(rank),
       completedCanonicalCount,

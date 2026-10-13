@@ -14,7 +14,10 @@ const slugPattern = /^[a-z0-9-]{1,80}$/;
 const progressSchema = z.object({
   /** Progreso 0-100. El cliente lo envía con throttle (cada ~5% o pocos
    *  segundos); el salto a "completado" SIEMPRE lo decide el servidor. */
-  progress: z.number().min(0).max(100)
+  progress: z.number().min(0).max(100),
+  /** % de párrafos vistos en pantalla. Sin él (clientes viejos) cuenta como 0:
+   *  el completado queda solo para la vía del tiempo estimado completo. */
+  seen: z.number().min(0).max(100).optional()
 });
 
 export async function POST(request: Request, { params }: { params: Promise<{ storyId: string }> }) {
@@ -49,7 +52,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ sto
   }
 
   try {
-    const result = await applyProgressUpdate(userId, storyId, parsed.data.progress);
+    const result = await applyProgressUpdate(userId, storyId, parsed.data.progress, parsed.data.seen ?? 0);
     return NextResponse.json(result);
   } catch (error) {
     console.error("progress:", error);

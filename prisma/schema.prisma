@@ -286,7 +286,8 @@ model StoryProgress {
   /// Máximo histórico (0-100). Nunca baja.
   highestProgress Int @default(0)
 
-  /// Se fija de forma irreversible al alcanzar highestProgress >= 95.
+  /// Se fija de forma irreversible al cumplir la regla de lectura
+  /// (src/lib/server/readingValidation.ts: 96 % + tiempo + tramos).
   completedAt             DateTime?
   /// Garantiza que la recompensa de completado se entrega una sola vez.
   completionRewardClaimed Boolean   @default(false)
@@ -294,7 +295,7 @@ model StoryProgress {
   /// Relecturas completadas después de la primera lectura completa.
   rereadCount Int @default(0)
   /// Máquina de estados de relectura: se arma cuando, ya completado,
-  /// el lector vuelve al inicio; se consume al alcanzar 95% otra vez.
+  /// el lector vuelve al inicio; se consume al alcanzar 96% otra vez.
   rereadArmed Boolean @default(false)
 
   createdAt DateTime @default(now())

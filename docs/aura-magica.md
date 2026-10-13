@@ -25,7 +25,8 @@ administrador (`/admin`) con 2FA, auditoría y moderación activa.
 
 - Toda condición de logro/rango se evalúa en servidor; el cliente solo envía
   `progress: 0-100`.
-- Completado al alcanzar `highestProgress >= 95`, irreversible
+- Completado al alcanzar `highestProgress >= 96` + tiempo mínimo + tramos vistos
+  (Parte 4, `docs/aura-parte-4.md`), irreversible
   (guard `completedAt = null` en un `updateMany` condicional).
 - Recompensa exactamente una vez: `completionRewardClaimed` como candado
   atómico; logros con unique `(userId, achievementId)` + `skipDuplicates`.

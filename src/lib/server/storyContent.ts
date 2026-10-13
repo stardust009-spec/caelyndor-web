@@ -40,6 +40,11 @@ export function storyExists(slug: string): boolean {
   return getStoryMetaMap().has(slug);
 }
 
+/** Tiempo estimado de lectura (para la validación del completado). */
+export function getStoryReadingMinutes(slug: string): number {
+  return stories.find((story) => story.slug === slug)?.readingMinutes ?? 0;
+}
+
 /** Slugs de relatos canónicos (los que cuentan para rangos y Cronista). */
 export function getCanonicalSlugs(): ReadonlySet<string> {
   const set = new Set<string>();
