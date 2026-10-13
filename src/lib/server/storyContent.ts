@@ -7,7 +7,8 @@ export type StoryMeta = {
   title: string;
   /** true = cuenta para rangos (default cuando el campo falta en stories.ts). */
   canonical: boolean;
-  region?: StoryRegion;
+  /** Vacío si el relato no tiene región asignada. */
+  regions: StoryRegion[];
   arc?: string;
   secret: boolean;
   nocturnal: boolean;
@@ -18,7 +19,7 @@ function toMeta(story: Story): StoryMeta {
     slug: story.slug,
     title: story.title,
     canonical: story.countsTowardProgression !== false,
-    region: story.region,
+    regions: story.region === undefined ? [] : Array.isArray(story.region) ? story.region : [story.region],
     arc: story.arc,
     secret: story.secret === true,
     nocturnal: story.nocturnal === true

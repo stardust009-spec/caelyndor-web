@@ -45,8 +45,9 @@ export type Story = {
   /** false para prólogos/fichas/anexos: se excluyen del conteo de rangos.
    *  Si falta, se asume true (relato canónico). */
   countsTowardProgression?: boolean;
-  /** Región del relato (logros "Bajo el sol de Cindralith", "Cartógrafo…", etc.). */
-  region?: StoryRegion;
+  /** Región del relato (logros "Bajo el sol de Cindralith", "Cartógrafo…", etc.).
+   *  Un relato de frontera puede llevar dos: cuenta para ambas regiones. */
+  region?: StoryRegion | StoryRegion[];
   /** Arco narrativo (logro "No dejaste a nadie atrás"). */
   arc?: string;
   /** Relato secreto tras el Velo (logro "Tras el Velo"). */
@@ -58,6 +59,7 @@ export type Story = {
 export const stories: Story[] = [
   {
     "slug": "zarqath-el-aguijon-del-sol",
+    "region": "cindralith",
     "title": "Zarqath, el aguijón del sol",
     "teaser": "Una semana demasiado tranquila empuja a Rubí, Yuki y Lyzi hacia el calor de Cindralith, donde las ciudades sirven sus trampas como si fueran gastronomía y algo enorme se remueve bajo la arena. Entre vaquitas del desierto, un faraón sin nombre y un aguijón que parece salir del propio sol, el trío aprende que el desierto no recibe al viajero: lo interroga con su temperatura.",
     "characters": [
@@ -1056,6 +1058,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "la-muerte-blanca",
+    "region": "sylvalis",
     "title": "La Muerte Blanca",
     "teaser": "Un Devorador huyó de su madriguera. Nadie preguntó de qué. Rubí sale a cobrar la recompensa con Noctalypse de socio no solicitado: un rastro de seis apoyos, teorías que se deprimen, una carpa para una sola persona y, al fondo de la quebrada, algo enorme y albino que ella bautiza sin dudarlo.",
     "characters": [
@@ -2108,6 +2111,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "visperas-de-una-ecuacion",
+    "region": ["glaciem", "sylvalis"],
     "title": "Vísperas de una Ecuación",
     "teaser": "En el refugio fronterizo donde el fuego, el vacío y el hielo aprenden a convivir, Rubí y Lyzi reciben la orden de Yuki: reunir chatarra imposible para un proyecto de contingencia que nadie entiende. Lo que empieza como logística y té cargado termina en el ensamblaje de A.R.C.A. y un disparo de prueba que atrae al Gremio hasta la puerta de la Reina de Glaciem.",
     "characters": [
@@ -2569,6 +2573,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "protocolos-del-corazon",
+    "region": "glaciem",
     "title": "Protocolos del Corazón",
     "teaser": "Aelwyn Solrenhal llega a una casa fría a medio camino entre el pueblo y la ciudad de Glaciem, y descubre que la vecindad incluye a Rubí y a un trío de brujas decididas a intervenir en asuntos del corazón que nadie les pidió. Una historia de deshielos lentos, cerraduras antiguas y todo lo que se dice cuando las palabras no alcanzan.",
     "characters": [
@@ -3744,6 +3749,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "el-eco-de-los-varthalion",
+    "region": "cindralith",
     "title": "El eco de los Varthalion",
     "teaser": "Un cazador de tres estrellas anuncia en una taberna de Cindralith que matará a un Varthalion, y un veterano curtido le regala —entre humo de puro y licor barato— la historia del rey que se atrevió a desafiar a ese linaje. Después, en el mercado, el joven descubre en carne propia por qué nadie sobrevive a su cercanía.",
     "characters": [
@@ -3802,6 +3808,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "el-placer-culpable-de-rubi",
+    "region": "cindralith",
     "title": "El placer culpable de Rubí",
     "teaser": "Una tarde de té en la futura Casa del Cráter se interrumpe con golpes desde el sótano. Rubí decide que ha llegado la hora de presentar su placer culpable: una galería privada de armas malditas con nombre propio, opiniones fuertes y muy malas intenciones.",
     "characters": [
@@ -4403,6 +4410,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "el-placer-culpable-de-lyzi",
+    "region": "sylvalis",
     "title": "El placer culpable de Lyzi",
     "teaser": "La casita de Lyzi huele a té dulce, madera tibia y galletas de origen incierto. Todo parece en calma… hasta que el placer culpable de la guardiana de Sylvalis asoma, con demasiadas patas. Rubí manda saludos desde una distancia emocional saludable.",
     "characters": [
@@ -4690,6 +4698,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "la-frase-maldita",
+    "region": "glaciem",
     "title": "La Frase Maldita",
     "teaser": "Rubí vuelve sola de una misión miserable soñando con un consomé de espárragos con huevito. Lo que encuentra en casa es olor a té, una frase dicha con demasiada suavidad… y el comienzo de una historia con basilisca incluida.",
     "characters": [
@@ -5046,6 +5055,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "lirios-para-una-sombra",
+    "region": "sylvalis",
     "title": "Lirios para una Sombra",
     "teaser": "Una tarde de flores en el prado: Lyzi corta lirios con una ternura que desarma, Rubí finge no enternecerse y a Noctalypse un recuerdo frío le recorre la espalda. Un relato suave sobre lo que la ternura hace con las sombras.",
     "characters": [
@@ -5623,6 +5633,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "el-dia-que-rubi-ordeno-su-cinturon",
+    "region": "sylvalis",
     "title": "El día que Rubí ordenó su cinturón",
     "teaser": "No fue una gran discusión. Ni siquiera llegó a pelea. Fue peor: fue una frase dicha con demasiada suavidad. Lyzi pregunta por qué Rubí compra cosas que no usa, y el cinturón de los diez bolsillos se convierte en territorio en disputa.",
     "characters": [
@@ -5958,6 +5969,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "la-gran-estafa-de-sylvalis",
+    "region": "sylvalis",
     "title": "La Gran Estafa de Sylvalis",
     "teaser": "Dossier operativo desde los bordes del bosque: gansos gánsteres exigiendo efectivo, negociaciones de medianoche, la policía de Sylvalis tras cerdos hongo inexistentes… y una estafa que, como todo en este grupo, termina midiéndose en risas.",
     "characters": [
@@ -6216,6 +6228,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "dragons-kitchen-de-maghnarok",
+    "region": "cindralith",
     "title": "Dragon's Kitchen de Maghnarok",
     "teaser": "Los espejos de magma se encienden y todo el continente dracónico sintoniza la transmisión: Fulgor, impecable y con lentes, conduce Dragon's Kitchen en vivo. La concursante de hoy es una mortal llamada Rubí, y nadie le avisó que sería en vivo.",
     "characters": [
@@ -6473,6 +6486,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "el-regalo-de-lyzi",
+    "region": "sylvalis",
     "title": "Crónicas del Festival Rodante: El Regalo de Lyzi",
     "teaser": "El Lich Lord jura venganza con eco dramático y el grupo decide que se ganó una tarde libre en el Festival Rodante: feneks regateando, premios imposibles y un regalo de Lyzi que vale más que cualquier botín.",
     "characters": [
@@ -6832,6 +6846,7 @@ export const stories: Story[] = [
   },
   {
     "slug": "armas-sombras-y-pan-con-jugo-azul",
+    "region": "sylvalis",
     "title": "Armas, Sombras y Pan con Jugo Azul",
     "teaser": "Fogata de confesiones bajo las estrellas: pan tibio, jugo azul de procedencia dudosa y las historias que el Broche, el Orbe y la Espada guardan de sus dueños. Lo que las armas legendarias revelan cuando nadie está peleando.",
     "characters": [

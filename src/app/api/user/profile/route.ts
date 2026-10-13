@@ -3,7 +3,8 @@ import { z } from "zod";
 import { currentUserId } from "@/auth";
 import { readJsonBody, tooManyRequests, unauthorized } from "@/lib/server/http";
 import { rateLimit } from "@/lib/server/rateLimit";
-import { getPrisma } from "@/lib/server/db";
+import { getPrisma, TX_OPTIONS } from "@/lib/server/db";
+import { evaluateAchievements } from "@/lib/server/achievements";
 import { nextRankInfo, rankLabel } from "@/lib/server/ranks";
 import { getCanonicalSlugs, getStoryMetaMap } from "@/lib/server/storyContent";
 import { ACHIEVEMENT_CATALOG } from "@/lib/server/achievementCatalog";
@@ -18,6 +19,17 @@ export async function GET() {
   }
 
   const prisma = getPrisma();
+
+  // Los logros normalmente se evalúan al completar un relato. Revisarlos
+  // también aquí hace que cambios de contenido (p. ej. asignar regiones a
+  // relatos ya leídos) se reflejen al abrir el perfil, sin esperar a la
+  // próxima lectura. Es idempotente; si falla, el perfil se muestra igual.
+  try {
+    await prisma.$transaction((tx) => evaluateAchievements(tx, userId), TX_OPTIONS);
+  } catch (error) {
+    console.error("profile: evaluateAchievements", error);
+  }
+
   const user = await prisma.user.findUnique({
     where: { id: userId },
     select: {

@@ -40,7 +40,7 @@ function completadosDeRegion(ctx: LogroContexto, region: StoryRegion): { total: 
   let total = 0;
   let completados = 0;
   for (const meta of ctx.historias.values()) {
-    if (meta.region === region && meta.canonical) {
+    if (meta.regions.includes(region) && meta.canonical) {
       total += 1;
       if (ctx.completadosCanonicos.has(meta.slug)) {
         completados += 1;
@@ -163,10 +163,11 @@ export const ACHIEVEMENT_CATALOG: readonly LogroDef[] = [
       const regiones = new Set<StoryRegion>();
       const visitadas = new Set<StoryRegion>();
       for (const meta of ctx.historias.values()) {
-        if (!meta.region) continue;
-        regiones.add(meta.region);
-        if (ctx.completadosTodos.has(meta.slug)) {
-          visitadas.add(meta.region);
+        for (const region of meta.regions) {
+          regiones.add(region);
+          if (ctx.completadosTodos.has(meta.slug)) {
+            visitadas.add(region);
+          }
         }
       }
       return regiones.size > 0 && visitadas.size === regiones.size;

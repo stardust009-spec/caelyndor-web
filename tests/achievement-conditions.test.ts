@@ -4,7 +4,7 @@ import { ACHIEVEMENT_CATALOG, type LogroContexto } from "../src/lib/server/achie
 import type { StoryMeta } from "../src/lib/server/storyContent";
 
 function meta(slug: string, extra: Partial<StoryMeta> = {}): StoryMeta {
-  return { slug, title: slug, canonical: true, secret: false, nocturnal: false, ...extra };
+  return { slug, title: slug, canonical: true, regions: [], secret: false, nocturnal: false, ...extra };
 }
 
 function ctx(overrides: Partial<LogroContexto> = {}): LogroContexto {
@@ -58,8 +58,8 @@ test("los logros de región requieren metadata de región presente", () => {
 
   const conRegion = ctx({
     historias: new Map([
-      ["a", meta("a", { region: "cindralith" })],
-      ["b", meta("b", { region: "glaciem" })]
+      ["a", meta("a", { regions: ["cindralith"] })],
+      ["b", meta("b", { regions: ["glaciem"] })]
     ]),
     completadosCanonicos: new Set(["a", "b"]),
     completadosTodos: new Set(["a", "b"])
@@ -67,6 +67,30 @@ test("los logros de región requieren metadata de región presente", () => {
   assert.equal(logro("bajo-el-sol-de-cindralith").condition(conRegion), true);
   assert.equal(logro("corazon-de-hielo").condition(conRegion), true);
   assert.equal(logro("cartografo-de-caelyndor").condition(conRegion), true);
+});
+
+test("un relato de frontera cuenta para sus dos regiones", () => {
+  const historias = new Map([
+    ["frontera", meta("frontera", { regions: ["glaciem", "sylvalis"] })],
+    ["bosque", meta("bosque", { regions: ["sylvalis"] })]
+  ]);
+  // Sin leer el de frontera, Sylvalis no está completo aunque se lea el otro.
+  const soloBosque = ctx({
+    historias,
+    completadosCanonicos: new Set(["bosque"]),
+    completadosTodos: new Set(["bosque"])
+  });
+  assert.equal(logro("el-bosque-recuerda-tu-nombre").condition(soloBosque), false);
+  assert.equal(logro("cartografo-de-caelyndor").condition(soloBosque), false);
+
+  // Leer solo el de frontera completa Glaciem y visita ambas regiones.
+  const soloFrontera = ctx({
+    historias,
+    completadosCanonicos: new Set(["frontera"]),
+    completadosTodos: new Set(["frontera"])
+  });
+  assert.equal(logro("corazon-de-hielo").condition(soloFrontera), true);
+  assert.equal(logro("cartografo-de-caelyndor").condition(soloFrontera), true);
 });
 
 test("oyente-de-ecos exige releer cinco relatos distintos", () => {

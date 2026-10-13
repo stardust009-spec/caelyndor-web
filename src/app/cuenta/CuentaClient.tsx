@@ -45,6 +45,13 @@ type Sesion = {
 
 type Placeholder = { id: string; sortOrder: number; hintText: string | null };
 
+type LogroCatalogo = {
+  slug: string;
+  title: string;
+  description: string;
+  estado: { desbloqueado: boolean; unlockedAt: string | null } | null;
+};
+
 function formatDate(value: string): string {
   return new Date(value).toLocaleString("es-CL", { dateStyle: "medium", timeStyle: "short" });
 }
@@ -74,6 +81,7 @@ export function CuentaClient() {
   const [sesiones, setSesiones] = useState<Sesion[]>([]);
   const [avatares, setAvatares] = useState<Avatar[]>([]);
   const [placeholders, setPlaceholders] = useState<Placeholder[]>([]);
+  const [logros, setLogros] = useState<LogroCatalogo[]>([]);
   const [aviso, setAviso] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
@@ -84,14 +92,16 @@ export function CuentaClient() {
       return;
     }
     setPerfil(profileResult.data);
-    const [sesionesResult, avataresResult, placeholdersResult] = await Promise.all([
+    const [sesionesResult, avataresResult, placeholdersResult, logrosResult] = await Promise.all([
       jsonFetch<{ sesiones: Sesion[] }>("/api/sessions"),
       jsonFetch<{ avatares: Avatar[] }>("/api/avatars"),
-      jsonFetch<{ placeholders: Placeholder[] }>("/api/achievements/placeholders")
+      jsonFetch<{ placeholders: Placeholder[] }>("/api/achievements/placeholders"),
+      jsonFetch<{ logros: LogroCatalogo[] }>("/api/achievements")
     ]);
     setSesiones(sesionesResult.data?.sesiones ?? []);
     setAvatares(avataresResult.data?.avatares ?? []);
     setPlaceholders(placeholdersResult.data?.placeholders ?? []);
+    setLogros(logrosResult.data?.logros ?? []);
     setLoading(false);
   }, []);
 
@@ -161,7 +171,7 @@ export function CuentaClient() {
         )}
       </header>
 
-      <LogrosPanel perfil={perfil} placeholders={placeholders} />
+      <LogrosPanel perfil={perfil} placeholders={placeholders} logros={logros} />
       <AvatarPanel
         avatares={avatares}
         actual={perfil.profile?.avatar ?? null}
@@ -281,9 +291,21 @@ function AccesoForm({ onDone }: { onDone: () => void }) {
   );
 }
 
-function LogrosPanel({ perfil, placeholders }: { perfil: Perfil; placeholders: Placeholder[] }) {
+function LogrosPanel({
+  perfil,
+  placeholders,
+  logros
+}: {
+  perfil: Perfil;
+  placeholders: Placeholder[];
+  logros: LogroCatalogo[];
+}) {
   const porcentaje =
     perfil.logrosTotales > 0 ? Math.round((perfil.logrosDesbloqueados / perfil.logrosTotales) * 100) : 0;
+  const obtenidos = logros
+    .filter((logro) => logro.estado?.desbloqueado)
+    .sort((a, b) => (a.estado?.unlockedAt ?? "").localeCompare(b.estado?.unlockedAt ?? ""));
+  const pendientes = logros.filter((logro) => !logro.estado?.desbloqueado);
   return (
     <section className="panel cuenta-panel">
       <h2>Logros</h2>
@@ -299,6 +321,40 @@ function LogrosPanel({ perfil, placeholders }: { perfil: Perfil; placeholders: P
       >
         <div className="cuenta-barra__fill" style={{ width: `${porcentaje}%` }} />
       </div>
+      {obtenidos.length > 0 && (
+        <ul className="cuenta-logros">
+          {obtenidos.map((logro) => (
+            <li key={logro.slug} className="cuenta-logro cuenta-logro--obtenido">
+              <span className="cuenta-logro__sello" aria-hidden="true">✦</span>
+              <div>
+                <strong>{logro.title}</strong>
+                <span className="cuenta-logro__desc">{logro.description}</span>
+                {logro.estado?.unlockedAt && (
+                  <time className="cuenta-logro__fecha" dateTime={logro.estado.unlockedAt}>
+                    {new Date(logro.estado.unlockedAt).toLocaleDateString("es-CL", { dateStyle: "medium" })}
+                  </time>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+      {pendientes.length > 0 && (
+        <details className="cuenta-logros-pendientes">
+          <summary>Por descubrir ({pendientes.length})</summary>
+          <ul className="cuenta-logros">
+            {pendientes.map((logro) => (
+              <li key={logro.slug} className="cuenta-logro">
+                <span className="cuenta-logro__sello" aria-hidden="true">🔒</span>
+                <div>
+                  <strong>{logro.title}</strong>
+                  <span className="cuenta-logro__desc">{logro.description}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
       {placeholders.length > 0 && (
         <ul className="cuenta-latentes">
           {placeholders.map((placeholder) => (

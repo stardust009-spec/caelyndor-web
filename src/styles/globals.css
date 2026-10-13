@@ -7245,6 +7245,13 @@ body.story-lightbox-open {
   margin: 0 auto;
 }
 
+/* Sin esto, la tabla de sesiones y el formulario del alias ensanchan la
+   página en celular: los hijos de una grilla no se encogen bajo su ancho
+   mínimo de contenido. Así la tabla hace scroll dentro de su panel. */
+.cuenta > * {
+  min-width: 0;
+}
+
 .cuenta-header {
   display: flex;
   justify-content: space-between;
@@ -7345,8 +7352,12 @@ body.story-lightbox-open {
 }
 
 .cuenta-form--inline {
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
+}
+
+.cuenta-form--inline input {
+  min-width: 0;
 }
 
 .cuenta-form--grid {
@@ -7399,6 +7410,82 @@ body.story-lightbox-open {
   padding: var(--space-2) var(--space-3);
   color: var(--color-ash);
   opacity: 0.75;
+}
+
+/* Logros con nombre: obtenidos a la vista, el resto plegado en "Por descubrir". */
+.cuenta-logros {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--space-3);
+  padding: 0;
+  margin: var(--space-4) 0 0;
+}
+
+.cuenta-logro {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  background: var(--color-night);
+  color: var(--color-ash);
+}
+
+.cuenta-logro strong {
+  display: block;
+  color: var(--color-ash-bright);
+  font-size: 0.95rem;
+}
+
+.cuenta-logro__desc {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.cuenta-logro__fecha {
+  display: block;
+  margin-top: var(--space-1);
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.cuenta-logro__sello {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-line);
+  font-size: 0.85rem;
+}
+
+.cuenta-logro--obtenido {
+  border-color: color-mix(in srgb, var(--color-astral) 55%, var(--color-line));
+}
+
+.cuenta-logro--obtenido .cuenta-logro__sello {
+  color: var(--color-ice);
+  border-color: var(--color-astral);
+  box-shadow: 0 0 0.75rem color-mix(in srgb, var(--color-astral) 45%, transparent);
+}
+
+.cuenta-logros-pendientes {
+  margin-top: var(--space-4);
+}
+
+.cuenta-logros-pendientes summary {
+  cursor: pointer;
+  color: var(--color-ash);
+  font-size: 0.9rem;
+}
+
+.cuenta-logros-pendientes .cuenta-logro {
+  opacity: 0.6;
 }
 
 .cuenta-avatares {
