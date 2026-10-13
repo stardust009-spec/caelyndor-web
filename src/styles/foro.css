@@ -1,0 +1,595 @@
+/* ==========================================================================
+   Foro: Torre de los Cronistas — Vestíbulo de Bienvenida (/foro)
+   Usa los tokens del sitio, así respeta los temas Rubí/Noct.
+   ========================================================================== */
+
+.foro-cabecera h1 {
+  margin: 0.2em 0 0.35em;
+  font-family: var(--font-display);
+}
+
+.foro-cabecera > p {
+  max-width: 46rem;
+  color: var(--color-ash);
+  line-height: 1.65;
+}
+
+.foro-nota {
+  color: var(--color-ash);
+  font-size: 0.9rem;
+}
+
+.foro-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  margin: var(--space-4) 0 var(--space-5);
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-night);
+  color: var(--color-ash);
+  font-size: 0.9rem;
+  list-style: none;
+}
+
+.foro-stats li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.foro-stats strong {
+  color: var(--color-ash-bright);
+}
+
+.foro-stats__punto {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
+  animation: foro-latido 2.4s ease-in-out infinite;
+}
+
+@keyframes foro-latido {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.foro-columnas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18rem;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.foro-principal {
+  min-width: 0;
+}
+
+.foro-lateral {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.foro-categorias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: var(--space-3);
+}
+
+.foro-categorias a {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  color: var(--color-ash);
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+
+.foro-categorias a:hover,
+.foro-categorias a.is-activa {
+  border-color: var(--color-astral);
+  color: var(--color-ash-bright);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--color-astral) 25%, transparent);
+}
+
+.foro-nuevo {
+  margin: var(--space-3) 0 var(--space-4);
+}
+
+.foro-entrar {
+  color: var(--color-ash);
+}
+
+.foro-vacio {
+  padding: var(--space-5) 0;
+  color: var(--color-ash);
+  text-align: center;
+}
+
+/* ——— Lista de hilos ——— */
+
+.foro-hilos {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foro-hilo {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.85rem 1rem 0.85rem 1.1rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-night);
+}
+
+.foro-hilo .avatar-marco {
+  margin: 4px;
+}
+
+.foro-hilo--fijado {
+  border-color: color-mix(in srgb, var(--color-astral) 55%, var(--color-line));
+}
+
+.foro-hilo__cuerpo {
+  min-width: 0;
+}
+
+.foro-hilo__titulo {
+  margin: 0 0 0.3rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.foro-hilo__titulo a {
+  color: var(--color-ash-bright);
+  text-decoration: none;
+}
+
+.foro-hilo__titulo a:hover {
+  color: var(--color-ice);
+}
+
+.foro-hilo__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.8rem;
+  margin: 0;
+  color: var(--color-ash);
+  font-size: 0.8rem;
+}
+
+.foro-hilo__respuestas {
+  display: grid;
+  justify-items: center;
+  margin: 0;
+  color: var(--color-ash);
+  font-size: 0.72rem;
+}
+
+.foro-hilo__respuestas strong {
+  color: var(--color-ash-bright);
+  font-size: 1.1rem;
+}
+
+.foro-chip {
+  padding: 0 0.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+}
+
+.foro-etiqueta {
+  display: inline-block;
+  margin-right: 0.45rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--color-astral) 25%, transparent);
+  color: var(--color-ash-bright);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.foro-etiqueta--cerrado {
+  background: color-mix(in srgb, var(--color-ash) 25%, transparent);
+}
+
+.foro-etiqueta--oculto {
+  background: color-mix(in srgb, var(--color-ember) 45%, transparent);
+}
+
+.foro-forjador {
+  color: #ffd98a;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+/* ——— Lateral ——— */
+
+.foro-reglas summary {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.foro-reglas ol {
+  margin: var(--space-3) 0 0;
+  padding-left: 1.1rem;
+  color: var(--color-ash);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.foro-reglas li + li {
+  margin-top: 0.5rem;
+}
+
+.foro-torre h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.foro-torre ol {
+  display: grid;
+  gap: 0.4rem;
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foro-torre li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.3rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  color: var(--color-ash);
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.foro-torre small {
+  color: var(--color-ash);
+  opacity: 0.8;
+}
+
+/* ——— Formularios ——— */
+
+.foro-form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.foro-form h2 {
+  margin: 0;
+  font-family: var(--font-display);
+}
+
+.foro-form label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--color-ash);
+  font-size: 0.9rem;
+}
+
+.foro-form input,
+.foro-form select,
+.foro-form textarea,
+.foro-reporte input,
+.foro-reporte select {
+  width: 100%;
+  min-width: 0;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: var(--color-void);
+  color: var(--color-ash-bright);
+  font: inherit;
+}
+
+.foro-form textarea {
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.foro-contador {
+  justify-self: end;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.foro-form__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.foro-boton {
+  padding: 0.6rem 1.3rem;
+  border: 1px solid color-mix(in srgb, var(--color-astral) 70%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-astral) 22%, transparent);
+  color: var(--color-ash-bright);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.foro-boton:hover:not(:disabled) {
+  box-shadow: 0 0 16px color-mix(in srgb, var(--color-astral) 35%, transparent);
+}
+
+.foro-boton:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.foro-boton--secundario {
+  border-color: var(--color-line);
+  background: transparent;
+}
+
+.foro-boton--chico {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.82rem;
+}
+
+.foro-error {
+  margin: 0;
+  color: #ff9d90;
+}
+
+/* ——— Hilo ——— */
+
+.foro-hilo-pagina {
+  max-width: 50rem;
+}
+
+.foro-migas {
+  margin-bottom: var(--space-2);
+  color: var(--color-ash);
+  font-size: 0.85rem;
+}
+
+.foro-migas a {
+  color: var(--color-ice);
+}
+
+.foro-moderacion {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+  margin-top: var(--space-2);
+  padding: 0.5rem 0.8rem;
+  border: 1px dashed color-mix(in srgb, var(--color-ember) 60%, transparent);
+  border-radius: 10px;
+  color: var(--color-ash);
+  font-size: 0.82rem;
+}
+
+.foro-mensajes {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foro-mensaje {
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-night);
+  scroll-margin-top: 6rem;
+}
+
+.foro-mensaje--apertura {
+  border-color: color-mix(in srgb, var(--color-astral) 45%, var(--color-line));
+}
+
+.foro-mensaje--oculto {
+  border-style: dashed;
+  opacity: 0.75;
+}
+
+.foro-mensaje__autor {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.8rem;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.foro-mensaje__autor .avatar-marco {
+  margin: 5px;
+}
+
+.foro-mensaje__alias {
+  margin: 0;
+  color: var(--color-ash-bright);
+  font-weight: 600;
+}
+
+.foro-mensaje__rango {
+  margin: 0;
+  color: var(--color-ash);
+  font-size: 0.8rem;
+}
+
+.foro-fecha {
+  color: var(--color-ash);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.foro-mensaje__texto {
+  margin: 0;
+  color: var(--color-ash-bright);
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.foro-mensaje__oculto {
+  margin: 0 0 0.4rem;
+  color: var(--color-ash);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.foro-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-top: 0.8rem;
+}
+
+.foro-like {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ash);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.foro-like:hover:not(:disabled) {
+  border-color: #ff8fa3;
+  color: #ff8fa3;
+}
+
+.foro-like--activo {
+  border-color: #ff6b88;
+  color: #ff6b88;
+}
+
+.foro-like--activo svg {
+  animation: foro-corazon 0.4s ease;
+}
+
+@keyframes foro-corazon {
+  50% {
+    transform: scale(1.35);
+  }
+}
+
+.foro-like:disabled {
+  cursor: default;
+}
+
+.foro-enlace {
+  border: 0;
+  background: none;
+  color: var(--color-ash);
+  font: inherit;
+  font-size: 0.82rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.foro-enlace:hover {
+  color: var(--color-ash-bright);
+}
+
+.foro-enlace--moderar {
+  color: #ffb3a7;
+}
+
+.foro-reporte {
+  display: grid;
+  grid-template-columns: minmax(0, 12rem) minmax(0, 1fr) auto;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.foro-aviso {
+  width: 100%;
+  margin: 0;
+  color: var(--color-ice);
+  font-size: 0.82rem;
+}
+
+.foro-reportes {
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.foro-reporte__cita {
+  margin: 0.5rem 0;
+  padding: 0.7rem 0.9rem;
+  border-left: 3px solid var(--color-ember);
+  background: var(--color-void);
+}
+
+/* ——— Celular ——— */
+
+@media (max-width: 860px) {
+  .foro-columnas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .foro-reglas:not([open]) {
+    padding-block: 0.8rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .foro-hilo {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .foro-hilo__respuestas {
+    grid-column: 2;
+    justify-items: start;
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .foro-mensaje__autor {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .foro-mensaje__autor .foro-fecha {
+    grid-column: 2;
+  }
+
+  .foro-reporte {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .foro-stats__punto,
+  .foro-like--activo svg {
+    animation: none;
+  }
+}

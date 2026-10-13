@@ -31,6 +31,9 @@ export default async function AdminPage() {
               <li>
                 <Link href="/admin/usuarios">Usuarios registrados</Link>
               </li>
+              <li>
+                <Link href="/admin/foro">Reportes del foro</Link>
+              </li>
             </ul>
             <p className="cuenta-nota">
               Verificación 2FA vigente (expira a las 4 horas; la sesión general no).

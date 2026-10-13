@@ -22,7 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/archivo/sistema-magico`, lastModified, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/archivo/glosario`, lastModified, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/archivo/bestiario`, lastModified, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${SITE_URL}/nuevo-libro`, lastModified, changeFrequency: "monthly", priority: 0.5 }
+    { url: `${SITE_URL}/nuevo-libro`, lastModified, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE_URL}/foro`, lastModified, changeFrequency: "daily", priority: 0.6 }
   ];
 
   const characterPages: MetadataRoute.Sitemap = characters.map((character) => ({

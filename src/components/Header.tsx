@@ -16,7 +16,8 @@ const navItems = [
   { href: "/arte", label: "Arte" },
   { href: "/descargas", label: "Descargas" },
   { href: "/nuevo-libro", label: "Nuevo Libro" },
-  { href: "/archivo", label: "Archivo" }
+  { href: "/archivo", label: "Archivo" },
+  { href: "/foro", label: "Foro" }
 ];
 
 export function Header() {

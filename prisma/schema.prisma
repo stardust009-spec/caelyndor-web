@@ -51,7 +51,9 @@ enum RarezaHu {
   LEGENDARIA
 }
 
-/** Tema visual del sitio: Rubí (día), Noct (noche) o seguir al sistema. */
+/**
+ * Tema visual del sitio: Rubí (día), Noct (noche) o seguir al sistema.
+ */
 enum ThemePreference {
   RUBI
   NOCT
@@ -92,6 +94,15 @@ model User {
   exp         Int         @default(0)
   expEntradas ExpLedger[]
 
+  // Foro (Torre de los Cronistas / Vestíbulo).
+  foroHilos          ForoHilo[]    @relation("HilosDe")
+  foroMensajes       ForoMensaje[] @relation("MensajesDe")
+  foroLikes          ForoLike[]
+  foroReportes       ForoReporte[] @relation("ReportesDe")
+  foroOcultados      ForoMensaje[] @relation("MensajesOcultadosPor")
+  foroHilosOcultados ForoHilo[]    @relation("HilosOcultadosPor")
+  foroResueltos      ForoReporte[] @relation("ReportesResueltosPor")
+
   sendaPrincipal Senda?
   sendasCercanas Senda[] @default([])
 
@@ -99,15 +110,15 @@ model User {
   habilidadUnica          HabilidadUnica? @relation(fields: [habilidadUnicaId], references: [id])
   habilidadUnicaElegidaEn DateTime?
 
-  progresos   StoryProgress[]
-  logros      UserAchievement[]
-  sendaTest   SendaTestResult?
-  ofertaHu    OfertaHu?
-  profile     UserProfile?
-  sesiones    AppSession[]
+  progresos StoryProgress[]
+  logros    UserAchievement[]
+  sendaTest SendaTestResult?
+  ofertaHu  OfertaHu?
+  profile   UserProfile?
+  sesiones  AppSession[]
 
-  restricciones          UserRestriction[] @relation("RestriccionesDe")
-  restriccionesAplicadas UserRestriction[] @relation("RestriccionesAplicadasPor")
+  restricciones           UserRestriction[] @relation("RestriccionesDe")
+  restriccionesAplicadas  UserRestriction[] @relation("RestriccionesAplicadasPor")
   restriccionesLevantadas UserRestriction[] @relation("RestriccionesLevantadasPor")
 
   accesosComoAdmin      AdminAccessLog[]     @relation("AccesosDeAdmin")
@@ -181,10 +192,10 @@ model UserRestriction {
   userId String
   user   User   @relation("RestriccionesDe", fields: [userId], references: [id], onDelete: Cascade)
 
-  type   RestrictionType
-  active Boolean         @default(true)
+  type      RestrictionType
+  active    Boolean         @default(true)
   /// Interno del equipo; nunca se muestra al usuario afectado.
-  reason String
+  reason    String
   /// null = permanente hasta levantarla a mano.
   expiresAt DateTime?
 
@@ -317,7 +328,7 @@ model StoryProgress {
   completionRewardClaimed Boolean   @default(false)
 
   /// Relecturas completadas después de la primera lectura completa.
-  rereadCount Int @default(0)
+  rereadCount Int     @default(0)
   /// Máquina de estados de relectura: se arma cuando, ya completado,
   /// el lector vuelve al inicio; se consume al alcanzar 96% otra vez.
   rereadArmed Boolean @default(false)
@@ -375,10 +386,10 @@ model SendaTestResult {
 /// Catálogo de Habilidades Únicas (77 en total entre 4 rarezas; se siembra
 /// un subconjunto inicial y se completa como contenido, no como código).
 model HabilidadUnica {
-  id          String   @id
-  nombre      String
-  descripcion String
-  rareza      RarezaHu
+  id           String   @id
+  nombre       String
+  descripcion  String
+  rareza       RarezaHu
   /// Sendas con afinidad natural a esta HU (para calcularHUCompatibles).
   sendasAfines Senda[]
 
@@ -393,4 +404,96 @@ model OfertaHu {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   opciones  String[]
   createdAt DateTime @default(now())
+}
+
+/// Hilo del foro (docs/aura-parte-4.md § Foro). `espacio` es "vestibulo"
+/// por ahora; los pisos de la Torre serán "piso-1"…"piso-5". `categoria` se
+/// valida contra src/data/foro.ts (no es enum para poder cambiarla sin migrar).
+/// Las fechas las pone el servidor: nunca se aceptan del cliente.
+model ForoHilo {
+  id        String @id @default(cuid())
+  espacio   String
+  categoria String
+  titulo    String
+
+  autorId String
+  autor   User   @relation("HilosDe", fields: [autorId], references: [id], onDelete: Cascade)
+
+  createdAt       DateTime @default(now())
+  /// Se actualiza con cada respuesta: ordena la lista de hilos.
+  ultimaActividad DateTime @default(now())
+
+  fijado  Boolean @default(false)
+  cerrado Boolean @default(false)
+
+  /// Moderación: ocultar nunca borra (se conserva para auditoría).
+  ocultoEn     DateTime?
+  ocultoPorId  String?
+  ocultoPor    User?     @relation("HilosOcultadosPor", fields: [ocultoPorId], references: [id])
+  ocultoMotivo String?
+
+  mensajes ForoMensaje[]
+
+  @@index([espacio, ocultoEn, fijado, ultimaActividad])
+}
+
+/// Mensaje de un hilo. El primero del hilo lleva esApertura = true.
+/// Solo texto plano (sin enlaces ni imágenes en esta etapa).
+model ForoMensaje {
+  id     String   @id @default(cuid())
+  hiloId String
+  hilo   ForoHilo @relation(fields: [hiloId], references: [id], onDelete: Cascade)
+
+  autorId String
+  autor   User   @relation("MensajesDe", fields: [autorId], references: [id], onDelete: Cascade)
+
+  cuerpo     String
+  esApertura Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  /// Caché de ForoLike (se ajusta en la misma transacción que el like).
+  likesCount Int @default(0)
+
+  ocultoEn     DateTime?
+  ocultoPorId  String?
+  ocultoPor    User?     @relation("MensajesOcultadosPor", fields: [ocultoPorId], references: [id])
+  ocultoMotivo String?
+
+  likes    ForoLike[]
+  reportes ForoReporte[]
+
+  @@index([hiloId, createdAt])
+}
+
+/// Me gusta (no existe "no me gusta"). Uno por usuario y mensaje.
+model ForoLike {
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mensajeId String
+  mensaje   ForoMensaje @relation(fields: [mensajeId], references: [id], onDelete: Cascade)
+  createdAt DateTime    @default(now())
+
+  @@id([userId, mensajeId])
+}
+
+/// Reporte de un mensaje. Uno por usuario y mensaje; nunca se borra.
+model ForoReporte {
+  id        String      @id @default(cuid())
+  mensajeId String
+  mensaje   ForoMensaje @relation(fields: [mensajeId], references: [id], onDelete: Cascade)
+  autorId   String
+  autor     User        @relation("ReportesDe", fields: [autorId], references: [id], onDelete: Cascade)
+  /// SPOILER · OFENSIVO · SPAM · OTRO (validado en src/data/foro.ts).
+  motivo    String
+  detalle   String?
+  createdAt DateTime    @default(now())
+
+  resueltoEn    DateTime?
+  resueltoPorId String?
+  resueltoPor   User?     @relation("ReportesResueltosPor", fields: [resueltoPorId], references: [id])
+  /// "oculto" (se ocultó el mensaje) o "descartado".
+  resolucion    String?
+
+  @@unique([mensajeId, autorId])
+  @@index([resueltoEn, createdAt])
 }
