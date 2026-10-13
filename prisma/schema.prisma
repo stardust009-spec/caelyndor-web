@@ -87,6 +87,11 @@ model User {
   /// nunca se edita a mano ni se acepta desde el cliente.
   currentRank RangoAura @default(AURA_LATENTE)
 
+  /// EXP total: suma cacheada de ExpLedger (Parte 4). El nivel se deriva de
+  /// aquí (src/lib/server/niveles.ts); nunca se edita a mano.
+  exp         Int         @default(0)
+  expEntradas ExpLedger[]
+
   sendaPrincipal Senda?
   sendasCercanas Senda[] @default([])
 
@@ -218,8 +223,27 @@ model UserProfile {
 
   themePreference ThemePreference @default(SISTEMA)
 
+  /// Marco de avatar equipado (slug de src/data/marcos.ts). El servidor solo
+  /// acepta marcos cuyo logro el usuario ya desbloqueó.
+  marcoSlug String?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+/// Libro mayor de EXP (Parte 4). Cada entrega lleva una clave única por
+/// usuario ("lectura:<slug>", "quiz:<slug>", "libro:<edición>"…): reenviar
+/// una petición o reintentar un sync nunca duplica EXP.
+model ExpLedger {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clave     String
+  cantidad  Int
+  createdAt DateTime @default(now())
+
+  @@unique([userId, clave])
+  @@index([userId])
 }
 
 /// Catálogo cerrado de avatares curado por Claudio. Sin subida de imágenes

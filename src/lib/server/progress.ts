@@ -1,9 +1,12 @@
 import "server-only";
 import type { Prisma, RangoAura } from "@/generated/prisma/client";
 import { getPrisma, TX_OPTIONS } from "./db";
-import { computeRank, nextRankInfo, rankLabel } from "./ranks";
+import { SENDA_TEST_UNLOCK_THRESHOLD, computeRank, nextRankInfo, rankLabel } from "./ranks";
 import { getStoryMetaMap, getStoryReadingMinutes } from "./storyContent";
 import { evaluateAchievements } from "./achievements";
+import { ACHIEVEMENT_CATALOG } from "./achievementCatalog";
+import { otorgarExp, sincronizarExpLecturas } from "./exp";
+import { EXP_POR, nivelDeExp } from "./niveles";
 import { COMPLETION_THRESHOLD, evaluateReading } from "./readingValidation";
 
 export { COMPLETION_THRESHOLD };
@@ -25,6 +28,15 @@ export type ProgressUpdateResult = {
   completedCanonicalCount: number;
   nextRank: { label: string; needed: number; current: number } | null;
   newAchievements: string[];
+  /** Títulos de los logros recién desbloqueados (para el aviso del lector). */
+  logrosNuevos: string[];
+  /** EXP entregada por este update (0 salvo en el primer completado). */
+  expGanada: number;
+  /** Nivel tras este update (solo significativo si expGanada > 0). */
+  nivel: number;
+  subioNivel: boolean;
+  /** Primer relato completado y el Ritual de Afinación aún no se hace. */
+  ritualPendiente: boolean;
   /** Aviso narrativo para el cliente cuando hay completado nuevo (sección 8). */
   notification: string | null;
 };
@@ -133,9 +145,25 @@ export async function applyProgressUpdate(
     const completedCanonicalCount = await countCompletedCanonical(tx, userId);
     const rank = computeRank(completedCanonicalCount);
 
+    let expGanada = 0;
+    let expAntes = 0;
+    let ritualPendiente = false;
     if (claimedReward) {
       // El rango es derivado: se recalcula, no se acepta desde el cliente.
-      await tx.user.update({ where: { id: userId }, data: { currentRank: rank } });
+      const usuario = await tx.user.update({
+        where: { id: userId },
+        data: { currentRank: rank },
+        select: { sendaTest: { select: { id: true } } }
+      });
+      ritualPendiente = usuario.sendaTest === null && completedCanonicalCount >= SENDA_TEST_UNLOCK_THRESHOLD;
+      if (getStoryMetaMap().get(storySlug)?.canonical) {
+        expGanada = await otorgarExp(tx, userId, `lectura:${storySlug}`, EXP_POR.lectura);
+      }
+      // Lecturas anteriores a la EXP que aún no estaban en el libro mayor:
+      // cuentan como "antes" de este relato para detectar la subida de nivel.
+      await sincronizarExpLecturas(tx, userId);
+      const { exp } = await tx.user.findUniqueOrThrow({ where: { id: userId }, select: { exp: true } });
+      expAntes = exp - expGanada;
       newAchievements = await evaluateAchievements(tx, userId);
     }
 
@@ -169,6 +197,13 @@ export async function applyProgressUpdate(
       completedCanonicalCount,
       nextRank: next ? { label: next.label, needed: next.needed, current: next.current } : null,
       newAchievements,
+      logrosNuevos: newAchievements.map(
+        (slug) => ACHIEVEMENT_CATALOG.find((logro) => logro.slug === slug)?.title ?? slug
+      ),
+      expGanada,
+      nivel: nivelDeExp(expAntes + expGanada),
+      subioNivel: expGanada > 0 && nivelDeExp(expAntes + expGanada) > nivelDeExp(expAntes),
+      ritualPendiente,
       notification
     };
   }, TX_OPTIONS);

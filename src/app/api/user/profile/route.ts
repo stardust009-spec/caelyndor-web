@@ -5,6 +5,8 @@ import { readJsonBody, tooManyRequests, unauthorized } from "@/lib/server/http";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { getPrisma, TX_OPTIONS } from "@/lib/server/db";
 import { evaluateAchievements } from "@/lib/server/achievements";
+import { sincronizarExpLecturas } from "@/lib/server/exp";
+import { pisoDeNivel, progresoNivel } from "@/lib/server/niveles";
 import {
   HU_UNLOCK_THRESHOLD,
   SENDA_TEST_UNLOCK_THRESHOLD,
@@ -29,10 +31,14 @@ export async function GET() {
   // también aquí hace que cambios de contenido (p. ej. asignar regiones a
   // relatos ya leídos) se reflejen al abrir el perfil, sin esperar a la
   // próxima lectura. Es idempotente; si falla, el perfil se muestra igual.
+  // Lo mismo con la EXP de lecturas completadas antes de que existiera.
   try {
-    await prisma.$transaction((tx) => evaluateAchievements(tx, userId), TX_OPTIONS);
+    await prisma.$transaction(async (tx) => {
+      await sincronizarExpLecturas(tx, userId);
+      await evaluateAchievements(tx, userId);
+    }, TX_OPTIONS);
   } catch (error) {
-    console.error("profile: evaluateAchievements", error);
+    console.error("profile: sync de logros/EXP", error);
   }
 
   const user = await prisma.user.findUnique({
@@ -43,6 +49,7 @@ export async function GET() {
       displayName: true,
       createdAt: true,
       currentRank: true,
+      exp: true,
       sendaPrincipal: true,
       sendasCercanas: true,
       habilidadUnica: { select: { id: true, nombre: true, descripcion: true, rareza: true } },
@@ -58,6 +65,7 @@ export async function GET() {
           ciudad: true,
           comuna: true,
           themePreference: true,
+          marcoSlug: true,
           avatar: { select: { id: true, slug: true, characterName: true, style: true, imageUrl: true } }
         }
       },
@@ -83,6 +91,7 @@ export async function GET() {
     ...rest,
     rankLabel: rankLabel(user.currentRank),
     relatosCompletados: completadosCanonicos,
+    nivel: { ...progresoNivel(user.exp), piso: pisoDeNivel(progresoNivel(user.exp).nivel) },
     relatosCanonicosDisponibles: getCanonicalSlugs().size,
     proximoRango: nextRankInfo(completadosCanonicos),
     // Umbrales para que el perfil sepa qué ofrecer (Ritual / despertar del don).

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 type ReadingProgressProps = {
@@ -39,8 +40,21 @@ function saveSeen(key: string, seen: boolean[]) {
   }
 }
 
+type RespuestaProgreso = {
+  pendingSeconds?: number | null;
+  newlyCompleted?: boolean;
+  expGanada?: number;
+  nivel?: number;
+  subioNivel?: boolean;
+  logrosNuevos?: string[];
+  ritualPendiente?: boolean;
+};
+
+type AvisoCompletado = { exp: number; nivel: number; subioNivel: boolean; logros: string[]; ritual: boolean };
+
 export function ReadingProgress({ target = ".story-reader", storySlug }: ReadingProgressProps) {
   const [progress, setProgress] = useState(0);
+  const [aviso, setAviso] = useState<AvisoCompletado | null>(null);
   const syncState = useRef({ lastSent: -1, lastSentAt: 0, latest: 0, disabled: false });
   /** % de párrafos vistos (0-100); el servidor lo usa para validar el completado. */
   const seenPercent = useRef(0);
@@ -74,9 +88,18 @@ export function ReadingProgress({ target = ".story-reader", storySlug }: Reading
           state.disabled = true;
           return;
         }
+        const data = (await response.json().catch(() => null)) as RespuestaProgreso | null;
+        if (data?.newlyCompleted) {
+          setAviso({
+            exp: data.expGanada ?? 0,
+            nivel: data.nivel ?? 1,
+            subioNivel: data.subioNivel === true,
+            logros: data.logrosNuevos ?? [],
+            ritual: data.ritualPendiente === true
+          });
+        }
         // Avance suficiente pero aún falta tiempo de lectura: se reintenta
         // cuando el servidor indique, por si el lector sigue en la página.
-        const data = (await response.json().catch(() => null)) as { pendingSeconds?: number | null } | null;
         if (typeof data?.pendingSeconds === "number") {
           window.clearTimeout(retryTimer);
           retryTimer = window.setTimeout(
@@ -219,9 +242,48 @@ export function ReadingProgress({ target = ".story-reader", storySlug }: Reading
     };
   }, [target]);
 
+  // El aviso se cierra solo, salvo que invite al Ritual (ahí espera al lector).
+  useEffect(() => {
+    if (!aviso || aviso.ritual) {
+      return;
+    }
+    const timer = window.setTimeout(() => setAviso(null), 12_000);
+    return () => window.clearTimeout(timer);
+  }, [aviso]);
+
   return (
-    <div className="story-progress" aria-hidden="true">
-      <div className="story-progress__fill" style={{ transform: `scaleX(${progress})` }} />
-    </div>
+    <>
+      <div className="story-progress" aria-hidden="true">
+        <div className="story-progress__fill" style={{ transform: `scaleX(${progress})` }} />
+      </div>
+      <div className="lectura-aviso-zona" role="status" aria-live="polite">
+        {aviso && (
+          <div className="lectura-aviso">
+            <p className="lectura-aviso__titulo">
+              ✦ Relato completado
+              {aviso.exp > 0 && (
+                <>
+                  {" "}· <strong>+{aviso.exp} EXP</strong>
+                </>
+              )}
+            </p>
+            {aviso.subioNivel && <p className="lectura-aviso__nivel">¡Alcanzaste el nivel {aviso.nivel}!</p>}
+            {aviso.logros.map((titulo) => (
+              <p key={titulo}>
+                Logro desbloqueado: <strong>{titulo}</strong>
+              </p>
+            ))}
+            {aviso.ritual && (
+              <Link className="lectura-aviso__ritual" href="/cuenta/ritual">
+                El cristal te espera: haz el Ritual de Afinación →
+              </Link>
+            )}
+            <button type="button" className="lectura-aviso__cerrar" aria-label="Cerrar aviso" onClick={() => setAviso(null)}>
+              ×
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

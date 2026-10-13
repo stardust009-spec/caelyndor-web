@@ -4,6 +4,9 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { sendaNombre } from "@/data/sendas";
+import { MARCOS } from "@/data/marcos";
+import { MEDALLAS_CON_ARTE } from "@/data/arteAura";
+import { AvatarMarco } from "@/components/aura/AvatarMarco";
 
 type Avatar = { id: string; slug: string; characterName: string; style: string; imageUrl: string };
 
@@ -21,6 +24,7 @@ type Perfil = {
   proximoRango: { label: string; needed: number; current: number } | null;
   ritualUmbral: number;
   huUmbral: number;
+  nivel: { nivel: number; exp: number; desde: number; hasta: number; piso: number };
   logrosDesbloqueados: number;
   logrosTotales: number;
   logros: { achievementId: string; unlockedAt: string }[];
@@ -35,6 +39,7 @@ type Perfil = {
     comuna: string | null;
     themePreference: "RUBI" | "NOCT" | "SISTEMA";
     avatar: Avatar | null;
+    marcoSlug: string | null;
   } | null;
 };
 
@@ -150,6 +155,7 @@ export function CuentaClient() {
               </>
             )}
           </p>
+          <NivelBarra nivel={perfil.nivel} />
           {perfil.sendaPrincipal ? (
             <p className="cuenta-senda">
               Senda:{" "}
@@ -187,18 +193,24 @@ export function CuentaClient() {
           ) : null}
         </div>
         {perfil.profile?.avatar && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            className="cuenta-avatar"
+          <AvatarMarco
+            className="cuenta-avatar-marco"
             src={perfil.profile.avatar.imageUrl}
             alt={`Avatar: ${perfil.profile.avatar.characterName}`}
-            width={96}
-            height={96}
+            marcoSlug={perfil.profile.marcoSlug}
+            size={96}
           />
         )}
       </header>
 
       <LogrosPanel perfil={perfil} placeholders={placeholders} logros={logros} />
+      <MarcosPanel
+        logros={logros}
+        avatar={perfil.profile?.avatar ?? null}
+        actual={perfil.profile?.marcoSlug ?? null}
+        onChange={refresh}
+        onAviso={setAviso}
+      />
       <AvatarPanel
         avatares={avatares}
         actual={perfil.profile?.avatar ?? null}
@@ -318,6 +330,27 @@ function AccesoForm({ onDone }: { onDone: () => void }) {
   );
 }
 
+/** Medalla del logro: el arte del autor si existe, si no un sello provisional. */
+function Medalla({ slug, obtenida }: { slug: string; obtenida: boolean }) {
+  if (MEDALLAS_CON_ARTE.includes(slug)) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        className={`cuenta-logro__medalla${obtenida ? "" : " cuenta-logro__medalla--bloqueada"}`}
+        src={`/images/medallas/${slug}.webp`}
+        alt=""
+        width={48}
+        height={48}
+      />
+    );
+  }
+  return (
+    <span className="cuenta-logro__sello" aria-hidden="true">
+      {obtenida ? "✦" : "🔒"}
+    </span>
+  );
+}
+
 function LogrosPanel({
   perfil,
   placeholders,
@@ -352,7 +385,7 @@ function LogrosPanel({
         <ul className="cuenta-logros">
           {obtenidos.map((logro) => (
             <li key={logro.slug} className="cuenta-logro cuenta-logro--obtenido">
-              <span className="cuenta-logro__sello" aria-hidden="true">✦</span>
+              <Medalla slug={logro.slug} obtenida />
               <div>
                 <strong>{logro.title}</strong>
                 <span className="cuenta-logro__desc">{logro.description}</span>
@@ -372,7 +405,7 @@ function LogrosPanel({
           <ul className="cuenta-logros">
             {pendientes.map((logro) => (
               <li key={logro.slug} className="cuenta-logro">
-                <span className="cuenta-logro__sello" aria-hidden="true">🔒</span>
+                <Medalla slug={logro.slug} obtenida={false} />
                 <div>
                   <strong>{logro.title}</strong>
                   <span className="cuenta-logro__desc">{logro.description}</span>
@@ -391,6 +424,97 @@ function LogrosPanel({
           ))}
         </ul>
       )}
+    </section>
+  );
+}
+
+function NivelBarra({ nivel }: { nivel: Perfil["nivel"] }) {
+  const tramo = Math.max(1, nivel.hasta - nivel.desde);
+  const avance = Math.min(1, Math.max(0, (nivel.exp - nivel.desde) / tramo));
+  const faltan = Math.max(0, nivel.hasta - nivel.exp);
+  return (
+    <div className="cuenta-nivel">
+      <p className="cuenta-nivel__titulo">
+        Nivel <strong>{nivel.nivel}</strong>
+        <span>
+          {nivel.exp} EXP · faltan {faltan} para el nivel {nivel.nivel + 1}
+        </span>
+      </p>
+      <div
+        className="cuenta-barra cuenta-barra--nivel"
+        role="progressbar"
+        aria-label={`Progreso al nivel ${nivel.nivel + 1}`}
+        aria-valuenow={Math.round(avance * 100)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      >
+        <div className="cuenta-barra__fill" style={{ width: `${avance * 100}%` }} />
+      </div>
+    </div>
+  );
+}
+
+function MarcosPanel({
+  logros,
+  avatar,
+  actual,
+  onChange,
+  onAviso
+}: {
+  logros: LogroCatalogo[];
+  avatar: Avatar | null;
+  actual: string | null;
+  onChange: () => Promise<void> | void;
+  onAviso: (mensaje: string | null) => void;
+}) {
+  const [guardando, setGuardando] = useState(false);
+  const obtenidos = new Set(logros.filter((logro) => logro.estado?.desbloqueado).map((logro) => logro.slug));
+
+  async function equipar(marcoSlug: string | null) {
+    setGuardando(true);
+    const result = await jsonFetch("/api/user/marco", { method: "POST", body: JSON.stringify({ marcoSlug }) });
+    onAviso(result.ok ? null : (result.error ?? "No se pudo cambiar el marco"));
+    await onChange();
+    setGuardando(false);
+  }
+
+  return (
+    <section className="panel cuenta-panel">
+      <h2>Marcos</h2>
+      <p className="cuenta-nota">Cada marco se gana avanzando por las Crónicas. Equipa el que quieras mostrar.</p>
+      <div className="cuenta-marcos">
+        <button
+          type="button"
+          className={`cuenta-marco${actual === null ? " cuenta-marco--activo" : ""}`}
+          disabled={guardando || actual === null}
+          onClick={() => void equipar(null)}
+        >
+          <AvatarMarco src={avatar?.imageUrl ?? null} alt="" size={56} />
+          <span className="cuenta-marco__nombre">Sin marco</span>
+          {actual === null && <small>Equipado</small>}
+        </button>
+        {MARCOS.map((marco) => {
+          const ganado = obtenidos.has(marco.logro);
+          const equipado = actual === marco.slug;
+          return (
+            <button
+              key={marco.slug}
+              type="button"
+              className={[
+                "cuenta-marco",
+                equipado ? "cuenta-marco--activo" : "",
+                ganado ? "" : "cuenta-marco--bloqueado"
+              ].join(" ")}
+              disabled={guardando || !ganado || equipado}
+              onClick={() => void equipar(marco.slug)}
+            >
+              <AvatarMarco src={avatar?.imageUrl ?? null} alt="" marcoSlug={marco.slug} size={56} />
+              <span className="cuenta-marco__nombre">{marco.nombre}</span>
+              <small>{equipado ? "Equipado" : ganado ? "Equipar" : `🔒 ${marco.condicion}`}</small>
+            </button>
+          );
+        })}
+      </div>
     </section>
   );
 }

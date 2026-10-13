@@ -12,7 +12,8 @@
     "db:seed": "tsx prisma/seed.ts",
     "avatars:optimize": "tsx scripts/optimize-avatars.ts",
     "extract:music-covers": "node scripts/extract-music-covers.mjs",
-    "lint": "next lint"
+    "lint": "next lint",
+    "aura:arte": "tsx scripts/optimize-arte-aura.ts"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.9.1",
