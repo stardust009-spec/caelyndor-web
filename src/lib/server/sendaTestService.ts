@@ -12,6 +12,14 @@ import {
 } from "./sendaScoring";
 import { evaluateAchievements } from "./achievements";
 
+/** Pregunta tal como la ve el navegador: sin pesos (el ritual no se
+ *  "estudia" desde el código de la página) ni rasgo interno. */
+export type PreguntaPublica = {
+  id: string;
+  prompt: string;
+  options: { id: string; label: string }[];
+};
+
 export type SendaTestStatus = {
   desbloqueado: boolean;
   completado: boolean;
@@ -23,9 +31,18 @@ export type SendaTestStatus = {
     lectura: string;
     fortalezas: string;
     riesgos: string;
+    /** Opción elegida en cada pregunta, en el orden del ritual: con esto el
+     *  cliente redibuja la constelación del lector al volver. */
+    constelacion: (string | null)[];
   } | null;
-  preguntas: typeof SENDA_QUESTIONS | null;
+  preguntas: PreguntaPublica[] | null;
 };
+
+const PREGUNTAS_PUBLICAS: PreguntaPublica[] = SENDA_QUESTIONS.map((question) => ({
+  id: question.id,
+  prompt: question.prompt,
+  options: question.options.map((option) => ({ id: option.id, label: option.label }))
+}));
 
 async function canonicalCompletedCount(tx: Prisma.TransactionClient, userId: string): Promise<number> {
   const historias = getStoryMetaMap();
@@ -50,11 +67,12 @@ export async function getSendaTestStatus(userId: string): Promise<SendaTestStatu
       completado: false,
       puedeElegirManual: false,
       resultado: null,
-      preguntas: desbloqueado ? SENDA_QUESTIONS : null
+      preguntas: desbloqueado ? PREGUNTAS_PUBLICAS : null
     };
   }
 
   const reading = SENDA_READINGS[result.sendaPrincipalResultado];
+  const respuestas = (result.respuestas ?? {}) as Record<string, unknown>;
   return {
     desbloqueado,
     completado: true,
@@ -63,7 +81,11 @@ export async function getSendaTestStatus(userId: string): Promise<SendaTestStatu
       sendaPrincipal: result.sendaPrincipalResultado,
       sendasCercanas: result.sendasCercanasResultado,
       eligioManual: result.eligioManual,
-      ...reading
+      ...reading,
+      constelacion: SENDA_QUESTIONS.map((question) => {
+        const elegida = respuestas[question.id];
+        return typeof elegida === "string" ? elegida : null;
+      })
     },
     preguntas: null
   };

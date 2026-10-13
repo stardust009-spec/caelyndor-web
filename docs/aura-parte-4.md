@@ -40,6 +40,29 @@ mide el servidor. Para recompensas cosméticas es el equilibrio buscado.
 Los completados anteriores a este cambio se respetan (el completado es
 irreversible). Las relecturas siguen sin dar EXP.
 
+## Ritual de Afinación y despertar del don (implementado, fase 0)
+
+- `/cuenta/ritual` (`RitualAfinacion.tsx`): cristal facetado en SVG, 6 preguntas;
+  cada respuesta lanza una estela de partículas al cristal y enciende un nodo
+  de la **constelación personal** (posición única por pregunta + opción, eco
+  del canon de las Constelaciones Aúricas). Lectura: la constelación gira en
+  vórtice, el cristal la absorbe, tiembla y se agrieta; revelación con el
+  sello de la Senda trazándose, la constelación renaciendo en su color y las
+  dos Sendas cercanas en órbita. Incluye la corrección manual única.
+- `/cuenta/despertar` (`DespertarDon.tsx`): tres destellos orbitan (las 3
+  que oferta el servidor), dos se apagan y uno estalla; efecto por rareza
+  (Común halo plateado, Poco común aurora, Épica rayos violeta + arcos
+  eléctricos, Legendaria rayos prismáticos + sacudida + lluvia dorada).
+- Identidad visual de las 10 Sendas (nombre, color, sello) en
+  `src/data/sendas.ts`: propuesta visual, no canon; editable ahí.
+- Motor de partículas propio en canvas (`src/components/aura/useParticulas.ts`),
+  sin dependencias. Con "reducir movimiento" todo llega a su estado final sin
+  animar.
+- `/api/senda-test/status` ya no envía los pesos de las respuestas al
+  navegador, y al volver devuelve la constelación del lector.
+- El perfil enlaza al ritual cuando está disponible y muestra las Sendas por
+  su nombre.
+
 ## EXP
 
 Libro mayor de EXP: cada entrega lleva una **clave única por usuario**

@@ -5,7 +5,12 @@ import { readJsonBody, tooManyRequests, unauthorized } from "@/lib/server/http";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { getPrisma, TX_OPTIONS } from "@/lib/server/db";
 import { evaluateAchievements } from "@/lib/server/achievements";
-import { nextRankInfo, rankLabel } from "@/lib/server/ranks";
+import {
+  HU_UNLOCK_THRESHOLD,
+  SENDA_TEST_UNLOCK_THRESHOLD,
+  nextRankInfo,
+  rankLabel
+} from "@/lib/server/ranks";
 import { getCanonicalSlugs, getStoryMetaMap } from "@/lib/server/storyContent";
 import { ACHIEVEMENT_CATALOG } from "@/lib/server/achievementCatalog";
 import { assertNoRestriccion } from "@/lib/server/restrictions";
@@ -80,6 +85,9 @@ export async function GET() {
     relatosCompletados: completadosCanonicos,
     relatosCanonicosDisponibles: getCanonicalSlugs().size,
     proximoRango: nextRankInfo(completadosCanonicos),
+    // Umbrales para que el perfil sepa qué ofrecer (Ritual / despertar del don).
+    ritualUmbral: SENDA_TEST_UNLOCK_THRESHOLD,
+    huUmbral: HU_UNLOCK_THRESHOLD,
     logros,
     // Barra de progreso de logros (los placeholders decorativos NO cuentan).
     logrosDesbloqueados: logros.length,

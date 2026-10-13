@@ -7412,6 +7412,36 @@ body.story-lightbox-open {
   opacity: 0.75;
 }
 
+/* Acceso destacado al Ritual de Afinación / despertar del don. */
+.cuenta-ritual-cta {
+  display: inline-block;
+  margin: var(--space-1) 0 var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid color-mix(in srgb, var(--color-astral) 60%, transparent);
+  border-radius: 999px;
+  color: var(--color-ice);
+  font-size: 0.92rem;
+  text-decoration: none;
+  box-shadow: 0 0 18px color-mix(in srgb, var(--color-astral) 25%, transparent);
+  animation: cuenta-cta-latido 3s ease-in-out infinite;
+}
+
+.cuenta-ritual-cta:hover {
+  border-color: var(--color-ice);
+}
+
+@keyframes cuenta-cta-latido {
+  50% {
+    box-shadow: 0 0 28px color-mix(in srgb, var(--color-astral) 45%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cuenta-ritual-cta {
+    animation: none;
+  }
+}
+
 /* Logros con nombre: obtenidos a la vista, el resto plegado en "Por descubrir". */
 .cuenta-logros {
   list-style: none;

@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { sendaNombre } from "@/data/sendas";
 
 type Avatar = { id: string; slug: string; characterName: string; style: string; imageUrl: string };
 
@@ -17,6 +19,8 @@ type Perfil = {
   relatosCompletados: number;
   relatosCanonicosDisponibles: number;
   proximoRango: { label: string; needed: number; current: number } | null;
+  ritualUmbral: number;
+  huUmbral: number;
   logrosDesbloqueados: number;
   logrosTotales: number;
   logros: { achievementId: string; unlockedAt: string }[];
@@ -146,18 +150,41 @@ export function CuentaClient() {
               </>
             )}
           </p>
-          {perfil.sendaPrincipal && (
+          {perfil.sendaPrincipal ? (
             <p className="cuenta-senda">
-              Senda: <strong>{perfil.sendaPrincipal}</strong>
-              {perfil.sendasCercanas.length > 0 && <> · cercanas: {perfil.sendasCercanas.join(", ")}</>}
+              Senda:{" "}
+              <Link href="/cuenta/ritual">
+                <strong>{sendaNombre(perfil.sendaPrincipal)}</strong>
+              </Link>
+              {perfil.sendasCercanas.length > 0 && (
+                <> · cercanas: {perfil.sendasCercanas.map(sendaNombre).join(", ")}</>
+              )}
             </p>
+          ) : perfil.relatosCompletados >= perfil.ritualUmbral ? (
+            <Link className="cuenta-ritual-cta" href="/cuenta/ritual">
+              ✦ El cristal te espera: comenzar el Ritual de Afinación
+            </Link>
+          ) : (
+            <p className="cuenta-nota">El Ritual de Afinación se abre al completar tu primer relato.</p>
           )}
-          {perfil.habilidadUnica && (
+          {perfil.habilidadUnica ? (
             <p className="cuenta-hu">
-              Habilidad Única: <strong>{perfil.habilidadUnica.nombre}</strong> (
-              {perfil.habilidadUnica.rareza.toLowerCase().replace("_", " ")})
+              Habilidad Única:{" "}
+              <Link href="/cuenta/despertar">
+                <strong>{perfil.habilidadUnica.nombre}</strong>
+              </Link>{" "}
+              ({perfil.habilidadUnica.rareza.toLowerCase().replace("_", " ")})
             </p>
-          )}
+          ) : perfil.sendaPrincipal && perfil.relatosCompletados >= perfil.huUmbral ? (
+            <Link className="cuenta-ritual-cta" href="/cuenta/despertar">
+              ✦ Tu don está listo para despertar
+            </Link>
+          ) : perfil.sendaPrincipal ? (
+            <p className="cuenta-hu">
+              Habilidad Única: <Link href="/cuenta/despertar">dormida</Link> ({perfil.relatosCompletados}/
+              {perfil.huUmbral} relatos)
+            </p>
+          ) : null}
         </div>
         {perfil.profile?.avatar && (
           // eslint-disable-next-line @next/next/no-img-element
