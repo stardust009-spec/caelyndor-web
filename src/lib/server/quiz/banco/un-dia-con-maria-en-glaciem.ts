@@ -303,10 +303,10 @@ export const BANCO_UN_DIA_CON_MARIA: readonly PreguntaQuiz[] = [
     id: "maria-c01", dificultad: 3,
     enunciado: "Yuki dejó la cuchara al probar la sopa de Ricardo, y María no tenía ese gesto anotado. ¿Por qué la dejó?",
     opciones: [
-      "Porque reconoció el sabor de la cola de diablo: ya lo conocía de La empanada mágica",
+      "Porque reconoció un sabor que ya había probado: cola de diablo",
       "Porque estaba demasiado caliente",
-      "Porque le faltaba sal",
-      "Porque quería negociar sin distraerse"
+      "Porque la sopa estaba salada",
+      "Porque prefería seguir negociando sin distraerse"
     ], correcta: 0,
     explicacion: "La sopa llevaba cola de diablo en vez de nalga de ángel. Yuki ya conocía ese sabor: en La empanada mágica se comió «una y tres cuartos» empanadas con Cola del Diablo y terminó viendo a Rubí como un candelero.",
     fuente: { obra: EMPANADA, parrafo: 119, cita: "—Una y tres cuartos. La evaluación sensorial requería comparación de bordes." }
