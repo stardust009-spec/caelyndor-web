@@ -169,6 +169,14 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     requiere: solo
   },
   {
+    id: "estafa-e24", obra: OBRA, tipo: "explicita", dificultad: 3,
+    enunciado: "¿Cómo se llama el ganso sentimental que se seca una lágrima con el borde del ala?",
+    opciones: ["Bugsy Plumetti", "Meyer Lanskizo", "Cara Cortada", "Lucky Luciano Griazniati"], correcta: 0,
+    explicacion: "«Otro, un tipo más sentimental llamado Bugsy Plumetti, se secó una lágrima mal disimulada con el borde de su ala».",
+    fuente: { obra: OBRA, parrafo: 208, cita: "Otro, un tipo más sentimental llamado Bugsy Plumetti, se secó una lágrima mal disimulada con el borde de su ala." },
+    requiere: solo
+  },
+  {
     id: "estafa-e20", obra: OBRA, tipo: "explicita", dificultad: 3,
     enunciado: "¿Cómo llaman los gansos a Lyzi cuando le agradecen?",
     opciones: ["Nona Lyzi", "Madrina Lyzi", "Jefa Kitsune", "Doña Colas"], correcta: 0,

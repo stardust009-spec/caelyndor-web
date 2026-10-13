@@ -10,6 +10,7 @@ import {
   type PreguntaQuiz
 } from "../src/lib/server/quiz/logica";
 import { BANCO_LA_GRAN_ESTAFA } from "../src/lib/server/quiz/banco/la-gran-estafa-de-sylvalis";
+import { BANCO_LA_EMPANADA_MAGICA } from "../src/lib/server/quiz/banco/la-empanada-magica";
 import { EVENTOS_EN_ORDEN, EVENTOS_FRACASO } from "../src/data/eventosQuiz";
 
 const ESTAFA = "la-gran-estafa-de-sylvalis";
@@ -22,7 +23,7 @@ const rng = () => {
 
 test("integridad del banco: ids únicos, 4 alternativas, respuesta válida y fuente", () => {
   const ids = new Set<string>();
-  for (const pregunta of BANCO_LA_GRAN_ESTAFA) {
+  for (const pregunta of [...BANCO_LA_GRAN_ESTAFA, ...BANCO_LA_EMPANADA_MAGICA]) {
     assert.ok(!ids.has(pregunta.id), `id repetido: ${pregunta.id}`);
     ids.add(pregunta.id);
     assert.equal(pregunta.opciones.length, 4, pregunta.id);
