@@ -3,8 +3,9 @@ import type { PreguntaQuiz } from "../logica";
 /**
  * Banco · Zarqath, el aguijón del sol. Párrafos = índice en `paragraphs` de
  * src/data/stories.ts (texto publicado). Ids estables: no reutilizar.
- * Evitado a propósito: el país de Ingrid (no se nombra) y el nombre del
- * faraón (el relato lo da por perdido; consultar al autor antes de usarlo).
+ * Evitado a propósito: el país de Ingrid (no se nombra). Confirmado por el
+ * autor (2026-10-13): el faraón del nombre perdido es Athem (lo dice su
+ * música, no el texto) y Arapas es un mercado dentro de Ashraqem.
  */
 
 const OBRA = "zarqath-el-aguijon-del-sol";
@@ -232,6 +233,13 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
     fuente: { obra: OBRA, parrafo: 967, cita: "—Astronómicamente obsceno —dijo—. Y precioso." }
   }),
 
+  p({
+    id: "zarqath-e29", tipo: "explicita", dificultad: 1,
+    enunciado: "¿Qué advierte Rubí al llegar al mercado de Arapas?",
+    opciones: ["Que a toda la comida le ponen picante", "Que no se puede regatear", "Que hay ladrones en cada puesto", "Que se cierra al anochecer"], correcta: 0,
+    explicacion: "«Cuidado aquí: a toda la comida le ponen picante. A toda». Lyzi lo comprobará más de una vez.",
+    fuente: { obra: OBRA, parrafo: 162, cita: "Llegamos al mercado de Arapas. Cuidado aquí: a toda la comida le ponen picante. A toda." }
+  }),
   // ——— Implícitas ———
   p({
     id: "zarqath-i01", tipo: "implicita", dificultad: 1,
@@ -335,5 +343,19 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
     ], correcta: 0,
     explicacion: "«Eso es exactamente lo que tú dijiste que sería bonito», le murmura a Yuki: ella había dicho que saltarse el final común era una idea esperanzadora.",
     fuente: { obra: OBRA, parrafo: 751, cita: "—Eso es exactamente lo que tú dijiste que sería bonito —murmuró Lyzi, mirando a Yuki." }
+  }),
+  p({
+    id: "zarqath-i10", tipo: "implicita", dificultad: 3,
+    enunciado: "El relato nunca dice el nombre del faraón del mandato áureo, el que declaró que la muerte no lo tocaría. Pero en Caelyndor la música también cuenta. ¿Cómo se llamaba?",
+    opciones: ["Athem", "Solkán", "Zarqath", "Lencorias"], correcta: 0,
+    explicacion: "El Archivo musical lo nombra: «Cindralith — La Tumba del Faraón Athem». Y su tema propio responde a su última declaración: «Athem — Inclínate, Muerte».",
+    fuente: { obra: OBRA, parrafo: 746, cita: "—El faraón del nombre perdido —dijo—. Los viejos lo llaman el faraón del mandato áureo." }
+  }),
+  p({
+    id: "zarqath-i11", tipo: "implicita", dificultad: 3,
+    enunciado: "Las tres llegan al mercado de Arapas, se informan en el gremio y, tras la tumba, «volvieron a Ashraqem», donde el gremio paga la recompensa. ¿Qué es Arapas?",
+    opciones: ["Un mercado dentro de Ashraqem", "Una ciudad vecina de Ashraqem", "El nombre del gremio de Ashraqem", "Un oasis en el camino a la tumba"], correcta: 0,
+    explicacion: "Desde el mercado y el gremio parten en vaquitas hacia la tumba, y al regresar «volvieron a Ashraqem»: el mercado de Arapas está dentro de Ashraqem.",
+    fuente: { obra: OBRA, parrafo: 873, cita: "Volvieron a Ashraqem con la caravana entera detrás." }
   })
 ];

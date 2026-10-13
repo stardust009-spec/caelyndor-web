@@ -123,10 +123,10 @@ Diseño final acordado con el autor (13-oct-2026):
   puede escribirse desde los manuscritos antes de publicar.
 - Meta del autor: banco inicial de ~200 (100 explícitas, 60 implícitas,
   40 conexiones), ampliable sin tocar el sistema.
-- Avance del banco (130): La Gran Estafa 24+7+2, Zarqath 28+9,
+- Avance del banco (133): La Gran Estafa 24+7+2, Zarqath 29+11,
   Protocolos del Corazón 41+14+4 (conexiones activas con Dragon's Kitchen,
   La Frase Maldita y El placer culpable de Lyzi), La empanada mágica 0+0+1
-  (inactiva). Total: 93 explícitas, 30 implícitas, 7 conexiones. Un test
+  (inactiva). Total: 94 explícitas, 32 implícitas, 7 conexiones. Un test
   verifica que cada cita aparezca textual en su párrafo.
 - Fuentes: texto publicado en la web para principal; manuscritos
   (`Proyecto NX_03/Obra/Maquetado`) y bóveda Obsidian para conexiones. Nunca
