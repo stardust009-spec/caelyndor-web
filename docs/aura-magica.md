@@ -105,10 +105,12 @@ lógica ya consume pero que **nadie ha asignado aún** en los 14 relatos:
 
 - `countsTowardProgression?: boolean` — poner `false` en prólogos/fichas/anexos.
   Mientras falte, todo relato cuenta como canónico.
-- `region?: "cindralith" | "glaciem" | "sylvalis"` — sin esto, los logros
-  "Bajo el sol de Cindralith", "Corazón de hielo", "El bosque recuerda tu
-  nombre" y "Cartógrafo de Caelyndor" no pueden dispararse (por diseño: la
-  condición exige que exista al menos un relato con esa región).
+- `region?: "cindralith" | "glaciem" | "sylvalis"` (o un arreglo de dos
+  para relatos de frontera) — **asignada en los 14 relatos el 13-oct-2026**
+  (Cindralith 4, Glaciem 3, Sylvalis 8; Vísperas de una Ecuación cuenta en
+  Glaciem y Sylvalis). Alimenta "Bajo el sol de Cindralith", "Corazón de
+  hielo", "El bosque recuerda tu nombre" y "Cartógrafo de Caelyndor".
+  Todo relato nuevo debe llevarla.
 - `arc?: string` — además hay que fijar `ARCO_NO_DEJASTE_A_NADIE` en
   `src/lib/server/achievementCatalog.ts` para "No dejaste a nadie atrás".
 - `secret?: boolean` — "Tras el Velo".
