@@ -49,7 +49,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             passwordHash: true,
             role: true,
             profile: {
-              select: { alias: true, avatar: { select: { imageUrl: true, characterName: true } } }
+              select: {
+                alias: true,
+                marcoSlug: true,
+                avatar: { select: { imageUrl: true, characterName: true } }
+              }
             }
           }
         });
@@ -94,7 +98,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           // perfil; nada sensible entra aquí.
           alias: user.profile?.alias ?? user.displayName,
           avatarUrl: user.profile?.avatar?.imageUrl ?? null,
-          avatarCharacter: user.profile?.avatar?.characterName ?? null
+          avatarCharacter: user.profile?.avatar?.characterName ?? null,
+          marcoSlug: user.profile?.marcoSlug ?? null
         };
       }
     })
@@ -116,30 +121,38 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
 
       const perfil = user as
-        | { alias?: string; avatarUrl?: string | null; avatarCharacter?: string | null }
+        | { alias?: string; avatarUrl?: string | null; avatarCharacter?: string | null; marcoSlug?: string | null }
         | undefined;
       if (perfil?.alias !== undefined) {
         token.alias = perfil.alias;
         token.avatarUrl = perfil.avatarUrl ?? null;
         token.avatarCharacter = perfil.avatarCharacter ?? null;
+        token.marcoSlug = perfil.marcoSlug ?? null;
       }
 
       // El JWT se emite en el login, así que un cambio posterior de avatar o
       // alias no se vería hasta re-loguear. Con trigger "update" —que dispara
-      // update() desde el cliente tras guardar— se relee el perfil. Es la
+      // update(datos) desde el cliente tras guardar— se relee el perfil. OJO:
+      // update() SIN argumento hace un GET y no dispara "update"; hay que
+      // pasarle algo (su contenido se ignora: la verdad sale de la BD). Es la
       // ÚNICA lectura a BD de este callback: el resto de las páginas sirven
       // el token tal cual, sin consulta.
       if (trigger === "update" && token.sub) {
         const perfilActual = await getPrisma()
           .userProfile.findUnique({
             where: { userId: token.sub },
-            select: { alias: true, avatar: { select: { imageUrl: true, characterName: true } } }
+            select: {
+              alias: true,
+              marcoSlug: true,
+              avatar: { select: { imageUrl: true, characterName: true } }
+            }
           })
           .catch(() => null);
         if (perfilActual) {
           token.alias = perfilActual.alias;
           token.avatarUrl = perfilActual.avatar?.imageUrl ?? null;
           token.avatarCharacter = perfilActual.avatar?.characterName ?? null;
+          token.marcoSlug = perfilActual.marcoSlug ?? null;
         }
       }
 
@@ -156,6 +169,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       session.user.avatarUrl = typeof token.avatarUrl === "string" ? token.avatarUrl : null;
       session.user.avatarCharacter =
         typeof token.avatarCharacter === "string" ? token.avatarCharacter : null;
+      session.user.marcoSlug = typeof token.marcoSlug === "string" ? token.marcoSlug : null;
       return session;
     }
   }

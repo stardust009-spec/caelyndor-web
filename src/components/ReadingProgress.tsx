@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { refrescarMisLecturas } from "@/components/useMisLecturas";
 
 type ReadingProgressProps = {
   target?: string;
@@ -90,6 +91,7 @@ export function ReadingProgress({ target = ".story-reader", storySlug }: Reading
         }
         const data = (await response.json().catch(() => null)) as RespuestaProgreso | null;
         if (data?.newlyCompleted) {
+          refrescarMisLecturas();
           setAviso({
             exp: data.expGanada ?? 0,
             nivel: data.nivel ?? 1,

@@ -10,6 +10,8 @@ declare module "next-auth" {
       avatarUrl?: string | null;
       /** Personaje del avatar, para el alt text. */
       avatarCharacter?: string | null;
+      /** Marco de avatar equipado (slug de src/data/marcos.ts). */
+      marcoSlug?: string | null;
     } & DefaultSession["user"];
     /** Id de la fila AppSession (registro server-side de sesiones). */
     sessionId?: string;
@@ -24,6 +26,7 @@ declare module "next-auth" {
     alias?: string | null;
     avatarUrl?: string | null;
     avatarCharacter?: string | null;
+    marcoSlug?: string | null;
   }
 }
 
@@ -34,5 +37,6 @@ declare module "next-auth/jwt" {
     alias?: string;
     avatarUrl?: string | null;
     avatarCharacter?: string | null;
+    marcoSlug?: string | null;
   }
 }

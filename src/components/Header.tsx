@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { AvatarMarco } from "@/components/aura/AvatarMarco";
 import { useState } from "react";
 
 const navItems = [
@@ -26,6 +27,7 @@ export function Header() {
   // Alias y avatar vienen del JWT (ver auth.ts): sin llamada extra por página.
   const avatarUrl = session?.user?.avatarUrl ?? null;
   const avatarCharacter = session?.user?.avatarCharacter ?? null;
+  const marcoSlug = session?.user?.marcoSlug ?? null;
   const alias = session?.user?.alias ?? null;
   const cuentaActiva = pathname.startsWith("/cuenta");
 
@@ -80,13 +82,12 @@ export function Header() {
             onClick={() => setOpen(false)}
           >
             {avatarUrl && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                className="nav-cuenta__avatar"
+              <AvatarMarco
+                className="nav-cuenta__avatar-marco"
                 src={avatarUrl}
                 alt={avatarCharacter ? `Tu avatar: ${avatarCharacter}` : "Tu avatar"}
-                width={32}
-                height={32}
+                marcoSlug={marcoSlug}
+                size={32}
               />
             )}
             <span>{alias ?? "Cuenta"}</span>

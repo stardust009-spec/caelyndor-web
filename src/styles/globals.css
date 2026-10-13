@@ -6352,6 +6352,30 @@ body.has-music-player {
   display: block;
 }
 
+/* Marca de lectura del usuario: ✓✓ leído, — sin leer. */
+.story-stats__leido {
+  display: inline-flex;
+  align-items: center;
+  min-width: 1.1rem;
+  justify-content: center;
+  color: var(--color-ash);
+  cursor: default;
+}
+
+.story-stats__leido svg {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.story-stats__leido--si {
+  color: var(--color-ice);
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--color-ice) 55%, transparent));
+}
+
 .story-stats__share {
   cursor: pointer;
   transition: color 160ms ease, transform 160ms ease;
@@ -7971,18 +7995,10 @@ body.story-lightbox-open {
   gap: var(--space-2);
 }
 
-.nav-cuenta__avatar {
-  /* width/height explícitos: la regla global `img { height: auto }` anula el
-     atributo height del HTML, y sin altura fija el círculo se deforma. */
-  width: 32px;
-  height: 32px;
-  flex: none;
-  border-radius: 50%;
-  /* Red de seguridad: si algún día entra un avatar no cuadrado, se recorta
-     en vez de renderizarse como elipse. */
-  object-fit: cover;
-  border: 1px solid var(--color-line);
-  background: var(--color-night-soft);
+/* Avatar del header: AvatarMarco fija ancho/alto y recorta (object-fit);
+   el margen deja sitio al marco, que sobresale del círculo. */
+.nav-cuenta__avatar-marco {
+  margin: 3px;
 }
 
 /* Misma red de seguridad en el resto de los usos. aspect-ratio (en vez de una

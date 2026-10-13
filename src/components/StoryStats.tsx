@@ -3,6 +3,7 @@
 import { EyeIcon, HeartIcon } from "@/components/MusicIcons";
 import { ShareButton } from "@/components/ShareButton";
 import { useStoryStats } from "@/components/useStoryStats";
+import { useMisLecturas } from "@/components/useMisLecturas";
 
 type StoryStatsProps = {
   slug: string;
@@ -12,11 +13,38 @@ type StoryStatsProps = {
   shareDescription?: string;
 };
 
+/** ✓✓ si el lector ya completó el relato; — si no. Solo con sesión. */
+function MarcaLectura({ slug, title }: { slug: string; title: string }) {
+  const lecturas = useMisLecturas();
+  if (!lecturas) {
+    return null;
+  }
+  const lectura = lecturas[slug];
+  if (lectura?.leido) {
+    return (
+      <span className="story-stats__leido story-stats__leido--si" title="Ya lo leíste" aria-label={`Ya leíste ${title}`}>
+        <svg width="18" height="12" viewBox="0 0 18 12" aria-hidden="true">
+          <path d="M1.5 6.5 5 10 11.5 2.5" />
+          <path d="M8.3 9 9.3 10 16.5 2.5" />
+        </svg>
+      </span>
+    );
+  }
+  const progreso = lectura?.progreso ?? 0;
+  const pista = progreso > 0 ? `Sin terminar (llegaste al ${progreso} %)` : "Aún no lo lees";
+  return (
+    <span className="story-stats__leido" title={pista} aria-label={`${title}: ${pista.toLowerCase()}`}>
+      —
+    </span>
+  );
+}
+
 export function StoryStats({ slug, title, registerView = false, shareDescription }: StoryStatsProps) {
   const { counters, liked, toggleLike } = useStoryStats(slug, registerView);
 
   return (
     <div className="story-stats">
+      <MarcaLectura slug={slug} title={title} />
       <span
         className="story-stats__views"
         aria-label={counters ? `${counters.views} lecturas de ${title}` : `Lecturas de ${title}`}

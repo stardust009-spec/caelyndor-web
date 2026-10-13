@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { sendaNombre } from "@/data/sendas";
 import { MARCOS } from "@/data/marcos";
@@ -84,7 +84,7 @@ export function CuentaClient() {
   // avatar desde la BD y reemite el token. Como el header consume la misma
   // sesión vía SessionProvider, el cambio se ve al instante en todo el sitio
   // sin cerrar sesión.
-  const { update: refrescarSesion } = useSession();
+  const { data: sesionActual, status: estadoSesion, update: refrescarSesion } = useSession();
   const [loading, setLoading] = useState(true);
   const [perfil, setPerfil] = useState<Perfil | null>(null);
   const [sesiones, setSesiones] = useState<Sesion[]>([]);
@@ -118,11 +118,31 @@ export function CuentaClient() {
     void refresh();
   }, [refresh]);
 
+  // Si el header quedó con datos viejos (avatar, marco o alias cambiados en
+  // otra pestaña o antes de un arreglo), se re-sincroniza al abrir el perfil.
+  const sincronizado = useRef(false);
+  useEffect(() => {
+    if (!perfil?.profile || estadoSesion !== "authenticated" || sincronizado.current) {
+      return;
+    }
+    const enSesion = sesionActual?.user;
+    const desfasado =
+      (enSesion?.avatarUrl ?? null) !== (perfil.profile.avatar?.imageUrl ?? null) ||
+      (enSesion?.marcoSlug ?? null) !== (perfil.profile.marcoSlug ?? null) ||
+      (enSesion?.alias ?? null) !== perfil.profile.alias;
+    sincronizado.current = true;
+    if (desfasado) {
+      void refrescarSesion({ perfil: "sincronizar" });
+    }
+  }, [perfil, estadoSesion, sesionActual, refrescarSesion]);
+
   /** Para los cambios que el header muestra (avatar y alias): además de
    *  recargar el panel, reemite el token para que el header se entere. */
   const refrescarPerfilYSesion = useCallback(async () => {
     await refresh();
-    await refrescarSesion();
+    // Con argumento: update() sin datos hace un GET y NO relee el perfil
+    // (ver jwt callback en auth.ts). El contenido se ignora en el servidor.
+    await refrescarSesion({ perfil: "actualizado" });
   }, [refresh, refrescarSesion]);
 
   if (loading) {
@@ -208,7 +228,7 @@ export function CuentaClient() {
         logros={logros}
         avatar={perfil.profile?.avatar ?? null}
         actual={perfil.profile?.marcoSlug ?? null}
-        onChange={refresh}
+        onChange={refrescarPerfilYSesion}
         onAviso={setAviso}
       />
       <AvatarPanel
