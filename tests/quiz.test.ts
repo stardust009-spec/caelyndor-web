@@ -101,11 +101,20 @@ test("Protocolos del Corazón: principal de 8 y desafío de conexiones activo co
   assert.ok(modalidadDisponible(conexiones, "conexiones"));
 });
 
+test("La empanada mágica: principal de 8 disponible; su conexión espera al Torneo", async () => {
+  const { stories } = await import("../src/data/stories");
+  const publicadas = new Set(stories.map((s) => s.slug));
+  const principal = preguntasActivas(BANCO_LA_EMPANADA_MAGICA, "la-empanada-magica", "principal", publicadas);
+  assert.equal(elegirPreguntas(principal, "principal", rng).length, 8);
+  const conexiones = preguntasActivas(BANCO_LA_EMPANADA_MAGICA, "la-empanada-magica", "conexiones", publicadas);
+  assert.equal(conexiones.length, 0);
+});
+
 test("cada cita del banco aparece textual en el párrafo indicado del relato publicado", async () => {
   const { stories } = await import("../src/data/stories");
   const porSlug = new Map(stories.map((s) => [s.slug, s]));
   const fallos: string[] = [];
-  for (const pregunta of [...BANCO_LA_GRAN_ESTAFA, ...BANCO_ZARQATH, ...BANCO_PROTOCOLOS]) {
+  for (const pregunta of [...BANCO_LA_GRAN_ESTAFA, ...BANCO_ZARQATH, ...BANCO_PROTOCOLOS, ...BANCO_LA_EMPANADA_MAGICA]) {
     const story = porSlug.get(pregunta.fuente.obra);
     if (!story || pregunta.fuente.parrafo === undefined) continue; // obras aún no publicadas
     const parrafo = story.paragraphs[pregunta.fuente.parrafo] ?? "";
