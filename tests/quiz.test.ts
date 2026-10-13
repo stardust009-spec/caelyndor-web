@@ -13,6 +13,7 @@ import { BANCO_LA_GRAN_ESTAFA } from "../src/lib/server/quiz/banco/la-gran-estaf
 import { BANCO_LA_EMPANADA_MAGICA } from "../src/lib/server/quiz/banco/la-empanada-magica";
 import { BANCO_ZARQATH } from "../src/lib/server/quiz/banco/zarqath-el-aguijon-del-sol";
 import { BANCO_PROTOCOLOS } from "../src/lib/server/quiz/banco/protocolos-del-corazon";
+import { BANCO_UN_DIA_CON_MARIA } from "../src/lib/server/quiz/banco/un-dia-con-maria-en-glaciem";
 import { EVENTOS_EN_ORDEN, EVENTOS_FRACASO } from "../src/data/eventosQuiz";
 
 const ESTAFA = "la-gran-estafa-de-sylvalis";
@@ -25,7 +26,7 @@ const rng = () => {
 
 test("integridad del banco: ids únicos, 4 alternativas, respuesta válida y fuente", () => {
   const ids = new Set<string>();
-  for (const pregunta of [...BANCO_LA_GRAN_ESTAFA, ...BANCO_LA_EMPANADA_MAGICA, ...BANCO_ZARQATH, ...BANCO_PROTOCOLOS]) {
+  for (const pregunta of [...BANCO_LA_GRAN_ESTAFA, ...BANCO_LA_EMPANADA_MAGICA, ...BANCO_ZARQATH, ...BANCO_PROTOCOLOS, ...BANCO_UN_DIA_CON_MARIA]) {
     assert.ok(!ids.has(pregunta.id), `id repetido: ${pregunta.id}`);
     ids.add(pregunta.id);
     assert.equal(pregunta.opciones.length, 4, pregunta.id);
@@ -110,11 +111,20 @@ test("La empanada mágica: principal de 8 disponible; su conexión espera al Tor
   assert.equal(conexiones.length, 0);
 });
 
+test("Un día con María: principal de 8 y desafío de conexiones activo", async () => {
+  const { stories } = await import("../src/data/stories");
+  const publicadas = new Set(stories.map((s) => s.slug));
+  const principal = preguntasActivas(BANCO_UN_DIA_CON_MARIA, "un-dia-con-maria-en-glaciem", "principal", publicadas);
+  assert.equal(elegirPreguntas(principal, "principal", rng).length, 8);
+  const conexiones = preguntasActivas(BANCO_UN_DIA_CON_MARIA, "un-dia-con-maria-en-glaciem", "conexiones", publicadas);
+  assert.ok(modalidadDisponible(conexiones, "conexiones"));
+});
+
 test("cada cita del banco aparece textual en el párrafo indicado del relato publicado", async () => {
   const { stories } = await import("../src/data/stories");
   const porSlug = new Map(stories.map((s) => [s.slug, s]));
   const fallos: string[] = [];
-  for (const pregunta of [...BANCO_LA_GRAN_ESTAFA, ...BANCO_ZARQATH, ...BANCO_PROTOCOLOS, ...BANCO_LA_EMPANADA_MAGICA]) {
+  for (const pregunta of [...BANCO_LA_GRAN_ESTAFA, ...BANCO_ZARQATH, ...BANCO_PROTOCOLOS, ...BANCO_LA_EMPANADA_MAGICA, ...BANCO_UN_DIA_CON_MARIA]) {
     const story = porSlug.get(pregunta.fuente.obra);
     if (!story || pregunta.fuente.parrafo === undefined) continue; // obras aún no publicadas
     const parrafo = story.paragraphs[pregunta.fuente.parrafo] ?? "";

@@ -123,12 +123,12 @@ Diseño final acordado con el autor (13-oct-2026):
   puede escribirse desde los manuscritos antes de publicar.
 - Meta del autor: banco inicial de ~200 (100 explícitas, 60 implícitas,
   40 conexiones), ampliable sin tocar el sistema.
-- Avance del banco (169): La Gran Estafa 24+7+2, Zarqath 29+11,
-  Protocolos del Corazón 41+14+4 (conexiones activas con Dragon's Kitchen,
-  La Frase Maldita y El placer culpable de Lyzi), La empanada mágica 28+8+1
-  (publicada el 13-oct; su conexión espera al Torneo). Total: 122 explícitas,
-  40 implícitas, 7 conexiones. Un test verifica que cada cita aparezca
-  textual en su párrafo.
+- Avance del banco (213): La Gran Estafa 24+7+2, Zarqath 29+11,
+  Protocolos del Corazón 41+14+4, La empanada mágica 28+8+1 (su conexión
+  espera al Torneo), Un día con María en Glaciem 28+11+5 (incluye la
+  cuchara de Yuki: reconoce la cola de diablo de La empanada mágica, canon
+  del autor). Total: 150 explícitas, 51 implícitas, 12 conexiones. Un test
+  verifica que cada cita aparezca textual en su párrafo.
 - Fuentes: texto publicado en la web para principal; manuscritos
   (`Proyecto NX_03/Obra/Maquetado`) y bóveda Obsidian para conexiones. Nunca
   interpretaciones nuestras como canon; respetar los spoilers prohibidos.

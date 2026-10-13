@@ -4,6 +4,7 @@ import { BANCO_LA_GRAN_ESTAFA } from "./la-gran-estafa-de-sylvalis";
 import { BANCO_LA_EMPANADA_MAGICA } from "./la-empanada-magica";
 import { BANCO_ZARQATH } from "./zarqath-el-aguijon-del-sol";
 import { BANCO_PROTOCOLOS } from "./protocolos-del-corazon";
+import { BANCO_UN_DIA_CON_MARIA } from "./un-dia-con-maria-en-glaciem";
 
 /**
  * Banco completo de preguntas. Para sumar un relato: crear su archivo en esta
@@ -15,7 +16,8 @@ export const BANCO_QUIZ: readonly PreguntaQuiz[] = [
   ...BANCO_LA_GRAN_ESTAFA,
   ...BANCO_LA_EMPANADA_MAGICA,
   ...BANCO_ZARQATH,
-  ...BANCO_PROTOCOLOS
+  ...BANCO_PROTOCOLOS,
+  ...BANCO_UN_DIA_CON_MARIA
 ];
 
 /** Conexiones narrativas declaradas por obra (para la advertencia previa). */
