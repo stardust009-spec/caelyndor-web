@@ -7,6 +7,7 @@ import { evaluateAchievements } from "./achievements";
 import { ACHIEVEMENT_CATALOG } from "./achievementCatalog";
 import { otorgarExp, sincronizarExpLecturas } from "./exp";
 import { EXP_POR, nivelDeExp } from "./niveles";
+import { obraTieneQuiz } from "./quiz/servicio";
 import { COMPLETION_THRESHOLD, evaluateReading } from "./readingValidation";
 
 export { COMPLETION_THRESHOLD };
@@ -37,6 +38,8 @@ export type ProgressUpdateResult = {
   subioNivel: boolean;
   /** Primer relato completado y el Ritual de Afinación aún no se hace. */
   ritualPendiente: boolean;
+  /** El relato tiene Prueba del conocimiento (para enlazarla en el aviso). */
+  quizDisponible: boolean;
   /** Aviso narrativo para el cliente cuando hay completado nuevo (sección 8). */
   notification: string | null;
 };
@@ -204,6 +207,7 @@ export async function applyProgressUpdate(
       nivel: nivelDeExp(expAntes + expGanada),
       subioNivel: expGanada > 0 && nivelDeExp(expAntes + expGanada) > nivelDeExp(expAntes),
       ritualPendiente,
+      quizDisponible: newlyCompleted && obraTieneQuiz(storySlug),
       notification
     };
   }, TX_OPTIONS);

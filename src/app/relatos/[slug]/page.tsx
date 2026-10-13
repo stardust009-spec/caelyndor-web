@@ -9,6 +9,8 @@ import { StoryIllustration } from "@/components/StoryIllustration";
 import { StoryPlaylist } from "@/components/StoryPlaylist";
 import { StorySeparator, type StorySeparatorVariant } from "@/components/StorySeparator";
 import { StoryStats } from "@/components/StoryStats";
+import { PruebaRelato } from "@/components/quiz/PruebaRelato";
+import "@/styles/quiz.css";
 import { assetImage } from "@/data/assets";
 import { getStoryBySlug, stories, type DominantCharacter } from "@/data/stories";
 import { SITE_AUTHOR, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -208,6 +210,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
             />
           ) : null}
           <p className="story-footer__note">Fin del relato. El Archivo agradece su visita.</p>
+          <PruebaRelato slug={story.slug} />
           <Link className="button" href="/relatos">
             Volver a relatos
           </Link>

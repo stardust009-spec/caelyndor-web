@@ -95,27 +95,38 @@ El piso alcanzado nunca baja aunque se recalibre la curva.
 - Idea a futuro: marcos regionales que evolucionan al completar más
   historias de su región.
 
-## Quiz de conocimiento
+## Quiz de conocimiento (implementado, fase 2)
 
-- Se desbloquea al completar el relato; es opcional.
-- Pantalla previa con **advertencia de conexiones** ("este relato está
-  conectado con X, Z y fragmentos de Y"), reglas y la opción "Hacerlo
-  después". Las conexiones salen de un campo por relato que después alimenta
-  la Constelación de relatos.
-- **Abrir y abandonar no penaliza.** Las respuestas parciales se guardan y se
-  continúa después. El intento abierto conserva **las mismas preguntas**
-  hasta que se entrega (abandonar no sirve para sortear preguntas nuevas).
-- **Cooldown de 7 días** solo al entregar y reprobar. Se guarda en servidor.
-- 5 preguntas al azar de un banco de 8–10 por relato; se aprueba con 4 de 5
-  (80 %). Al reprobar solo se muestra el puntaje, no cuáles fallaron.
-- Las respuestas correctas nunca llegan al navegador.
-- Aprobar: medalla del quiz + EXP, una sola vez.
-- **Quiz narrativos: sin compra obligatoria.** Quien leyó un ejemplar prestado
-  o digital puede demostrar lo que sabe. **Desafíos de colección**: exclusivos
-  de quien registró el ejemplar (insignias y cosméticos extra, sin bloquear la
-  progresión principal). Preguntas con spoilers de libros llevan advertencia
-  explícita; nunca preguntas sobre libros no publicados.
-- Piloto con 2–3 relatos (el costo real es escribir las preguntas).
+Diseño final acordado con el autor (13-oct-2026):
+
+- **Tres tipos de pregunta**: explícita (lo que está escrito), implícita (lo
+  que se deduce: motivos, consecuencias, pistas) y de conexión (cruza con
+  otro relato o libro). Dificultad 1–3 dentro de cada tipo.
+- **Cuestionario principal** de cada relato: 8 preguntas, 5 explícitas y
+  3 implícitas, de menor a mayor dificultad. Se aprueba con **7**. Solo
+  pregunta sobre ese relato: nadie necesita leer otra obra. +40 EXP.
+- **Desafío de conexiones**: aparte, se abre al aprobar el principal, con
+  advertencia de spoilers. Hasta 5 preguntas, 80 %. +60 EXP.
+- Abandonar no penaliza: el intento abierto conserva preguntas y orden, y las
+  respuestas se autoguardan. Reprobar: **7 días** y otra selección/orden.
+  Las respuestas correctas nunca salen del servidor; al aprobar se muestra la
+  revisión con explicaciones.
+- **Eventos de fracaso** (`src/data/eventosQuiz.ts`): al reprobar interfiere un
+  personaje. Los cuatro primeros fracasos de cada lector, en orden: Adagio
+  (cuerda de violín), Aria (pétalo de rosa), Xirian (cuaderno), Rubí
+  (Rubikick a la pizarra). Luego al azar sin repetir: Yuki, Lyzi y Rollito,
+  Noctalypse, Fulgor, Lucky Luciano Griazniati y el Sucio Joe.
+- **Banco** en `src/lib/server/quiz/banco/` (un archivo por relato). Cada
+  pregunta: enunciado, 4 alternativas, correcta, explicación, fuente (obra,
+  párrafo, cita), obras requeridas y etiquetas de spoiler. Una pregunta se
+  activa sola cuando todas sus obras requeridas están publicadas: el banco
+  puede escribirse desde los manuscritos antes de publicar.
+- Meta del autor: banco inicial de ~200 (100 explícitas, 60 implícitas,
+  40 conexiones), ampliable sin tocar el sistema.
+- Fuentes: texto publicado en la web para principal; manuscritos
+  (`Proyecto NX_03/Obra/Maquetado`) y bóveda Obsidian para conexiones. Nunca
+  interpretaciones nuestras como canon; respetar los spoilers prohibidos.
+- Pendiente: medalla por relato y marco por región (necesitan arte).
 
 ## Libros físicos: Biblioteca del Cronista
 

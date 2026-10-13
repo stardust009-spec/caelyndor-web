@@ -103,6 +103,8 @@ model User {
   foroHilosOcultados ForoHilo[]    @relation("HilosOcultadosPor")
   foroResueltos      ForoReporte[] @relation("ReportesResueltosPor")
 
+  quizIntentos QuizIntento[]
+
   sendaPrincipal Senda?
   sendasCercanas Senda[] @default([])
 
@@ -496,4 +498,37 @@ model ForoReporte {
 
   @@unique([mensajeId, autorId])
   @@index([resueltoEn, createdAt])
+}
+
+/// Intento de un cuestionario (fase 2, docs/aura-parte-4.md § Quiz).
+/// Las preguntas viven en código (src/lib/server/quiz/banco); aquí solo se
+/// guarda qué se le sirvió a quien, en qué orden y qué respondió. El intento
+/// abierto (entregadoEn = null) conserva siempre las mismas preguntas: salir
+/// y volver no permite sortear otras.
+model QuizIntento {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// Slug de la obra (relato) del cuestionario.
+  obra      String
+  /// "principal" (explícitas + implícitas) o "conexiones" (desafío avanzado).
+  modalidad String
+
+  /// Ids de las preguntas servidas, en el orden en que se muestran.
+  preguntas     String[]
+  /// Por pregunta, el orden barajado de sus opciones (índices originales).
+  ordenOpciones Json
+  /// Respuestas parciales: { [preguntaId]: índice ORIGINAL elegido }.
+  respuestas    Json     @default("{}")
+
+  createdAt     DateTime  @default(now())
+  entregadoEn   DateTime?
+  aciertos      Int?
+  aprobado      Boolean?
+  /// Personaje que interfirió al reprobar (src/data/eventosQuiz.ts).
+  eventoFracaso String?
+
+  @@index([userId, obra, modalidad, createdAt])
+  @@index([userId, aprobado])
 }

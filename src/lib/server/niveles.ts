@@ -14,6 +14,8 @@ export const EXP_POR = {
   lectura: 20,
   /** Aprobar el quiz de un relato (fase 2). */
   quiz: 40,
+  /** Aprobar el desafío de conexiones de un relato (cruza obras). */
+  quizConexiones: 60,
   /** Registrar el primer libro físico (fase 4). */
   primerLibro: 100
 } as const;

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { refrescarMisLecturas } from "@/components/useMisLecturas";
+import { EVENTO_RELATO_COMPLETADO } from "@/components/quiz/PruebaRelato";
 
 type ReadingProgressProps = {
   target?: string;
@@ -49,9 +50,17 @@ type RespuestaProgreso = {
   subioNivel?: boolean;
   logrosNuevos?: string[];
   ritualPendiente?: boolean;
+  quizDisponible?: boolean;
 };
 
-type AvisoCompletado = { exp: number; nivel: number; subioNivel: boolean; logros: string[]; ritual: boolean };
+type AvisoCompletado = {
+  exp: number;
+  nivel: number;
+  subioNivel: boolean;
+  logros: string[];
+  ritual: boolean;
+  quiz: boolean;
+};
 
 export function ReadingProgress({ target = ".story-reader", storySlug }: ReadingProgressProps) {
   const [progress, setProgress] = useState(0);
@@ -92,12 +101,14 @@ export function ReadingProgress({ target = ".story-reader", storySlug }: Reading
         const data = (await response.json().catch(() => null)) as RespuestaProgreso | null;
         if (data?.newlyCompleted) {
           refrescarMisLecturas();
+          window.dispatchEvent(new Event(EVENTO_RELATO_COMPLETADO));
           setAviso({
             exp: data.expGanada ?? 0,
             nivel: data.nivel ?? 1,
             subioNivel: data.subioNivel === true,
             logros: data.logrosNuevos ?? [],
-            ritual: data.ritualPendiente === true
+            ritual: data.ritualPendiente === true,
+            quiz: data.quizDisponible === true
           });
         }
         // Avance suficiente pero aún falta tiempo de lectura: se reintenta
@@ -246,7 +257,7 @@ export function ReadingProgress({ target = ".story-reader", storySlug }: Reading
 
   // El aviso se cierra solo, salvo que invite al Ritual (ahí espera al lector).
   useEffect(() => {
-    if (!aviso || aviso.ritual) {
+    if (!aviso || aviso.ritual || aviso.quiz) {
       return;
     }
     const timer = window.setTimeout(() => setAviso(null), 12_000);
@@ -275,6 +286,11 @@ export function ReadingProgress({ target = ".story-reader", storySlug }: Reading
                 Logro desbloqueado: <strong>{titulo}</strong>
               </p>
             ))}
+            {aviso.quiz && storySlug && (
+              <Link className="lectura-aviso__ritual" href={`/relatos/${storySlug}/quiz`}>
+                ✦ Prueba del conocimiento disponible →
+              </Link>
+            )}
             {aviso.ritual && (
               <Link className="lectura-aviso__ritual" href="/cuenta/ritual">
                 El cristal te espera: haz el Ritual de Afinación →
