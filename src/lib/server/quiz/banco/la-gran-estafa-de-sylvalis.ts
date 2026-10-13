@@ -128,7 +128,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "¿Qué artículo de la Ley de Protección de Fauna Mágica le muestran a Yuki?",
     opciones: ["El artículo 7", "El artículo 3", "El artículo 12", "El artículo 28"], correcta: 0,
     explicacion: "El ganso del maletín despliega el papiro: «Art. 7: Toda agresión contra aves y/o criaturas mágicas…».",
-    fuente: { obra: OBRA, parrafo: 17, cita: "Art. 7: “Toda agresión contra aves y/o criaturas mágicas parcialmente civilizadas con chaleco será penada…”" },
+    fuente: { obra: OBRA, parrafo: 17, cita: "Art. 7: “Toda agresión contra aves y/o criaturas mágicas parcialmente civilizadas con chaleco será penada con multa y humillación pública”." },
     requiere: solo
   },
   {

@@ -2,6 +2,7 @@ import "server-only";
 import type { PreguntaQuiz } from "../logica";
 import { BANCO_LA_GRAN_ESTAFA } from "./la-gran-estafa-de-sylvalis";
 import { BANCO_LA_EMPANADA_MAGICA } from "./la-empanada-magica";
+import { BANCO_ZARQATH } from "./zarqath-el-aguijon-del-sol";
 
 /**
  * Banco completo de preguntas. Para sumar un relato: crear su archivo en esta
@@ -9,7 +10,11 @@ import { BANCO_LA_EMPANADA_MAGICA } from "./la-empanada-magica";
  * publicadas quedan inactivas solas hasta que esas obras lleguen a la web.
  * Solo servidor: las respuestas correctas nunca viajan al navegador.
  */
-export const BANCO_QUIZ: readonly PreguntaQuiz[] = [...BANCO_LA_GRAN_ESTAFA, ...BANCO_LA_EMPANADA_MAGICA];
+export const BANCO_QUIZ: readonly PreguntaQuiz[] = [
+  ...BANCO_LA_GRAN_ESTAFA,
+  ...BANCO_LA_EMPANADA_MAGICA,
+  ...BANCO_ZARQATH
+];
 
 /** Conexiones narrativas declaradas por obra (para la advertencia previa). */
 export function obrasConectadas(obra: string): string[] {

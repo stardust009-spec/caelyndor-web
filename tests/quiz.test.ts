@@ -11,6 +11,7 @@ import {
 } from "../src/lib/server/quiz/logica";
 import { BANCO_LA_GRAN_ESTAFA } from "../src/lib/server/quiz/banco/la-gran-estafa-de-sylvalis";
 import { BANCO_LA_EMPANADA_MAGICA } from "../src/lib/server/quiz/banco/la-empanada-magica";
+import { BANCO_ZARQATH } from "../src/lib/server/quiz/banco/zarqath-el-aguijon-del-sol";
 import { EVENTOS_EN_ORDEN, EVENTOS_FRACASO } from "../src/data/eventosQuiz";
 
 const ESTAFA = "la-gran-estafa-de-sylvalis";
@@ -23,7 +24,7 @@ const rng = () => {
 
 test("integridad del banco: ids únicos, 4 alternativas, respuesta válida y fuente", () => {
   const ids = new Set<string>();
-  for (const pregunta of [...BANCO_LA_GRAN_ESTAFA, ...BANCO_LA_EMPANADA_MAGICA]) {
+  for (const pregunta of [...BANCO_LA_GRAN_ESTAFA, ...BANCO_LA_EMPANADA_MAGICA, ...BANCO_ZARQATH]) {
     assert.ok(!ids.has(pregunta.id), `id repetido: ${pregunta.id}`);
     ids.add(pregunta.id);
     assert.equal(pregunta.opciones.length, 4, pregunta.id);
@@ -82,4 +83,28 @@ test("eventos de fracaso: Adagio, Aria, Xirian y Rubí en orden; luego al azar s
     assert.notEqual(evento, "yuki");
     assert.ok(todos.includes(evento));
   }
+});
+
+test("Zarqath: cuestionario principal disponible con 8 preguntas", () => {
+  const activas = preguntasActivas(BANCO_ZARQATH, "zarqath-el-aguijon-del-sol", "principal", new Set(["zarqath-el-aguijon-del-sol"]));
+  assert.ok(modalidadDisponible(activas, "principal"));
+  assert.equal(elegirPreguntas(activas, "principal", rng).length, 8);
+});
+
+test("cada cita del banco aparece textual en el párrafo indicado del relato publicado", async () => {
+  const { stories } = await import("../src/data/stories");
+  const porSlug = new Map(stories.map((s) => [s.slug, s]));
+  const fallos: string[] = [];
+  for (const pregunta of [...BANCO_LA_GRAN_ESTAFA, ...BANCO_ZARQATH]) {
+    const story = porSlug.get(pregunta.fuente.obra);
+    if (!story || pregunta.fuente.parrafo === undefined) continue; // obras aún no publicadas
+    const parrafo = story.paragraphs[pregunta.fuente.parrafo] ?? "";
+    for (const fragmento of pregunta.fuente.cita.split("[…]")) {
+      const limpio = fragmento.trim().replace(/^[.,;:…\s]+|[.,;:…\s]+$/g, "");
+      if (limpio.length > 3 && !parrafo.includes(limpio)) {
+        fallos.push(`${pregunta.id} §${pregunta.fuente.parrafo}: «${limpio.slice(0, 60)}…»`);
+      }
+    }
+  }
+  assert.deepEqual(fallos, []);
 });
