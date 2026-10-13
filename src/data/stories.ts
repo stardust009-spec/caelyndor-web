@@ -6189,7 +6189,7 @@ export const stories: Story[] = [
       "En la orilla del Lago Plateado, Lyzi se llevó una mano a los labios con un gesto entre divertido y teatral. Una de sus colas de pelaje negro-violeta se arqueó en el aire como un cetro bañado por la luz lunar, y ante ella, todo el sindicato de gansos gánster hizo una reverencia, tan torpe como sincera.",
       "—Nona Lyzi… gracias por tanto —graznaron en un coro de voces ásperas pero devotas.",
       "Algunos de los más leales, con puros apagados aún en el pico, se acercaron para besar suavemente la punta de su cola, como si fuera un rosario sagrado.",
-      "Un ganso con un innegable aire de capo, a quien Lyzi había apodado Lucky Luciano Grazniatti, dio un paso al frente. —La Nona nos enseñó que no somos aves comunes… somos familia.",
+      "Un ganso con un innegable aire de capo, a quien Lyzi había apodado Lucky Luciano Griazniati, dio un paso al frente. —La Nona nos enseñó que no somos aves comunes… somos familia.",
       "Otro, un tipo más sentimental llamado Bugsy Plumetti, se secó una lágrima mal disimulada con el borde de su ala. —Antes solo graznábamos sin rumbo… ahora graznamos con propósito.",
       "Finalmente, el contable del grupo, Meyer Lanskizo, ajustó su maletín de cuero con un aire de profunda satisfacción. —El Lago Plateado —declaró con solemnidad— nunca estuvo tan lleno de poesía contable.",
       "De pronto, un graznido brutal sacudió la orilla.—¡GRAAAAZZZ! —Cara Cortada estalló, inflando el pecho y agitando su chaleco, mirando directo a Noct con furia amenazante.La tensión duró un segundo, hasta que Lyzi chasqueó los dedos y sonrió con dulzura venenosa. —Oye, Cara Cortada… cálmate un rato.",
