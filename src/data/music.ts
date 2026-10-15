@@ -47,6 +47,36 @@ function track({ cover, coverVideoFile, ...trackData }: TrackInput): MusicTrack 
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "noctalypse-3-am",
+    title: "Noctalypse — 3 A.M.",
+    subtitle: "Tema de personaje",
+    fileName: "Noctalypse — 3 A.M..mp3",
+    category: "personaje",
+    related: ["Noctalypse"],
+    mood: "Lluvia / vigilia",
+    accent: "rgba(123, 92, 168, 0.34)"
+  }),
+  track({
+    id: "noctalypse-habilidad-inutil",
+    title: "Noctalypse — Habilidad inútil",
+    subtitle: "Tema de personaje",
+    fileName: "Noctalypse — Habilidad inútil.mp3",
+    category: "personaje",
+    related: ["Noctalypse"],
+    mood: "Sopa / ironía",
+    accent: "rgba(123, 92, 168, 0.34)"
+  }),
+  track({
+    id: "noctalypse-la-noche-que-devoro-un-reino-symphonic",
+    title: "Noctalypse — La Noche que Devoró un Reino (symphonic)",
+    subtitle: "Tema de personaje",
+    fileName: "Noctalypse — La Noche que Devoró un Reino (symphonic).mp3",
+    category: "personaje",
+    related: ["Noctalypse"],
+    mood: "Sinfónico / ruina",
+    accent: "rgba(123, 92, 168, 0.34)"
+  }),
+  track({
     id: "adagio-ventoleve-cadenza-del-espejo-verde",
     title: "Adagio Ventoleve — Cadenza del Espejo Verde",
     subtitle: "Tema de personaje",

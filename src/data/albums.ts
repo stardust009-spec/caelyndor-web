@@ -31,9 +31,6 @@ export type MusicAlbum = {
 };
 
 export const musicAlbums: MusicAlbum[] = [
-  /* === Noctalypse — El Lector de Sombras ===
-     Espacio reservado (primer álbum). Temas por confirmar: completar la tracklist
-     y DESCOMENTAR este bloque para activarlo. Hero ya en Caelyndor-Assets.
   {
     slug: "noctalypse-el-lector-de-sombras",
     title: "Noctalypse — El Lector de Sombras",
@@ -46,10 +43,44 @@ export const musicAlbums: MusicAlbum[] = [
     description:
       "Sombra prestada, eclipse y abismo: el álbum de Noctalypse, el que lee las sombras, dentro del Archivo Sonoro de Caelyndor.",
     tracklist: [
-      // TODO: temas por confirmar por el autor.
+      {
+        number: 1,
+        title: "Noctalypse — 3 A.M.",
+        description: "Lluvia, cuervos y una ciudad que no duerme: la hora en que Noct vigila.",
+        linkedTrackId: "noctalypse-3-am"
+      },
+      {
+        number: 2,
+        title: "Noctalypse — Habilidad inútil",
+        description: "Un poder que nadie pidió y un cuenco de sopa: la ironía de la sombra.",
+        linkedTrackId: "noctalypse-habilidad-inutil"
+      },
+      {
+        number: 3,
+        title: "Noctalypse — La Noche que Devoró un Reino (symphonic)",
+        description: "Versión sinfónica: estandartes caídos, fuego y la noche más larga.",
+        linkedTrackId: "noctalypse-la-noche-que-devoro-un-reino-symphonic"
+      },
+      {
+        number: 4,
+        title: "Noctalypse — El del Pan",
+        description: "Pan y abrigo: la ternura que Noct nunca admite en voz alta.",
+        linkedTrackId: "noctalypse-el-del-pan"
+      },
+      {
+        number: 5,
+        title: "Noctalypse — Sombra Prestada",
+        description: "La sombra que se presta para sostener a otros.",
+        linkedTrackId: "noctalypse-sombra-prestada"
+      },
+      {
+        number: 6,
+        title: "Noctalypse — Eclipse",
+        description: "Eclipse y ruptura: cuando la luz se apaga del todo.",
+        linkedTrackId: "noctalypse-eclipse"
+      }
     ]
   },
-  === fin Noctalypse === */
   /* === Xirian — Génesis Oscuro ===
      Slot reservado (comentado). Pendiente: hero wide 1568x576 (png/mp4/webm) en
      Caelyndor-Assets, temas + tracklist, y posición definitiva. DESCOMENTAR para activar.

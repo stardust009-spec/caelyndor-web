@@ -98,4 +98,7 @@ export const musicCovers: Record<string, string> = {
   "temari-calabruna-la-vocera-del-huerto": "/images/music-covers/temari-calabruna-la-vocera-del-huerto.jpg",
   "odrim-lira-solo-eran-huevos": "/images/music-covers/odrim-lira-solo-eran-huevos.jpg",
   "aurex-virellius-gemelos-del-brillo-contradicho": "/images/music-covers/aurex-virellius-gemelos-del-brillo-contradicho.jpg",
+  "noctalypse-3-am": "/images/music-covers/noctalypse-3-am.jpg",
+  "noctalypse-habilidad-inutil": "/images/music-covers/noctalypse-habilidad-inutil.jpg",
+  "noctalypse-la-noche-que-devoro-un-reino-symphonic": "/images/music-covers/noctalypse-la-noche-que-devoro-un-reino-symphonic.jpg",
 };
