@@ -47,37 +47,457 @@ export const musicAlbums: MusicAlbum[] = [
         number: 1,
         title: "Noctalypse — 3 A.M.",
         description: "Lluvia, cuervos y una ciudad que no duerme: la hora en que Noct vigila.",
-        linkedTrackId: "noctalypse-3-am"
+        linkedTrackId: "noctalypse-3-am",
+        lyrics: `Yeah...
+Noctalypse...
+Three in the morning...
+Listen.
+
+Salgo sin ruido, la noche me ubica,
+la calle está muerta, pero igual me vigila.
+No tengo corona, mi sombra la imita,
+camina a mi lado como bestia maldita.
+Faroles enfermos, la lluvia oxidada,
+botellas, concreto, memoria quebrada.
+No vine a ser héroe, esa mierda es prestada,
+vine a seguir vivo entre ruina y nada.
+
+Mi nombre no pesa, mi pulso sí pesa,
+he visto al destino pudrirse en la mesa.
+He oído promesas con filo de presa,
+y todas se rompen si el miedo las besa.
+No hablo de guerra pa’ vender postura,
+yo vi la miseria sentada en la altura.
+Vi tronos vacíos, vi fe sin costura,
+vi cómo la culpa se vuelve armadura.
+
+Paso por callejones sin pedir permiso,
+si algo me persigue, yo ya lo hice trizas.
+Traigo la noche metida en la risa,
+y un cementerio callado en la vista.
+
+Noctalypse...
+no es un apodo,
+es lo que queda
+cuando se pudre todo.
+
+Tengo humo en la lengua, ceniza en la calma,
+mapas de traición archivados en el alma.
+Toco una puerta y se me abre la alarma,
+porque hasta el hierro percibe mis fantasmas.
+No busco testigos, testigos estorban,
+hablan de lealtad hasta que los doblan.
+Yo aprendí temprano que las luces no alumbran,
+solo hacen más nítida la mugre en la alfombra.
+
+La muerte me mira, yo no bajo la frente,
+ya nos conocemos, camina conmigo siempre.
+Le dije “todavía”, sonrió entre los dientes,
+y el viento sonó como vidrio en la mente.
+No soy redención, ni final, ni consuelo,
+soy el paso exacto antes de tocar suelo.
+Soy el eco negro que te nombra en secreto,
+cuando juras estar vivo pero ya estás hueco.
+
+Noctalypse...
+frío en la médula,
+si cae la noche
+mi sombra se multiplica.
+
+Noctalypse...
+frío en la médula,
+si cae la noche
+mi sombra se multiplica.
+
+Traigo cicatrices que no buscan lástima,
+cada una me escribió la verdad en la carne.
+No hay dios en la esquina, no hay paz que me salve,
+solo instinto viejo diciéndome “arde”.
+Y ardo callado, como cable cortado,
+como barrio olvidado, como altar saqueado.
+Si me ves muy sereno, cuidado,
+a veces el monstruo más fiel es el más educado.
+
+No me hables de códigos, yo vi cómo se venden,
+por un poco de miedo, por monedas, por hambre.
+La noche me hizo con herramientas de alambre,
+y ahora cada verso huele a sangre y a cable.
+Salgo sin ruido, regreso sin nombre,
+dejo que el silencio haga el trabajo del hombre.
+Y si alguien pregunta qué cosa se esconde,
+diles que la sombra también come.
+
+Noctalypse.
+Late.
+Respira.
+Observa.
+Cuando el mundo duerme...
+yo verifico qué sigue con vida.`
       },
       {
         number: 2,
         title: "Noctalypse — Habilidad inútil",
         description: "Un poder que nadie pidió y un cuenco de sopa: la ironía de la sombra.",
-        linkedTrackId: "noctalypse-habilidad-inutil"
+        linkedTrackId: "noctalypse-habilidad-inutil",
+        lyrics: `(Ah… ah…)
+Gira el cielo, cae la luz…
+
+En el sueño se abre el firmamento,
+las estrellas giran en mi honor.
+No es una pose dramática de hombre triste con capa:
+es la noche que viene a decirme quién soy.
+Algo antiguo despierta en el Vacío,
+algo inmenso que aún no tiene voz.
+Que se inclinen las sombras, que callen los reyes,
+que el mundo conozca mi don.
+
+Giran, giran las constelaciones,
+baja una línea púrpura (púrpura),
+y el cielo, por fin, va a escribir…
+(¡Escribe!)
+
+«Resistencia al fuego menor.»
+«Resistencia al hielo menor.»
+Ambas… comunes.
+
+Protección contra sopa caliente
+y brisa fresca (brisa fresca),
+equilibrio también es poder…
+Lo justo, lo justo,
+lo justo para no morir de convivencia.
+
+Eso es como poder sacar pan del horno sin guantes
+y beber agua helada sin que te duela la frente.
+
+Acepto este don…
+en nombre de todas las sopas del reino.
+
+Con esa frase casi lo haces peor.
+
+Protección contra sopa caliente
+y brisa fresca (brisa fresca),
+equilibrio también es poder…
+Lo justo, lo justo,
+lo justo para no morir de convivencia.
+
+Pero piensa un momento, Noct:
+Rubí es fuego, Yuki es hielo,
+y tú eres el único que aguanta a las dos,
+un poquito, un poquito… a la vez.
+
+Protección contra sopa caliente
+y brisa fresca (brisa fresca),
+equilibrio también es poder…
+Lo justo, lo justo,
+lo justo para no morir de convivencia.
+
+No todo poder anuncia su valor con truenos…`
       },
       {
         number: 3,
         title: "Noctalypse — La Noche que Devoró un Reino (symphonic)",
         description: "Versión sinfónica: estandartes caídos, fuego y la noche más larga.",
-        linkedTrackId: "noctalypse-la-noche-que-devoro-un-reino-symphonic"
+        linkedTrackId: "noctalypse-la-noche-que-devoro-un-reino-symphonic",
+        lyrics: `Traía vino para una cena,
+una noche sin historia ni señal.
+La puerta abierta respondió primero,
+y el silencio estaba fuera de lugar.
+
+El fuego seguía bajo la olla,
+pero en la casa no quedaba calor.
+Cachetes dormía contra el suelo,
+la bufanda azul perdió su voz.
+Un tazón partido entre cenizas
+decía: «Vive, sueña y sonríe».
+Y él pensó en Rubí sin una risa,
+y el mundo empezó a partirse allí.
+
+Una voz grave le dijo: «Hermano,
+se han robado el fuego. Nuestro fuego».
+Él respondió: «No venganza. Solo silencio».
+
+No habrá guerra, no habrá gloria,
+no habrá estandarte ni perdón.
+Solo una sombra caminando
+hacia donde se llevaron el sol.
+Y la noche devoró un reino
+sin bandera, sin tambor:
+setenta mil sombras se alzaron,
+atraídas por un solo dolor.
+
+En Glaciem la reina alzó los ojos y dijo: «Es él».
+En Sylvalis callaron las raíces,
+el fuego olvidó cómo quemaba,
+y el hielo olvidó cómo aguantar.
+
+¿Quién marcha contra Ceniza Eterna?
+No era un dios.
+No era un juicio.
+No era un ejército.
+
+Era él.
+
+Lux cadit.
+Umbra surgit.
+Ignis tacet.
+Nomen fugit.
+
+Las casas ámbar fueron islas
+que la noche decidió rodear.
+El castillo se abrió ante sus pasos,
+un rey sin corona dijo: «La torre más alta».
+Tenebrys rozó el hierro una vez,
+y el hierro dejó de existir.
+Rubí se desplomó hacia la piedra,
+pero Noct ya estaba allí.
+
+La sostuvo como quien encuentra
+algo que el mundo no debió perder.
+Ella susurró: «Noct, estoy bien».
+Él respondió: «Esta noche te quiero más cerca de mi pecho».
+Y por primera vez la noche escuchó
+otro corazón latiendo junto a sí.
+
+Que enciendan ámbar en las casas,
+que recuerden bien ese color.
+Era un hombre buscando el fuego
+que le daba rumbo al corazón.
+
+No venganza.
+Solo silencio.
+
+Traía vino para una cena.
+Volvió cargando el sol.
+El mundo lo llamó eclipse.
+Él solo la llevó a casa.`
       },
       {
         number: 4,
         title: "Noctalypse — El del Pan",
         description: "Pan y abrigo: la ternura que Noct nunca admite en voz alta.",
-        linkedTrackId: "noctalypse-el-del-pan"
+        linkedTrackId: "noctalypse-el-del-pan",
+        lyrics: `Descendí hasta el claro con la hoja levantada,
+la capa de marfil, la voluntad forjada,
+y hallé a la sombra quieta, sin acero ni escudo,
+sin lanza, sin daga, sin arco: desnudo.
+Si lo acometo, seré verdugo de un desarmado;
+si me abstengo, diréis que he vacilado.
+Confieso que la treta es baja y miserable,
+mas no por ello deja de ser admirable.
+
+¿Qué?
+
+¡No me arrastraréis al papel del malhechor
+mientras vos, manos vacías, jugáis al agraviado!
+¡Os venceré en el terreno que habéis escogido,
+sin ceder a vuestras tretas de sepulcro!
+
+Okay.
+Voy por el pan.
+
+¡Desenvainad, espectro, dadme la hora digna!
+¡Decid mi nombre entero cuando alguien lo pregunte!
+¡Aurelian Vhal-Zareth, del voto y de la espada!
+
+Te tengo como el del pan.
+
+Esperé una hora. Después esperé dos.
+No es retirada. Es estrategia. Es disciplina.
+Pasó una anciana con farol a medianoche
+y preguntó, piadosa, si me encontraba bien.
+Le respondí que estaba siendo desafiado.
+Miró a un lado, miró al otro, y me dijo:
+«No veo a nadie».
+
+Exacto.
+
+Lo hallé después en la calle del mercado,
+con una cesta humilde y el paso descuidado.
+Exigí una explicación de aquel descenso
+y me dijo que llevaba seis tomates.
+¡Seis! ¡La cifra primera de la bestia!
+¡La semilla del sello! ¡La sombra aritmética!
+¡Llamáis cena a lo que en esencia es jurisdicción,
+y recado a la obediencia sacramental!
+
+Son para salsa.
+
+La corrupción, en sus fases más refinadas,
+suele servirse de acompañamientos modestos.
+
+¡Desenvainad, espectro, dadme la hora digna!
+¡Decid mi nombre entero cuando alguien lo pregunte!
+¡Aurelian Vhal-Zareth, del voto y de la espada!
+
+Te tengo como el del pan.
+
+Esa tarde no tenía discurso preparado.
+Me senté bajo el árbol y no dije nada.
+Entonces cayó una sombra a mi costado
+y dejó un tablero de damas sobre la hierba.
+Le pregunté si era una estratagema.
+Me dijo que no.
+Le pregunté por qué.
+Me dijo: «Estabas aquí».
+Perdí cuatro partidas. Gané una.
+Y aún no comprendo por qué pesaba tanto.
+
+Subió la llama por la cuesta al día siguiente
+gritando por albahaca, cebolla, ajo, tomate.
+Me interpuse. Declaré jurisdicción más alta.
+Pedí que nadie me arrebatara mi derrota.
+Y ella preguntó si podía rebanarme un poco.
+
+Sí.
+
+¡¿«Sí»?!
+
+Y la sombra me alzó en vilo por la cintura
+y bajé la colina colgando de su hombro,
+boca abajo, con la capa por bandera,
+proclamando que el secuestro carece de nobleza.
+
+No sé en qué momento empecé a llevar la lista.
+No sé cuándo dejé de llamarlo desafío.
+Ella abrió la bolsa, revisó una por una,
+y dijo dos palabras que no supe resistir:
+Qué útil eres.
+Y esa noche, cuando quise rechazar la mesa
+con trescientas palabras de cortesía antigua,
+él levantó la vista del tablero
+y gastó una sola:
+
+Quédate.
+
+Me quedé.`
       },
       {
         number: 5,
         title: "Noctalypse — Sombra Prestada",
         description: "La sombra que se presta para sostener a otros.",
-        linkedTrackId: "noctalypse-sombra-prestada"
+        linkedTrackId: "noctalypse-sombra-prestada",
+        lyrics: `Entré por el camino del norte
+la puerta abierta, sin guardia
+toldos azules vueltos ceniza
+naranjos secos, de pie
+acequias limpias, sin una gota
+una tira de tela azul pegada al fondo
+postigos que se mueven y no se abren
+una ciudad que aprendió a vivir de noche
+
+Separé los pies, aflojé los hombros
+mi sombra dejó de obedecer a la luz
+cerré la mano como quien tira de una cuerda
+y Serath cruzó el vacío hacia el sol
+alguien gritó... y el color se fue
+gris limpio, sin bordes, sin amarillo
+la piedra crujió al enfriarse
+la ciudad entera caminando a la vez
+
+Salieron de uno en uno, después en grupos
+tapándose la cara por costumbre
+bajaron las manos al ver que no hacía falta
+ninguno se acercó a mí
+
+Puedo mover una luna
+puedo apagar el cielo a mediodía
+puedo darles una tarde sin sol
+no puedo llenar un vaso
+
+Se acercó una niña, tendría siete años
+traía un jarro de greda contra el pecho
+del tipo que se usa para servir
+no para acarrear
+me preguntó si el cielo lo había hecho yo
+le dije que sí
+me preguntó mi nombre
+se lo dije
+intentó repetirlo y no le salió:
+tenía los labios partidos
+miró la pileta seca, me miró a mí
+y me dijo:
+Señor Noct... tengo sed
+tardé en contestar
+y solo pude decirle
+lo sé
+
+Se sentó a tres pasos y no se fue
+sostuve la luna un rato más
+mi sombra se puso roja en los bordes
+ladrillo oscuro subiendo hacia el centro
+bajaron baldes por costumbre
+los subieron vacíos
+en la cuarta hilera de árboles
+dejó de responderme
+
+No es una cura, es un tratamiento
+se administra hasta que el cuerpo deja de responder
+o hasta que alguien encuentra la causa
+la mujer que hizo esto lleva cuarenta y seis años muerta
+veamos qué pasa si...
+
+Oscurecí el cielo entero
+no llené un solo vaso
+
+Solté
+la luz cayó de golpe
+en treinta segundos no quedaba nadie
+a ella la levantaron del brazo, sin decirle nada
+arena, tres monedas, un trapo en la juntura
+sobre las piedras quedó una mancha
+tardó dos días en irse`
       },
       {
         number: 6,
         title: "Noctalypse — Eclipse",
         description: "Eclipse y ruptura: cuando la luz se apaga del todo.",
-        linkedTrackId: "noctalypse-eclipse"
+        linkedTrackId: "noctalypse-eclipse",
+        lyrics: `Eclipsis!!…
+Silentium!!…
+Umbra!!…
+
+No soy ausencia. Soy el borde… donde el mundo aprende a callar.
+
+Camino recto entre ruinas sin nombre,
+capa de tinta negra, pensamiento de nieblas.
+No busco fe, no pido perdón,
+mi pulso es calculador… mi paz es severo.
+
+Fatum vocat… Fatum ducit…
+
+Y si me miras, verás lo que evito:
+un corazón que entiende… y no lo admite.
+
+¡NO ME ROMPO! ¡NO ME DOBLO! ¡NO ME VENDO A LA LUZ!
+Non frangor, non flector
+Si el destino llama… yo respondo en azul.
+¡NO ME ROMPO! ¡NO ME DOBLO! Mi sombra es mi cruz.
+Y cuando el mundo tiembla… ¡DECIDO YO!
+EGO DECIDO
+Umbra mea, crux mea
+
+No necesito aplausos ni testigos, solo el silencio exacto.
+Veo futuros partirse en mis manos,
+y escojo uno… sin levantar mis ojos.
+
+Mi voz no grita, mi voz sentencia:
+¡LA COMPASIÓN TAMBIÉN ES VIOLENCIA!
+Violentia est Pietas
+
+Hay noches donde el aire pesa… y aun así sostengo el cielo.
+Hay nombres que no pronuncio… para no volverme humano por dentro.
+Pero si alguien cae… mi sombra aprende el camino.
+No por piedad. Por destino.
+
+¡NO ME ROMPO! ¡NO ME DOBLO! ¡NO ME VENDO A LA LUZ!
+Non frangor, non flector
+Y cuando el mundo tiembla… ¡DECIDO YO!
+EGO DECIDO
+
+El eclipse no llega… El eclipse… ya estaba aquí.
+
+Eclipsis… Silentium… Umbra mea… Decido yo.
+Decido yo… decido yo…`
       }
     ]
   },
