@@ -3440,15 +3440,8 @@ que ya ha visto lo que necesitaba ver.`
     ]
   },
   {
-    slug: "album-en-preparacion-ii",
-    title: "Álbum en preparación II",
-    artist: "Crónicas de Caelyndor",
-    status: "Próximamente",
-    tracklist: []
-  },
-  {
-    slug: "album-en-preparacion-iii",
-    title: "Álbum en preparación III",
+    slug: "proximamente",
+    title: "Próximamente",
     artist: "Crónicas de Caelyndor",
     status: "Próximamente",
     tracklist: []
