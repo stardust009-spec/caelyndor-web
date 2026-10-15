@@ -275,6 +275,10 @@ export function MusicArchive({ tracks }: MusicArchiveProps) {
                     <span className="music-album-card__mark" aria-hidden="true" />
                   )}
                   <span className="music-album-card__shade" aria-hidden="true" />
+                  {album.peekImage ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img className="music-album-card__peek" src={album.peekImage} alt="" aria-hidden="true" />
+                  ) : null}
                   <span className="music-album-card__copy">
                     <small>{album.status ?? "Disponible"}</small>
                     <strong>{album.title}</strong>

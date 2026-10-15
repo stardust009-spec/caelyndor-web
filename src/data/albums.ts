@@ -27,6 +27,8 @@ export type MusicAlbum = {
   /** Ancla el botón "Reproducir álbum" a la esquina inferior IZQUIERDA del hero
    *  (por defecto va a la derecha), para no tapar tipografía horneada a la derecha. */
   heroPlayLeft?: boolean;
+  /** Imagen pequeña que se asoma desde el borde derecho de la tarjeta (p. ej. Lyzi chibi en «Próximamente»). */
+  peekImage?: string;
   tracklist: AlbumTrack[];
 };
 
@@ -3444,6 +3446,7 @@ que ya ha visto lo que necesitaba ver.`
     title: "Próximamente",
     artist: "Crónicas de Caelyndor",
     status: "Próximamente",
+    peekImage: "/images/ui/lyzi-chibi-peek.png",
     tracklist: []
   }
 ];

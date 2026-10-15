@@ -8101,3 +8101,21 @@ body.story-lightbox-open {
     transition: none;
   }
 }
+
+/* Personaje que se asoma de lado desde el borde derecho de una tarjeta de álbum. */
+.music-album-card__peek {
+  --peek-w: 8.6rem;
+  position: absolute;
+  top: 0.6rem;
+  right: calc(var(--peek-w) * -0.054);
+  z-index: 1;
+  width: var(--peek-w);
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .music-album-card__peek {
+    --peek-w: 7.4rem;
+  }
+}
