@@ -5,14 +5,25 @@ import { currentUserId } from "@/auth";
 import { AvatarMarco } from "@/components/aura/AvatarMarco";
 import { FechaHora } from "@/components/foro/FechaHora";
 import { EntrarParaEscribir, NuevoHiloForm } from "@/components/foro/FormulariosForo";
-import { CATEGORIAS_VESTIBULO, REGLAS_VESTIBULO, getCategoria } from "@/data/foro";
+import { CATEGORIAS_VESTIBULO, FORO_OG_IMAGE, REGLAS_VESTIBULO, getCategoria } from "@/data/foro";
 import { estadisticasForo, listarHilos, puedeModerar } from "@/lib/server/foro";
 import { PISOS } from "@/lib/server/niveles";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+
+const DESCRIPCION_FORO =
+  "La entrada a la Torre de los Cronistas: presentaciones, música, versos, retos y novedades del Archivo de Caelyndor, sin spoilers.";
 
 export const metadata: Metadata = {
   title: "Vestíbulo de Bienvenida — Foro",
-  description:
-    "La entrada a la Torre de los Cronistas: presentaciones, ayuda y novedades del Archivo de Caelyndor, sin spoilers."
+  description: DESCRIPCION_FORO,
+  openGraph: {
+    type: "website",
+    title: "Vestíbulo de Bienvenida — La Torre de los Cronistas",
+    description: DESCRIPCION_FORO,
+    url: `${SITE_URL}/foro`,
+    siteName: SITE_NAME,
+    images: [FORO_OG_IMAGE]
+  }
 };
 
 export const dynamic = "force-dynamic";
@@ -34,8 +45,10 @@ export default async function ForoPage({ searchParams }: { searchParams: Promise
           <p className="eyebrow">La Torre de los Cronistas</p>
           <h1>Vestíbulo de Bienvenida</h1>
           <p>
-            La puerta de entrada de la Torre. Aquí nos presentamos, pedimos ayuda y nos enteramos de las
-            novedades del Archivo, sin hablar de las tramas: es un lugar seguro para quien recién llega.
+            Toda crónica empieza en un umbral. Este es el de la Torre: aquí nos presentamos, compartimos
+            música y versos, aceptamos los retos del mes y nos enteramos de las novedades del Archivo. Las
+            tramas se quedan fuera de esta sala, así que quien recién llega puede entrar sin miedo a los
+            spoilers.
           </p>
         </header>
 
@@ -88,7 +101,7 @@ export default async function ForoPage({ searchParams }: { searchParams: Promise
 
             {hilos.length === 0 ? (
               <p className="foro-vacio">
-                {categoria ? "Todavía no hay hilos en esta sección." : "El Vestíbulo espera su primer mensaje."}
+                {categoria ? categoria.vacio : "El Vestíbulo espera su primera voz. Abre un hilo y deja tu huella en la Torre."}
               </p>
             ) : (
               <ol className="foro-hilos">

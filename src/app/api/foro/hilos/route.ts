@@ -5,7 +5,7 @@ import { readJsonBody, tooManyRequests, unauthorized } from "@/lib/server/http";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { assertNoRestriccion } from "@/lib/server/restrictions";
 import { crearHilo, normalizarTexto, puedeModerar } from "@/lib/server/foro";
-import { LIMITES_FORO, contieneEnlace, getCategoria } from "@/data/foro";
+import { ERROR_ENLACE, LIMITES_FORO, contieneEnlace, contieneEnlaceNoPermitido, getCategoria } from "@/data/foro";
 
 export const dynamic = "force-dynamic";
 
@@ -63,8 +63,11 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
-  if (contieneEnlace(titulo) || contieneEnlace(cuerpo)) {
-    return NextResponse.json({ error: "Por ahora no se permiten enlaces en el Vestíbulo" }, { status: 400 });
+  if (contieneEnlace(titulo)) {
+    return NextResponse.json({ error: "El título no puede llevar enlaces" }, { status: 400 });
+  }
+  if (contieneEnlaceNoPermitido(cuerpo)) {
+    return NextResponse.json({ error: ERROR_ENLACE }, { status: 400 });
   }
 
   const id = await crearHilo(userId, categoria.slug, titulo, cuerpo);

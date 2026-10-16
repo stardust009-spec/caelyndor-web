@@ -158,6 +158,17 @@ export type HiloVista = {
   mensajes: MensajeVista[];
 };
 
+/** Título y sección de un hilo visible para el público (vista previa al
+ *  compartir). Nunca expone el cuerpo: las vistas previas no llevan texto. */
+export async function metadatosHilo(id: string): Promise<{ titulo: string; categoria: string } | null> {
+  const hilo = await getPrisma().foroHilo.findUnique({
+    where: { id },
+    select: { espacio: true, titulo: true, categoria: true, ocultoEn: true }
+  });
+  if (!hilo || hilo.espacio !== ESPACIO_VESTIBULO || hilo.ocultoEn) return null;
+  return { titulo: hilo.titulo, categoria: hilo.categoria };
+}
+
 /** Hilo completo para quien mira (null si no existe o está oculto para él). */
 export async function obtenerHilo(id: string, viewerId: string | null, modera: boolean): Promise<HiloVista | null> {
   const hilo = await getPrisma().foroHilo.findUnique({

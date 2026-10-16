@@ -445,6 +445,12 @@
   overflow-wrap: anywhere;
 }
 
+.foro-mensaje__texto a {
+  color: var(--color-ice);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .foro-mensaje__oculto {
   margin: 0 0 0.4rem;
   color: var(--color-ash);

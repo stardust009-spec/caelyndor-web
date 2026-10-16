@@ -6,20 +6,49 @@ import { currentUserId } from "@/auth";
 import { AvatarMarco } from "@/components/aura/AvatarMarco";
 import { AccionesMensaje, ModeracionHilo } from "@/components/foro/AccionesForo";
 import { FechaHora } from "@/components/foro/FechaHora";
+import { TextoMensaje } from "@/components/foro/TextoMensaje";
 import { EntrarParaEscribir, RespuestaForm } from "@/components/foro/FormulariosForo";
-import { getCategoria } from "@/data/foro";
+import { FORO_OG_IMAGE, getCategoria } from "@/data/foro";
 import { sendaNombre } from "@/data/sendas";
-import { obtenerHilo, puedeModerar } from "@/lib/server/foro";
+import { metadatosHilo, obtenerHilo, puedeModerar } from "@/lib/server/foro";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-// Contenido de usuarios: no se indexa mientras la moderación es manual.
-export const metadata: Metadata = {
-  title: "Vestíbulo — Foro",
-  robots: { index: false, follow: true }
-};
-
 const idPattern = /^[a-z0-9]{10,40}$/;
+
+// Contenido de usuarios: no se indexa mientras la moderación es manual, pero
+// sí lleva vista previa al compartir (título y sección, nunca el cuerpo).
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const datos = idPattern.test(id) ? await metadatosHilo(id) : null;
+  if (!datos) {
+    return { title: "Vestíbulo — Foro", robots: { index: false, follow: true } };
+  }
+  const seccion = getCategoria(datos.categoria)?.nombre ?? "Vestíbulo";
+  const descripcion = `${seccion} · Conversación en el Vestíbulo de la Torre de los Cronistas.`;
+  const url = `${SITE_URL}/foro/hilo/${id}`;
+  return {
+    title: `${datos.titulo} — Foro`,
+    description: descripcion,
+    robots: { index: false, follow: true },
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      title: datos.titulo,
+      description: descripcion,
+      url,
+      siteName: SITE_NAME,
+      images: [FORO_OG_IMAGE]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: datos.titulo,
+      description: descripcion,
+      images: [FORO_OG_IMAGE]
+    }
+  };
+}
 
 export default async function HiloPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -91,7 +120,7 @@ export default async function HiloPage({ params }: { params: Promise<{ id: strin
                       Oculto para los lectores{mensaje.ocultoMotivo ? `: ${mensaje.ocultoMotivo}` : ""}.
                     </p>
                   )}
-                  <p className="foro-mensaje__texto">{mensaje.cuerpo}</p>
+                  <TextoMensaje texto={mensaje.cuerpo} />
                 </>
               )}
               <AccionesMensaje

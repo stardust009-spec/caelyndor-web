@@ -5,7 +5,7 @@ import { readJsonBody, tooManyRequests, unauthorized } from "@/lib/server/http";
 import { rateLimit } from "@/lib/server/rateLimit";
 import { assertNoRestriccion } from "@/lib/server/restrictions";
 import { normalizarTexto, responderHilo } from "@/lib/server/foro";
-import { LIMITES_FORO, contieneEnlace } from "@/data/foro";
+import { ERROR_ENLACE, LIMITES_FORO, contieneEnlaceNoPermitido } from "@/data/foro";
 
 export const dynamic = "force-dynamic";
 
@@ -50,8 +50,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       { status: 400 }
     );
   }
-  if (contieneEnlace(cuerpo)) {
-    return NextResponse.json({ error: "Por ahora no se permiten enlaces en el Vestíbulo" }, { status: 400 });
+  if (contieneEnlaceNoPermitido(cuerpo)) {
+    return NextResponse.json({ error: ERROR_ENLACE }, { status: 400 });
   }
 
   const resultado = await responderHilo(userId, id, cuerpo);

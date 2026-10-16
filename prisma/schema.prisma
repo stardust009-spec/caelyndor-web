@@ -440,7 +440,7 @@ model ForoHilo {
 }
 
 /// Mensaje de un hilo. El primero del hilo lleva esApertura = true.
-/// Solo texto plano (sin enlaces ni imágenes en esta etapa).
+/// Texto plano; solo enlaces a dominios permitidos (DOMINIOS_PERMITIDOS en src/data/foro.ts).
 model ForoMensaje {
   id     String   @id @default(cuid())
   hiloId String

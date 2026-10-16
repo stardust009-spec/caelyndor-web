@@ -6,10 +6,16 @@
 
 export const ESPACIO_VESTIBULO = "vestibulo";
 
+/** Imagen de vista previa al compartir hilos. Cuando llegue la imagen de la
+ *  Torre, basta con apuntar aquí a su archivo (1200×630). */
+export const FORO_OG_IMAGE = "/opengraph-image.jpg";
+
 export type CategoriaForo = {
   slug: string;
   nombre: string;
   descripcion: string;
+  /** Texto cuando la sección aún no tiene hilos. */
+  vacio: string;
   /** Solo moderación puede abrir hilos aquí (todos pueden responder). */
   soloModeracion: boolean;
 };
@@ -19,19 +25,44 @@ export const CATEGORIAS_VESTIBULO: readonly CategoriaForo[] = [
     slug: "presentaciones",
     nombre: "Presentaciones",
     descripcion: "Cuéntanos quién eres y qué te trajo a Caelyndor.",
-    soloModeracion: false
-  },
-  {
-    slug: "ayuda",
-    nombre: "Ayuda y sugerencias",
-    descripcion: "Problemas con la web o tu cuenta, e ideas para mejorar el Archivo.",
+    vacio: "Nadie ha dicho su nombre todavía. La primera voz puede ser la tuya.",
     soloModeracion: false
   },
   {
     slug: "novedades",
     nombre: "Novedades del Archivo",
     descripcion: "Anuncios del autor: relatos nuevos, música, cambios en el sitio.",
+    vacio: "El Archivo guarda silencio por ahora. Las próximas noticias aparecerán aquí.",
     soloModeracion: true
+  },
+  {
+    slug: "sala-de-escucha",
+    nombre: "Sala de escucha",
+    descripcion:
+      "Un hilo por cada canción publicada, con su enlace. Escucha, comenta y teoriza, siempre sin spoilers.",
+    vacio: "La sala está en silencio. Cuando suene la primera canción, su hilo aparecerá aquí.",
+    soloModeracion: true
+  },
+  {
+    slug: "rincon-de-los-bardos",
+    nombre: "Rincón de los bardos",
+    descripcion: "Versos, letras y canciones propias inspiradas en Caelyndor. Sin spoilers de la trama.",
+    vacio: "Ningún bardo ha dejado su verso todavía. Afina la pluma y abre el primero.",
+    soloModeracion: false
+  },
+  {
+    slug: "reto-del-mes",
+    nombre: "Reto del mes",
+    descripcion: "Cada mes, un tema: fanart, relato corto o verso. Participa respondiendo al hilo del reto.",
+    vacio: "El primer reto aún no se ha anunciado. Vuelve pronto.",
+    soloModeracion: true
+  },
+  {
+    slug: "ayuda",
+    nombre: "Ayuda y sugerencias",
+    descripcion: "Problemas con la web o tu cuenta, e ideas para mejorar el Archivo.",
+    vacio: "Sin consultas por ahora. Si algo falla o se te ocurre una idea, este es el lugar.",
+    soloModeracion: false
   }
 ];
 
@@ -44,7 +75,7 @@ export const REGLAS_VESTIBULO: readonly string[] = [
   "El Vestíbulo es un espacio sin spoilers: aquí no se habla de las tramas. Las teorías y conversaciones sobre relatos y libros vivirán en los pisos de la Torre.",
   "Trata a los demás cronistas con respeto. Nada de insultos, acoso ni discriminación.",
   "Los títulos de los hilos deben describir el tema sin revelar nada de la historia.",
-  "Por ahora solo se permite texto: sin enlaces ni imágenes.",
+  "Solo se permiten enlaces a Suno, YouTube y caelyndor.cl. Nada de imágenes por ahora.",
   "Nada de spam, publicidad ni mensajes repetidos.",
   "Si ves algo que rompe estas reglas, usa «Reportar». La moderación puede ocultar mensajes o silenciar cuentas."
 ];
@@ -66,9 +97,64 @@ export const LIMITES_FORO = {
   detalleReporteMax: 300
 } as const;
 
-/** Detecta enlaces (no permitidos en esta etapa). */
+/** Dominios a los que se puede enlazar (incluye sus subdominios). */
+export const DOMINIOS_PERMITIDOS = ["caelyndor.cl", "suno.com", "suno.ai", "youtube.com", "youtu.be"] as const;
+
+export const ERROR_ENLACE = "Solo se permiten enlaces a Suno, YouTube o caelyndor.cl";
+
+/**
+ * Detecta algo con forma de enlace: con esquema, con www., o un dominio
+ * desnudo con un TLD conocido (para no confundir "hola.que" con un enlace).
+ */
+const PATRON_ENLACE =
+  /https?:\/\/[^\s<>"]+|\bwww\.[^\s<>"]+|\b(?:[a-z0-9-]+\.)+(?:com|cl|net|org|io|ly|gg|me|xyz|info|app|dev|be|ai)\b(?:[/?#][^\s<>"]*)?/gi;
+
+/** Puntuación final que pertenece a la frase, no al enlace. */
+const PUNTUACION_FINAL = /[.,;:!?¡¿)\]}'"»]+$/;
+
+function hostDe(enlace: string): string {
+  return enlace
+    .replace(/^https?:\/\//i, "")
+    .split(/[/?#:]/)[0]
+    .toLowerCase()
+    .replace(/^www\./, "");
+}
+
+function esDominioPermitido(enlace: string): boolean {
+  const host = hostDe(enlace);
+  return DOMINIOS_PERMITIDOS.some((dominio) => host === dominio || host.endsWith(`.${dominio}`));
+}
+
+/** ¿El texto trae algún enlace fuera de la lista permitida? */
+export function contieneEnlaceNoPermitido(texto: string): boolean {
+  for (const coincidencia of texto.matchAll(PATRON_ENLACE)) {
+    const enlace = coincidencia[0].replace(PUNTUACION_FINAL, "");
+    if (!esDominioPermitido(enlace)) return true;
+  }
+  return false;
+}
+
+/** ¿El texto trae cualquier enlace? Los títulos no admiten enlaces, salvo nombrar el sitio. */
 export function contieneEnlace(texto: string): boolean {
-  // Nombrar el propio sitio sí se permite (útil en Ayuda).
   const limpio = texto.replace(/\b(www\.)?caelyndor\.cl\b/gi, "");
-  return /(https?:\/\/|www\.)\S+/i.test(limpio) || /\b[\w-]+\.(com|cl|net|org|io|ly|gg|me|xyz|info|app|dev)\b/i.test(limpio);
+  return new RegExp(PATRON_ENLACE.source, "i").test(limpio);
+}
+
+export type TrozoTexto = { tipo: "texto"; valor: string } | { tipo: "enlace"; valor: string; href: string };
+
+/** Parte el texto en trozos de texto y enlaces permitidos (los demás quedan como texto). */
+export function partirEnlaces(texto: string): TrozoTexto[] {
+  const trozos: TrozoTexto[] = [];
+  let desde = 0;
+  for (const coincidencia of texto.matchAll(PATRON_ENLACE)) {
+    const enlace = coincidencia[0].replace(PUNTUACION_FINAL, "");
+    const inicio = coincidencia.index ?? 0;
+    if (!esDominioPermitido(enlace)) continue;
+    if (inicio > desde) trozos.push({ tipo: "texto", valor: texto.slice(desde, inicio) });
+    const href = /^https?:\/\//i.test(enlace) ? enlace : `https://${enlace}`;
+    trozos.push({ tipo: "enlace", valor: enlace, href });
+    desde = inicio + enlace.length;
+  }
+  if (desde < texto.length) trozos.push({ tipo: "texto", valor: texto.slice(desde) });
+  return trozos;
 }
