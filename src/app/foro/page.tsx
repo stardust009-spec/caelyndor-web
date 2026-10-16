@@ -50,6 +50,9 @@ export default async function ForoPage({ searchParams }: { searchParams: Promise
             tramas se quedan fuera de esta sala, así que quien recién llega puede entrar sin miedo a los
             spoilers.
           </p>
+          <p className="foro-lema">
+            <em>Cinco luces cuentan. Sube y escucha.</em>
+          </p>
         </header>
 
         <ul className="foro-stats" aria-label="Estadísticas del foro">

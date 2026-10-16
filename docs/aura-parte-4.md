@@ -209,7 +209,7 @@ lectura).
 - Rol nuevo **moderador**: todos los pisos, velar/ocultar/silenciar; sin acceso
   a correos, exportaciones ni al resto del panel admin. Mientras tanto,
   modera el autor.
-- Primera versión: **solo texto** (sin imágenes ni videos). Desde 2026-10-16 se permiten enlaces a Suno, YouTube y caelyndor.cl (para la Sala de escucha); el resto se rechaza.
+- Primera versión: **solo texto** (sin imágenes ni videos). Desde 2026-10-16 se permiten enlaces a Suno, YouTube y caelyndor.cl (para La Sala de los Ecos); el resto se rechaza.
 - **Cero EXP por actividad social.** Se permiten insignias sociales sin EXP
   (ej. "Primera conversación"), revisadas contra abusos. Ojo de nombres: una
   insignia "Cronista veterano" chocaría con el Piso 5 "Cronistas veteranos".

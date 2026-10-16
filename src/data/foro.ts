@@ -6,9 +6,8 @@
 
 export const ESPACIO_VESTIBULO = "vestibulo";
 
-/** Imagen de vista previa al compartir hilos. Cuando llegue la imagen de la
- *  Torre, basta con apuntar aquí a su archivo (1200×630). */
-export const FORO_OG_IMAGE = "/opengraph-image.jpg";
+/** Imagen de vista previa al compartir el foro y sus hilos (1200×630). */
+export const FORO_OG_IMAGE = "/foro/torre-de-los-cronistas-og.jpg";
 
 export type CategoriaForo = {
   slug: string;
@@ -36,25 +35,25 @@ export const CATEGORIAS_VESTIBULO: readonly CategoriaForo[] = [
     soloModeracion: true
   },
   {
-    slug: "sala-de-escucha",
-    nombre: "Sala de escucha",
+    slug: "sala-de-los-ecos",
+    nombre: "La Sala de los Ecos",
     descripcion:
       "Un hilo por cada canción publicada, con su enlace. Escucha, comenta y teoriza, siempre sin spoilers.",
     vacio: "La sala está en silencio. Cuando suene la primera canción, su hilo aparecerá aquí.",
     soloModeracion: true
   },
   {
-    slug: "rincon-de-los-bardos",
-    nombre: "Rincón de los bardos",
+    slug: "taller-de-los-bardos",
+    nombre: "El Taller de los Bardos",
     descripcion: "Versos, letras y canciones propias inspiradas en Caelyndor. Sin spoilers de la trama.",
-    vacio: "Ningún bardo ha dejado su verso todavía. Afina la pluma y abre el primero.",
+    vacio: "El taller está vacío todavía. Afina la pluma y deja el primer verso.",
     soloModeracion: false
   },
   {
-    slug: "reto-del-mes",
-    nombre: "Reto del mes",
+    slug: "prueba-de-la-luna",
+    nombre: "La Prueba de la Luna",
     descripcion: "Cada mes, un tema: fanart, relato corto o verso. Participa respondiendo al hilo del reto.",
-    vacio: "El primer reto aún no se ha anunciado. Vuelve pronto.",
+    vacio: "La primera prueba aún no se ha anunciado. Vuelve con la próxima luna.",
     soloModeracion: true
   },
   {
