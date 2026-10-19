@@ -1,4 +1,4 @@
-import { VIDEO_BASE } from "@/data/assets";
+import { VIDEO_BASE, musicAsset } from "@/data/assets";
 
 /**
  * La casa de Lyzi — portada narrativa del portal.
@@ -12,6 +12,8 @@ import { VIDEO_BASE } from "@/data/assets";
  * NEXT_PUBLIC_CASA_ASSETS=/casa-de-lyzi/v2
  */
 export const CASA_ASSET_BASE = process.env.NEXT_PUBLIC_CASA_ASSETS ?? `${VIDEO_BASE}casa-de-lyzi/v2`;
+/** Tema musical de la portada (bucle con fundidos; ver CasaTheme). */
+export const CASA_THEME_SRC = musicAsset("Caelyndor — Ven, te cuento una historia.mp3");
 
 export const CASA_OBJETOS = [
   "biblioteca",

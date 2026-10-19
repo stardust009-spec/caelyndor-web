@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CasaPanel } from "@/components/casa/CasaPanels";
+import { CasaTheme } from "@/components/casa/CasaTheme";
 import { FrameStore, type CasaManifest, type CasaRest } from "@/components/casa/frameStore";
 import { useMusicPlayer } from "@/components/MusicPlayerContext";
 import {
@@ -916,6 +917,7 @@ export function CasaDeLyzi({ content }: { content: CasaContent }) {
             onPlaying={() => setCloseReady(true)}
           />
           <div className="casa__vignette" aria-hidden="true" />
+          <CasaTheme />
 
           <div ref={titleRef} className="casa__title">
             <p className="casa__eyebrow">La casa de Lyzi</p>
