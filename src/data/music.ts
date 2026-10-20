@@ -47,6 +47,56 @@ function track({ cover, coverVideoFile, ...trackData }: TrackInput): MusicTrack 
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "caelyndor-el-bosque-que-te-recuerda",
+    title: "Caelyndor — El bosque que te recuerda",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — El bosque que te recuerda.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Bosque / memoria",
+    accent: "rgba(150, 152, 162, 0.34)"
+  }),
+  track({
+    id: "caelyndor-eclipse",
+    title: "Caelyndor — Eclipse",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — Eclipse.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Eclipse / umbral",
+    accent: "rgba(150, 152, 162, 0.34)"
+  }),
+  track({
+    id: "caelyndor-la-brasa-que-no-se-apago",
+    title: "Caelyndor — La brasa que no se apagó",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — La brasa que no se apagó.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Brasa / resistencia",
+    accent: "rgba(150, 152, 162, 0.34)"
+  }),
+  track({
+    id: "caelyndor-la-tormenta-bajo-el-cristal",
+    title: "Caelyndor — La tormenta bajo el cristal",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — La tormenta bajo el cristal.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Tormenta / contención",
+    accent: "rgba(150, 152, 162, 0.34)"
+  }),
+  track({
+    id: "caelyndor-ven-te-cuento-una-historia",
+    title: "Caelyndor — Ven, te cuento una historia",
+    subtitle: "Tema de arco",
+    fileName: "Caelyndor — Ven, te cuento una historia.mp3",
+    category: "arco",
+    related: ["Caelyndor"],
+    mood: "Hogar / relato",
+    accent: "rgba(150, 152, 162, 0.34)"
+  }),
+  track({
     id: "noctalypse-3-am",
     title: "Noctalypse — 3 A.M.",
     subtitle: "Tema de personaje",

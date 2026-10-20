@@ -101,4 +101,9 @@ export const musicCovers: Record<string, string> = {
   "noctalypse-3-am": "/images/music-covers/noctalypse-3-am.jpg",
   "noctalypse-habilidad-inutil": "/images/music-covers/noctalypse-habilidad-inutil.jpg",
   "noctalypse-la-noche-que-devoro-un-reino-symphonic": "/images/music-covers/noctalypse-la-noche-que-devoro-un-reino-symphonic.jpg",
+  "caelyndor-el-bosque-que-te-recuerda": "/images/music-covers/caelyndor-el-bosque-que-te-recuerda.jpg",
+  "caelyndor-eclipse": "/images/music-covers/caelyndor-eclipse.jpg",
+  "caelyndor-la-brasa-que-no-se-apago": "/images/music-covers/caelyndor-la-brasa-que-no-se-apago.jpg",
+  "caelyndor-la-tormenta-bajo-el-cristal": "/images/music-covers/caelyndor-la-tormenta-bajo-el-cristal.jpg",
+  "caelyndor-ven-te-cuento-una-historia": "/images/music-covers/caelyndor-ven-te-cuento-una-historia.jpg",
 };
