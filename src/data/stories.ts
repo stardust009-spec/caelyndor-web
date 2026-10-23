@@ -6238,7 +6238,7 @@ export const stories: Story[] = [
     "slug": "lirios-para-una-sombra",
     "region": "sylvalis",
     "title": "Lirios para una Sombra",
-    "teaser": "Una tarde de flores en el prado: Lyzi corta lirios con una ternura que desarma, Rubí finge no enternecerse y a Noctalypse un recuerdo frío le recorre la espalda. Un relato suave sobre lo que la ternura hace con las sombras.",
+    "teaser": "Una tarde de flores en el prado: Lyzi corta lirios, Rubí la llama tierna y a Noctalypse un recuerdo frío le recorre la espalda. Lo que cuenta después hará que nadie vuelva a mirar igual a la guardiana de Sylvalis.",
     "characters": [
       "Lyzi",
       "Noctalypse",
@@ -7451,7 +7451,9 @@ export const stories: Story[] = [
     "teaser": "Los espejos de magma se encienden y todo el continente dracónico sintoniza la transmisión: Fulgor, impecable y con lentes, conduce Dragon's Kitchen en vivo. La concursante de hoy es una mortal llamada Rubí, y nadie le avisó que sería en vivo.",
     "characters": [
       "Fulgor",
-      "Rubí"
+      "Rubí",
+      "Noctalypse",
+      "Nayara"
     ],
     "accent": "#f0c75e",
     "wordCount": 3696,
@@ -7716,7 +7718,7 @@ export const stories: Story[] = [
     "slug": "el-regalo-de-lyzi",
     "region": "sylvalis",
     "title": "Crónicas del Festival Rodante: El Regalo de Lyzi",
-    "teaser": "El Lich Lord jura venganza con eco dramático y el grupo decide que se ganó una tarde libre en el Festival Rodante: feneks regateando, premios imposibles y un regalo de Lyzi que vale más que cualquier botín.",
+    "teaser": "El Lich Lord jura venganza con eco dramático y el grupo descubre que Lyzi tenía un plan secreto: el cumpleaños de Noctalypse. En la feria hay feneks regateando, ovejas pop-corn, cejas perdidas y un regalo que vale más que cualquier botín.",
     "characters": [
       "Lyzi",
       "Rubí",
