@@ -40,7 +40,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "¿En qué escapa Noctalypse de la casa de remates?",
     opciones: ["En un cerdito rosado", "En un avecestruz", "En la carreta de fuego", "Sobre su propia sombra"], correcta: 0,
     explicacion: "Noct aparece con la reliquia bajo el brazo, montado en un cerdito rosado que corre como un rayo.",
-    fuente: { obra: OBRA, parrafo: 155, cita: "Sombrío, impecable, con la reliquia bajo el brazo y montado en… un cerdito rosado." },
+    fuente: { obra: OBRA, parrafo: 160, cita: "Sombrío, impecable, con la reliquia bajo el brazo y montado en… un cerdito rosado." },
     requiere: solo
   },
   {
@@ -48,7 +48,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "¿Qué encuentran al llegar al Lago Plateado para rescatar a Lyzi?",
     opciones: ["A Lyzi convertida en jefa de los gansos", "A Lyzi encerrada en una jaula", "El lago congelado", "A los gansos huyendo"], correcta: 0,
     explicacion: "Lyzi, todavía con su delantal, da órdenes a decenas de gansos con chaleco que la obedecen.",
-    fuente: { obra: OBRA, parrafo: 202, cita: "A su alrededor, decenas de gansos con chaleco obedecían cada elegante gesto de sus colas." },
+    fuente: { obra: OBRA, parrafo: 221, cita: "A su alrededor, decenas de gansos con chaleco obedecían cada elegante gesto de sus colas." },
     requiere: solo
   },
   {
@@ -88,15 +88,15 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "¿Por qué no le arriendan caballos a Rubí?",
     opciones: ["Hay un cartel con su cara que dice «MALA PAGA»", "No le alcanza el dinero", "Los caballos le temen a su fuego", "El establo estaba cerrado"], correcta: 0,
     explicacion: "El encargado tiene un cartel con su cara y, en letras grandes, «MALA PAGA».",
-    fuente: { obra: OBRA, parrafo: 133, cita: "¡Dice que hay un cartel con mi cara y en letras grandes “MALA PAGA”!" },
+    fuente: { obra: OBRA, parrafo: 135, cita: "¡Dice que hay un cartel con mi cara y en letras grandes “MALA PAGA”!" },
     requiere: solo
   },
   {
     id: "estafa-e11", obra: OBRA, tipo: "explicita", dificultad: 2,
     enunciado: "¿Qué criaturas monta Rubí al derribar el muro de la casa de remates?",
     opciones: ["Avecestruces", "Caballos de fuego", "Grifos", "Lagartos de Cindralith"], correcta: 0,
-    explicacion: "Rubí entra montada en «un Avecestruz. Sí, A-veces-truz», bestias que solo existen en Sylvalis.",
-    fuente: { obra: OBRA, parrafo: 147, cita: "Rubí, montada sobre una bestia que solo podría existir en Sylvalis. Un Avecestruz." },
+    explicacion: "Rubí entra montada en «Un Avecestruz. Sí, A-veces-truz», bestias que solo existen en Sylvalis.",
+    fuente: { obra: OBRA, parrafo: 151, cita: "Rubí, montada sobre una bestia que solo podría existir en Sylvalis. Un Avecestruz." },
     requiere: solo
   },
   {
@@ -104,7 +104,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "¿Cómo le avisa Yuki a Noct que puede avanzar?",
     opciones: ["Con código Morse helado por la ventilación", "Por telepatía", "Con una señal de humo", "Golpeando las tuberías"], correcta: 0,
     explicacion: "Yuki envía ráfagas intermitentes de aire frío por la ventilación: código Morse helado que deletrea EN ADELANTE.",
-    fuente: { obra: OBRA, parrafo: 130, cita: "Era código Morse helado, un pulso de aire frío que solo un miembro de su equipo podría sentir." },
+    fuente: { obra: OBRA, parrafo: 132, cita: "Era código Morse helado, un pulso de aire frío que solo un miembro de su equipo podría sentir." },
     requiere: solo
   },
   {
@@ -112,7 +112,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "¿Qué delata a Yuki dentro de la casa de remates?",
     opciones: ["Unas nobles de Glaciem la reconocen y avisan a los guardias", "El mapache la traiciona", "Sus gafas brillan demasiado", "Rubí grita su nombre"], correcta: 0,
     explicacion: "En el baño, un par de nobles de Glaciem la reconocen y salen directo hacia los guardias.",
-    fuente: { obra: OBRA, parrafo: 140, cita: "Fue allí donde un par de nobles de Glaciem la reconocieron." },
+    fuente: { obra: OBRA, parrafo: 143, cita: "Fue allí donde un par de nobles de Glaciem la reconocieron." },
     requiere: solo
   },
   {
@@ -127,7 +127,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     id: "estafa-e15", obra: OBRA, tipo: "explicita", dificultad: 3,
     enunciado: "¿Qué artículo de la Ley de Protección de Fauna Mágica le muestran a Yuki?",
     opciones: ["El artículo 7", "El artículo 3", "El artículo 12", "El artículo 28"], correcta: 0,
-    explicacion: "El ganso del maletín despliega el papiro: «Art. 7: Toda agresión contra aves y/o criaturas mágicas…».",
+    explicacion: "El ganso del maletín despliega el papiro: «Art. 7: “Toda agresión contra aves y/o criaturas mágicas…”».",
     fuente: { obra: OBRA, parrafo: 17, cita: "Art. 7: “Toda agresión contra aves y/o criaturas mágicas parcialmente civilizadas con chaleco será penada con multa y humillación pública”." },
     requiere: solo
   },
@@ -164,8 +164,8 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     id: "estafa-e19", obra: OBRA, tipo: "explicita", dificultad: 3,
     enunciado: "¿Cómo se llama el contable de los gansos?",
     opciones: ["Meyer Lanskizo", "Bugsy Plumetti", "Lucky Luciano Griazniati", "Cara Cortada"], correcta: 0,
-    explicacion: "«El contable del grupo, Meyer Lanskizo, ajustó su maletín de cuero…».",
-    fuente: { obra: OBRA, parrafo: 209, cita: "Finalmente, el contable del grupo, Meyer Lanskizo, ajustó su maletín de cuero" },
+    explicacion: "«Finalmente, el contable del grupo, Meyer Lanskizo, ajustó su maletín de cuero…».",
+    fuente: { obra: OBRA, parrafo: 230, cita: "Finalmente, el contable del grupo, Meyer Lanskizo, ajustó su maletín de cuero" },
     requiere: solo
   },
   {
@@ -173,7 +173,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "¿Cómo se llama el ganso sentimental que se seca una lágrima con el borde del ala?",
     opciones: ["Bugsy Plumetti", "Meyer Lanskizo", "Cara Cortada", "Lucky Luciano Griazniati"], correcta: 0,
     explicacion: "«Otro, un tipo más sentimental llamado Bugsy Plumetti, se secó una lágrima mal disimulada con el borde de su ala».",
-    fuente: { obra: OBRA, parrafo: 208, cita: "Otro, un tipo más sentimental llamado Bugsy Plumetti, se secó una lágrima mal disimulada con el borde de su ala." },
+    fuente: { obra: OBRA, parrafo: 228, cita: "Otro, un tipo más sentimental llamado Bugsy Plumetti, se secó una lágrima mal disimulada con el borde de su ala." },
     requiere: solo
   },
   {
@@ -181,15 +181,15 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "¿Cómo llaman los gansos a Lyzi cuando le agradecen?",
     opciones: ["Nona Lyzi", "Madrina Lyzi", "Jefa Kitsune", "Doña Colas"], correcta: 0,
     explicacion: "El sindicato entero grazna: «Nona Lyzi… gracias por tanto».",
-    fuente: { obra: OBRA, parrafo: 205, cita: "—Nona Lyzi… gracias por tanto —graznaron en un coro de voces ásperas pero devotas." },
+    fuente: { obra: OBRA, parrafo: 224, cita: "—Nona Lyzi… gracias por tanto —graznaron en un coro de voces ásperas pero devotas." },
     requiere: solo
   },
   {
     id: "estafa-e21", obra: OBRA, tipo: "explicita", dificultad: 3,
     enunciado: "¿Cuántas luciérnagas doradas envía Lyzi a la mano de Rubí dormida?",
     opciones: ["Dos", "Una", "Siete", "Nueve"], correcta: 0,
-    explicacion: "«Con un último soplo delicado, envió dos luciérnagas a posarse suavemente sobre la mano de Rubí dormida».",
-    fuente: { obra: OBRA, parrafo: 235, cita: "envió dos luciérnagas a posarse suavemente sobre la mano de Rubí dormida." },
+    explicacion: "«Y con un último soplo delicado, envió dos luciérnagas a posarse suavemente sobre la mano de Rubí dormida».",
+    fuente: { obra: OBRA, parrafo: 265, cita: "envió dos luciérnagas a posarse suavemente sobre la mano de Rubí dormida." },
     requiere: solo
   },
   {
@@ -197,7 +197,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "Según el anciano campesino, ¿cuánto le faltaba a Noct para llegar a la iglesia?",
     opciones: ["Unas cinco horas", "Media hora", "Dos días", "Una hora"], correcta: 0,
     explicacion: "«—Como a cinco horas, joven», responde el anciano antes de ofrecerle su carretilla.",
-    fuente: { obra: OBRA, parrafo: 179, cita: "—Como a cinco horas, joven." },
+    fuente: { obra: OBRA, parrafo: 192, cita: "—Como a cinco horas, joven." },
     requiere: solo
   },
   {
@@ -205,7 +205,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "¿Cuánto esperaron Yuki, Rubí y Joe a Noct frente a la iglesia?",
     opciones: ["Una hora", "Diez minutos", "Toda la noche", "Tres horas"], correcta: 0,
     explicacion: "Yuki lo reprocha: «Una hora, Rubí. Una hora entera esperando».",
-    fuente: { obra: OBRA, parrafo: 173, cita: "—Una hora, Rubí. Una hora entera esperando, contigo jugando a lanzar piedritas…" },
+    fuente: { obra: OBRA, parrafo: 182, cita: "—Una hora, Rubí. Una hora entera esperando, contigo jugando a lanzar piedritas…" },
     requiere: solo
   },
 
@@ -214,8 +214,8 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     id: "estafa-i01", obra: OBRA, tipo: "implicita", dificultad: 1,
     enunciado: "¿Por qué los gansos llaman «la colorada» a Rubí?",
     opciones: ["Por su cabello rojo", "Porque se sonroja al mentir", "Por su capa carmesí", "Porque así la apodó Lyzi"], correcta: 0,
-    explicacion: "El relato la presenta desde la primera línea con un temperamento «tan fogoso como su cabello»: el apodo sale de ese rasgo.",
-    fuente: { obra: OBRA, parrafo: 2, cita: "Rubí, de temperamento tan fogoso como su cabello, roncaba como un pequeño y feliz volcán" },
+    explicacion: "«Colorada» es como se le dice a una pelirroja: los gansos la apodan por su cabello rojo, el rasgo que primero salta a la vista de Rubí.",
+    fuente: { obra: OBRA, parrafo: 11, cita: "—¡GRAZ! ¡LA COLORADA! ¡DEBE MUCHA PLATITA!" },
     requiere: solo
   },
   {
@@ -254,7 +254,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
       "Que el mapache le diga «mami»"
     ], correcta: 0,
     explicacion: "«Nobles que habían jurado lealtad a su corona ahora pujaban en un sótano criminal… Cada detalle era un puñal a su orgullo».",
-    fuente: { obra: OBRA, parrafo: 109, cita: "Nobles que habían jurado lealtad a su corona ahora pujaban en un sótano criminal por objetos saqueados." },
+    fuente: { obra: OBRA, parrafo: 110, cita: "Nobles que habían jurado lealtad a su corona ahora pujaban en un sótano criminal por objetos saqueados." },
     requiere: solo
   },
   {
@@ -262,7 +262,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "¿Quién sale realmente ganando con el asunto de la reliquia?",
     opciones: ["El Sucio Joe", "Rubí", "Los cardenales", "Noctalypse"], correcta: 0,
     explicacion: "La iglesia descubre que la reliquia es falsa, Joe deja una nota de agradecimiento y Yuki concluye que fueron «las víctimas de la estafa dentro de la estafa».",
-    fuente: { obra: OBRA, parrafo: 194, cita: "¡fuimos las víctimas de la estafa dentro de la estafa!" },
+    fuente: { obra: OBRA, parrafo: 211, cita: "¡fuimos las víctimas de la estafa dentro de la estafa!" },
     requiere: solo
   },
   {
@@ -274,8 +274,8 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
       "Que los gansos se lo ordenaron",
       "Que fue un hechizo accidental"
     ], correcta: 0,
-    explicacion: "Tras disolver los billetes, convierte dos luciérnagas en un fajo «suficiente para saldar deudas»: una bondad que no necesita palabras.",
-    fuente: { obra: OBRA, parrafo: 236, cita: "No era una fortuna desbordante, pero sí lo suficiente para saldar deudas" },
+    explicacion: "Tras disolver los billetes, convierte dos luciérnagas en un fajo que alcanzaba «para que ningún ganso volviera a graznarle por la espalda»: una bondad que no necesita palabras.",
+    fuente: { obra: OBRA, parrafo: 266, cita: "No era una fortuna. Alcanzaba, eso sí, para que ningún ganso volviera a graznarle por la espalda." },
     requiere: solo
   },
   {
@@ -283,7 +283,7 @@ export const BANCO_LA_GRAN_ESTAFA: readonly PreguntaQuiz[] = [
     enunciado: "Según el final, ¿quién parece estar contando esta historia?",
     opciones: ["Lyzi, tiempo después", "Yuki, en su diario", "Noctalypse, a sus alumnos", "El Sucio Joe, en una taberna"], correcta: 0,
     explicacion: "La historia la cierra «una voz dulce tiempo después» hablando a «pequeños guardianes de la historia», y firma con una sola letra: L.",
-    fuente: { obra: OBRA, parrafo: 241, cita: "—Y ese, pequeños guardianes de la historia —concluyó una voz dulce tiempo después—, […] L." },
+    fuente: { obra: OBRA, parrafo: 271, cita: "—Y así, pequeños guardianes de la historia —concluyó una voz dulce tiempo después—, […] L." },
     requiere: solo
   },
 

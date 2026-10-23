@@ -415,21 +415,21 @@ export const BANCO_PROTOCOLOS: readonly PreguntaQuiz[] = [
     enunciado: "Valthor, el anciano que escolta a los niños hasta el palacio, aparece también en Dragon's Kitchen de Maghnarok. ¿Cómo sigue el concurso?",
     opciones: ["Por un espejo, convencido de que lo llaman unos estafadores", "Como juez invitado en el set", "Por una carta que lee Lyzi en voz alta", "Montado en Glasyra, desde el público"], correcta: 0,
     explicacion: "Desde su biblioteca de Glaciem refunfuña contra los «estafadores de cristales de larga distancia» hasta que reconoce a Rubí con harina en la cara.",
-    fuente: { obra: DRAGON, parrafo: 34, cita: "¡Malditos estafadores de cristales de larga distancia, otra vez con sus fraudes! —refunfuñó Valthor, mirando de cerca el espejo." }
+    fuente: { obra: DRAGON, parrafo: 31, cita: "¡Malditos estafadores de cristales de larga distancia, otra vez con sus fraudes! —refunfuñó Valthor, mirando de cerca el espejo." }
   }),
   conexion(DRAGON, {
     id: "protocolos-c02", dificultad: 3,
     enunciado: "En Dragon's Kitchen, ¿por qué plato vota Valthor y con qué argumento?",
     opciones: ["Por el curado, para que Rubí aprenda de fermentación", "Por el postre, porque suena exótico", "Por la mermelada de jabalí, porque quiere experimentar", "Por la sopa, porque es lo más seguro"], correcta: 0,
-    explicacion: "El voto por el postre «exótico» es de Selyra. La mermelada de jabalí lo hace reír y la anota en su grimorio, pero su voto fue por el curado.",
-    fuente: { obra: DRAGON, parrafo: 85, cita: "Yo voto por el curado, para que aprenda de fermentación." }
+    explicacion: "El voto por el postre «exótico» es de Selyra. La mermelada de jabalí la anota en sus apuntes con ganas de experimentar, pero su voto fue por el curado.",
+    fuente: { obra: DRAGON, parrafo: 85, cita: "Voto por el curado. Que aprenda algo de fermentación." }
   }),
   conexion(FRASE, {
     id: "protocolos-c03", dificultad: 3,
     enunciado: "Antes de instalarse en el campo, Aelwyn ya figuraba en los planes de Yuki. En La Frase Maldita, ¿para qué pensaba enviarla?",
     opciones: ["A cobrar la recompensa por una criatura mística que ronda las islas privadas de un noble de Glaciem", "A escoltar a Temari hasta Artanis", "A vigilar el deshielo del monte Arhess", "A negociar con los gansos de Sylvalis"], correcta: 0,
     explicacion: "Yuki se lo cuenta a Noctalypse: la recompensa iría para el reino, «pero viendo a Rubí en ese estado»… Noct se alista.",
-    fuente: { obra: FRASE, parrafo: 132, cita: "Pensaba mandar a Aelwyn para cobrar la recompensa para el reino" }
+    fuente: { obra: FRASE, parrafo: 131, cita: "Pensaba mandar a Aelwyn para cobrar la recompensa para el reino" }
   }),
   conexion(LYZI, {
     id: "protocolos-c04", dificultad: 3,
