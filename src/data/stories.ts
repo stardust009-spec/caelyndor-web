@@ -6803,7 +6803,8 @@ export const stories: Story[] = [
     "teaser": "No fue una gran discusión. Ni siquiera llegó a pelea. Fue peor: fue una frase dicha con demasiada suavidad. Lyzi pregunta por qué Rubí compra cosas que no usa, y el cinturón de los diez bolsillos se convierte en territorio en disputa.",
     "characters": [
       "Rubí",
-      "Lyzi"
+      "Lyzi",
+      "Yuki"
     ],
     "accent": "#d0834f",
     "wordCount": 2931,
@@ -7158,7 +7159,7 @@ export const stories: Story[] = [
     "slug": "la-gran-estafa-de-sylvalis",
     "region": "sylvalis",
     "title": "La Gran Estafa de Sylvalis",
-    "teaser": "Dossier operativo desde los bordes del bosque: gansos gánsteres exigiendo efectivo, negociaciones de medianoche, la policía de Sylvalis tras cerdos hongo inexistentes… y una estafa que, como todo en este grupo, termina midiéndose en risas.",
+    "teaser": "Dossier operativo desde los bordes del bosque: gansos gánsteres exigiendo efectivo, negociaciones de medianoche, un atraco con mapache incluido… y una estafa que, como todo en este grupo, termina midiéndose en risas.",
     "characters": [
       "Rubí",
       "Yuki",
