@@ -7757,7 +7757,7 @@ export const stories: Story[] = [
       "El portal terminó de cerrarse con un sonido seco, como el de un libro antiguo sellándose para siempre. Sobre el campo de batalla cayó esa quietud espesa que sigue a todo estruendo, cuando los oídos siguen zumbando y el cuerpo todavía no cree que haya terminado. El viento arrastró el polvo, recorrió la tela quemada de las capas y hurgó en los bolsillos de Lyzi hasta que algo pequeño y colorido escapó de su túnica. El papel se deslizó por el suelo, dio media vuelta sobre sí mismo y se detuvo bajo las botas de Rubí.",
       "✦ ✦ ✦",
       "Ella se agachó y lo recogió. Sus cejas temblaron.",
-      "—«Festival Rodante. Viernes 20 de marzo. Por ser el Día del Laberinto, 30% de descuento en artefactos mágicos» —Rubí hizo una pausa dramática—. «No se hacen devoluciones. Solo efectivo».",
+      "—«Gran Feria Gran. Viernes 20 de marzo. Por ser el Día del Laberinto, 30% de descuento en artefactos mágicos» —Rubí hizo una pausa dramática—. «No se hacen devoluciones. Solo efectivo».",
       "Rubí alzó la vista. El fuego en sus ojos había cambiado de color.",
       "—Lyzi… ¿qué significa esto? ¿Había una feria mágica y NO ME INVITASTE? ¡Yo amo las ferias mágicas! Desde niña iba. ¿Y tú pensabas ir sin mí?",
       "—No, no es eso… —intentó explicar Lyzi—. Yo quería comprar un regalo…",
