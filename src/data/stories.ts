@@ -5598,7 +5598,8 @@ export const stories: Story[] = [
     "characters": [
       "Lyzi",
       "Rubí",
-      "Yuki"
+      "Yuki",
+      "Noctalypse"
     ],
     "accent": "#a77aff",
     "wordCount": 3480,
