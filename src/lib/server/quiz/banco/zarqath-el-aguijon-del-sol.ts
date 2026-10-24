@@ -35,7 +35,7 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
     enunciado: "¿Cómo se llama la espada de Rubí?",
     opciones: ["Vulcania Ignis", "Colibrí de Glaciem", "Aguijón del Sol", "Llama Inextinguible"], correcta: 0,
     explicacion: "Con el escorpión trabado en el río, Rubí «desenvainó Vulcania Ignis».",
-    fuente: { obra: OBRA, parrafo: 785, cita: "Rubí no necesitó que se lo repitieran. Desenvainó Vulcania Ignis" }
+    fuente: { obra: OBRA, parrafo: 782, cita: "Rubí no necesitó que se lo repitieran. Desenvainó Vulcania Ignis" }
   }),
   p({
     id: "zarqath-e04", tipo: "explicita", dificultad: 1,
@@ -56,7 +56,7 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
     enunciado: "¿Qué ocurre cuando Rubí enciende una llama para iluminar la tumba?",
     opciones: ["El fuego se desprende de su mano y Zarqath lo absorbe", "Zarqath huye de la luz", "La llama se apaga sola", "Se encienden las antorchas del templo"], correcta: 0,
     explicacion: "La llama «se desprendió de su palma», se estiró en un hilo naranja y se hundió en el cuerpo de Zarqath, que encendió una pinza por dentro.",
-    fuente: { obra: OBRA, parrafo: 762, cita: "El fuego no se apagó: se desprendió de su palma, como si algo tirara de él desde el otro lado de la sala." }
+    fuente: { obra: OBRA, parrafo: 759, cita: "El fuego no se apagó: se desprendió de su palma, como si algo tirara de él desde el otro lado de la sala." }
   }),
   p({
     id: "zarqath-e07", tipo: "explicita", dificultad: 2,
@@ -110,14 +110,14 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
     enunciado: "¿Cómo llaman a los tiburones de duna?",
     opciones: ["Qharvass", "Vaquitas", "Zarqath", "Areneros"], correcta: 0,
     explicacion: "La guía los nombra cuando aparecen las aletas: «Qharvass. Tiburones de duna».",
-    fuente: { obra: OBRA, parrafo: 672, cita: "—Qharvass —dijo la guía—. Tiburones de duna." }
+    fuente: { obra: OBRA, parrafo: 669, cita: "—Qharvass —dijo la guía—. Tiburones de duna." }
   }),
   p({
     id: "zarqath-e14", tipo: "explicita", dificultad: 2,
     enunciado: "¿De qué material es el aguijón de Zarqath?",
     opciones: ["Diamante negro y transparente", "Obsidiana", "Oro fundido", "Vidrio de arena"], correcta: 0,
     explicacion: "«En la punta, el aguijón era una pieza de diamante negro y transparente, facetada como una herramienta hecha para perforar montañas».",
-    fuente: { obra: OBRA, parrafo: 682, cita: "el aguijón era una pieza de diamante negro y transparente" }
+    fuente: { obra: OBRA, parrafo: 679, cita: "el aguijón era una pieza de diamante negro y transparente" }
   }),
   p({
     id: "zarqath-e15", tipo: "explicita", dificultad: 2,
@@ -129,28 +129,28 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
       "Porque mandaba sobre los dragones"
     ], correcta: 0,
     explicacion: "«No fue un conquistador […] Declaraba. Decía una cosa, y la cosa se volvía verdad. Por eso le pusieron mandato áureo».",
-    fuente: { obra: OBRA, parrafo: 748, cita: "Declaraba. Decía una cosa, y la cosa se volvía verdad. Por eso le pusieron mandato áureo." }
+    fuente: { obra: OBRA, parrafo: 745, cita: "Declaraba. Decía una cosa, y la cosa se volvía verdad. Por eso le pusieron mandato áureo." }
   }),
   p({
     id: "zarqath-e16", tipo: "explicita", dificultad: 2,
     enunciado: "¿Qué fue lo último que declaró el faraón?",
     opciones: ["Que la muerte no lo tocaría", "Que el sol nunca se pondría", "Que su tumba jamás sería encontrada", "Que Cindralith sería eterna"], correcta: 0,
     explicacion: "«En un arrebato, delante de toda su corte, declaró que la muerte no lo tocaría».",
-    fuente: { obra: OBRA, parrafo: 750, cita: "En un arrebato, delante de toda su corte, declaró que la muerte no lo tocaría." }
+    fuente: { obra: OBRA, parrafo: 747, cita: "En un arrebato, delante de toda su corte, declaró que la muerte no lo tocaría." }
   }),
   p({
     id: "zarqath-e17", tipo: "explicita", dificultad: 2,
     enunciado: "Cuando Rubí deja de contenerse, ¿en qué forma se le desborda el aura?",
     opciones: ["En mariposas de llama", "En un dragón de fuego", "En lluvia de chispas", "En alas de ceniza"], correcta: 0,
     explicacion: "«El fuego que le salía del cuerpo se deshizo en mariposas, decenas de mariposas de llama».",
-    fuente: { obra: OBRA, parrafo: 848, cita: "El fuego que le salía del cuerpo se deshizo en mariposas, decenas de mariposas de llama" }
+    fuente: { obra: OBRA, parrafo: 845, cita: "El fuego que le salía del cuerpo se deshizo en mariposas, decenas de mariposas de llama" }
   }),
   p({
     id: "zarqath-e18", tipo: "explicita", dificultad: 2,
     enunciado: "¿Qué levanta Yuki en pleno desierto para recibir a Rubí cuando cae?",
     opciones: ["Una rampa de hielo, como un tobogán", "Una cúpula de nieve", "Un lago congelado", "Una red de escarcha"], correcta: 0,
     explicacion: "Con la energía de Lyzi levanta «no una pared: una rampa. Un tobogán largo, curvo, imposible».",
-    fuente: { obra: OBRA, parrafo: 866, cita: "No una pared: una rampa. Un tobogán largo, curvo, imposible" }
+    fuente: { obra: OBRA, parrafo: 863, cita: "No una pared: una rampa. Un tobogán largo, curvo, imposible" }
   }),
   p({
     id: "zarqath-e19", tipo: "explicita", dificultad: 3,
@@ -202,35 +202,35 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
     enunciado: "¿Qué señal deben dar al volver, según la guía de las vaquitas?",
     opciones: ["Golpear tres veces el caparazón de la vaquita", "Encender una antorcha", "Silbar dos veces", "Clavar una bandera en la duna"], correcta: 0,
     explicacion: "«Si vuelven, golpeen tres veces el caparazón de la vaquita. Si no vuelven, no golpeen nada».",
-    fuente: { obra: OBRA, parrafo: 717, cita: "Si vuelven, golpeen tres veces el caparazón de la vaquita. Si no vuelven, no golpeen nada." }
+    fuente: { obra: OBRA, parrafo: 714, cita: "Si vuelven, golpeen tres veces el caparazón de la vaquita. Si no vuelven, no golpeen nada." }
   }),
   p({
     id: "zarqath-e25", tipo: "explicita", dificultad: 3,
     enunciado: "¿Qué dos palabras gritaba Yuki al probar la coraza de Zarqath con láminas de hielo?",
     opciones: ["«Duro» y «cede»", "«Frío» y «calor»", "«Ahora» y «espera»", "«Firme» y «blando»"], correcta: 0,
     explicacion: "Si el hielo se derretía despacio, gritaba «duro»; cuando se vaporizaba apenas tocaba la coraza, «cede».",
-    fuente: { obra: OBRA, parrafo: 815, cita: "Cuando el hielo se derretía despacio, gritaba una sola palabra: «duro». […] gritó otra: «cede»." }
+    fuente: { obra: OBRA, parrafo: 812, cita: "Cuando el hielo se derretía despacio, gritaba una sola palabra: «duro». […] gritó otra: «cede»." }
   }),
   p({
     id: "zarqath-e26", tipo: "explicita", dificultad: 3,
     enunciado: "¿Cuántos cazarrecompensas entran con antorchas a la tumba?",
     opciones: ["Quince", "Cinco", "Ocho", "Veinte"], correcta: 0,
     explicacion: "«Entraron quince. Cazarrecompensas, por el ruido y por la forma de pisar».",
-    fuente: { obra: OBRA, parrafo: 806, cita: "Entraron quince. Cazarrecompensas, por el ruido y por la forma de pisar" }
+    fuente: { obra: OBRA, parrafo: 803, cita: "Entraron quince. Cazarrecompensas, por el ruido y por la forma de pisar" }
   }),
   p({
     id: "zarqath-e27", tipo: "explicita", dificultad: 3,
     enunciado: "En el Templo del Silencio, ¿de qué colores se tiñen las flores blancas al tocarlas el agua lunar?",
     opciones: ["Lila pálido y azul profundo", "Dorado y rojo", "Plateado y verde", "Rosa y violeta"], correcta: 0,
     explicacion: "«Las primeras tomaron un lila pálido, casi tímido; otras […] se tiñeron de un azul profundo».",
-    fuente: { obra: OBRA, parrafo: 962, cita: "Las primeras tomaron un lila pálido, casi tímido; otras, más cercanas al centro, se tiñeron de un azul profundo" }
+    fuente: { obra: OBRA, parrafo: 959, cita: "Las primeras tomaron un lila pálido, casi tímido; otras, más cercanas al centro, se tiñeron de un azul profundo" }
   }),
   p({
     id: "zarqath-e28", tipo: "explicita", dificultad: 3,
     enunciado: "¿Cómo describe Yuki el fenómeno del Templo del Silencio?",
     opciones: ["«Astronómicamente obsceno. Y precioso»", "«Un efecto óptico notable»", "«Inaceptablemente hermoso»", "«Cero poesía, pura física»"], correcta: 0,
     explicacion: "Yuki, con su cara seria de siempre: «Astronómicamente obsceno —dijo—. Y precioso».",
-    fuente: { obra: OBRA, parrafo: 967, cita: "—Astronómicamente obsceno —dijo—. Y precioso." }
+    fuente: { obra: OBRA, parrafo: 964, cita: "—Astronómicamente obsceno —dijo—. Y precioso." }
   }),
 
   p({
@@ -246,7 +246,7 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
     enunciado: "Para Rubí, ¿cuál fue la verdadera recompensa de toda la aventura?",
     opciones: ["Ver llegar a Ingrid sana y salva", "El oro del gremio", "Vencer a Zarqath", "Que la llamaran heroína"], correcta: 0,
     explicacion: "El oro quedó olvidado en un cajón: «Esa era la recompensa que había estado esperando toda la semana, la única que le importaba de verdad».",
-    fuente: { obra: OBRA, parrafo: 888, cita: "Esa era la recompensa que había estado esperando toda la semana, la única que le importaba de verdad" }
+    fuente: { obra: OBRA, parrafo: 885, cita: "Esa era la recompensa que había estado esperando toda la semana, la única que le importaba de verdad" }
   }),
   p({
     id: "zarqath-i02", tipo: "implicita", dificultad: 1,
@@ -258,7 +258,7 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
       "Porque esperaban la noche"
     ], correcta: 0,
     explicacion: "«Cada vez que alguien prende algo, esa cosa se mueve». Yuki lo entiende de inmediato: la luz lo despierta.",
-    fuente: { obra: OBRA, parrafo: 799, cita: "—Llevamos tres días así. A oscuras. Cada vez que alguien prende algo, esa cosa se mueve." }
+    fuente: { obra: OBRA, parrafo: 796, cita: "—Llevamos tres días así. A oscuras. Cada vez que alguien prende algo, esa cosa se mueve." }
   }),
   p({
     id: "zarqath-i03", tipo: "implicita", dificultad: 2,
@@ -282,7 +282,7 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
       "Porque Zarqath estaba dormido"
     ], correcta: 0,
     explicacion: "El agua lo enfrió y lo volvió lento… y duro: «Está frío —dijo Yuki—. Frío es impenetrable».",
-    fuente: { obra: OBRA, parrafo: 788, cita: "—Está frío —dijo Yuki—. Frío es impenetrable." }
+    fuente: { obra: OBRA, parrafo: 785, cita: "—Está frío —dijo Yuki—. Frío es impenetrable." }
   }),
   p({
     id: "zarqath-i05", tipo: "implicita", dificultad: 2,
@@ -294,7 +294,7 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
       "Porque las luciérnagas espantan a los Qharvass"
     ], correcta: 0,
     explicacion: "Eran «pequeñas chispas frías […] sin una pizca de calor que Zarqath pudiera oler».",
-    fuente: { obra: OBRA, parrafo: 804, cita: "pequeñas chispas frías […] suaves, plateadas, sin una pizca de calor que Zarqath pudiera oler." }
+    fuente: { obra: OBRA, parrafo: 801, cita: "pequeñas chispas frías […] suaves, plateadas, sin una pizca de calor que Zarqath pudiera oler." }
   }),
   p({
     id: "zarqath-i06", tipo: "implicita", dificultad: 2,
@@ -306,7 +306,7 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
       "Rubí ahorró dinero para contratar ayuda"
     ], correcta: 0,
     explicacion: "Lyzi se lo nota («Llevas días tragándote fuego») y al final «toda la semana le salió de golpe»: una nova que llevó a Zarqath hasta volverse blando.",
-    fuente: { obra: OBRA, parrafo: 839, cita: "Toda la semana le salió de golpe. Los días contando fechas, la rabia tragada, las chispas que no había soltado" }
+    fuente: { obra: OBRA, parrafo: 836, cita: "Toda la semana le salió de golpe. Los días contando fechas, la rabia tragada, las chispas que no había soltado" }
   }),
   p({
     id: "zarqath-i07", tipo: "implicita", dificultad: 3,
@@ -318,7 +318,7 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
       "Para cegar a los cazarrecompensas"
     ], correcta: 0,
     explicacion: "Su propio razonamiento: «Caliente, rápido. Demasiado caliente… blando». La piedra que cayó lo confirmó: la placa se hundió como cera.",
-    fuente: { obra: OBRA, parrafo: 834, cita: "—Frío, imposible. Caliente, rápido. Demasiado caliente… —respiró— …blando." }
+    fuente: { obra: OBRA, parrafo: 831, cita: "—Frío, imposible. Caliente, rápido. Demasiado caliente… —respiró— …blando." }
   }),
   p({
     id: "zarqath-i08", tipo: "implicita", dificultad: 3,
@@ -330,7 +330,7 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
       "Ahí guardaba el fuego de Rubí"
     ], correcta: 0,
     explicacion: "«Era el regulador, el que dejaba entrar y salir la presión». Sin poder hacer ninguna de las dos cosas, empezó a inflarse.",
-    fuente: { obra: OBRA, parrafo: 852, cita: "Era el regulador, el que dejaba entrar y salir la presión. Con la espada atravesándolo, Zarqath dejó de poder hacer las dos cosas." }
+    fuente: { obra: OBRA, parrafo: 849, cita: "Era el regulador, el que dejaba entrar y salir la presión. Con la espada atravesándolo, Zarqath dejó de poder hacer las dos cosas." }
   }),
   p({
     id: "zarqath-i09", tipo: "implicita", dificultad: 3,
@@ -342,20 +342,20 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
       "Cuando la guía nombró a Zarqath"
     ], correcta: 0,
     explicacion: "«Eso es exactamente lo que tú dijiste que sería bonito», le murmura a Yuki: ella había dicho que saltarse el final común era una idea esperanzadora.",
-    fuente: { obra: OBRA, parrafo: 751, cita: "—Eso es exactamente lo que tú dijiste que sería bonito —murmuró Lyzi, mirando a Yuki." }
+    fuente: { obra: OBRA, parrafo: 748, cita: "—Eso es exactamente lo que tú dijiste que sería bonito —murmuró Lyzi, mirando a Yuki." }
   }),
   p({
     id: "zarqath-i10", tipo: "implicita", dificultad: 3,
     enunciado: "El relato nunca dice el nombre del faraón del mandato áureo, el que declaró que la muerte no lo tocaría. Pero en Caelyndor la música también cuenta. ¿Cómo se llamaba?",
     opciones: ["Athem", "Solkán", "Zarqath", "Lencorias"], correcta: 0,
     explicacion: "El Archivo musical lo nombra: «Cindralith — La Tumba del Faraón Athem». Y su tema propio responde a su última declaración: «Athem — Inclínate, Muerte».",
-    fuente: { obra: OBRA, parrafo: 746, cita: "—El faraón del nombre perdido —dijo—. Los viejos lo llaman el faraón del mandato áureo." }
+    fuente: { obra: OBRA, parrafo: 743, cita: "—El faraón del nombre perdido —dijo—. Los viejos lo llaman el faraón del mandato áureo." }
   }),
   p({
     id: "zarqath-i11", tipo: "implicita", dificultad: 3,
     enunciado: "Las tres llegan al mercado de Arapas, se informan en el gremio y, tras la tumba, «volvieron a Ashraqem», donde el gremio paga la recompensa. ¿Qué es Arapas?",
     opciones: ["Un mercado dentro de Ashraqem", "Una ciudad vecina de Ashraqem", "El nombre del gremio de Ashraqem", "Un oasis en el camino a la tumba"], correcta: 0,
     explicacion: "Desde el mercado y el gremio parten en vaquitas hacia la tumba, y al regresar «volvieron a Ashraqem»: el mercado de Arapas está dentro de Ashraqem.",
-    fuente: { obra: OBRA, parrafo: 873, cita: "Volvieron a Ashraqem con la caravana entera detrás." }
+    fuente: { obra: OBRA, parrafo: 870, cita: "Volvieron a Ashraqem con la caravana entera detrás." }
   })
 ];

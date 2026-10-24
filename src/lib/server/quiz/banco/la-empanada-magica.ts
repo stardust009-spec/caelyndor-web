@@ -34,16 +34,16 @@ export const BANCO_LA_EMPANADA_MAGICA: readonly PreguntaQuiz[] = [
   p({
     id: "empanada-e03", tipo: "explicita", dificultad: 1,
     enunciado: "¿Qué especia pidió Lyzi en la tienda?",
-    opciones: ["Cola de Ángel", "Nalga de Ángel", "Cola del Diablo", "Sal de luna"], correcta: 0,
-    explicacion: "Una especia que no existe. «Es que “Nalga de Ángel” sonaba feo».",
-    fuente: { obra: OBRA, parrafo: 38, cita: "—Cola de Ángel." }
+    opciones: ["Cola de ángel", "Nalga de ángel", "Cola de diablo", "Sal de luna"], correcta: 0,
+    explicacion: "Una especia que no existe. «Es que “nalga de ángel” sonaba feo».",
+    fuente: { obra: OBRA, parrafo: 38, cita: "—Cola de ángel." }
   }),
   p({
     id: "empanada-e04", tipo: "explicita", dificultad: 1,
     enunciado: "¿Qué especia dice en realidad la etiqueta de la bolsita?",
-    opciones: ["Cola del Diablo", "Cola de Ángel", "Nalga de Ángel", "Azúcar flor"], correcta: 0,
-    explicacion: "Tinta corrida, letra diminuta y una tela demasiado arrugada para inspirar confianza: «Cola del Diablo».",
-    fuente: { obra: OBRA, parrafo: 52, cita: "—Cola del Diablo." }
+    opciones: ["Cola de diablo", "Cola de ángel", "Nalga de ángel", "Azúcar flor"], correcta: 0,
+    explicacion: "Tinta corrida, letra diminuta y una tela demasiado arrugada para inspirar confianza: «Cola de diablo».",
+    fuente: { obra: OBRA, parrafo: 52, cita: "—Cola de diablo." }
   }),
   p({
     id: "empanada-e05", tipo: "explicita", dificultad: 1,
@@ -76,7 +76,7 @@ export const BANCO_LA_EMPANADA_MAGICA: readonly PreguntaQuiz[] = [
   p({
     id: "empanada-e09", tipo: "explicita", dificultad: 2,
     enunciado: "Según Rubí, ¿qué vendió una vez Don Carlito como si fuera azúcar flor?",
-    opciones: ["Sal de luna", "Polvo de estrella", "Cola del Diablo", "Ceniza de fénix"], correcta: 0,
+    opciones: ["Sal de luna", "Polvo de estrella", "Cola de diablo", "Ceniza de fénix"], correcta: 0,
     explicacion: "Lyzi lo defiende: «Fue un accidente muy brillante».",
     fuente: { obra: OBRA, parrafo: 69, cita: "¡Ese hombre una vez vendió sal de luna como azúcar flor!" }
   }),
@@ -146,7 +146,7 @@ export const BANCO_LA_EMPANADA_MAGICA: readonly PreguntaQuiz[] = [
   p({
     id: "empanada-e19", tipo: "explicita", dificultad: 3,
     enunciado: "Según la etiqueta, ¿qué pasa si la hierba se expone a más de veinte grados?",
-    opciones: ["Su efecto se vuelve multiplicativo", "Pierde todo su efecto", "Se convierte en Nalga de Ángel", "Solo cambia de sabor"], correcta: 0,
+    opciones: ["Su efecto se vuelve multiplicativo", "Pierde todo su efecto", "Se convierte en nalga de ángel", "Solo cambia de sabor"], correcta: 0,
     explicacion: "«No vuelve su efecto sumatorio. Lo vuelve multiplicativo». Y ya se habían comido la primera tanda.",
     fuente: { obra: OBRA, parrafo: 122, cita: "Exponer esta hierba a más de veinte grados no vuelve su efecto sumatorio. Lo vuelve multiplicativo" }
   }),
@@ -218,9 +218,9 @@ export const BANCO_LA_EMPANADA_MAGICA: readonly PreguntaQuiz[] = [
   p({
     id: "empanada-i01", tipo: "implicita", dificultad: 1,
     enunciado: "¿Qué especia pedía en realidad la receta tradicional de Cindralith occidental?",
-    opciones: ["Nalga de Ángel", "Cola de Ángel", "Cola del Diablo", "Sal de luna"], correcta: 0,
-    explicacion: "Rubí lo da por hecho cuando se estira satisfecha: «Menos mal que encontraste Nalga de Ángel, Lyzi». Ahí empieza el desastre.",
-    fuente: { obra: OBRA, parrafo: 33, cita: "—Menos mal que encontraste Nalga de Ángel, Lyzi." }
+    opciones: ["Nalga de ángel", "Cola de ángel", "Cola de diablo", "Sal de luna"], correcta: 0,
+    explicacion: "Rubí lo da por hecho cuando se estira satisfecha: «Menos mal que encontraste nalga de ángel, Lyzi». Ahí empieza el desastre.",
+    fuente: { obra: OBRA, parrafo: 33, cita: "—Menos mal que encontraste nalga de ángel, Lyzi." }
   }),
   p({
     id: "empanada-i02", tipo: "implicita", dificultad: 1,
@@ -276,14 +276,14 @@ export const BANCO_LA_EMPANADA_MAGICA: readonly PreguntaQuiz[] = [
   {
     id: "empanada-c01", obra: OBRA, tipo: "conexion", dificultad: 3,
     // Canon confirmado por el autor (13-oct-2026): las empanadas de Cindralith
-    // occidental llevan Nalga de Ángel (la versión publicada lo deja implícito
+    // occidental llevan nalga de ángel (la versión publicada lo deja implícito
     // en el comentario de Rubí). Se activa cuando el Torneo esté publicado.
     enunciado:
       "En el Gran Torneo Etílico de Glaciem, una confesión sobre las empanadas de Cindralith occidental desata una pelea. Esas empanadas llevan la especia que, en La empanada mágica, a Lyzi le daba vergüenza nombrar. ¿Cuál es?",
-    opciones: ["Nalga de Ángel", "Cola de Ángel", "Cola del Diablo", "Pluma de Fénix"], correcta: 0,
+    opciones: ["Nalga de ángel", "Cola de ángel", "Cola de diablo", "Pluma de Fénix"], correcta: 0,
     explicacion:
-      "La receta tradicional de Cindralith occidental pedía Nalga de Ángel. Lyzi dijo «Cola de Ángel» porque «Nalga de Ángel» le sonaba feo, y Don Carlito terminó vendiéndole Cola del Diablo.",
-    fuente: { obra: OBRA, parrafo: 41, cita: "—Cola de Ángel —repitió Lyzi, con una dignidad cada vez más frágil—. Es que «Nalga de Ángel» sonaba feo." },
+      "La receta tradicional de Cindralith occidental pedía nalga de ángel. Lyzi dijo «Cola de ángel» porque «nalga de ángel» le sonaba feo, y Don Carlito terminó vendiéndole cola de diablo.",
+    fuente: { obra: OBRA, parrafo: 41, cita: "—Cola de ángel —repitió Lyzi, con una dignidad cada vez más frágil—. Es que «nalga de ángel» sonaba feo." },
     requiere: [OBRA, TORNEO],
     spoilers: [TORNEO]
   }

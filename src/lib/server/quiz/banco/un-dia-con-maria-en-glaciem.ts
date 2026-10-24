@@ -308,35 +308,35 @@ export const BANCO_UN_DIA_CON_MARIA: readonly PreguntaQuiz[] = [
       "Porque la sopa estaba salada",
       "Porque prefería seguir negociando sin distraerse"
     ], correcta: 0,
-    explicacion: "La sopa llevaba cola de diablo en vez de nalga de ángel. Yuki ya conocía ese sabor: en La empanada mágica se comió «una y tres cuartos» empanadas con Cola del Diablo y terminó viendo a Rubí como un candelero.",
+    explicacion: "La sopa llevaba cola de diablo en vez de nalga de ángel. Yuki ya conocía ese sabor: en La empanada mágica se comió «una y tres cuartos» empanadas con cola de diablo y terminó viendo a Rubí como un candelero.",
     fuente: { obra: EMPANADA, parrafo: 119, cita: "—Una y tres cuartos. La evaluación sensorial requería comparación de bordes." }
   }),
   conexion(EMPANADA, {
     id: "maria-c02", dificultad: 3,
     enunciado: "María le dice a Ricardo: «Por pudor no saben pedir las cosas». En La empanada mágica, ¿quién cambió el nombre de la especia por vergüenza, y cómo la pidió?",
-    opciones: ["Lyzi, que pidió «Cola de Ángel»", "Rubí, que pidió «Cola del Diablo»", "Yuki, que pidió «hierba celestial»", "Don Carlito, que la etiquetó «Ángel»"], correcta: 0,
-    explicacion: "«Es que “Nalga de Ángel” sonaba feo». Don Carlito, con cataratas, le vendió Cola del Diablo.",
-    fuente: { obra: EMPANADA, parrafo: 41, cita: "—Cola de Ángel —repitió Lyzi, con una dignidad cada vez más frágil—. Es que «Nalga de Ángel» sonaba feo." }
+    opciones: ["Lyzi, que pidió «Cola de ángel»", "Rubí, que pidió «Cola de diablo»", "Yuki, que pidió «hierba celestial»", "Don Carlito, que la etiquetó «Ángel»"], correcta: 0,
+    explicacion: "«Es que “nalga de ángel” sonaba feo». Don Carlito, con cataratas, le vendió cola de diablo.",
+    fuente: { obra: EMPANADA, parrafo: 41, cita: "—Cola de ángel —repitió Lyzi, con una dignidad cada vez más frágil—. Es que «nalga de ángel» sonaba feo." }
   }),
   conexion(PROTOCOLOS, {
     id: "maria-c03", dificultad: 3,
     enunciado: "Halrik imita a la perfección el tono seco de Yuki. Según Protocolos del Corazón, ¿qué hacía él a veces cuando Yuki era niña?",
     opciones: ["Se quedaba despierto junto a su habitación", "Le leía El conde vampiro y la rosa", "Le enseñaba a escribir informes", "La escoltaba a la escuela comunal"], correcta: 0,
     explicacion: "«Saberlo no impedía que alguien se quedara despierto junto a su habitación». «¿Usted?». «A veces».",
-    fuente: { obra: PROTOCOLOS, parrafo: 754, cita: "Saberlo no impedía que alguien se quedara despierto junto a su habitación." }
+    fuente: { obra: PROTOCOLOS, parrafo: 756, cita: "Saberlo no impedía que alguien se quedara despierto junto a su habitación." }
   }),
   conexion(PROTOCOLOS, {
     id: "maria-c04", dificultad: 3,
     enunciado: "María anota «crear escuadrón anti-Rubí». En Protocolos del Corazón, Yuki ya había tomado su propia medida anti-Rubí. ¿Cuál?",
     opciones: ["Una puerta reforzada en su despacho", "Un foso de hielo en el patio", "Prohibirle la entrada a la cocina", "Un guardia personal para los postres"], correcta: 0,
     explicacion: "«La puerta estaba reforzada precisamente porque esperaba que intentaras patearla». Rubí entró por la ventana del tercer piso.",
-    fuente: { obra: PROTOCOLOS, parrafo: 331, cita: "—La puerta estaba reforzada precisamente porque esperaba que intentaras patearla." }
+    fuente: { obra: PROTOCOLOS, parrafo: 333, cita: "—La puerta estaba reforzada precisamente porque esperaba que intentaras patearla." }
   }),
   conexion(PROTOCOLOS, {
     id: "maria-c05", dificultad: 3,
     enunciado: "María lleva un cuaderno para leer los gestos mínimos de Yuki. En Protocolos del Corazón, ¿cuánto se mueve la comisura de Yuki cuando descubre el romance de Halrik?",
     opciones: ["Dos milímetros", "Medio centímetro", "Nada en absoluto", "Tres veces, como la ceja"], correcta: 0,
     explicacion: "«La mirada se le ensombreció apenas, no de rabia, sino de cálculo. La comisura del labio se movió dos milímetros».",
-    fuente: { obra: PROTOCOLOS, parrafo: 268, cita: "La comisura del labio se movió dos milímetros." }
+    fuente: { obra: PROTOCOLOS, parrafo: 270, cita: "La comisura del labio se movió dos milímetros." }
   })
 ];
