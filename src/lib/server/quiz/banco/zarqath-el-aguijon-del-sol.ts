@@ -5,7 +5,7 @@ import type { PreguntaQuiz } from "../logica";
  * src/data/stories.ts (texto publicado). Ids estables: no reutilizar.
  * Evitado a propósito: el país de Ingrid (no se nombra). Confirmado por el
  * autor (2026-10-13): el faraón del nombre perdido es Athem (lo dice su
- * música, no el texto) y Arapas es un mercado dentro de Ashraqem.
+ * música, no el texto) y Arapas es un mercado dentro de Ashraqëm.
  */
 
 const OBRA = "zarqath-el-aguijon-del-sol";
@@ -353,9 +353,9 @@ export const BANCO_ZARQATH: readonly PreguntaQuiz[] = [
   }),
   p({
     id: "zarqath-i11", tipo: "implicita", dificultad: 3,
-    enunciado: "Las tres llegan al mercado de Arapas, se informan en el gremio y, tras la tumba, «volvieron a Ashraqem», donde el gremio paga la recompensa. ¿Qué es Arapas?",
-    opciones: ["Un mercado dentro de Ashraqem", "Una ciudad vecina de Ashraqem", "El nombre del gremio de Ashraqem", "Un oasis en el camino a la tumba"], correcta: 0,
-    explicacion: "Desde el mercado y el gremio parten en vaquitas hacia la tumba, y al regresar «volvieron a Ashraqem»: el mercado de Arapas está dentro de Ashraqem.",
-    fuente: { obra: OBRA, parrafo: 870, cita: "Volvieron a Ashraqem con la caravana entera detrás." }
+    enunciado: "Las tres llegan al mercado de Arapas, se informan en el gremio y, tras la tumba, «volvieron a Ashraqëm», donde el gremio paga la recompensa. ¿Qué es Arapas?",
+    opciones: ["Un mercado dentro de Ashraqëm", "Una ciudad vecina de Ashraqëm", "El nombre del gremio de Ashraqëm", "Un oasis en el camino a la tumba"], correcta: 0,
+    explicacion: "Desde el mercado y el gremio parten en vaquitas hacia la tumba, y al regresar «volvieron a Ashraqëm»: el mercado de Arapas está dentro de Ashraqëm.",
+    fuente: { obra: OBRA, parrafo: 870, cita: "Volvieron a Ashraqëm con la caravana entera detrás." }
   })
 ];
