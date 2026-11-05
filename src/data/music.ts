@@ -47,6 +47,36 @@ function track({ cover, coverVideoFile, ...trackData }: TrackInput): MusicTrack 
 
 export const musicTracks: MusicTrack[] = [
   track({
+    id: "ricardo-dufour-buena-solo-buena",
+    title: "Ricardo Dufour — ¿Buena? ¿Solo buena?",
+    subtitle: "Tema de personaje",
+    fileName: "Ricardo Dufour — Buena, solo buena.mp3",
+    category: "personaje",
+    related: ["Ricardo Dufour"],
+    mood: "Cocina / orgullo",
+    accent: "rgba(214, 150, 90, 0.34)"
+  }),
+  track({
+    id: "tamashii-mushi-o-no-arruines-la-postura",
+    title: "Tamashii Mushi-Ō — No arruines la postura",
+    subtitle: "Tema de personaje",
+    fileName: "Tamashii Mushi-Ō — No arruines la postura.mp3",
+    category: "personaje",
+    related: ["Tamashii Mushi-Ō"],
+    mood: "Taller / obsesión",
+    accent: "rgba(150, 70, 90, 0.34)"
+  }),
+  track({
+    id: "maria-que-no-falte-nadie",
+    title: "María — Que no falte nadie",
+    subtitle: "Tema de personaje",
+    fileName: "María — Que no falte nadie.mp3",
+    category: "personaje",
+    related: ["María"],
+    mood: "Vals de Glaciem",
+    accent: "rgba(157, 183, 214, 0.34)"
+  }),
+  track({
     id: "caelyndor-el-bosque-que-te-recuerda",
     title: "Caelyndor — El bosque que te recuerda",
     subtitle: "Tema de arco",

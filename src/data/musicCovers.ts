@@ -106,4 +106,7 @@ export const musicCovers: Record<string, string> = {
   "caelyndor-la-brasa-que-no-se-apago": "/images/music-covers/caelyndor-la-brasa-que-no-se-apago.jpg",
   "caelyndor-la-tormenta-bajo-el-cristal": "/images/music-covers/caelyndor-la-tormenta-bajo-el-cristal.jpg",
   "caelyndor-ven-te-cuento-una-historia": "/images/music-covers/caelyndor-ven-te-cuento-una-historia.jpg",
+  "ricardo-dufour-buena-solo-buena": "/images/music-covers/ricardo-dufour-buena-solo-buena.jpg",
+  "tamashii-mushi-o-no-arruines-la-postura": "/images/music-covers/tamashii-mushi-o-no-arruines-la-postura.jpg",
+  "maria-que-no-falte-nadie": "/images/music-covers/maria-que-no-falte-nadie.jpg",
 };
